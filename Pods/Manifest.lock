@@ -1,0 +1,60 @@
+PODS:
+  - Alamofire (4.4.0)
+  - DeviceKit (1.0.1)
+  - HexColors (2.3.0)
+  - Kingfisher (3.6.2)
+  - MBProgressHUD (1.0.0)
+  - MJRefresh (3.1.12)
+  - PSTAlertController (1.2.0)
+  - SnapKit (3.2.0)
+  - Spring (1.0.3)
+  - SwiftyJSON (3.1.4)
+  - Toaster (2.0.3)
+  - TSMessages (0.9.13):
+    - HexColors (~> 2.3.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - DeviceKit (~> 1.0)
+  - Kingfisher (~> 3.6.0)
+  - MBProgressHUD
+  - MJRefresh
+  - PSTAlertController (~> 1.2.0)
+  - SnapKit
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - SwiftyJSON
+  - Toaster (~> 2.0.3)
+  - TSMessages (from `https://github.com/KrauseFx/TSMessages.git`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :branch: swift3
+    :git: https://github.com/MengTo/Spring.git
+  TSMessages:
+    :git: https://github.com/KrauseFx/TSMessages.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: 8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64
+    :git: https://github.com/MengTo/Spring.git
+  TSMessages:
+    :commit: dd843df9a04a756210b2ed51caf1f2b9aafee508
+    :git: https://github.com/KrauseFx/TSMessages.git
+
+SPEC CHECKSUMS:
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
+  HexColors: 6ad3947c3447a055a3aa8efa859def096351fe5f
+  Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  PSTAlertController: 9b802dfbda54fee2683bfd6dda7023a6de895d5b
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
+  TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
+
+PODFILE CHECKSUM: a44de9048c0f63416946d3e283bef4b41ecacd03
+
+COCOAPODS: 1.2.1
