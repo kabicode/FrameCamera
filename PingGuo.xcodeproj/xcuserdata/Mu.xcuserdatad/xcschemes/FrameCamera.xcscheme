@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E06F10E1ECAF5BD0021D054"
-               BuildableName = "FrameCamera.app"
-               BlueprintName = "FrameCamera"
-               ReferencedContainer = "container:FrameCamera.xcodeproj">
+               BuildableName = "PingGuo.app"
+               BlueprintName = "PingGuo"
+               ReferencedContainer = "container:PingGuo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E06F1221ECAF5BD0021D054"
-               BuildableName = "FrameCameraTests.xctest"
-               BlueprintName = "FrameCameraTests"
-               ReferencedContainer = "container:FrameCamera.xcodeproj">
+               BuildableName = "PingGuoTests.xctest"
+               BlueprintName = "PingGuoTests"
+               ReferencedContainer = "container:PingGuo.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8E06F12D1ECAF5BD0021D054"
-               BuildableName = "FrameCameraUITests.xctest"
-               BlueprintName = "FrameCameraUITests"
-               ReferencedContainer = "container:FrameCamera.xcodeproj">
+               BuildableName = "PingGuoUITests.xctest"
+               BlueprintName = "PingGuoUITests"
+               ReferencedContainer = "container:PingGuo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E06F10E1ECAF5BD0021D054"
-            BuildableName = "FrameCamera.app"
-            BlueprintName = "FrameCamera"
-            ReferencedContainer = "container:FrameCamera.xcodeproj">
+            BuildableName = "PingGuo.app"
+            BlueprintName = "PingGuo"
+            ReferencedContainer = "container:PingGuo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E06F10E1ECAF5BD0021D054"
-            BuildableName = "FrameCamera.app"
-            BlueprintName = "FrameCamera"
-            ReferencedContainer = "container:FrameCamera.xcodeproj">
+            BuildableName = "PingGuo.app"
+            BlueprintName = "PingGuo"
+            ReferencedContainer = "container:PingGuo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8E06F10E1ECAF5BD0021D054"
-            BuildableName = "FrameCamera.app"
-            BlueprintName = "FrameCamera"
-            ReferencedContainer = "container:FrameCamera.xcodeproj">
+            BuildableName = "PingGuo.app"
+            BlueprintName = "PingGuo"
+            ReferencedContainer = "container:PingGuo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
