@@ -28,7 +28,7 @@
         <!--View Controller-->
         <scene sceneID="gur-qf-Dpe">
             <objects>
-                <viewController id="4YE-TG-Llh" sceneMemberID="viewController">
+                <viewController id="4YE-TG-Llh" customClass="ViewController" customModule="PingGuo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PnS-gU-yNH"/>
                         <viewControllerLayoutGuide type="bottom" id="JgS-cX-E5Y"/>
@@ -58,6 +58,9 @@
                                                 <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapCreateButton:" destination="4YE-TG-Llh" eventType="touchUpInside" id="7qs-Ua-NOw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
