@@ -16,7 +16,8 @@ class ViewController: BaseViewController {
     
     @IBAction func tapCreateButton(_ sender: Any) {
         let vc = CreateSnapShotViewController()
-        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true, completion: nil)
     }
 }
 

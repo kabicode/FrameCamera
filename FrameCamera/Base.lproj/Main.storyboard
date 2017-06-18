@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="cSF-Jc-ULG">
             <objects>
-                <navigationController id="op2-hx-IHg" sceneMemberID="viewController">
+                <navigationController id="op2-hx-IHg" customClass="BaseNavigationController" customModule="PingGuo" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IC2-4q-Mdl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

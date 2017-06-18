@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension UIColor {
     convenience init(hex: Int) {
@@ -24,20 +25,6 @@ extension UIColor {
 
 // MARK: - Custom color
 extension UIColor {
-    static var lycheerGreen: UIColor {
-        return UIColor(hex: 0x09BB07)
-    }
     
-    static var lycheerOrange: UIColor {
-        return UIColor(hex: 0xFFBC00)
-    }
-    
-    static var lycheerLightGray: UIColor {
-        return UIColor(hex: 0xEFEFF4)
-    }
-    
-    static var lycheerRed: UIColor {
-        return UIColor(hex: 0xFF5341)
-    }
     
 }

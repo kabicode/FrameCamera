@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Kuaizai. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UILabel {
     
