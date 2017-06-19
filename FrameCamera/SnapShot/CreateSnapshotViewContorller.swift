@@ -87,6 +87,11 @@ class CreateSnapShotViewController: BaseViewController {
     // MARK: - Event Method
     
     @IBAction func tapBarBackButton(_ sender: Any) {
+        if let nav = navigationController {
+            nav.dismiss(animated: true, completion: nil)
+            return
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -96,6 +101,8 @@ class CreateSnapShotViewController: BaseViewController {
     
     @IBAction func tapPhotoLibraryButton(_ sender: Any) {
         // TODO
+        let vc = CropImagePickViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapSettingBoardButton(_ sender: Any) {

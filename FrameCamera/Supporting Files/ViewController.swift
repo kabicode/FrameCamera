@@ -17,7 +17,9 @@ class ViewController: BaseViewController {
     @IBAction func tapCreateButton(_ sender: Any) {
         let vc = CreateSnapShotViewController()
 //        navigationController?.pushViewController(vc, animated: true)
-        present(vc, animated: true, completion: nil)
+        let nav = UINavigationController.init(rootViewController: vc)
+        nav.setNavigationBarHidden(true, animated: true)
+        present(nav, animated: true, completion: nil)
     }
 }
 

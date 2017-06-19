@@ -19,6 +19,10 @@
 		8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66E1EED2E0A0086C8F7 /* UITextField+Validation.swift */; };
 		8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66F1EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift */; };
 		8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6701EED2E0A0086C8F7 /* URL+Extension.swift */; };
+		8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6869581EF822D800E20FE4 /* CropImagePickViewController.swift */; };
+		8C68695B1EF822F900E20FE4 /* CropImagePickViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C68695A1EF822F900E20FE4 /* CropImagePickViewController.xib */; };
+		8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C68695C1EF8263E00E20FE4 /* SelectedPhotoCell.swift */; };
+		8C68695F1EF8263E00E20FE4 /* SelectedPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C68695D1EF8263E00E20FE4 /* SelectedPhotoCell.xib */; };
 		8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */; };
 		8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C6FAA671EF52657005DCFCF /* LYOpenGLView.m */; };
 		8C6FAA6A1EF52E80005DCFCF /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6FAA691EF52E80005DCFCF /* OpenGLES.framework */; };
@@ -72,6 +76,10 @@
 		8C57F66E1EED2E0A0086C8F7 /* UITextField+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validation.swift"; sourceTree = "<group>"; };
 		8C57F66F1EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PlaceHolderView.swift"; sourceTree = "<group>"; };
 		8C57F6701EED2E0A0086C8F7 /* URL+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		8C6869581EF822D800E20FE4 /* CropImagePickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropImagePickViewController.swift; sourceTree = "<group>"; };
+		8C68695A1EF822F900E20FE4 /* CropImagePickViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CropImagePickViewController.xib; sourceTree = "<group>"; };
+		8C68695C1EF8263E00E20FE4 /* SelectedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPhotoCell.swift; sourceTree = "<group>"; };
+		8C68695D1EF8263E00E20FE4 /* SelectedPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedPhotoCell.xib; sourceTree = "<group>"; };
 		8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateSnapShotViewController+Camera.swift"; sourceTree = "<group>"; };
 		8C6FAA651EF52656005DCFCF /* PingGuo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PingGuo-Bridging-Header.h"; path = "../SnapShot/PingGuo-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C6FAA661EF52657005DCFCF /* LYOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYOpenGLView.h; sourceTree = "<group>"; };
@@ -134,6 +142,8 @@
 			children = (
 				8C6FAA661EF52657005DCFCF /* LYOpenGLView.h */,
 				8C6FAA671EF52657005DCFCF /* LYOpenGLView.m */,
+				8C68695C1EF8263E00E20FE4 /* SelectedPhotoCell.swift */,
+				8C68695D1EF8263E00E20FE4 /* SelectedPhotoCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -231,6 +241,8 @@
 				8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */,
 				8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */,
 				8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */,
+				8C6869581EF822D800E20FE4 /* CropImagePickViewController.swift */,
+				8C68695A1EF822F900E20FE4 /* CropImagePickViewController.xib */,
 			);
 			path = SnapShot;
 			sourceTree = "<group>";
@@ -381,6 +393,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C68695B1EF822F900E20FE4 /* CropImagePickViewController.xib in Resources */,
+				8C68695F1EF8263E00E20FE4 /* SelectedPhotoCell.xib in Resources */,
 				8C6FAA771EF53131005DCFCF /* Shader.fsh in Resources */,
 				8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */,
 				8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */,
@@ -476,8 +490,10 @@
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
 				8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
+				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
+				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

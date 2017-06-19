@@ -16,7 +16,7 @@ extension CreateSnapShotViewController {
         mGLView.setupGL()
         
         mCaptureSession = AVCaptureSession()
-        mCaptureSession.sessionPreset = AVCaptureSessionPreset1280x720;
+        mCaptureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
         
         mProcessQueue = DispatchQueue.global()
         
