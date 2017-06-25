@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */; };
 		8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6611EED1B3C0086C8F7 /* Info.plist */; };
 		8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */; };
 		8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6671EED2E0A0086C8F7 /* Bundle+Language.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrameCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F766317387E2E3EE2543D0 /* Pods-FrameCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.debug.xcconfig"; sourceTree = "<group>"; };
+		8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileManager.swift; sourceTree = "<group>"; };
 		8C57F6611EED1B3C0086C8F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSnapShotViewController.xib; sourceTree = "<group>"; };
 		8C57F6671EED2E0A0086C8F7 /* Bundle+Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Language.swift"; sourceTree = "<group>"; };
@@ -137,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C41A1BE1EFFF5B700431181 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */,
+			);
+			name = FileManager;
+			sourceTree = "<group>";
+		};
 		8C57F6651EED24DB0086C8F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +225,7 @@
 		8E06F1111ECAF5BD0021D054 /* FrameCamera */ = {
 			isa = PBXGroup;
 			children = (
+				8C41A1BE1EFFF5B700431181 /* FileManager */,
 				8C6FAA731EF530CB005DCFCF /* Resource */,
 				8E2BF7921ED27CF30042BE25 /* Base */,
 				8E2BF79C1ED28DFE0042BE25 /* SnapShot */,
@@ -487,6 +498,7 @@
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
+				8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */,
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
 				8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,

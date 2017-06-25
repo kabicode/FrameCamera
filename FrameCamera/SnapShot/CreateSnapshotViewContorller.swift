@@ -71,7 +71,14 @@ class CreateSnapShotViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        super.loadView()
+        self.view.frame = CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+    }
+    
     override func viewDidLoad() {
+        self.view.layoutIfNeeded()
+        
         configureCamera()
         
         setupSubviews()
@@ -97,6 +104,7 @@ class CreateSnapShotViewController: BaseViewController {
     
     @IBAction func tapBarNextSetpButton(_ sender: Any) {
         // TODO
+        
     }
     
     @IBAction func tapPhotoLibraryButton(_ sender: Any) {
@@ -163,7 +171,7 @@ class CreateSnapShotViewController: BaseViewController {
             griddingView.addSubview(rowLine)
             rowLine.snp.makeConstraints({ (make) in
                 make.left.right.equalToSuperview()
-                make.top.equalToSuperview().offset(CGFloat(i + 1) * UIScreen.main.bounds.width/CGFloat(count + 1))
+                make.top.equalToSuperview().offset(CGFloat(i + 1) * UIScreen.main.bounds.height/CGFloat(count + 1))
                 make.height.equalTo(0.5)
             })
             
@@ -172,7 +180,7 @@ class CreateSnapShotViewController: BaseViewController {
             griddingView.addSubview(colLine)
             colLine.snp.makeConstraints({ (make) in
                 make.top.bottom.equalToSuperview()
-                make.left.equalToSuperview().offset(CGFloat(i + 1) * UIScreen.main.bounds.height/CGFloat(count + 1))
+                make.left.equalToSuperview().offset(CGFloat(i + 1) * UIScreen.main.bounds.width/CGFloat(count + 1))
                 make.width.equalTo(0.5)
             })
         }
