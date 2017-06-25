@@ -15,11 +15,12 @@ import OpenGLES
 class CreateSnapShotViewController: BaseViewController {
     
     //负责输入和输出设备之间的数据传递
-    var mCaptureSession: AVCaptureSession!
+    var mCaptureSession: AVCaptureSession?
     //负责从AVCaptureDevice获得输入数据
     var mCaptureDeviceInput: AVCaptureDeviceInput!
  
     var mCaptureDeviceOutput: AVCaptureVideoDataOutput!
+    var stillImageOutput: AVCaptureStillImageOutput!
     // OpenGL ES
     var mGLView: LYOpenGLView!
     
@@ -60,6 +61,18 @@ class CreateSnapShotViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         changeOrientation(to: .landscapeLeft)
+        
+        if let mCaptureSession = self.mCaptureSession {
+            mCaptureSession.startRunning()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let mCaptureSession = self.mCaptureSession {
+            mCaptureSession.stopRunning()
+        }
     }
     
     // MARK: - Life Cycle
@@ -119,6 +132,14 @@ class CreateSnapShotViewController: BaseViewController {
     
     @IBAction func tapCameraButton(_ sender: Any) {
         // TODO
+        captureImage { (image, error) in
+            if let image = image {
+                self.doublePhotoImageView.image = image;
+                self.doublePhotoImageView.isHidden = false;
+                self.doublePhotoImageView.alpha = 0.2;
+                print("\(image.size)")
+            }
+        }
     }
     
     @IBAction func touchSettingBoardBg(_ sender: Any) {
@@ -154,10 +175,10 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     func defaultSetting() {
-        
-        
-        
         congfigureGriddingView()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(focesCamera))
+        view.addGestureRecognizer(tap)
     }
     
     func loadGriddingView() -> UIView {
