@@ -200,6 +200,62 @@ const GLfloat kColorConversion601FullRange[] = {
     }
 }
 
+#pragma mark - Get OpenGL Image
+- (UIImage*) getGLScreenshot
+{
+    int myWidth  = self.frame.size.width*2;
+    int myHeight = self.frame.size.height*2;
+    int myY = 0;
+    int myX = 0;
+    int bufferLenght = (myWidth*myHeight*4);
+    
+    //unsigned char buffer[bufferLenght];
+    unsigned char* buffer =(unsigned char*)malloc(bufferLenght);
+    glReadPixels(myX, myY, myWidth, myHeight, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    
+    CGDataProviderRef ref = CGDataProviderCreateWithData(NULL, buffer, bufferLenght, NULL);
+    CGImageRef iref = CGImageCreate(myWidth,myHeight,8,32,myWidth*4,CGColorSpaceCreateDeviceRGB(),
+                                    kCGBitmapByteOrderDefault,ref,NULL, true, kCGRenderingIntentDefault);
+    uint32_t* pixels = (uint32_t *)malloc(bufferLenght);
+    CGContextRef context = CGBitmapContextCreate(pixels, myWidth, myHeight, 8, myWidth*4, CGImageGetColorSpace(iref),
+                                                 kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Big);
+    CGContextTranslateCTM(context, 0.0, myHeight);
+    CGContextScaleCTM(context, 1.0, -1.0);
+    CGContextDrawImage(context, CGRectMake(0.0, 0.0, myWidth, myHeight), iref);
+    CGImageRef outputRef = CGBitmapContextCreateImage(context);
+    
+    UIImage *image = nil;
+//    if(regardOrientation) {
+        UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+        if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
+            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationDown];
+        } else if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationLeft];
+        } else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
+            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationRight];
+        } else {
+            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
+        }
+//    } else {
+//        image = [UIImage imageWithCGImage:outputRef scale:1 orientation:UIImageOrientationUp];
+//    }
+    
+    image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
+    
+    CGImageRelease(iref);
+    CGImageRelease(outputRef);
+    CGContextRelease(context);
+    CGDataProviderRelease(ref);
+    free(buffer);
+    free(pixels);
+    
+//    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    
+    return image;
+    
+}
+
+
 #pragma mark - OpenGLES drawing
 
 - (void)displayPixelBuffer:(CVPixelBufferRef)pixelBuffer

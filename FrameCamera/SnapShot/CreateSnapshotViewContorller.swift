@@ -220,7 +220,7 @@ class CreateSnapShotViewController: BaseViewController {
         }
         
         let toAlpha: CGFloat = show ? 1.0: 0.0
-        UIView.animate(withDuration: 0.35) { 
+        UIView.animate(withDuration: 0.35) {
             self.settingBoardView.alpha = toAlpha
         }
     }

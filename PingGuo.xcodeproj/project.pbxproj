@@ -250,8 +250,8 @@
 			children = (
 				8C57F6651EED24DB0086C8F7 /* View */,
 				8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */,
-				8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */,
 				8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */,
+				8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */,
 				8C6869581EF822D800E20FE4 /* CropImagePickViewController.swift */,
 				8C68695A1EF822F900E20FE4 /* CropImagePickViewController.xib */,
 			);

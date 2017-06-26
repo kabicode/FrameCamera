@@ -101,22 +101,14 @@ extension CreateSnapShotViewController {
     
     // 拍照
     func captureImage(completion:((_ image: UIImage?, _ error: NSError?) -> Void)?) {
-        
-        self.mProcessQueue.async(execute: {
-            
-            self.stillImageOutput.captureStillImageAsynchronously(from: self.stillImageOutput.connection(withMediaType: AVMediaTypeVideo), completionHandler: { (imageDataSampleBuffer, error) in
-                if (imageDataSampleBuffer == nil) || (error != nil) {
-                    completion?(nil, nil)
-                }
-                else if (imageDataSampleBuffer != nil) {
-                    let imageData: Data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
-                    let image: UIImage = UIImage(data: imageData)!
+        if let view = self.view as? LYOpenGLView {
+            self.mProcessQueue.async {
+                let image = view.getGLScreenshot()
+                DispatchQueue.main.async {
                     completion?(image, nil)
                 }
-
-            })
-            
-        })
+            }
+        }
     }
     
 }

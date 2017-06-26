@@ -18,4 +18,7 @@
 - (void)setupGL;
 - (void)displayPixelBuffer:(CVPixelBufferRef)pixelBuffer;
 
+- (UIImage *)getGLScreenshot;
+
+
 @end
