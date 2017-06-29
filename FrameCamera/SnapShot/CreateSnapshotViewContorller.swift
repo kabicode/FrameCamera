@@ -134,6 +134,8 @@ class CreateSnapShotViewController: BaseViewController {
         // TODO
         captureImage { (image, error) in
             if let image = image {
+                PGFileHelper.storeImage(image, toImageAsset: PGFileHelper.getImageAssetFilePath())
+                // TODO
                 self.doublePhotoImageView.image = image;
                 self.doublePhotoImageView.isHidden = false;
                 self.doublePhotoImageView.alpha = 0.2;

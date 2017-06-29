@@ -248,6 +248,7 @@
 		8E2BF79C1ED28DFE0042BE25 /* SnapShot */ = {
 			isa = PBXGroup;
 			children = (
+				8E7BBAEC1F04F12000E6FB88 /* Model */,
 				8C57F6651EED24DB0086C8F7 /* View */,
 				8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */,
 				8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */,
@@ -268,6 +269,13 @@
 				8C6FAA651EF52656005DCFCF /* PingGuo-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E7BBAEC1F04F12000E6FB88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		BF5B98A28183A27470D9514F /* Frameworks */ = {
