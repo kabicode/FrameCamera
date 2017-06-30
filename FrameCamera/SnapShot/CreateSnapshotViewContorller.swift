@@ -14,6 +14,8 @@ import OpenGLES
 
 class CreateSnapShotViewController: BaseViewController {
     
+    var asset: PGAsset!
+    
     //负责输入和输出设备之间的数据传递
     var mCaptureSession: AVCaptureSession?
     //负责从AVCaptureDevice获得输入数据
@@ -26,6 +28,7 @@ class CreateSnapShotViewController: BaseViewController {
     
     var mProcessQueue: DispatchQueue!
     
+    var previewLayer: AVCaptureVideoPreviewLayer?
     
     lazy var griddingView: UIView = self.loadGriddingView();
     
@@ -44,9 +47,9 @@ class CreateSnapShotViewController: BaseViewController {
     @IBOutlet weak var doubleImageSwitch: UISwitch!
     @IBOutlet weak var gridSwitch: UISwitch!
     
-    private var greenCropEnable: Bool = false
-    private var doubleImageEnable: Bool = false
-    private var griddingEnable: Bool = false
+    var greenCropEnable: Bool = false
+    var doubleImageEnable: Bool = false
+    var griddingEnable: Bool = false
     
     
     // MARK: - Rotate
@@ -55,12 +58,12 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscapeLeft
+        return .landscapeRight
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        changeOrientation(to: .landscapeLeft)
+        changeOrientation(to: .landscapeRight)
         
         if let mCaptureSession = self.mCaptureSession {
             mCaptureSession.startRunning()
@@ -94,75 +97,13 @@ class CreateSnapShotViewController: BaseViewController {
         
         configureCamera()
         
-        setupSubviews()
-
         defaultSetting()
+        
+        setupSubviews()
     }
     
     func tapGesture() {
         self.navigationController?.pushViewController(UIViewController(), animated: true)
-    }
-    
-    
-    // MARK: - Event Method
-    
-    @IBAction func tapBarBackButton(_ sender: Any) {
-        if let nav = navigationController {
-            nav.dismiss(animated: true, completion: nil)
-            return
-        }
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func tapBarNextSetpButton(_ sender: Any) {
-        // TODO
-        
-    }
-    
-    @IBAction func tapPhotoLibraryButton(_ sender: Any) {
-        // TODO
-        let vc = CropImagePickViewController()
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func tapSettingBoardButton(_ sender: Any) {
-        showSettingBoardView(true)
-    }
-    
-    @IBAction func tapCameraButton(_ sender: Any) {
-        // TODO
-        captureImage { (image, error) in
-            if let image = image {
-                PGFileHelper.storeImage(image, toImageAsset: PGFileHelper.getImageAssetFilePath())
-                // TODO
-                self.doublePhotoImageView.image = image;
-                self.doublePhotoImageView.isHidden = false;
-                self.doublePhotoImageView.alpha = 0.2;
-                print("\(image.size)")
-            }
-        }
-    }
-    
-    @IBAction func touchSettingBoardBg(_ sender: Any) {
-        showSettingBoardView(false)
-    }
-    
-    @IBAction func tapChangeBgSwitch(_ sender: UISwitch) {
-        // TODO
-    }
-    
-    @IBAction func tapDoubleImageSwitch(_ sender: UISwitch) {
-        doubleImageEnable = sender.isOn
-        
-        configureDoubleImageView()
-    }
-    
-    @IBAction func tapGriddingSwitch(_ sender: UISwitch) {
-        griddingEnable = sender.isOn
-        
-        congfigureGriddingView()
-        
     }
     
     // MARK: - UI Config
@@ -174,10 +115,16 @@ class CreateSnapShotViewController: BaseViewController {
         griddingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        configurePreviewLayer()
+        configureDoubleImageView()
+        congfigureGriddingView()
     }
     
     func defaultSetting() {
-        congfigureGriddingView()
+        greenCropSwith.isOn = greenCropEnable
+        doubleImageSwitch.isOn = doubleImageEnable
+        gridSwitch.isOn = griddingEnable
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(focesCamera))
         view.addGestureRecognizer(tap)
@@ -210,7 +157,66 @@ class CreateSnapShotViewController: BaseViewController {
         
         return griddingView;
     }
+
     
+    
+    // MARK: - Event Method
+    
+    @IBAction func tapBarBackButton(_ sender: Any) {
+        if let nav = navigationController {
+            nav.dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func tapBarNextSetpButton(_ sender: Any) {
+        // TODO
+        
+    }
+    
+    @IBAction func tapPhotoLibraryButton(_ sender: Any) {
+        // TODO
+        let vc = CropImagePickViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func tapSettingBoardButton(_ sender: Any) {
+        showSettingBoardView(true)
+    }
+    
+    @IBAction func tapCameraButton(_ sender: Any) {
+        captureImage { (image, error) in
+            if let image = image {
+                let _ = self.asset.add(image)
+                // TODO
+            }
+        }
+    }
+    
+    @IBAction func touchSettingBoardBg(_ sender: Any) {
+        showSettingBoardView(false)
+    }
+    
+    @IBAction func tapChangeBgSwitch(_ sender: UISwitch) {
+        greenCropEnable = sender.isOn
+        
+        configurePreviewLayer()
+    }
+    
+    @IBAction func tapDoubleImageSwitch(_ sender: UISwitch) {
+        doubleImageEnable = sender.isOn
+        
+        configureDoubleImageView()
+    }
+    
+    @IBAction func tapGriddingSwitch(_ sender: UISwitch) {
+        griddingEnable = sender.isOn
+        
+        congfigureGriddingView()
+        
+    }
     
     
     // MARK: - Private Method
@@ -236,6 +242,25 @@ class CreateSnapShotViewController: BaseViewController {
         doublePhotoImageView.isHidden = !doubleImageEnable
         if doubleImageEnable {
             doublePhotoImageView.alpha = 0.2
+        }
+    }
+    
+    func configurePreviewLayer() {
+        if greenCropEnable {
+            if let previewLayer = self.previewLayer {
+                previewLayer.removeFromSuperlayer()
+                self.previewLayer = nil
+            }
+        } else {
+            if previewLayer == nil {
+                if let previewLayer = AVCaptureVideoPreviewLayer(session: mCaptureSession) {
+                    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+                    previewLayer.frame = self.view.bounds
+                    previewLayer.connection.videoOrientation = .landscapeRight
+                    self.view.layer.insertSublayer(previewLayer, at: 0)
+                    self.previewLayer = previewLayer
+                }
+            }
         }
     }
 }

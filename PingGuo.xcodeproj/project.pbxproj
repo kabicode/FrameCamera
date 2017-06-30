@@ -42,6 +42,10 @@
 		8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */; };
 		8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A31ED28EE10042BE25 /* ViewController.swift */; };
 		8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */; };
+		8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */; };
+		8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D161F05F71300E0CDB0 /* PGImage.swift */; };
+		8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */; };
+		8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */; };
 		DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +109,10 @@
 		8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2BF7A31ED28EE10042BE25 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAsset.swift; sourceTree = "<group>"; };
+		8E5A0D161F05F71300E0CDB0 /* PGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGImage.swift; sourceTree = "<group>"; };
+		8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetPreviewVC.swift; sourceTree = "<group>"; };
+		8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAssetPreviewVC.xib; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +186,7 @@
 		8C6FAA731EF530CB005DCFCF /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8E06F1191ECAF5BD0021D054 /* Assets.xcassets */,
 				8C6FAA791EF531CF005DCFCF /* testImage */,
 				8C6FAA741EF53125005DCFCF /* Shader */,
 			);
@@ -205,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				8E06F1111ECAF5BD0021D054 /* FrameCamera */,
+				8E5A0D181F0631AA00E0CDB0 /* Libarary */,
 				8E06F1101ECAF5BD0021D054 /* Products */,
 				8C57F6661EED2E0A0086C8F7 /* Extension */,
 				EB1F61EA4AA4AB0795E7074E /* Pods */,
@@ -225,13 +235,15 @@
 		8E06F1111ECAF5BD0021D054 /* FrameCamera */ = {
 			isa = PBXGroup;
 			children = (
-				8C41A1BE1EFFF5B700431181 /* FileManager */,
 				8C6FAA731EF530CB005DCFCF /* Resource */,
 				8E2BF7921ED27CF30042BE25 /* Base */,
-				8E2BF79C1ED28DFE0042BE25 /* SnapShot */,
+				8C41A1BE1EFFF5B700431181 /* FileManager */,
+				8E5A0D1F1F06546100E0CDB0 /* Comment */,
+				8E2BF79C1ED28DFE0042BE25 /* Camera */,
+				8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */,
+				8E5A0D191F0631BC00E0CDB0 /* Extension */,
 				8E2BF7A01ED28EE10042BE25 /* Supporting Files */,
 				8E06F1161ECAF5BD0021D054 /* Main.storyboard */,
-				8E06F1191ECAF5BD0021D054 /* Assets.xcassets */,
 			);
 			path = FrameCamera;
 			sourceTree = "<group>";
@@ -245,7 +257,7 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		8E2BF79C1ED28DFE0042BE25 /* SnapShot */ = {
+		8E2BF79C1ED28DFE0042BE25 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
 				8E7BBAEC1F04F12000E6FB88 /* Model */,
@@ -256,6 +268,7 @@
 				8C6869581EF822D800E20FE4 /* CropImagePickViewController.swift */,
 				8C68695A1EF822F900E20FE4 /* CropImagePickViewController.xib */,
 			);
+			name = Camera;
 			path = SnapShot;
 			sourceTree = "<group>";
 		};
@@ -271,9 +284,42 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8E5A0D181F0631AA00E0CDB0 /* Libarary */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libarary;
+			sourceTree = "<group>";
+		};
+		8E5A0D191F0631BC00E0CDB0 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */,
+				8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */,
+			);
+			name = ImageAssetEdit;
+			sourceTree = "<group>";
+		};
+		8E5A0D1F1F06546100E0CDB0 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
 		8E7BBAEC1F04F12000E6FB88 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E5A0D161F05F71300E0CDB0 /* PGImage.swift */,
+				8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -419,6 +465,7 @@
 				8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */,
 				8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */,
 				8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */,
+				8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */,
 				8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */,
 				8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */,
 				8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */,
@@ -496,8 +543,10 @@
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
+				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
 				8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */,
+				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
 				8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */,
 				8C57F6751EED2E0A0086C8F7 /* UIAlertController+Alert.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
@@ -512,6 +561,7 @@
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,
+				8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */,
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
 				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,
 			);

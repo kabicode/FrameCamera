@@ -15,8 +15,11 @@ class ViewController: BaseViewController {
     }
     
     @IBAction func tapCreateButton(_ sender: Any) {
+        let asset = PGAsset(filePath: PGFileHelper.generateImageAssetFilePath())
+        
         let vc = CreateSnapShotViewController()
-//        navigationController?.pushViewController(vc, animated: true)
+        vc.asset = asset
+        
         let nav = BaseNavigationController.init(rootViewController: vc)
         nav.setNavigationBarHidden(true, animated: true)
         present(nav, animated: true, completion: nil)
