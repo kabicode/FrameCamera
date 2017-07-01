@@ -14,7 +14,13 @@ import OpenGLES
 
 class CreateSnapShotViewController: BaseViewController {
     
+    
+    
     var asset: PGAsset!
+    
+    // single shot Mode
+    var isSingleShotMode: Bool = false
+    var singleShotBlock: ((UIImage) -> ())? = nil
     
     //负责输入和输出设备之间的数据传递
     var mCaptureSession: AVCaptureSession?
@@ -79,6 +85,17 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     // MARK: - Life Cycle
+    static func presentFrom(_ viewController: UIViewController, with asset: PGAsset) -> CreateSnapShotViewController {
+        let vc = CreateSnapShotViewController()
+        vc.asset = asset
+        
+        let nav = BaseNavigationController.init(rootViewController: vc)
+        nav.setNavigationBarHidden(true, animated: true)
+        viewController.present(nav, animated: true, completion: nil)
+        
+        return vc
+    }
+    
     init() {
         super.init(nibName: "CreateSnapShotViewController", bundle: nil)
     }
@@ -100,10 +117,6 @@ class CreateSnapShotViewController: BaseViewController {
         defaultSetting()
         
         setupSubviews()
-    }
-    
-    func tapGesture() {
-        self.navigationController?.pushViewController(UIViewController(), animated: true)
     }
     
     // MARK: - UI Config
@@ -187,11 +200,17 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     @IBAction func tapCameraButton(_ sender: Any) {
-        captureImage { (image, error) in
-            if let image = image {
-                let _ = self.asset.add(image)
-                // TODO
+        captureImage {[weak self] (image, error) in
+            guard let strongSelf = self,
+                  let image = image else { return }
+            
+            if strongSelf.isSingleShotMode == true {
+                strongSelf.tapBarBackButton(strongSelf.barBackButton)
+                strongSelf.singleShotBlock?(image)
+                return
             }
+            
+            let _ = strongSelf.asset.add(image)
         }
     }
     

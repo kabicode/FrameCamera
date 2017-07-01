@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C05F21E1F07A49F00F5EEB6 /* PGUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */; };
+		8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F2211F07A8CA00F5EEB6 /* VideoLibraryCell.swift */; };
+		8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */; };
+		8C05F2261F07B24400F5EEB6 /* ImageAssetEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */; };
+		8C05F22A1F07E4C100F5EEB6 /* imageAssetPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F2281F07E4C100F5EEB6 /* imageAssetPreviewCell.swift */; };
+		8C05F22B1F07E4C100F5EEB6 /* imageAssetPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */; };
+		8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */; };
+		8C05F22F1F081A4900F5EEB6 /* ImageEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */; };
 		8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */; };
 		8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6611EED1B3C0086C8F7 /* Info.plist */; };
 		8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */; };
@@ -69,6 +77,14 @@
 /* Begin PBXFileReference section */
 		04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrameCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F766317387E2E3EE2543D0 /* Pods-FrameCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.debug.xcconfig"; sourceTree = "<group>"; };
+		8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGUserDefault.swift; sourceTree = "<group>"; };
+		8C05F2211F07A8CA00F5EEB6 /* VideoLibraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLibraryCell.swift; sourceTree = "<group>"; };
+		8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetEditVC.swift; sourceTree = "<group>"; };
+		8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAssetEditVC.xib; sourceTree = "<group>"; };
+		8C05F2281F07E4C100F5EEB6 /* imageAssetPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageAssetPreviewCell.swift; sourceTree = "<group>"; };
+		8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = imageAssetPreviewCell.xib; sourceTree = "<group>"; };
+		8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEffectEditVC.swift; sourceTree = "<group>"; };
+		8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageEffectEditVC.xib; sourceTree = "<group>"; };
 		8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileManager.swift; sourceTree = "<group>"; };
 		8C57F6611EED1B3C0086C8F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSnapShotViewController.xib; sourceTree = "<group>"; };
@@ -107,7 +123,7 @@
 		8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationContorller.swift; sourceTree = "<group>"; };
 		8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSnapshotViewContorller.swift; sourceTree = "<group>"; };
 		8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8E2BF7A31ED28EE10042BE25 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8E2BF7A31ED28EE10042BE25 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Supporting Files/ViewController.swift"; sourceTree = "<group>"; };
 		8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAsset.swift; sourceTree = "<group>"; };
 		8E5A0D161F05F71300E0CDB0 /* PGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGImage.swift; sourceTree = "<group>"; };
@@ -147,10 +163,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				8C05F2201F07A7CF00F5EEB6 /* views */,
+				8E2BF7A31ED28EE10042BE25 /* ViewController.swift */,
+			);
+			name = AssetLibrary;
+			sourceTree = "<group>";
+		};
+		8C05F2201F07A7CF00F5EEB6 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8C05F2211F07A8CA00F5EEB6 /* VideoLibraryCell.swift */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		8C05F2271F07E49C00F5EEB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C05F2281F07E4C100F5EEB6 /* imageAssetPreviewCell.swift */,
+				8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		8C41A1BE1EFFF5B700431181 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
 				8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */,
+				8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */,
 			);
 			name = FileManager;
 			sourceTree = "<group>";
@@ -240,6 +283,7 @@
 				8C41A1BE1EFFF5B700431181 /* FileManager */,
 				8E5A0D1F1F06546100E0CDB0 /* Comment */,
 				8E2BF79C1ED28DFE0042BE25 /* Camera */,
+				8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */,
 				8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */,
 				8E5A0D191F0631BC00E0CDB0 /* Extension */,
 				8E2BF7A01ED28EE10042BE25 /* Supporting Files */,
@@ -278,7 +322,6 @@
 				8C57F6611EED1B3C0086C8F7 /* Info.plist */,
 				8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */,
 				8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */,
-				8E2BF7A31ED28EE10042BE25 /* ViewController.swift */,
 				8C6FAA651EF52656005DCFCF /* PingGuo-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
@@ -302,6 +345,11 @@
 		8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */ = {
 			isa = PBXGroup;
 			children = (
+				8C05F2271F07E49C00F5EEB6 /* Views */,
+				8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */,
+				8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */,
+				8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */,
+				8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */,
 				8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */,
 				8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */,
 			);
@@ -465,10 +513,13 @@
 				8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */,
 				8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */,
 				8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */,
+				8C05F22B1F07E4C100F5EEB6 /* imageAssetPreviewCell.xib in Resources */,
 				8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */,
 				8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */,
 				8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */,
+				8C05F22F1F081A4900F5EEB6 /* ImageEffectEditVC.xib in Resources */,
 				8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */,
+				8C05F2261F07B24400F5EEB6 /* ImageAssetEditVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,10 +593,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
+				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
 				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
 				8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */,
+				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
 				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
 				8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */,
 				8C57F6751EED2E0A0086C8F7 /* UIAlertController+Alert.swift in Sources */,
@@ -557,7 +610,10 @@
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
 				8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */,
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
+				8C05F22A1F07E4C100F5EEB6 /* imageAssetPreviewCell.swift in Sources */,
 				8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */,
+				8C05F21E1F07A49F00F5EEB6 /* PGUserDefault.swift in Sources */,
+				8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,
