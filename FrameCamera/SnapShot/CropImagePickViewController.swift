@@ -25,12 +25,12 @@ class CropImagePickViewController: BaseViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscapeLeft
+        return .landscapeRight
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        changeOrientation(to: .landscapeLeft)
+        changeOrientation(to: .landscapeRight)
     }
     
     // MARK: - Life Cycle
