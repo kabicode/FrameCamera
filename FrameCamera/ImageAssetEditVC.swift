@@ -99,6 +99,12 @@ class ImageAssetEditVC: BaseViewController {
     }
 
     @IBAction func tapSpecialEffecButton(_ sender: Any) {
+        guard let selectedIndex = self.selectedIndex, selectedIndex < asset.imageList.count else { return }
+        
+        let pgImage = asset.imageList[selectedIndex]
+        let vc = ImageEffectEditVC()
+        vc.pgImage = pgImage
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapAudioButton(_ sender: Any) {
@@ -137,7 +143,7 @@ extension ImageAssetEditVC: UICollectionViewDataSource {
         let pgImage = asset.imageList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageAssetPreviewCell", for: indexPath) as! imageAssetPreviewCell
         cell.configureCell(with: pgImage)
-        cell.backgroundColor = UIColor.red
+//        cell.backgroundColor = UIColor.red
         cell.selectedCell(indexPath.row == selectedIndex)
         return cell
     }

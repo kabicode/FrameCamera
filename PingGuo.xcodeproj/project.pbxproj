@@ -42,6 +42,7 @@
 		8C6FAA771EF53131005DCFCF /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA751EF53131005DCFCF /* Shader.fsh */; };
 		8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA761EF53131005DCFCF /* Shader.vsh */; };
 		8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA7A1EF531DF005DCFCF /* for_test.png */; };
+		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
 		8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1161ECAF5BD0021D054 /* Main.storyboard */; };
 		8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1191ECAF5BD0021D054 /* Assets.xcassets */; };
 		8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7931ED27D120042BE25 /* BaseViewController.swift */; };
@@ -114,6 +115,7 @@
 		8C6FAA751EF53131005DCFCF /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
 		8C6FAA761EF53131005DCFCF /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
+		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
 		8E06F10F1ECAF5BD0021D054 /* PingGuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingGuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E06F1171ECAF5BD0021D054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E06F1191ECAF5BD0021D054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 		8E5A0D191F0631BC00E0CDB0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */,
 			);
 			name = Extension;
 			path = ..;
@@ -617,6 +620,7 @@
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,
+				8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */,
 				8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */,
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
 				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,
