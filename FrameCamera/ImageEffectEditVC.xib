@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -182,18 +182,19 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tw5-yx-Bqs">
                     <rect key="frame" x="0.0" y="0.0" width="401" height="517"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FtO-nH-W4l">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSf-KG-bVo" customClass="MyPaster">
                             <rect key="frame" x="12" y="158.5" width="377" height="200"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="aei-yY-Pyf"/>
+                                <constraint firstAttribute="height" constant="200" id="4Dk-Rg-PXX"/>
                             </constraints>
-                        </imageView>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="FtO-nH-W4l" secondAttribute="trailing" constant="12" id="ZIn-n3-ZcS"/>
-                        <constraint firstItem="FtO-nH-W4l" firstAttribute="leading" secondItem="Tw5-yx-Bqs" secondAttribute="leading" constant="12" id="ilC-ik-nib"/>
-                        <constraint firstItem="FtO-nH-W4l" firstAttribute="centerY" secondItem="Tw5-yx-Bqs" secondAttribute="centerY" id="s3z-Sh-j6I"/>
+                        <constraint firstItem="KSf-KG-bVo" firstAttribute="leading" secondItem="Tw5-yx-Bqs" secondAttribute="leading" constant="12" id="HRt-fy-Izx"/>
+                        <constraint firstAttribute="trailing" secondItem="KSf-KG-bVo" secondAttribute="trailing" constant="12" id="LZm-cE-Tb8"/>
+                        <constraint firstItem="KSf-KG-bVo" firstAttribute="centerY" secondItem="Tw5-yx-Bqs" secondAttribute="centerY" id="xX2-Uc-pny"/>
                     </constraints>
                 </view>
             </subviews>

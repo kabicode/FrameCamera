@@ -55,6 +55,10 @@
 		8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D161F05F71300E0CDB0 /* PGImage.swift */; };
 		8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */; };
 		8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */; };
+		8E6962301F0B92C20045A263 /* MyImagePasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6962291F0B92C20045A263 /* MyImagePasterItem.m */; };
+		8E6962311F0B92C20045A263 /* MyPaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69622B1F0B92C20045A263 /* MyPaster.m */; };
+		8E6962321F0B92C20045A263 /* MyPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69622D1F0B92C20045A263 /* MyPasterItem.m */; };
+		8E6962331F0B92C20045A263 /* MyTextPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69622F1F0B92C20045A263 /* MyTextPasterItem.m */; };
 		DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,7 +108,6 @@
 		8C68695C1EF8263E00E20FE4 /* SelectedPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedPhotoCell.swift; sourceTree = "<group>"; };
 		8C68695D1EF8263E00E20FE4 /* SelectedPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectedPhotoCell.xib; sourceTree = "<group>"; };
 		8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CreateSnapShotViewController+Camera.swift"; sourceTree = "<group>"; };
-		8C6FAA651EF52656005DCFCF /* PingGuo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PingGuo-Bridging-Header.h"; path = "../SnapShot/PingGuo-Bridging-Header.h"; sourceTree = "<group>"; };
 		8C6FAA661EF52657005DCFCF /* LYOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYOpenGLView.h; sourceTree = "<group>"; };
 		8C6FAA671EF52657005DCFCF /* LYOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYOpenGLView.m; sourceTree = "<group>"; };
 		8C6FAA691EF52E80005DCFCF /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -131,6 +134,16 @@
 		8E5A0D161F05F71300E0CDB0 /* PGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGImage.swift; sourceTree = "<group>"; };
 		8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetPreviewVC.swift; sourceTree = "<group>"; };
 		8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAssetPreviewVC.xib; sourceTree = "<group>"; };
+		8E6962281F0B92C20045A263 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
+		8E6962291F0B92C20045A263 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
+		8E69622A1F0B92C20045A263 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
+		8E69622B1F0B92C20045A263 /* MyPaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPaster.m; sourceTree = "<group>"; };
+		8E69622C1F0B92C20045A263 /* MyPasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPasterItem.h; sourceTree = "<group>"; };
+		8E69622D1F0B92C20045A263 /* MyPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPasterItem.m; sourceTree = "<group>"; };
+		8E69622E1F0B92C20045A263 /* MyTextPasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextPasterItem.h; sourceTree = "<group>"; };
+		8E69622F1F0B92C20045A263 /* MyTextPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextPasterItem.m; sourceTree = "<group>"; };
+		8E6962341F0B95670045A263 /* PingGuo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Prefix.pch"; sourceTree = "<group>"; };
+		8EA686081F0B9743005F5D3E /* PingGuo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,7 +337,8 @@
 				8C57F6611EED1B3C0086C8F7 /* Info.plist */,
 				8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */,
 				8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */,
-				8C6FAA651EF52656005DCFCF /* PingGuo-Bridging-Header.h */,
+				8EA686081F0B9743005F5D3E /* PingGuo-Bridging-Header.h */,
+				8E6962341F0B95670045A263 /* PingGuo-Prefix.pch */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -332,6 +346,7 @@
 		8E5A0D181F0631AA00E0CDB0 /* Libarary */ = {
 			isa = PBXGroup;
 			children = (
+				8E6962271F0B92C20045A263 /* MyPaster */,
 			);
 			name = Libarary;
 			sourceTree = "<group>";
@@ -364,6 +379,22 @@
 			children = (
 			);
 			name = Comment;
+			sourceTree = "<group>";
+		};
+		8E6962271F0B92C20045A263 /* MyPaster */ = {
+			isa = PBXGroup;
+			children = (
+				8E6962281F0B92C20045A263 /* MyImagePasterItem.h */,
+				8E6962291F0B92C20045A263 /* MyImagePasterItem.m */,
+				8E69622A1F0B92C20045A263 /* MyPaster.h */,
+				8E69622B1F0B92C20045A263 /* MyPaster.m */,
+				8E69622C1F0B92C20045A263 /* MyPasterItem.h */,
+				8E69622D1F0B92C20045A263 /* MyPasterItem.m */,
+				8E69622E1F0B92C20045A263 /* MyTextPasterItem.h */,
+				8E69622F1F0B92C20045A263 /* MyTextPasterItem.m */,
+			);
+			name = MyPaster;
+			path = ../../Example/Class;
 			sourceTree = "<group>";
 		};
 		8E7BBAEC1F04F12000E6FB88 /* Model */ = {
@@ -596,9 +627,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
+				8E6962301F0B92C20045A263 /* MyImagePasterItem.m in Sources */,
 				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
 				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
+				8E6962331F0B92C20045A263 /* MyTextPasterItem.m in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
 				8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */,
 				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
@@ -607,6 +640,8 @@
 				8C57F6751EED2E0A0086C8F7 /* UIAlertController+Alert.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
 				8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */,
+				8E6962321F0B92C20045A263 /* MyPasterItem.m in Sources */,
+				8E6962311F0B92C20045A263 /* MyPaster.m in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
@@ -770,12 +805,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = P99VN59447;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FrameCamera/Supporting Files/PingGuo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FrameCamera/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BrotherGang.PingGuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "FrameCamera/SnapShot/PingGuo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "FrameCamera/Supporting Files/PingGuo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -788,12 +825,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = P99VN59447;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FrameCamera/Supporting Files/PingGuo-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/FrameCamera/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BrotherGang.PingGuo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "FrameCamera/SnapShot/PingGuo-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "FrameCamera/Supporting Files/PingGuo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
