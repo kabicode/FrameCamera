@@ -17,6 +17,38 @@ class ImageEffectEditVC: BaseViewController {
         case paintBoard
     }
     
+    
+    @IBOutlet weak var myPaster: MyPaster!
+    @IBOutlet weak var pasterViewHeightConstraint: NSLayoutConstraint!
+    
+    // bottomSettingView
+    @IBOutlet weak var bottomContentView: UIView!
+    
+    // Paster
+    @IBOutlet weak var pasterCollectionView: UICollectionView!
+    
+    // Time
+    @IBOutlet var timeBoardView: UIView!
+    @IBOutlet weak var timeSliderView: UISlider!
+    
+    // Word
+    @IBOutlet var wordBoardView: UIView!
+    @IBOutlet weak var wordColorCollectionView: UICollectionView!
+    
+    var wordColorIndex: Int = 0
+    
+    // Paint
+    @IBOutlet var paintBoardView: UIView!
+    @IBOutlet weak var paintColorCollectionView: UICollectionView!
+    @IBOutlet weak var paintSize1Btn: UIButton!
+    @IBOutlet weak var paintSize2Btn: UIButton!
+    @IBOutlet weak var paintSize3Btn: UIButton!
+    @IBOutlet weak var paintSize4Btn: UIButton!
+    
+    var paintColorIndex: Int = 0
+    
+    
+    // bottom buttons
     @IBOutlet weak var chartletImageView: UIImageView!
     @IBOutlet weak var chartletTitleLabel: UILabel!
     
@@ -33,6 +65,7 @@ class ImageEffectEditVC: BaseViewController {
     // 编辑面板
     var editBoardType: PGEditBoardType = .chartletBoard
     
+    var asset: PGAsset!
     var pgImage: PGImage!
     
     
@@ -56,43 +89,62 @@ class ImageEffectEditVC: BaseViewController {
         
         selectedBoardType(editBoardType)
         
-//        collectionView.reloadData()
-//        
-//        if asset.imageList.count > 0 {
-//            selectedIndex = 0
-//            selectedImageItem(at: 0)
-//        }
+        loadData()
     }
     
     func registerCells() {
-//        collectionView.register(UINib.init(nibName: "imageAssetPreviewCell", bundle: nil), forCellWithReuseIdentifier: "imageAssetPreviewCell")
+        registerPasterCollectionCells()
+        
+        wordColorCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        paintColorCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
     }
     
+    
     func setupSubviews() {
-//        previewImageView.layoutIfNeeded()
-//        previewImageHeightConstraint.constant = previewImageView.frame.width / (UIScreen.main.bounds.height / UIScreen.main.bounds.width)
+        
+        configurePasterView()
+        loadPastersFormPGImage()
+        
     }
 
     
     // MARK: - Actions
     @IBAction func tapChartletButton(_ sender: Any) {
+        if editBoardType == .chartletBoard {
+            return
+        }
         editBoardType = .chartletBoard
         selectedBoardType(editBoardType)
     }
     
     @IBAction func tapTimeEditButton(_ sender: Any) {
+        if editBoardType == .timeBoard {
+            return
+        }
         editBoardType = .timeBoard
         selectedBoardType(editBoardType)
     }
     
     @IBAction func tapWordButton(_ sender: Any) {
+        if editBoardType == .wordBoard {
+            return
+        }
         editBoardType = .wordBoard
         selectedBoardType(editBoardType)
     }
     
     @IBAction func tapPaintButton(_ sender: Any) {
+        if editBoardType == .paintBoard {
+            return
+        }
         editBoardType = .paintBoard
         selectedBoardType(editBoardType)
+    }
+    
+    // MARK: - NetWork
+    func loadData() {
+        // TODO
+        pasterCollectionView.reloadData()
     }
     
     // MARK: - Private Method
@@ -116,7 +168,204 @@ class ImageEffectEditVC: BaseViewController {
         titleColor = (type == .paintBoard) ? UIColor.yellowTheme: UIColor.white
         paintImageView.image = UIImage(named: imageName)
         paintTitleLabel.textColor = titleColor
+        
+        switch type {
+        case .chartletBoard:
+            addChartletSettingView()
+        case .timeBoard:
+            addTimeSettingView()
+        case .wordBoard:
+            addWordSettingView()
+        case .paintBoard:
+            addPaintSettingView()
+        }
     }
     
-
+    func addChartletSettingView() {
+        
+        configureChartleBoardView()
+    }
+    
+    func addTimeSettingView() {
+        wordBoardView.removeFromSuperview()
+        paintBoardView.removeFromSuperview()
+        
+        bottomContentView.addSubview(timeBoardView)
+        timeBoardView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        configureTimeBoardView()
+    }
+    
+    func addWordSettingView() {
+        timeBoardView.removeFromSuperview()
+        paintBoardView.removeFromSuperview()
+        
+        bottomContentView.addSubview(wordBoardView)
+        wordBoardView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        configureWordBoardView()
+    }
+    
+    func addPaintSettingView() {
+        timeBoardView.removeFromSuperview()
+        wordBoardView.removeFromSuperview()
+        
+        bottomContentView.addSubview(paintBoardView)
+        paintBoardView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        configurePaintBoardView()
+    }
+    
+    
+    // MARK: - BoardView Actions
+    
+    @IBAction func closeTimeBoard(_ sender: Any) {
+        timeBoardView.removeFromSuperview()
+    }
+    
+    @IBAction func completeTimeBoard(_ sender: Any) {
+        //TODO
+        timeBoardView.removeFromSuperview()
+    }
+    
+    @IBAction func closeWordBoard(_ sender: Any) {
+        wordBoardView.removeFromSuperview()
+    }
+    
+    @IBAction func completeWordBoard(_ sender: UIButton) {
+        // TODO
+        wordBoardView.removeFromSuperview()
+    }
+    
+    @IBAction func clostPaintBoard(_ sender: Any) {
+        paintBoardView.removeFromSuperview()
+    }
+    
+    @IBAction func completePaintBoard(_ sender: Any) {
+        // TODO
+        paintBoardView.removeFromSuperview()
+    }
+    
+    
+    
+    
+    // MARK: - Getter
+    var colorMap: [UIColor] {
+        return [UIColor.white, UIColor.black, UIColor.yellow, UIColor.green]
+    }
 }
+
+// MARK: - Time
+extension ImageEffectEditVC {
+    func configureTimeBoardView() {
+        
+    }
+}
+
+
+// MARK: - collectionView Delegate
+extension ImageEffectEditVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.pasterCollectionView {
+            pasterCollectionView.layoutIfNeeded()
+            return CGSize.init(width: pasterCollectionView.frame.height, height: pasterCollectionView.frame.height)
+        }
+        
+        if collectionView == wordColorCollectionView || collectionView == paintColorCollectionView {
+            return CGSize.init(width: 25.0, height: 27.0)
+        }
+        
+        return CGSize.zero
+    }
+}
+
+extension ImageEffectEditVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.pasterCollectionView {
+            return 5
+        }
+        
+        if collectionView == wordColorCollectionView || collectionView == paintColorCollectionView {
+            return colorMap.count
+        }
+        
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if collectionView == self.pasterCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageAssetPreviewCell", for: indexPath) as! imageAssetPreviewCell
+            cell.imageView.image = UIImage(named: "paster_\(indexPath.row)")
+            return cell
+        }
+        
+        if collectionView == wordColorCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+            cell.backgroundColor = colorMap[indexPath.row]
+            return cell
+        }
+        
+        if collectionView == paintColorCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
+            cell.backgroundColor = colorMap[indexPath.row]
+            return cell
+        }
+        
+        return UICollectionViewCell()
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if collectionView == wordColorCollectionView {
+            if indexPath.row == wordColorIndex {
+                cell.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
+                cell.superview?.bringSubview(toFront: cell)
+            } else {
+                cell.transform = CGAffineTransform.identity
+                cell.superview?.sendSubview(toBack: cell)
+            }
+        }
+        
+        if collectionView == paintColorCollectionView {
+            if indexPath.row == wordColorIndex {
+                cell.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
+                cell.superview?.bringSubview(toFront: cell)
+            } else {
+                cell.transform = CGAffineTransform.identity
+                cell.superview?.sendSubview(toBack: cell)
+            }
+        }
+    }
+}
+
+extension ImageEffectEditVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == self.pasterCollectionView {
+            let name = "paster_\(indexPath.row)"
+            addImagePaster(with: name)
+        }
+        
+        if collectionView == wordColorCollectionView {
+            wordColorIndex = indexPath.row
+            wordColorCollectionView.reloadData()
+        }
+        
+        if collectionView == paintColorCollectionView {
+            paintColorIndex = indexPath.row
+            paintColorCollectionView.reloadData()
+        }
+    }
+}
+
+
+

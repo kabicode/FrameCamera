@@ -43,6 +43,12 @@
 		8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA761EF53131005DCFCF /* Shader.vsh */; };
 		8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA7A1EF531DF005DCFCF /* for_test.png */; };
 		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
+		8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */; };
+		8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC971F0BCD7B001267B4 /* MyPaster.m */; };
+		8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC991F0BCD7B001267B4 /* MyPasterItem.m */; };
+		8CE1BC9F1F0BCD7B001267B4 /* MyTextPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC9B1F0BCD7B001267B4 /* MyTextPasterItem.m */; };
+		8CE1BCA11F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */; };
+		8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */; };
 		8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1161ECAF5BD0021D054 /* Main.storyboard */; };
 		8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1191ECAF5BD0021D054 /* Assets.xcassets */; };
 		8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7931ED27D120042BE25 /* BaseViewController.swift */; };
@@ -55,10 +61,6 @@
 		8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D161F05F71300E0CDB0 /* PGImage.swift */; };
 		8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */; };
 		8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */; };
-		8E6962301F0B92C20045A263 /* MyImagePasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6962291F0B92C20045A263 /* MyImagePasterItem.m */; };
-		8E6962311F0B92C20045A263 /* MyPaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69622B1F0B92C20045A263 /* MyPaster.m */; };
-		8E6962321F0B92C20045A263 /* MyPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69622D1F0B92C20045A263 /* MyPasterItem.m */; };
-		8E6962331F0B92C20045A263 /* MyTextPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E69622F1F0B92C20045A263 /* MyTextPasterItem.m */; };
 		DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +121,16 @@
 		8C6FAA761EF53131005DCFCF /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
 		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
+		8CE1BC941F0BCD7B001267B4 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
+		8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
+		8CE1BC961F0BCD7B001267B4 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
+		8CE1BC971F0BCD7B001267B4 /* MyPaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPaster.m; sourceTree = "<group>"; };
+		8CE1BC981F0BCD7B001267B4 /* MyPasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPasterItem.h; sourceTree = "<group>"; };
+		8CE1BC991F0BCD7B001267B4 /* MyPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPasterItem.m; sourceTree = "<group>"; };
+		8CE1BC9A1F0BCD7B001267B4 /* MyTextPasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextPasterItem.h; sourceTree = "<group>"; };
+		8CE1BC9B1F0BCD7B001267B4 /* MyTextPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextPasterItem.m; sourceTree = "<group>"; };
+		8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageEffectEditVC+Paster.swift"; sourceTree = "<group>"; };
+		8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageEffectEditVC+Paint.swift"; sourceTree = "<group>"; };
 		8E06F10F1ECAF5BD0021D054 /* PingGuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingGuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E06F1171ECAF5BD0021D054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E06F1191ECAF5BD0021D054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -134,14 +146,6 @@
 		8E5A0D161F05F71300E0CDB0 /* PGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGImage.swift; sourceTree = "<group>"; };
 		8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetPreviewVC.swift; sourceTree = "<group>"; };
 		8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAssetPreviewVC.xib; sourceTree = "<group>"; };
-		8E6962281F0B92C20045A263 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
-		8E6962291F0B92C20045A263 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
-		8E69622A1F0B92C20045A263 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
-		8E69622B1F0B92C20045A263 /* MyPaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPaster.m; sourceTree = "<group>"; };
-		8E69622C1F0B92C20045A263 /* MyPasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPasterItem.h; sourceTree = "<group>"; };
-		8E69622D1F0B92C20045A263 /* MyPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPasterItem.m; sourceTree = "<group>"; };
-		8E69622E1F0B92C20045A263 /* MyTextPasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTextPasterItem.h; sourceTree = "<group>"; };
-		8E69622F1F0B92C20045A263 /* MyTextPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextPasterItem.m; sourceTree = "<group>"; };
 		8E6962341F0B95670045A263 /* PingGuo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Prefix.pch"; sourceTree = "<group>"; };
 		8EA686081F0B9743005F5D3E /* PingGuo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,14 +272,37 @@
 			name = testImage;
 			sourceTree = "<group>";
 		};
+		8CE1BC921F0BCD7B001267B4 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				8CE1BC931F0BCD7B001267B4 /* MyPaster */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		8CE1BC931F0BCD7B001267B4 /* MyPaster */ = {
+			isa = PBXGroup;
+			children = (
+				8CE1BC941F0BCD7B001267B4 /* MyImagePasterItem.h */,
+				8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */,
+				8CE1BC961F0BCD7B001267B4 /* MyPaster.h */,
+				8CE1BC971F0BCD7B001267B4 /* MyPaster.m */,
+				8CE1BC981F0BCD7B001267B4 /* MyPasterItem.h */,
+				8CE1BC991F0BCD7B001267B4 /* MyPasterItem.m */,
+				8CE1BC9A1F0BCD7B001267B4 /* MyTextPasterItem.h */,
+				8CE1BC9B1F0BCD7B001267B4 /* MyTextPasterItem.m */,
+			);
+			path = MyPaster;
+			sourceTree = "<group>";
+		};
 		8E06F1061ECAF5BD0021D054 = {
 			isa = PBXGroup;
 			children = (
 				8E06F1111ECAF5BD0021D054 /* FrameCamera */,
-				8E5A0D181F0631AA00E0CDB0 /* Libarary */,
-				8E06F1101ECAF5BD0021D054 /* Products */,
+				8CE1BC921F0BCD7B001267B4 /* Library */,
 				8C57F6661EED2E0A0086C8F7 /* Extension */,
 				EB1F61EA4AA4AB0795E7074E /* Pods */,
+				8E06F1101ECAF5BD0021D054 /* Products */,
 				BF5B98A28183A27470D9514F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -343,14 +370,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8E5A0D181F0631AA00E0CDB0 /* Libarary */ = {
-			isa = PBXGroup;
-			children = (
-				8E6962271F0B92C20045A263 /* MyPaster */,
-			);
-			name = Libarary;
-			sourceTree = "<group>";
-		};
 		8E5A0D191F0631BC00E0CDB0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +386,8 @@
 				8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */,
 				8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */,
 				8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */,
+				8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */,
+				8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */,
 				8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */,
 				8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */,
 				8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */,
@@ -379,22 +400,6 @@
 			children = (
 			);
 			name = Comment;
-			sourceTree = "<group>";
-		};
-		8E6962271F0B92C20045A263 /* MyPaster */ = {
-			isa = PBXGroup;
-			children = (
-				8E6962281F0B92C20045A263 /* MyImagePasterItem.h */,
-				8E6962291F0B92C20045A263 /* MyImagePasterItem.m */,
-				8E69622A1F0B92C20045A263 /* MyPaster.h */,
-				8E69622B1F0B92C20045A263 /* MyPaster.m */,
-				8E69622C1F0B92C20045A263 /* MyPasterItem.h */,
-				8E69622D1F0B92C20045A263 /* MyPasterItem.m */,
-				8E69622E1F0B92C20045A263 /* MyTextPasterItem.h */,
-				8E69622F1F0B92C20045A263 /* MyTextPasterItem.m */,
-			);
-			name = MyPaster;
-			path = ../../Example/Class;
 			sourceTree = "<group>";
 		};
 		8E7BBAEC1F04F12000E6FB88 /* Model */ = {
@@ -627,21 +632,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
-				8E6962301F0B92C20045A263 /* MyImagePasterItem.m in Sources */,
+				8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */,
 				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
 				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
-				8E6962331F0B92C20045A263 /* MyTextPasterItem.m in Sources */,
+				8CE1BC9F1F0BCD7B001267B4 /* MyTextPasterItem.m in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
 				8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */,
 				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
 				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
 				8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */,
+				8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */,
 				8C57F6751EED2E0A0086C8F7 /* UIAlertController+Alert.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
 				8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */,
-				8E6962321F0B92C20045A263 /* MyPasterItem.m in Sources */,
-				8E6962311F0B92C20045A263 /* MyPaster.m in Sources */,
+				8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */,
+				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
@@ -656,6 +662,7 @@
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,
 				8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */,
+				8CE1BCA11F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift in Sources */,
 				8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */,
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
 				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,

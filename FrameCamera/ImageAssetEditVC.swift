@@ -103,6 +103,7 @@ class ImageAssetEditVC: BaseViewController {
         
         let pgImage = asset.imageList[selectedIndex]
         let vc = ImageEffectEditVC()
+        vc.asset = asset
         vc.pgImage = pgImage
         navigationController?.pushViewController(vc, animated: true)
     }

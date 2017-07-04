@@ -27,9 +27,9 @@ class PGImage: NSObject, NSCoding {
     }
     
     // 贴图
-    var imagePasters: [ImagePaster] = []
-    var textPasters: [TextPaster] = []
-    
+//    var imagePasters: [ImagePaster] = []
+//    var textPasters: [TextPaster] = []
+    var pasters: [Paster] = []
     
     init(_ imagePath: String) {
         self.imagePath = imagePath
@@ -49,15 +49,17 @@ class PGImage: NSObject, NSCoding {
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(imagePath, forKey: "imagePath")
         aCoder.encode(duration, forKey: "duration")
-        aCoder.encode(imagePasters, forKey: "imagePasters")
-        aCoder.encode(textPasters, forKey: "textPasters")
+        aCoder.encode(pasters, forKey: "pasters")
+//        aCoder.encode(imagePasters, forKey: "imagePasters")
+//        aCoder.encode(textPasters, forKey: "textPasters")
     }
     
     public required init?(coder aDecoder: NSCoder) {
         imagePath = aDecoder.decodeObject(forKey: "imagePath") as! String
         duration = aDecoder.decodeDouble(forKey: "duration")
-        imagePasters = aDecoder.decodeObject(forKey: "imagePasters") as! [ImagePaster]
-        textPasters = aDecoder.decodeObject(forKey: "textPasters") as! [TextPaster]
+        pasters = (aDecoder.decodeObject(forKey: "pasters") as? [Paster]) ?? []
+//        imagePasters = aDecoder.decodeObject(forKey: "imagePasters") as! [ImagePaster]
+//        textPasters = aDecoder.decodeObject(forKey: "textPasters") as! [TextPaster]
     }
 
 }

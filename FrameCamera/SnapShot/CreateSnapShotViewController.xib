@@ -115,7 +115,7 @@
                 <constraint firstItem="PHM-Px-fB0" firstAttribute="top" secondItem="aru-E1-AoA" secondAttribute="bottom" constant="30" id="vLX-li-jqR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-181.5" y="213"/>
+            <point key="canvasLocation" x="-247" y="229"/>
         </view>
         <view contentMode="scaleToFill" id="akW-wt-Ywd" customClass="UIControl">
             <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
