@@ -24,8 +24,8 @@ extension ImageEffectEditVC {
         if let image = result.image, result.changed == true {
             let size = myPaster.originImage.size
             UIGraphicsBeginImageContext(size)
-            myPaster.originImage.draw(in: CGRect.init(origin: CGPoint.zero, size: size))
-            image.draw(in: CGRect.init(origin: CGPoint.zero, size: size))
+            myPaster.originImage.draw(in: CGRect(origin: CGPoint.zero, size: size))
+            image.draw(in: CGRect(origin: CGPoint.zero, size: size))
             
             let compoundImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()

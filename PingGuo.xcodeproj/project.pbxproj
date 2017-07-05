@@ -220,6 +220,17 @@
 			name = FileManager;
 			sourceTree = "<group>";
 		};
+		8C4F67D11F0D4FF000BBC8AC /* ImageEffectEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */,
+				8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */,
+				8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */,
+				8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */,
+			);
+			name = ImageEffectEdit;
+			sourceTree = "<group>";
+		};
 		8C57F6651EED24DB0086C8F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,12 +388,9 @@
 			isa = PBXGroup;
 			children = (
 				8C05F2271F07E49C00F5EEB6 /* Views */,
+				8C4F67D11F0D4FF000BBC8AC /* ImageEffectEdit */,
 				8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */,
 				8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */,
-				8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */,
-				8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */,
-				8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */,
-				8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */,
 				8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */,
 				8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */,
 			);
