@@ -16,6 +16,8 @@
 		8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */; };
 		8C05F22F1F081A4900F5EEB6 /* ImageEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */; };
 		8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */; };
+		8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */; };
+		8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */; };
 		8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6611EED1B3C0086C8F7 /* Info.plist */; };
 		8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */; };
 		8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6671EED2E0A0086C8F7 /* Bundle+Language.swift */; };
@@ -94,6 +96,8 @@
 		8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEffectEditVC.swift; sourceTree = "<group>"; };
 		8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageEffectEditVC.xib; sourceTree = "<group>"; };
 		8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileManager.swift; sourceTree = "<group>"; };
+		8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEffectEditVC.swift; sourceTree = "<group>"; };
+		8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioEffectEditVC.xib; sourceTree = "<group>"; };
 		8C57F6611EED1B3C0086C8F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSnapShotViewController.xib; sourceTree = "<group>"; };
 		8C57F6671EED2E0A0086C8F7 /* Bundle+Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Language.swift"; sourceTree = "<group>"; };
@@ -229,6 +233,24 @@
 				8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */,
 			);
 			name = ImageEffectEdit;
+			sourceTree = "<group>";
+		};
+		8C4F67D21F0D53FF00BBC8AC /* AudioEffectEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */,
+				8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */,
+			);
+			name = AudioEffectEdit;
+			sourceTree = "<group>";
+		};
+		8C4F67D31F0D541100BBC8AC /* ImageAssetEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */,
+				8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */,
+			);
+			name = ImageAssetEdit;
 			sourceTree = "<group>";
 		};
 		8C57F6651EED24DB0086C8F7 /* View */ = {
@@ -388,9 +410,9 @@
 			isa = PBXGroup;
 			children = (
 				8C05F2271F07E49C00F5EEB6 /* Views */,
+				8C4F67D31F0D541100BBC8AC /* ImageAssetEdit */,
 				8C4F67D11F0D4FF000BBC8AC /* ImageEffectEdit */,
-				8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */,
-				8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */,
+				8C4F67D21F0D53FF00BBC8AC /* AudioEffectEdit */,
 				8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */,
 				8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */,
 			);
@@ -548,6 +570,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C68695B1EF822F900E20FE4 /* CropImagePickViewController.xib in Resources */,
+				8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */,
 				8C68695F1EF8263E00E20FE4 /* SelectedPhotoCell.xib in Resources */,
 				8C6FAA771EF53131005DCFCF /* Shader.fsh in Resources */,
 				8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */,
@@ -637,6 +660,7 @@
 				8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */,
 				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
+				8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */,
 				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
 				8CE1BC9F1F0BCD7B001267B4 /* MyTextPasterItem.m in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
