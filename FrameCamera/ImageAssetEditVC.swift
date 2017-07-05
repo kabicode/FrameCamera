@@ -34,6 +34,12 @@ class ImageAssetEditVC: BaseViewController {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -158,7 +164,7 @@ extension ImageAssetEditVC: UICollectionViewDelegate {
         }
         
         let pgImage = asset.imageList[indexPath.row]
-        previewImageView.image = PGFileHelper.restoreImage(at: pgImage.imagePath)
+        previewImageView.image = pgImage.image
         
         self.selectedIndex = indexPath.row
         collectionView.reloadData()

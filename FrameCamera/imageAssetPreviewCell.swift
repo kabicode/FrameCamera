@@ -19,7 +19,8 @@ class imageAssetPreviewCell: UICollectionViewCell {
     }
     
     func configureCell(with image: PGImage) {
-        imageView.kf.setImage(with: URL.init(fileURLWithPath: image.sandboxPath))
+//        imageView.kf.setImage(with: URL.init(fileURLWithPath: image.sandboxPath))
+        imageView.image = image.image
     }
 
     func selectedCell(_ selected: Bool) {

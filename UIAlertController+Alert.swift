@@ -20,7 +20,7 @@ extension UIAlertController {
             preferredStyle: .alert)
         
         let action = UIAlertAction(
-            title: NSLocalizedString("common.ok", comment: "Alert OK"),
+            title: "确认",
             style: .default, handler: { (action) in
                 actionHandler?(action)
         })
@@ -50,7 +50,7 @@ extension UIAlertController {
         alert.addAction(action)
             
         if canCancel {
-            let title = cancelTitle ?? NSLocalizedString("common.cancel", comment: "Alert Cancel")
+            let title = cancelTitle ?? "取消"
             let cancel = UIAlertAction(
                 title: title,
                 style: .cancel, handler: nil)
@@ -70,7 +70,7 @@ extension UIAlertController {
                 title: title,
                 message: message,
                 canCancel: canCancel,
-                actionTitle: NSLocalizedString("common.ok", comment: "OK"),
+                actionTitle: "OK",
                 actionHandler: actionHandler)
     }
     
@@ -85,7 +85,7 @@ extension UIAlertController {
                 title: title,
                 message: message,
                 canCancel: canCancel,
-                actionTitle: NSLocalizedString("common.delete", comment: "Delete"),
+                actionTitle: "确认",
                 actionHandler: actionHandler)
     }
 }

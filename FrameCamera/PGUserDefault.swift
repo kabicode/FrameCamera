@@ -42,10 +42,10 @@ struct PGUserDefault {
     }
     
     static func updateAsset(_ asset: PGAsset) {
-        var assetsArray = self.assetsArray
+//        var assetsArray = self.assetsArray
         if let index = assetsArray.index(of: asset) {
             assetsArray[index] = asset
-            self.assetsArray = assetsArray
+//            self.assetsArray = assetsArray
         }
     }
 }

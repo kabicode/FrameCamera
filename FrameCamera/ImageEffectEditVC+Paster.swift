@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import Toaster
 
 extension ImageEffectEditVC {
+    
+    func addChartletSettingView() {
+        configureChartleBoardView()
+    }
     
     func configurePasterView() {
         myPaster.layoutIfNeeded()
@@ -18,7 +23,7 @@ extension ImageEffectEditVC {
         myPaster.deleteIcon = UIImage.init(named: "paster_delete")
         myPaster.sizeIcon = UIImage.init(named: "paster_rotate")
         myPaster.rotateIcon = UIImage.init(named: "paster_mirror")
-        myPaster.originImage = UIImage(contentsOfFile: pgImage.sandboxPath)
+        myPaster.originImage = pgImage.originImage
         myPaster.delegate = self
     }
     
@@ -46,52 +51,110 @@ extension ImageEffectEditVC {
     // MARK: - Add Paster
     func addPaster(_ paster: Paster) {
         
-        if !pgImage.pasters.contains(paster) {
+        if !pasters.contains(paster) {
             myPaster.add(paster)
-            pgImage.pasters.append(paster)
+            pasters.append(paster)
         } else {
             myPaster.currentPaster = paster
         }
     }
     
-    func addImagePaster(with imageName: String) {
+    func addImagePaster(with imageName: String, image: UIImage? = nil) {
         // TODO
         let imagePaster = ImagePaster()
         imagePaster.imageName = imageName
         
-        imagePaster.image = UIImage(named: imageName)
+        imagePaster.image = image ?? UIImage(named: imageName)
         addPaster(imagePaster)
     }
 
+    
+    func saveEffectImageToPgImage() {
+        let imagePath = (pgImage.effectImagePath == nil) ? PGFileHelper.generateImageFileName(at: asset.filePath): pgImage.effectImagePath!
+        if let effectImage = myPaster.getImage() {
+            if PGFileHelper.storeImage(effectImage, to: imagePath) {
+                pgImage.effectImagePath = imagePath
+            }
+        }
+    }
+}
+
+// MARK: - TextPaster
+extension ImageEffectEditVC {
+    
+    func addWordSettingView() {
+        timeBoardView.removeFromSuperview()
+        paintBoardView.removeFromSuperview()
+        
+        bottomContentView.addSubview(wordBoardView)
+        wordBoardView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        configureWordBoardView()
+    }
+    
+    
     func addTextPaster(with text: String) {
-        // TODO
         let textPaster = TextPaster()
+        textPaster.textColor = colorMap[wordColorIndex]
+        textPaster.text = text
         addPaster(textPaster)
     }
     
-    func saveImagePasters() -> UIImage {
-        // TODO
-        myPaster.saveAllPasterParameters()
-        return myPaster.pasterImage
+    
+    @IBAction func closeWordBoard(_ sender: Any) {
+        wordBoardView.removeFromSuperview()
+        editBoardType = .chartletBoard
+        selectedBoardType(editBoardType)
     }
     
+    @IBAction func completeWordBoard(_ sender: UIButton) {
+        // TODO
+        wordBoardView.removeFromSuperview()
+        
+        alert = UIAlertController.alert(title: "请输入贴图文字", message: nil, canCancel: true, cancelTitle: "取消", actionTitle: "确定") { [weak self] (action) in
+            if let textField = self?.alert.textFields?.first {
+                guard let text = textField.text, text.characters.count > 0 else {
+                    Toast(text: "输入内容不能为空").show()
+                    return
+                }
+                self?.addTextPaster(with: text)
+            }
+        }
+        alert.addTextField { [weak self] (textField) in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            let color = strongSelf.colorMap[strongSelf.wordColorIndex]
+            textField.backgroundColor = (color == UIColor.white) ? UIColor.black: UIColor.white
+            textField.textColor = color
+        }
+        present(alert, animated: true, completion: nil)
+        
+        
+        editBoardType = .chartletBoard
+        selectedBoardType(editBoardType)
+    }
 }
 
+
+// MARK: - PasterDelegate
 extension ImageEffectEditVC: MyPasterDelegate {
     
     func myPaster(_ myPaster: MyPaster!, pasterIsSelect paster: Paster!) {
-        if let index = pgImage.pasters.index(of: paster) {
-            pgImage.pasters.remove(at: index)
-            pgImage.pasters.append(paster)
-//            saveImagePasters()
+        if let index = pasters.index(of: paster) {
+            pasters.remove(at: index)
+            pasters.append(paster)
         }
     }
     
 
     
     func myPaster(_ myPaster: MyPaster!, delete paster: Paster!) {
-        if let index = pgImage.pasters.index(of: paster) {
-            pgImage.pasters.remove(at: index)
+        if let index = pasters.index(of: paster) {
+            pasters.remove(at: index)
 //            saveImagePasters()
         }
     }

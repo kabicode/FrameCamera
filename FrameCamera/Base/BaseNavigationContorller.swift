@@ -15,6 +15,7 @@ class BaseNavigationController: UINavigationController {
         
         self.navigationBar.barTintColor = UIColor(hex: 0x1A212B)
         self.navigationBar.isTranslucent = false
+        self.navigationBar.tintColor = UIColor.white
     }
     
     override var shouldAutorotate: Bool {

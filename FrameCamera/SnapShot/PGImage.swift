@@ -14,10 +14,28 @@ class PGImage: NSObject, NSCoding {
     var duration: TimeInterval = 1.0
 
     // 图片
-    var image: UIImage?
+    var image: UIImage? {
+        get {
+            if let effect = self.effectImagePath {
+                return UIImage(contentsOfFile: PGFileHelper.getSandBoxPath(with: effect))
+            }
+            else if let originImage = UIImage(contentsOfFile: PGFileHelper.getSandBoxPath(with: imagePath)) {
+                return originImage
+            }
+            
+            return nil
+        }
+    }
     
-    // 图片路径
-    var imagePath: String
+    var originImage: UIImage? {
+        return UIImage(contentsOfFile: PGFileHelper.getSandBoxPath(with: imagePath))
+    }
+    
+    // 展示用图片路径
+    var imagePath: String = ""
+    
+    // 源图
+    var effectImagePath: String?
     
     // 沙盒图片路径
     var sandboxPath: String {
@@ -27,13 +45,12 @@ class PGImage: NSObject, NSCoding {
     }
     
     // 贴图
-//    var imagePasters: [ImagePaster] = []
-//    var textPasters: [TextPaster] = []
     var pasters: [Paster] = []
     
     init(_ imagePath: String) {
         self.imagePath = imagePath
-        self.image = PGFileHelper.restoreImage(at: imagePath)
+
+//        self.image = PGFileHelper.restoreImage(at: imagePath)
     }
     
 //    init?(_ image: UIImage, into filePath: String) {
@@ -50,16 +67,14 @@ class PGImage: NSObject, NSCoding {
         aCoder.encode(imagePath, forKey: "imagePath")
         aCoder.encode(duration, forKey: "duration")
         aCoder.encode(pasters, forKey: "pasters")
-//        aCoder.encode(imagePasters, forKey: "imagePasters")
-//        aCoder.encode(textPasters, forKey: "textPasters")
+        aCoder.encode(effectImagePath, forKey: "effectImagePath")
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        imagePath = aDecoder.decodeObject(forKey: "imagePath") as! String
+        imagePath = (aDecoder.decodeObject(forKey: "imagePath") as? String) ?? ""
+        effectImagePath = aDecoder.decodeObject(forKey: "effectImagePath") as? String
         duration = aDecoder.decodeDouble(forKey: "duration")
         pasters = (aDecoder.decodeObject(forKey: "pasters") as? [Paster]) ?? []
-//        imagePasters = aDecoder.decodeObject(forKey: "imagePasters") as! [ImagePaster]
-//        textPasters = aDecoder.decodeObject(forKey: "textPasters") as! [TextPaster]
     }
 
 }

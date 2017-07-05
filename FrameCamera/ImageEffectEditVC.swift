@@ -17,9 +17,20 @@ class ImageEffectEditVC: BaseViewController {
         case paintBoard
     }
     
+    enum PGDrawLineWidth: CGFloat {
+        case size1      = 5
+        case size2      = 7.5
+        case size3      = 10
+        case size4      = 12.5
+    }
+    
+    @IBOutlet var titleView: UIView!
     
     @IBOutlet weak var myPaster: MyPaster!
     @IBOutlet weak var pasterViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var paintView: DrawingView!
+    
     
     // bottomSettingView
     @IBOutlet weak var bottomContentView: UIView!
@@ -31,10 +42,13 @@ class ImageEffectEditVC: BaseViewController {
     @IBOutlet var timeBoardView: UIView!
     @IBOutlet weak var timeSliderView: UISlider!
     
+    var minDuration: TimeInterval = 0.1
+    var maxDuration: TimeInterval = 2.0
+    
     // Word
     @IBOutlet var wordBoardView: UIView!
     @IBOutlet weak var wordColorCollectionView: UICollectionView!
-    
+    var alert: UIAlertController!
     var wordColorIndex: Int = 0
     
     // Paint
@@ -46,7 +60,7 @@ class ImageEffectEditVC: BaseViewController {
     @IBOutlet weak var paintSize4Btn: UIButton!
     
     var paintColorIndex: Int = 0
-    
+    var paintLineSize: PGDrawLineWidth = .size1
     
     // bottom buttons
     @IBOutlet weak var chartletImageView: UIImageView!
@@ -67,7 +81,7 @@ class ImageEffectEditVC: BaseViewController {
     
     var asset: PGAsset!
     var pgImage: PGImage!
-    
+    var pasters: [Paster] = []
     
     
     // MARK: - Life Cycle
@@ -78,16 +92,15 @@ class ImageEffectEditVC: BaseViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         registerCells()
         
-        setupSubviews()
+        defaultSetup()
         
-        selectedBoardType(editBoardType)
+        setupSubviews()
         
         loadData()
     }
@@ -99,14 +112,55 @@ class ImageEffectEditVC: BaseViewController {
         paintColorCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
     }
     
+    func defaultSetup() {
+//        pasters = NSMutableArray(array: pgImage.pasters) as! [Paster]
+    }
+    
     
     func setupSubviews() {
         
         configurePasterView()
         loadPastersFormPGImage()
         
+        navigationItem.titleView = titleView
+        titleView.isHidden = true
+        
+        let leftBarItem = UIBarButtonItem.init(image: UIImage(named: "barBack_white_icon"), style: .plain, target: self, action: #selector(tapBackBarButton))
+        navigationItem.leftBarButtonItem = leftBarItem
+        
+        let button = UIButton.init(type: .roundedRect)
+        button.frame = CGRect.init(x: 0, y: 0, width: 80, height: 40)
+        button.setImage(UIImage(named: "done_black_barbutton"), for: .normal)
+        button.addTarget(self, action: #selector(tapDoneBarButton), for: .touchUpInside)
+        let rightItem = UIBarButtonItem.init(customView: button)
+//        let rightItem = UIBarButtonItem.init(image: UIImage(named: "done_black_barbutton"), style: .plain, target: self, action: #selector(tapDoneBarButton))
+        navigationItem.rightBarButtonItem = rightItem
+        
+        selectedBoardType(editBoardType)
     }
 
+    // MARK: - bar Event
+    func tapBackBarButton() {
+        let alert = UIAlertController.alert(title: "确认退出？",
+                                            message: "退出将丢失一部分改动，确认退出吗",
+                                            canCancel: true, cancelTitle: "取消",
+                                            actionTitle: "确定")
+        { [weak self] (action) in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func tapDoneBarButton() {
+        pgImage.pasters = pasters
+        
+        saveEffectImageToPgImage()
+        
+        myPaster.saveAllPasterParameters()
+        
+        PGUserDefault.updateAsset(asset)
+    }
     
     // MARK: - Actions
     @IBAction func tapChartletButton(_ sender: Any) {
@@ -179,12 +233,22 @@ class ImageEffectEditVC: BaseViewController {
         case .paintBoard:
             addPaintSettingView()
         }
+        
+        titleView.isHidden = !(type == .paintBoard)
     }
     
-    func addChartletSettingView() {
-        
-        configureChartleBoardView()
+    @IBAction func tapUndoButton(_ sender: Any) {
+        paintView.undo()
     }
+    
+    // MARK: - Getter
+    var colorMap: [UIColor] {
+        return [UIColor.white, UIColor.black, UIColor.yellow, UIColor.green]
+    }
+}
+
+// MARK: - Time Board View
+extension ImageEffectEditVC {
     
     func addTimeSettingView() {
         wordBoardView.removeFromSuperview()
@@ -198,73 +262,27 @@ class ImageEffectEditVC: BaseViewController {
         configureTimeBoardView()
     }
     
-    func addWordSettingView() {
-        timeBoardView.removeFromSuperview()
-        paintBoardView.removeFromSuperview()
-        
-        bottomContentView.addSubview(wordBoardView)
-        wordBoardView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        configureWordBoardView()
+    func configureTimeBoardView() {
+        timeSliderView.value = Float((pgImage.duration - minDuration) / (maxDuration - minDuration))
     }
     
-    func addPaintSettingView() {
-        timeBoardView.removeFromSuperview()
-        wordBoardView.removeFromSuperview()
-        
-        bottomContentView.addSubview(paintBoardView)
-        paintBoardView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        configurePaintBoardView()
+    func saveTimeDuration() {
+        pgImage.duration = TimeInterval(timeSliderView.value) * (maxDuration - minDuration) + minDuration
     }
-    
-    
-    // MARK: - BoardView Actions
     
     @IBAction func closeTimeBoard(_ sender: Any) {
         timeBoardView.removeFromSuperview()
+        
+        editBoardType = .chartletBoard
+        selectedBoardType(editBoardType)
     }
     
     @IBAction func completeTimeBoard(_ sender: Any) {
-        //TODO
+        saveTimeDuration()
         timeBoardView.removeFromSuperview()
-    }
-    
-    @IBAction func closeWordBoard(_ sender: Any) {
-        wordBoardView.removeFromSuperview()
-    }
-    
-    @IBAction func completeWordBoard(_ sender: UIButton) {
-        // TODO
-        wordBoardView.removeFromSuperview()
-    }
-    
-    @IBAction func clostPaintBoard(_ sender: Any) {
-        paintBoardView.removeFromSuperview()
-    }
-    
-    @IBAction func completePaintBoard(_ sender: Any) {
-        // TODO
-        paintBoardView.removeFromSuperview()
-    }
-    
-    
-    
-    
-    // MARK: - Getter
-    var colorMap: [UIColor] {
-        return [UIColor.white, UIColor.black, UIColor.yellow, UIColor.green]
-    }
-}
-
-// MARK: - Time
-extension ImageEffectEditVC {
-    func configureTimeBoardView() {
         
+        editBoardType = .chartletBoard
+        selectedBoardType(editBoardType)
     }
 }
 
@@ -335,7 +353,7 @@ extension ImageEffectEditVC: UICollectionViewDataSource {
         }
         
         if collectionView == paintColorCollectionView {
-            if indexPath.row == wordColorIndex {
+            if indexPath.row == paintColorIndex {
                 cell.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
                 cell.superview?.bringSubview(toFront: cell)
             } else {
@@ -362,6 +380,7 @@ extension ImageEffectEditVC: UICollectionViewDelegate {
         
         if collectionView == paintColorCollectionView {
             paintColorIndex = indexPath.row
+            configurePaintBoardView()
             paintColorCollectionView.reloadData()
         }
     }

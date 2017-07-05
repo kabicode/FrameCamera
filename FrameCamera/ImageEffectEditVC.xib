@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,12 +23,14 @@
                 <outlet property="paintSize3Btn" destination="Voa-NV-4HY" id="Orc-0a-vvP"/>
                 <outlet property="paintSize4Btn" destination="7kG-Rk-Gg5" id="4C7-DF-QXB"/>
                 <outlet property="paintTitleLabel" destination="JKv-UA-k42" id="7HW-kL-yNb"/>
+                <outlet property="paintView" destination="yHO-jJ-6Ka" id="3u9-4q-JfO"/>
                 <outlet property="pasterCollectionView" destination="9bT-xd-XxE" id="zJe-Uf-Gqa"/>
                 <outlet property="pasterViewHeightConstraint" destination="4Dk-Rg-PXX" id="BOu-J7-c8l"/>
                 <outlet property="timeBoardView" destination="DDX-u7-5X0" id="1S6-sY-DPI"/>
                 <outlet property="timeImageView" destination="yqa-ut-HOe" id="0V5-hi-Ld3"/>
                 <outlet property="timeSliderView" destination="zCO-Tb-1Fd" id="1fK-Nb-vdT"/>
                 <outlet property="timeTitleLabel" destination="9sJ-nJ-iYw" id="ugm-qG-298"/>
+                <outlet property="titleView" destination="yvQ-XO-xOM" id="Zqe-Ey-4AY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="wordBoardView" destination="hDd-M2-dKy" id="Sv1-s3-AmN"/>
                 <outlet property="wordColorCollectionView" destination="dEU-p4-JAb" id="Gwp-YP-nOx"/>
@@ -203,12 +205,20 @@
                                 <constraint firstAttribute="height" constant="200" id="4Dk-Rg-PXX"/>
                             </constraints>
                         </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-jJ-6Ka" customClass="DrawingView" customModule="PingGuo" customModuleProvider="target">
+                            <rect key="frame" x="12" y="158.5" width="377" height="200"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="KSf-KG-bVo" firstAttribute="leading" secondItem="Tw5-yx-Bqs" secondAttribute="leading" constant="12" id="HRt-fy-Izx"/>
                         <constraint firstAttribute="trailing" secondItem="KSf-KG-bVo" secondAttribute="trailing" constant="12" id="LZm-cE-Tb8"/>
+                        <constraint firstItem="yHO-jJ-6Ka" firstAttribute="bottom" secondItem="KSf-KG-bVo" secondAttribute="bottom" id="UE9-Og-2pI"/>
+                        <constraint firstItem="yHO-jJ-6Ka" firstAttribute="leading" secondItem="KSf-KG-bVo" secondAttribute="leading" id="bWP-Nn-PhM"/>
+                        <constraint firstItem="yHO-jJ-6Ka" firstAttribute="trailing" secondItem="KSf-KG-bVo" secondAttribute="trailing" id="rnw-UE-0wV"/>
                         <constraint firstItem="KSf-KG-bVo" firstAttribute="centerY" secondItem="Tw5-yx-Bqs" secondAttribute="centerY" id="xX2-Uc-pny"/>
+                        <constraint firstItem="yHO-jJ-6Ka" firstAttribute="top" secondItem="KSf-KG-bVo" secondAttribute="top" id="zwO-ic-xz7"/>
                     </constraints>
                 </view>
             </subviews>
@@ -450,6 +460,9 @@
                             </constraints>
                             <state key="normal" image="unselect_painSize_1"/>
                             <state key="selected" image="paintSize_1"/>
+                            <connections>
+                                <action selector="tapSize1Btn:" destination="-1" eventType="touchUpInside" id="umV-ga-sAc"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOp-bu-plD">
                             <rect key="frame" x="30" y="0.0" width="30" height="48"/>
@@ -457,7 +470,10 @@
                                 <constraint firstAttribute="width" constant="30" id="feo-4l-fRQ"/>
                             </constraints>
                             <state key="normal" image="unselect_painSize_2"/>
-                            <state key="selected" image="paintSize_2"/>
+                            <state key="selected" image="painSize_2"/>
+                            <connections>
+                                <action selector="tapSize2Btn:" destination="-1" eventType="touchUpInside" id="28A-QX-46U"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Voa-NV-4HY">
                             <rect key="frame" x="60" y="0.0" width="30" height="48"/>
@@ -466,6 +482,9 @@
                             </constraints>
                             <state key="normal" image="unselect_painSize_3"/>
                             <state key="selected" image="paintSize_3"/>
+                            <connections>
+                                <action selector="tapSize3Btn:" destination="-1" eventType="touchUpInside" id="VBC-7g-iIQ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7kG-Rk-Gg5">
                             <rect key="frame" x="90" y="0.0" width="30" height="48"/>
@@ -474,6 +493,9 @@
                             </constraints>
                             <state key="normal" image="unselect_painSize_4"/>
                             <state key="selected" image="paintSize_4"/>
+                            <connections>
+                                <action selector="tapSize4Btn:" destination="-1" eventType="touchUpInside" id="kSA-5v-7mB"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -509,17 +531,42 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="44.5" y="1120"/>
         </view>
+        <view contentMode="scaleToFill" id="yvQ-XO-xOM">
+            <rect key="frame" x="0.0" y="0.0" width="246" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3j-yn-8cO">
+                    <rect key="frame" x="0.0" y="10" width="246" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="86A-uI-gGQ"/>
+                    </constraints>
+                    <state key="normal" image="undo_btn"/>
+                    <connections>
+                        <action selector="tapUndoButton:" destination="-1" eventType="touchUpInside" id="ylp-hF-gzE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="H3j-yn-8cO" firstAttribute="leading" secondItem="yvQ-XO-xOM" secondAttribute="leading" id="5vd-Bw-Otg"/>
+                <constraint firstAttribute="trailing" secondItem="H3j-yn-8cO" secondAttribute="trailing" id="CIC-fu-elx"/>
+                <constraint firstItem="H3j-yn-8cO" firstAttribute="centerY" secondItem="yvQ-XO-xOM" secondAttribute="centerY" id="HDC-BO-peL"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-36" y="-402"/>
+        </view>
     </objects>
     <resources>
         <image name="cancel_icon" width="24" height="24"/>
         <image name="chartlet_default" width="31" height="31"/>
         <image name="done_icon" width="24" height="24"/>
+        <image name="painSize_2" width="17" height="17"/>
         <image name="paintSize_1" width="17" height="17"/>
-        <image name="paintSize_2" width="16" height="16"/>
         <image name="paintSize_3" width="17" height="17"/>
         <image name="paintSize_4" width="17" height="17"/>
         <image name="paint_default" width="31" height="31"/>
         <image name="timeEdit_default" width="31" height="31"/>
+        <image name="undo_btn" width="27" height="20"/>
         <image name="unselect_painSize_1" width="17" height="17"/>
         <image name="unselect_painSize_2" width="17" height="17"/>
         <image name="unselect_painSize_3" width="17" height="17"/>

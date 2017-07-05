@@ -22,7 +22,6 @@
 		8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6681EED2E0A0086C8F7 /* DispatchQueue+Extension.swift */; };
 		8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6691EED2E0A0086C8F7 /* Int+Display.swift */; };
 		8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66A1EED2E0A0086C8F7 /* String+Range.swift */; };
-		8C57F6751EED2E0A0086C8F7 /* UIAlertController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66B1EED2E0A0086C8F7 /* UIAlertController+Alert.swift */; };
 		8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66C1EED2E0A0086C8F7 /* UIColor+Hex.swift */; };
 		8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66D1EED2E0A0086C8F7 /* UILabel+LineSpace.swift */; };
 		8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F66E1EED2E0A0086C8F7 /* UITextField+Validation.swift */; };
@@ -61,6 +60,8 @@
 		8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D161F05F71300E0CDB0 /* PGImage.swift */; };
 		8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */; };
 		8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */; };
+		8E8E82241F0C804500435119 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E82231F0C804500435119 /* DrawingView.swift */; };
+		8E8E82261F0CDA2200435119 /* UIAlertController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E82251F0CDA2200435119 /* UIAlertController+Alert.swift */; };
 		DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,7 +100,6 @@
 		8C57F6681EED2E0A0086C8F7 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
 		8C57F6691EED2E0A0086C8F7 /* Int+Display.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Display.swift"; sourceTree = "<group>"; };
 		8C57F66A1EED2E0A0086C8F7 /* String+Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Range.swift"; sourceTree = "<group>"; };
-		8C57F66B1EED2E0A0086C8F7 /* UIAlertController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Alert.swift"; sourceTree = "<group>"; };
 		8C57F66C1EED2E0A0086C8F7 /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		8C57F66D1EED2E0A0086C8F7 /* UILabel+LineSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+LineSpace.swift"; sourceTree = "<group>"; };
 		8C57F66E1EED2E0A0086C8F7 /* UITextField+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Validation.swift"; sourceTree = "<group>"; };
@@ -120,7 +120,7 @@
 		8C6FAA751EF53131005DCFCF /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
 		8C6FAA761EF53131005DCFCF /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
-		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
+		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+ThemeColor.swift"; path = "../UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
 		8CE1BC941F0BCD7B001267B4 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
 		8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
 		8CE1BC961F0BCD7B001267B4 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
@@ -147,6 +147,8 @@
 		8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetPreviewVC.swift; sourceTree = "<group>"; };
 		8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageAssetPreviewVC.xib; sourceTree = "<group>"; };
 		8E6962341F0B95670045A263 /* PingGuo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Prefix.pch"; sourceTree = "<group>"; };
+		8E8E82231F0C804500435119 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		8E8E82251F0CDA2200435119 /* UIAlertController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Alert.swift"; path = "../UIAlertController+Alert.swift"; sourceTree = "<group>"; };
 		8EA686081F0B9743005F5D3E /* PingGuo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Bridging-Header.h"; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 		8C05F2271F07E49C00F5EEB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8E8E82231F0C804500435119 /* DrawingView.swift */,
 				8C05F2281F07E4C100F5EEB6 /* imageAssetPreviewCell.swift */,
 				8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */,
 			);
@@ -231,11 +234,12 @@
 		8C57F6661EED2E0A0086C8F7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				8E8E82251F0CDA2200435119 /* UIAlertController+Alert.swift */,
+				8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */,
 				8C57F6671EED2E0A0086C8F7 /* Bundle+Language.swift */,
 				8C57F6681EED2E0A0086C8F7 /* DispatchQueue+Extension.swift */,
 				8C57F6691EED2E0A0086C8F7 /* Int+Display.swift */,
 				8C57F66A1EED2E0A0086C8F7 /* String+Range.swift */,
-				8C57F66B1EED2E0A0086C8F7 /* UIAlertController+Alert.swift */,
 				8C57F66C1EED2E0A0086C8F7 /* UIColor+Hex.swift */,
 				8C57F66D1EED2E0A0086C8F7 /* UILabel+LineSpace.swift */,
 				8C57F66E1EED2E0A0086C8F7 /* UITextField+Validation.swift */,
@@ -327,7 +331,6 @@
 				8E2BF79C1ED28DFE0042BE25 /* Camera */,
 				8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */,
 				8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */,
-				8E5A0D191F0631BC00E0CDB0 /* Extension */,
 				8E2BF7A01ED28EE10042BE25 /* Supporting Files */,
 				8E06F1161ECAF5BD0021D054 /* Main.storyboard */,
 			);
@@ -368,15 +371,6 @@
 				8E6962341F0B95670045A263 /* PingGuo-Prefix.pch */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		8E5A0D191F0631BC00E0CDB0 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */,
-			);
-			name = Extension;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */ = {
@@ -643,9 +637,10 @@
 				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
 				8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */,
 				8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */,
-				8C57F6751EED2E0A0086C8F7 /* UIAlertController+Alert.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
 				8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */,
+				8E8E82241F0C804500435119 /* DrawingView.swift in Sources */,
+				8E8E82261F0CDA2200435119 /* UIAlertController+Alert.swift in Sources */,
 				8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */,
 				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
