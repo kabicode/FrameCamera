@@ -172,18 +172,17 @@
 }
 
 - (void)setupDefaultStatus {
-    if (self.paster.frame.size.width > 0) {
-//        CGRect ratio = self.paster.frameRotio;
-//        self.frame = CGRectMake(self.frame.size.width * ratio.origin.x,
-//                                self.frame.size.height * ratio.origin.y,
-//                                self.frame.size.width * ratio.size.width,
-//                                self.frame.size.height * ratio.size.height);
-        self.frame = self.paster.frame;
+    
+    if (self.paster.bounds.size.width != 0 && self.paster.bounds.size.height != 0) {
+        self.bounds = self.paster.bounds;
+        self.center = self.paster.center;
     }
     
     self.transform = CGAffineTransformMakeRotation(self.paster.rotateAngle);
     
+    haveTransform = self.paster.isMirror;
     [self setContentViewMirror: self.paster.isMirror];
+    
     [self setNeedsLayout];
 }
 
@@ -192,7 +191,8 @@
     self.paster.isMirror = haveTransform;
     self.paster.rotateAngle = [[self.layer valueForKeyPath:@"transform.rotation"] floatValue];
     if (self.superview) {
-        self.paster.frame = self.frame;
+        self.paster.center = self.center;
+        self.paster.bounds = self.bounds;
     }
 }
 
@@ -361,11 +361,9 @@
 
 - (void)setContentViewMirror:(BOOL)mirror {
     if (mirror) {
-        CATransform3D transform = CATransform3DMakeRotation(180.0*M_PI/180.0, 0, 1, 0);
-        _contentView.layer.transform = transform;
+        _contentView.transform = CGAffineTransformMakeScale(-1.0, 1.0);
     } else {
-        CATransform3D transform = CATransform3DMakeRotation(0.0*M_PI/180.0, 0, -1, 0);
-        _contentView.layer.transform = transform;
+        _contentView.transform = CGAffineTransformMakeScale(1.0, 1.0);
     }
 }
 

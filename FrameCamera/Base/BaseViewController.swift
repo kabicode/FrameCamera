@@ -35,5 +35,4 @@ class BaseViewController: UIViewController {
         UIDevice.current.setValue( NSNumber(value: UIInterfaceOrientation.unknown.rawValue) , forKey: "orientation")
         UIDevice.current.setValue(NSNumber(value: orientation.rawValue), forKey: "orientation")
     }
-    
 }

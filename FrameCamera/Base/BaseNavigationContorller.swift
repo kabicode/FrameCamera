@@ -31,4 +31,8 @@ class BaseNavigationController: UINavigationController {
         }
         return .portrait
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }

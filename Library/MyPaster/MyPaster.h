@@ -22,7 +22,9 @@
 
 @property (nonatomic, assign) NSTimeInterval paster_id;
 
-@property (nonatomic, assign) CGRect frame;
+@property (nonatomic, assign) CGPoint center;
+
+@property (nonatomic, assign) CGRect bounds;
 
 /** 旋转角度 默认为0 */
 @property (nonatomic, assign) CGFloat rotateAngle;

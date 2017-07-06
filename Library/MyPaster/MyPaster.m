@@ -537,23 +537,23 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    if (self.frame.size.width) {
-        [aCoder encodeCGRect:self.frame forKey:@"frame"];
-    }
     
     [aCoder encodeFloat:self.rotateAngle forKey:@"rotateAngle"];
     [aCoder encodeBool:self.isMirror forKey:@"isMirror"];
     [aCoder encodeCGSize:self.size forKey:@"size"];
     [aCoder encodeDouble:self.paster_id forKey:@"paster_id"];
+    [aCoder encodeCGPoint:self.center forKey:@"center"];
+    [aCoder encodeCGRect:self.bounds forKey:@"bounds"];
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     
     self.isMirror = [aDecoder decodeBoolForKey:@"isMirror"];
     self.rotateAngle = [aDecoder decodeFloatForKey:@"rotateAngle"];
-    self.frame = [aDecoder decodeCGRectForKey:@"frame"];
     self.size = [aDecoder decodeCGSizeForKey:@"size"];
     self.paster_id = [aDecoder decodeDoubleForKey:@"paster_id"];
+    self.center = [aDecoder decodeCGPointForKey:@"center"];
+    self.bounds = [aDecoder decodeCGRectForKey:@"bounds"];
     
     return self;
 }
