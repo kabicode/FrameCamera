@@ -105,7 +105,8 @@ class ImageAssetEditVC: BaseViewController {
         // TODO
         let videoPath = PGVideoHelper.generateVideoFileName(at: asset.filePath)
         
-        PGVideoHelper.converToVideo(from: asset.imageList, to: videoPath, size: CGSize.init(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width))
+        PGVideoHelper.converToVideo(from: asset.imageList, to: PGFileHelper.getSandBoxPath(with: videoPath), size: CGSize.init(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width), completionBlock: {
+        })
     }
 
     @IBAction func tapSpecialEffecButton(_ sender: Any) {

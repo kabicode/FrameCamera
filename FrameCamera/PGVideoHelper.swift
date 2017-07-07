@@ -26,14 +26,12 @@ class PGVideoHelper: NSObject {
     
     static func converToVideo(from pgImages: [PGImage],
                               to path:String,
-                              size: CGSize) {
-//        guard pgImages.count > 0 else {
-//            return
-//        }
+                              size: CGSize,
+                              completionBlock:@escaping (() -> Void)) {
         
         var videoWriter: AVAssetWriter
         do {
-            try videoWriter = AVAssetWriter(url: URL(fileURLWithPath: path), fileType: AVFileTypeMPEG4)
+            try videoWriter = AVAssetWriter(url: URL(fileURLWithPath: path), fileType: AVFileTypeQuickTimeMovie)
         } catch {
             print("视频初始化失败")
             return
@@ -43,77 +41,64 @@ class PGVideoHelper: NSObject {
                                            AVVideoWidthKey: NSNumber(value: Float(size.width)),
                                            AVVideoHeightKey: NSNumber(value: Float(size.height))]
         
+        
         let writerInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoSetting)
-        let adaptor = AVAssetWriterInputPixelBufferAdaptor.init(assetWriterInput: writerInput, sourcePixelBufferAttributes: nil)
+        assert(videoWriter.canAdd(writerInput), "add failed")
         videoWriter.add(writerInput)
+        
+        let bufferAttributes:[String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32ARGB)]
+        let adaptor = AVAssetWriterInputPixelBufferAdaptor.init(assetWriterInput: writerInput, sourcePixelBufferAttributes: bufferAttributes)
         
         // Start a session:
         videoWriter.startWriting()
         videoWriter.startSession(atSourceTime: kCMTimeZero)
         
-        var buffer: CVPixelBuffer?
-        CVPixelBufferPoolCreatePixelBuffer(nil, adaptor.pixelBufferPool!, &buffer)
         
-        var presentTime = CMTimeMake(0, fps);
-        var frameIndex: Int64 = 0
         
+        let mediaInputQueue = DispatchQueue(label: "mediaInputQueue")
         var imageIndex = 0
-        var currentImageFrameMaxCount: Int64 = 0
-        if let pgImage = pgImages.first {
-            currentImageFrameMaxCount = Int64(pgImage.duration * TimeInterval(fps))
-            if let image = pgImage.image, let cgImage = image.cgImage {
-                buffer = pixelBuffer(from: cgImage, size: image.size)
-            }
-        }
+        var lastTime: CMTime = CMTimeMake(Int64(0), fps)
         
-        while true {
-            if writerInput.isReadyForMoreMediaData {
-                presentTime = CMTimeMake(frameIndex, fps)
-                
+        writerInput.requestMediaDataWhenReady(on: mediaInputQueue) {
+            while true {
                 if imageIndex >= pgImages.count {
-                    buffer = nil;
-                } else if (frameIndex > currentImageFrameMaxCount) {
-                    let nextIndex = imageIndex + 1
-                    if nextIndex >= pgImages.count {
-                        buffer = nil
-                    } else {
-                        let pgImage = pgImages[nextIndex]
-                        let nextFrameCount = Int64(pgImage.duration * TimeInterval(fps))
-
-                        if let image = pgImage.image, let cgImage = image.cgImage {
-                            buffer = pixelBuffer(from: cgImage, size: image.size)
-                        }
-                        
-                        currentImageFrameMaxCount += nextFrameCount
-                        imageIndex = nextIndex
-                    }
-                }
-                
-                if let buffer = buffer {
-                    let appendSuccess: Bool = appendToAdapter(adaptor,
-                                                        pixelBuffer: buffer,
-                                                        atTime: presentTime,
-                                                        with: writerInput)
-                    assert(appendSuccess, "Failed to append")
-                    
-                    frameIndex += 1
-                    
-                } else {
-                    //Finish the session:
-                    writerInput.markAsFinished()
-                    
-                    videoWriter.finishWriting(completionHandler: { 
-                        print("Successfully closed video writer")
-                        if videoWriter.status == .completed {
-                            // TODO
-                        }
-                    })
-                    
-                    print("Done")
                     break
                 }
                 
+                if writerInput.isReadyForMoreMediaData {
+                    
+                    var sampleBuffer:CVPixelBuffer?
+                    autoreleasepool{
+                        if let img = pgImages[imageIndex].image {
+                            sampleBuffer = pixelBuffer(from: img.cgImage!, size: img.size)
+                        } else {
+                            imageIndex += 1
+                            print("Warning: counld not extract one of the frames")
+                            //                            continue
+                        }
+                    }
+                    
+                    if (sampleBuffer != nil){
+                        adaptor.append(sampleBuffer!, withPresentationTime: lastTime)
+                        
+                        if imageIndex > 0 {
+                            let pgImage = pgImages[imageIndex - 1]
+                            let presentTime = CMTimeMake(Int64(pgImage.duration * TimeInterval(fps)), fps)
+                            lastTime = CMTimeAdd(lastTime, presentTime)
+                        }
+                        
+                        imageIndex = imageIndex + 1
+                    }
+                }
             }
+            
+            writerInput.markAsFinished()
+            videoWriter.finishWriting(completionHandler: {
+                print("Successfully closed video writer")
+                DispatchQueue.main.sync {
+                    completionBlock()
+                }
+            })
         }
     }
     
@@ -132,11 +117,11 @@ class PGVideoHelper: NSObject {
         assert(pxdata != nil)
         
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-        let context = CGContext.init(data: pxdata!, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: 4 * Int(size.width), space: rgbColorSpace, bitmapInfo: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
+         let context = CGContext(data: pxdata, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pxbuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
         assert(context != nil)
         
-        context!.draw(cgImage, in: CGRect(x: 0 + (Int(size.width) - cgImage.width)/2,
-                                          y: (Int(size.height) - cgImage.height)/2,
+        context!.draw(cgImage, in: CGRect(x: 0,
+                                          y: 0,
                                           width: cgImage.width,
                                           height: cgImage.height))
         
@@ -144,6 +129,28 @@ class PGVideoHelper: NSObject {
         
         return pxbuffer!
     }
+    
+//    static func newPixelBufferFrom(cgImage:CGImage) -> CVPixelBuffer?{
+//        let options:[String: Any] = [kCVPixelBufferCGImageCompatibilityKey as String: true, kCVPixelBufferCGBitmapContextCompatibilityKey as String: true]
+//        var pxbuffer:CVPixelBuffer?
+//        let frameWidth = self.videoSettings[AVVideoWidthKey] as! Int
+//        let frameHeight = self.videoSettings[AVVideoHeightKey] as! Int
+//        
+//        let status = CVPixelBufferCreate(kCFAllocatorDefault, frameWidth, frameHeight, kCVPixelFormatType_32ARGB, options as CFDictionary?, &pxbuffer)
+//        assert(status == kCVReturnSuccess && pxbuffer != nil, "newPixelBuffer failed")
+//        
+//        CVPixelBufferLockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0))
+//        let pxdata = CVPixelBufferGetBaseAddress(pxbuffer!)
+//        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+//        let context = CGContext(data: pxdata, width: frameWidth, height: frameHeight, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pxbuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+//        assert(context != nil, "context is nil")
+//        
+//        context!.concatenate(CGAffineTransform.identity)
+//        context!.draw(cgImage, in: CGRect(x: 0, y: 0, width: cgImage.width, height: cgImage.height))
+//        CVPixelBufferUnlockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0))
+//        return pxbuffer
+//    }
+
     
     static func appendToAdapter(_ adaptor: AVAssetWriterInputPixelBufferAdaptor,
                                 pixelBuffer buffer: CVPixelBuffer,
