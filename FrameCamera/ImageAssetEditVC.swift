@@ -102,6 +102,10 @@ class ImageAssetEditVC: BaseViewController {
     
     
     @IBAction func tapPreviewButton(_ sender: Any) {
+        // TODO
+        let videoPath = PGVideoHelper.generateVideoFileName(at: asset.filePath)
+        
+        PGVideoHelper.converToVideo(from: asset.imageList, to: videoPath, size: CGSize.init(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width))
     }
 
     @IBAction func tapSpecialEffecButton(_ sender: Any) {

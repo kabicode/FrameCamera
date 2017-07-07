@@ -10,12 +10,12 @@ import UIKit
 
 class PGFileHelper: NSObject {
 
-    class func fileExists(_ filePath: String) -> Bool {
+    static func fileExists(_ filePath: String) -> Bool {
         return FileManager.default.fileExists(atPath: filePath)
     }
     
     // 生成主目录
-    class func getPingGuoFilePath() -> String {
+    static func getPingGuoFilePath() -> String {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let assetDirectory = "\(documentDirectory)/PingGuo"
         let assetFilePath = "\(assetDirectory)"
@@ -30,7 +30,7 @@ class PGFileHelper: NSObject {
     }
     
     // 生成asset文件夹
-    class func generateImageAssetFilePath() -> String {
+    static func generateImageAssetFilePath() -> String {
         
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -51,13 +51,13 @@ class PGFileHelper: NSObject {
     }
     
     // 获取真实沙盒路径
-    class func getSandBoxPath(with assetPath: String) -> String {
+    static func getSandBoxPath(with assetPath: String) -> String {
         let filePath = getPingGuoFilePath()
         return filePath + assetPath
     }
     
     // 生成图片名
-    class func generateImageFileName(at filePath: String) -> String {
+    static func generateImageFileName(at filePath: String) -> String {
         let timestamp = Int(Date().timeIntervalSince1970)
         let fileName: String = "\(timestamp)_img.png"
         let imgFilePath: String = filePath + "/" + fileName
@@ -65,7 +65,7 @@ class PGFileHelper: NSObject {
     }
     
     // 保存图片到沙盒
-    class func storeImage(_ image: UIImage, to imagePath: String) -> Bool {
+    static func storeImage(_ image: UIImage, to imagePath: String) -> Bool {
         let imageFilePath = getSandBoxPath(with: imagePath)
         
         guard let data = UIImageJPEGRepresentation(image, 1.0) else {
@@ -90,7 +90,7 @@ class PGFileHelper: NSObject {
     }
     
     // 读取沙盒图片
-    class func restoreImage(at imagePath: String) -> UIImage? {
+    static func restoreImage(at imagePath: String) -> UIImage? {
         let filePath = getSandBoxPath(with: imagePath)
         
         guard self.fileExists(filePath) else {
@@ -102,7 +102,7 @@ class PGFileHelper: NSObject {
     }
     
     // 删除沙盒图片
-    class func deleteImage(at imagePath: String) -> Bool {
+    static func deleteImage(at imagePath: String) -> Bool {
         let filePath = getSandBoxPath(with: imagePath)
         
         do {

@@ -44,6 +44,7 @@
 		8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA761EF53131005DCFCF /* Shader.vsh */; };
 		8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA7A1EF531DF005DCFCF /* for_test.png */; };
 		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
+		8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */; };
 		8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */; };
 		8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC971F0BCD7B001267B4 /* MyPaster.m */; };
 		8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC991F0BCD7B001267B4 /* MyPasterItem.m */; };
@@ -125,6 +126,7 @@
 		8C6FAA761EF53131005DCFCF /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
 		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+ThemeColor.swift"; path = "../UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
+		8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGVideoHelper.swift; sourceTree = "<group>"; };
 		8CE1BC941F0BCD7B001267B4 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
 		8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
 		8CE1BC961F0BCD7B001267B4 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			children = (
 				8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */,
 				8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */,
+				8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */,
 			);
 			name = FileManager;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
 				8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */,
+				8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */,
 				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
 				8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */,
