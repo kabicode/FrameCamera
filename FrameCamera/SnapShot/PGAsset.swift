@@ -16,7 +16,7 @@ class PGAsset: NSObject, NSCoding {
     
     var posterImage: URL?
     
-    var video: URL?
+    var videoPath: String?
     
     // 总时间
     var duration: TimeInterval = 0.0
@@ -83,8 +83,8 @@ class PGAsset: NSObject, NSCoding {
         if (posterImage != nil) {
             aCoder.encode(posterImage, forKey: "posterImage")
         }
-        if (video != nil) {
-            aCoder.encode(video, forKey: "video")
+        if (videoPath != nil) {
+            aCoder.encode(videoPath, forKey: "videoPath")
         }
         aCoder.encode(duration, forKey: "duration")
     }
@@ -93,7 +93,7 @@ class PGAsset: NSObject, NSCoding {
         filePath = aDecoder.decodeObject(forKey: "filePath") as! String
         imageList = aDecoder.decodeObject(forKey: "imageList") as! [PGImage]
         posterImage = aDecoder.decodeObject(forKey: "posterImage") as? URL
-        video = aDecoder.decodeObject(forKey: "video") as? URL
+        videoPath = aDecoder.decodeObject(forKey: "videoPath") as? String
         duration = aDecoder.decodeDouble(forKey: "duration")
     }
 }

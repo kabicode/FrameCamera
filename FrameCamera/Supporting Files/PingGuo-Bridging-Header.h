@@ -7,3 +7,6 @@
 #import "MyPasterItem.h"
 #import "MyTextPasterItem.h"
 #import "MyImagePasterItem.h"
+
+#import <TSMessages/TSMessage.h>
+#import <MBProgressHUD/MBProgressHUD.h>

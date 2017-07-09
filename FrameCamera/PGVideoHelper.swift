@@ -12,6 +12,8 @@ import CoreMedia
 import AssetsLibrary
 import AVFoundation
 
+typealias PGVideoMakeCompletion = ((_ url: URL, _ duration: Double) -> Void)
+
 class PGVideoHelper: NSObject {
     
     static var fps: Int32 = 30
@@ -25,7 +27,7 @@ class PGVideoHelper: NSObject {
     }
     
     //MARK: Public methods
-    static func createMovie(videoPath: String, pgImages: [PGImage], completionBlock: @escaping CXEMovieMakerCompletion){
+    static func createMovie(videoPath: String, pgImages: [PGImage], completionBlock: @escaping PGVideoMakeCompletion){
         
         var tempPath:String
         repeat{
@@ -95,7 +97,10 @@ class PGVideoHelper: NSObject {
             writeInput.markAsFinished()
             assetWriter.finishWriting {
                 DispatchQueue.main.sync {
-                    completionBlock(fileURL)
+                    let video = AVURLAsset(url: fileURL)
+                    print("duration: \(video.duration.seconds)")
+                    print(fileURL.absoluteString)
+                    completionBlock(fileURL, video.duration.seconds)
                 }
             }
         }

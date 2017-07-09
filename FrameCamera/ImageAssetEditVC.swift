@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import AVKit
-import AVFoundation
+import Toaster
 
 class ImageAssetEditVC: BaseViewController {
 
@@ -105,11 +104,15 @@ class ImageAssetEditVC: BaseViewController {
     
     @IBAction func tapPreviewButton(_ sender: Any) {
         // TODO
-        let videoPath = PGVideoHelper.generateVideoFileName(at: asset.filePath)
-        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL) in
-            print(fileURL.absoluteString)
-            let video = AVURLAsset(url: fileURL)
-            print("duration: \(video.duration.seconds)")
+        guard asset.imageList.count > 0 else {
+            Toast(text: "视频图片为空，请添加图片").show()
+            return
+        }
+        
+        let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
+        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
+            self.asset.videoPath = videoPath
+            self.asset.duration = duration
         }
     }
 
@@ -124,6 +127,12 @@ class ImageAssetEditVC: BaseViewController {
     }
     
     @IBAction func tapAudioButton(_ sender: Any) {
+        guard asset.imageList.count > 0 else {
+            Toast(text: "视频图片为空，请添加图片").show()
+            return
+        }
+        
+        // TODO
     }
     
     // Private Method

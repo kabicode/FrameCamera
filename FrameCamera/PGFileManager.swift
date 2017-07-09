@@ -14,6 +14,38 @@ class PGFileHelper: NSObject {
         return FileManager.default.fileExists(atPath: filePath)
     }
     
+    // MARK: - Chartlets
+    // 贴图文件夹
+    static func getChartletsFilePath() -> String {
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let chartletPath = "\(documentDirectory)/Chartlets"
+        if self.fileExists(chartletPath) == false {
+            do {
+                try FileManager.default.createDirectory(atPath: chartletPath, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("\(chartletPath) --- 创建贴图文件夹路径失败 ---")
+            }
+        }
+        return chartletPath
+    }
+    
+    // MARK: - Audios
+    // 本地音乐文件夹
+    static func getLocalAudiosFilePath() -> String {
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let audioPath = "\(documentDirectory)/LocalAudios"
+        if self.fileExists(audioPath) == false {
+            do {
+                try FileManager.default.createDirectory(atPath: audioPath, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("\(audioPath) --- 创建贴图文件夹路径失败 ---")
+            }
+        }
+        return audioPath
+    }
+    
+    
+    // MARK: - Asset Content
     // 生成主目录
     static func getPingGuoFilePath() -> String {
         let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
@@ -23,7 +55,7 @@ class PGFileHelper: NSObject {
             do {
                 try FileManager.default.createDirectory(atPath: assetFilePath, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                print("\(assetFilePath) --- 创建路径失败 ---")
+                print("\(assetFilePath) --- 创建Asset文件夹路径失败 ---")
             }
         }
         return assetFilePath
@@ -80,11 +112,6 @@ class PGFileHelper: NSObject {
             return false
         }
         
-//        if FileManager.default.createFile(atPath: imageFilePath, contents: data, attributes: nil) == false {
-//            print("\(imageFilePath) ---- 保存照片失败 --- 主线程\(Thread.isMainThread)")
-//            return false
-//        }
-
         print("\(imageFilePath) ---- 保存照片成功!!")
         return true;
     }

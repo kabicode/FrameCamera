@@ -45,6 +45,11 @@
 		8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA7A1EF531DF005DCFCF /* for_test.png */; };
 		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
 		8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */; };
+		8CC9C0B51F127FC5006F9D81 /* PGAudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */; };
+		8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */; };
+		8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */; };
+		8CC9C0BC1F128D26006F9D81 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0BB1F128D26006F9D81 /* Config.swift */; };
+		8CC9C0BE1F128F52006F9D81 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0BD1F128F52006F9D81 /* Router.swift */; };
 		8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */; };
 		8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC971F0BCD7B001267B4 /* MyPaster.m */; };
 		8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC991F0BCD7B001267B4 /* MyPasterItem.m */; };
@@ -127,6 +132,11 @@
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
 		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+ThemeColor.swift"; path = "../UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
 		8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGVideoHelper.swift; sourceTree = "<group>"; };
+		8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAudioHelper.swift; sourceTree = "<group>"; };
+		8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		8CC9C0BB1F128D26006F9D81 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		8CC9C0BD1F128F52006F9D81 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8CE1BC941F0BCD7B001267B4 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
 		8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
 		8CE1BC961F0BCD7B001267B4 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
@@ -223,6 +233,7 @@
 				8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */,
 				8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */,
 				8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */,
+				8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */,
 			);
 			name = FileManager;
 			sourceTree = "<group>";
@@ -312,6 +323,17 @@
 			name = testImage;
 			sourceTree = "<group>";
 		};
+		8CC9C0B61F1289FA006F9D81 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */,
+				8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */,
+				8CC9C0BB1F128D26006F9D81 /* Config.swift */,
+				8CC9C0BD1F128F52006F9D81 /* Router.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		8CE1BC921F0BCD7B001267B4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +382,7 @@
 		8E06F1111ECAF5BD0021D054 /* FrameCamera */ = {
 			isa = PBXGroup;
 			children = (
+				8CC9C0B61F1289FA006F9D81 /* Helper */,
 				8C6FAA731EF530CB005DCFCF /* Resource */,
 				8E2BF7921ED27CF30042BE25 /* Base */,
 				8C41A1BE1EFFF5B700431181 /* FileManager */,
@@ -676,8 +699,10 @@
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
 				8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */,
 				8E8E82241F0C804500435119 /* DrawingView.swift in Sources */,
+				8CC9C0BC1F128D26006F9D81 /* Config.swift in Sources */,
 				8E8E82261F0CDA2200435119 /* UIAlertController+Alert.swift in Sources */,
 				8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */,
+				8CC9C0B51F127FC5006F9D81 /* PGAudioHelper.swift in Sources */,
 				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
@@ -687,9 +712,12 @@
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
 				8C05F22A1F07E4C100F5EEB6 /* imageAssetPreviewCell.swift in Sources */,
 				8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */,
+				8CC9C0BE1F128F52006F9D81 /* Router.swift in Sources */,
 				8C05F21E1F07A49F00F5EEB6 /* PGUserDefault.swift in Sources */,
+				8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */,
 				8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
+				8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */,
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,
 				8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */,

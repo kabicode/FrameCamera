@@ -207,7 +207,18 @@ class ImageEffectEditVC: BaseViewController {
     // MARK: - NetWork
     func loadData() {
         // TODO
-        pasterCollectionView.reloadData()
+        let request = Router.Chartlet.getChartletList
+        NetworkHelper.sendNetworkRequest(request: request,
+                                         showHUD: true,
+                                         hudTip: nil,
+                                         showError: true,
+                                         on: self,
+                                         successHandler: { (json) in
+                                            
+            self.pasterCollectionView.reloadData()
+                                            
+        }, failureHandler: nil)
+        
     }
     
     // MARK: - Private Method

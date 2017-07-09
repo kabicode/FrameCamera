@@ -9,6 +9,7 @@
 #ifndef PingGuoPreHead_pch
 #define PingGuoPreHead_pch
 
-
+#import "TSMessage.h"
+#import "MBProgressHUD.h"
 
 #endif /* PingGuoPreHead_pch */
