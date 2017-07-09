@@ -24,53 +24,54 @@ class PGVideoHelper: NSObject {
         return imgFilePath
     }
     
-    static func converToVideo(from pgImages: [PGImage],
-                              to path:String,
-                              size: CGSize,
-                              completionBlock:@escaping (() -> Void)) {
+    //MARK: Public methods
+    static func createMovie(videoPath: String, pgImages: [PGImage], completionBlock: @escaping CXEMovieMakerCompletion){
         
-        var videoWriter: AVAssetWriter
-        do {
-            try videoWriter = AVAssetWriter(url: URL(fileURLWithPath: path), fileType: AVFileTypeQuickTimeMovie)
-        } catch {
-            print("视频初始化失败")
+        var tempPath:String
+        repeat{
+            tempPath = videoPath
+        }while(FileManager.default.fileExists(atPath: videoPath))
+        
+        let fileURL = URL(fileURLWithPath: tempPath)
+        let assetWriter = try! AVAssetWriter(url: fileURL, fileType: AVFileTypeQuickTimeMovie)
+        
+        guard let size = pgImages.first?.image?.size else {
+            print("Empty Iamge List")
             return
         }
         
-        let videoSetting: [String: Any] = [AVVideoCodecKey: AVVideoCodecH264,
-                                           AVVideoWidthKey: NSNumber(value: Float(size.width)),
-                                           AVVideoHeightKey: NSNumber(value: Float(size.height))]
+        let videoSettings:[String: Any] = [AVVideoCodecKey: AVVideoCodecH264,
+                                           AVVideoWidthKey: Int(size.width),
+                                           AVVideoHeightKey: Int(size.height)]
         
+        let writeInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoSettings)
+        assert(assetWriter.canAdd(writeInput), "add failed")
         
-        let writerInput = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoSetting)
-        assert(videoWriter.canAdd(writerInput), "add failed")
-        videoWriter.add(writerInput)
-        
+        assetWriter.add(writeInput)
         let bufferAttributes:[String: Any] = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32ARGB)]
-        let adaptor = AVAssetWriterInputPixelBufferAdaptor.init(assetWriterInput: writerInput, sourcePixelBufferAttributes: bufferAttributes)
+        let bufferAdapter = AVAssetWriterInputPixelBufferAdaptor(assetWriterInput: writeInput, sourcePixelBufferAttributes: bufferAttributes)
         
-        // Start a session:
-        videoWriter.startWriting()
-        videoWriter.startSession(atSourceTime: kCMTimeZero)
-        
-        
+        assetWriter.startWriting()
+        assetWriter.startSession(atSourceTime: kCMTimeZero)
         
         let mediaInputQueue = DispatchQueue(label: "mediaInputQueue")
         var imageIndex = 0
-        var lastTime: CMTime = CMTimeMake(Int64(0), fps)
+        var lastTime = CMTimeMake(Int64(0), fps)
         
-        writerInput.requestMediaDataWhenReady(on: mediaInputQueue) {
+        writeInput.requestMediaDataWhenReady(on: mediaInputQueue){
+            
             while true {
                 if imageIndex >= pgImages.count {
                     break
                 }
                 
-                if writerInput.isReadyForMoreMediaData {
+                if writeInput.isReadyForMoreMediaData {
                     
                     var sampleBuffer:CVPixelBuffer?
                     autoreleasepool{
                         if let img = pgImages[imageIndex].image {
-                            sampleBuffer = pixelBuffer(from: img.cgImage!, size: img.size)
+                            //                            sampleBuffer = pixelBuffer(from: img.cgImage!, size: img.size)
+                            sampleBuffer = newPixelBufferFrom(cgImage: img.cgImage!)
                         } else {
                             imageIndex += 1
                             print("Warning: counld not extract one of the frames")
@@ -79,87 +80,47 @@ class PGVideoHelper: NSObject {
                     }
                     
                     if (sampleBuffer != nil){
-                        adaptor.append(sampleBuffer!, withPresentationTime: lastTime)
-                        
                         if imageIndex > 0 {
                             let pgImage = pgImages[imageIndex - 1]
                             let presentTime = CMTimeMake(Int64(pgImage.duration * TimeInterval(fps)), fps)
                             lastTime = CMTimeAdd(lastTime, presentTime)
                         }
                         
+                        bufferAdapter.append(sampleBuffer!, withPresentationTime: lastTime)
                         imageIndex = imageIndex + 1
                     }
                 }
             }
             
-            writerInput.markAsFinished()
-            videoWriter.finishWriting(completionHandler: {
-                print("Successfully closed video writer")
+            writeInput.markAsFinished()
+            assetWriter.finishWriting {
                 DispatchQueue.main.sync {
-                    completionBlock()
+                    completionBlock(fileURL)
                 }
-            })
+            }
         }
     }
     
-    
-    
-    static func pixelBuffer(from cgImage: CGImage, size: CGSize) -> CVPixelBuffer {
-        let options: [AnyHashable: Any] = [(kCVPixelBufferCGImageCompatibilityKey as AnyHashable): NSNumber(value: true),
-                                           (kCVPixelBufferCGBitmapContextCompatibilityKey as AnyHashable): NSNumber(value: true)]
+    //MARK: Private methods
+    private static func newPixelBufferFrom(cgImage:CGImage) -> CVPixelBuffer?{
+        let options:[String: Any] = [kCVPixelBufferCGImageCompatibilityKey as String: true, kCVPixelBufferCGBitmapContextCompatibilityKey as String: true]
+        var pxbuffer:CVPixelBuffer?
+        let frameWidth = cgImage.width
+        let frameHeight = cgImage.height
         
-        var pxbuffer: CVPixelBuffer?
-        let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(size.width), Int(size.height), kCVPixelFormatType_32ARGB, options as CFDictionary, &pxbuffer)
-        assert((status == kCVReturnSuccess) && (pxbuffer != nil))
+        let status = CVPixelBufferCreate(kCFAllocatorDefault, frameWidth, frameHeight, kCVPixelFormatType_32ARGB, options as CFDictionary?, &pxbuffer)
+        assert(status == kCVReturnSuccess && pxbuffer != nil, "newPixelBuffer failed")
         
         CVPixelBufferLockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0))
         let pxdata = CVPixelBufferGetBaseAddress(pxbuffer!)
-        assert(pxdata != nil)
-        
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-         let context = CGContext(data: pxdata, width: Int(size.width), height: Int(size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pxbuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-        assert(context != nil)
+        let context = CGContext(data: pxdata, width: frameWidth, height: frameHeight, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pxbuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+        assert(context != nil, "context is nil")
         
-        context!.draw(cgImage, in: CGRect(x: 0,
-                                          y: 0,
-                                          width: cgImage.width,
-                                          height: cgImage.height))
-        
+        context!.concatenate(CGAffineTransform.identity)
+        context!.draw(cgImage, in: CGRect(x: 0, y: 0, width: cgImage.width, height: cgImage.height))
         CVPixelBufferUnlockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0))
-        
-        return pxbuffer!
+        return pxbuffer
     }
-    
-//    static func newPixelBufferFrom(cgImage:CGImage) -> CVPixelBuffer?{
-//        let options:[String: Any] = [kCVPixelBufferCGImageCompatibilityKey as String: true, kCVPixelBufferCGBitmapContextCompatibilityKey as String: true]
-//        var pxbuffer:CVPixelBuffer?
-//        let frameWidth = self.videoSettings[AVVideoWidthKey] as! Int
-//        let frameHeight = self.videoSettings[AVVideoHeightKey] as! Int
-//        
-//        let status = CVPixelBufferCreate(kCFAllocatorDefault, frameWidth, frameHeight, kCVPixelFormatType_32ARGB, options as CFDictionary?, &pxbuffer)
-//        assert(status == kCVReturnSuccess && pxbuffer != nil, "newPixelBuffer failed")
-//        
-//        CVPixelBufferLockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0))
-//        let pxdata = CVPixelBufferGetBaseAddress(pxbuffer!)
-//        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-//        let context = CGContext(data: pxdata, width: frameWidth, height: frameHeight, bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pxbuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-//        assert(context != nil, "context is nil")
-//        
-//        context!.concatenate(CGAffineTransform.identity)
-//        context!.draw(cgImage, in: CGRect(x: 0, y: 0, width: cgImage.width, height: cgImage.height))
-//        CVPixelBufferUnlockBaseAddress(pxbuffer!, CVPixelBufferLockFlags(rawValue: 0))
-//        return pxbuffer
-//    }
 
-    
-    static func appendToAdapter(_ adaptor: AVAssetWriterInputPixelBufferAdaptor,
-                                pixelBuffer buffer: CVPixelBuffer,
-                                atTime presentTime: CMTime,
-                                with writerInput: AVAssetWriterInput) -> Bool {
-        while !writerInput.isReadyForMoreMediaData {
-            usleep(1)
-        }
-        
-        return adaptor.append(buffer, withPresentationTime: presentTime)
-    }
 }

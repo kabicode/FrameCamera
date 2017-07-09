@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class ImageAssetEditVC: BaseViewController {
 
@@ -104,9 +106,11 @@ class ImageAssetEditVC: BaseViewController {
     @IBAction func tapPreviewButton(_ sender: Any) {
         // TODO
         let videoPath = PGVideoHelper.generateVideoFileName(at: asset.filePath)
-        
-        PGVideoHelper.converToVideo(from: asset.imageList, to: PGFileHelper.getSandBoxPath(with: videoPath), size: CGSize.init(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.width), completionBlock: {
-        })
+        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL) in
+            print(fileURL.absoluteString)
+            let video = AVURLAsset(url: fileURL)
+            print("duration: \(video.duration.seconds)")
+        }
     }
 
     @IBAction func tapSpecialEffecButton(_ sender: Any) {

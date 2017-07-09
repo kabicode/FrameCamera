@@ -168,8 +168,7 @@ class ImageEffectEditVC: BaseViewController {
         
         PGUserDefault.updateAsset(asset)
         
-        // TODO 
-        
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Actions
