@@ -35,8 +35,8 @@ class VideoPreviewVC: BaseViewController {
             playerView.playVideo(with: url)
         }
         
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
-        playerView.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
+//        playerView.addGestureRecognizer(tap)
     }
     
     func tapFullScreenButton() {

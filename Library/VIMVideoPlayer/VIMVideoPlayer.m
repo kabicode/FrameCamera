@@ -223,6 +223,10 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
 
 - (void)seekToTime:(float)time
 {
+    [self seekToTime:time completion:nil];
+}
+
+- (void)seekToTime:(float)time completion:(void (^)())completion {
     if (_seeking)
     {
         return;
@@ -245,10 +249,14 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
                 
                 _isAtEndTime = NO;
                 _seeking = NO;
-
+                
                 if (finished)
                 {
                     _scrubbing = NO;
+                }
+                
+                if (completion != nil) {
+                    completion();
                 }
                 
             }];

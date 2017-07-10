@@ -61,6 +61,7 @@
 - (void)play;
 - (void)pause;
 - (void)seekToTime:(float)time;
+- (void)seekToTime:(float)time completion:(void (^)())completion;
 - (void)reset;
 
 // AirPlay
