@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PGPlayerView" customModule="PingGuo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="685" height="358"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-aJ-d4h" customClass="VIMVideoPlayerView">
+                    <rect key="frame" x="0.0" y="0.0" width="685" height="358"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="controlBoardView" destination="334-Fd-v1k" id="kbT-VC-vLc"/>
+                <outlet property="playerView" destination="8dn-aJ-d4h" id="mV0-VS-mkR"/>
+            </connections>
+            <point key="canvasLocation" x="86.5" y="70"/>
+        </view>
+        <view contentMode="scaleToFill" id="334-Fd-v1k">
+            <rect key="frame" x="0.0" y="0.0" width="745" height="389"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVf-Oq-BRJ">
+                    <rect key="frame" x="691" y="351" width="46" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tapFullScreenButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="IsM-Bn-Dws"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yVf-Oq-BRJ" secondAttribute="trailing" constant="8" id="MlM-Vz-RjH"/>
+                <constraint firstAttribute="bottom" secondItem="yVf-Oq-BRJ" secondAttribute="bottom" constant="8" id="zeL-Pk-7rT"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="131" y="-380"/>
+        </view>
+    </objects>
+</document>

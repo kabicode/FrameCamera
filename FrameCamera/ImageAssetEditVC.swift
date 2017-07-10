@@ -113,6 +113,10 @@ class ImageAssetEditVC: BaseViewController {
         PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
             self.asset.videoPath = videoPath
             self.asset.duration = duration
+            
+            let vc = VideoPreviewVC()
+            vc.asset = self.asset
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

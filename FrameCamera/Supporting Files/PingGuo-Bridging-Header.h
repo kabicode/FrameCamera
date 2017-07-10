@@ -7,6 +7,8 @@
 #import "MyPasterItem.h"
 #import "MyTextPasterItem.h"
 #import "MyImagePasterItem.h"
+#import "VIMVideoPlayer.h"
+#import "VIMVideoPlayerView.h"
 
 #import <TSMessages/TSMessage.h>
 #import <MBProgressHUD/MBProgressHUD.h>

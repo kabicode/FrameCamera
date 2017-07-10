@@ -30,9 +30,10 @@ class PGVideoHelper: NSObject {
     static func createMovie(videoPath: String, pgImages: [PGImage], completionBlock: @escaping PGVideoMakeCompletion){
         
         var tempPath:String
-        repeat{
-            tempPath = videoPath
-        }while(FileManager.default.fileExists(atPath: videoPath))
+        tempPath = videoPath
+//        repeat{
+//            tempPath = videoPath
+//        }while(FileManager.default.fileExists(atPath: videoPath))
         
         let fileURL = URL(fileURLWithPath: tempPath)
         let assetWriter = try! AVAssetWriter(url: fileURL, fileType: AVFileTypeQuickTimeMovie)
@@ -72,7 +73,6 @@ class PGVideoHelper: NSObject {
                     var sampleBuffer:CVPixelBuffer?
                     autoreleasepool{
                         if let img = pgImages[imageIndex].image {
-                            //                            sampleBuffer = pixelBuffer(from: img.cgImage!, size: img.size)
                             sampleBuffer = newPixelBufferFrom(cgImage: img.cgImage!)
                         } else {
                             imageIndex += 1

@@ -64,6 +64,12 @@
 		8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */; };
 		8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A31ED28EE10042BE25 /* ViewController.swift */; };
 		8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */; };
+		8E3C2BD21F1324D800B1311C /* VIMVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C2BCF1F1324D800B1311C /* VIMVideoPlayer.m */; };
+		8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C2BD11F1324D800B1311C /* VIMVideoPlayerView.m */; };
+		8E3C2BD61F1325F800B1311C /* PGPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C2BD51F1325F800B1311C /* PGPlayerView.swift */; };
+		8E3C2BD81F13260200B1311C /* PGPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E3C2BD71F13260200B1311C /* PGPlayerView.xib */; };
+		8E3C2BDB1F13287700B1311C /* VideoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C2BD91F13287700B1311C /* VideoPreviewVC.swift */; };
+		8E3C2BDC1F13287700B1311C /* VideoPreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E3C2BDA1F13287700B1311C /* VideoPreviewVC.xib */; };
 		8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */; };
 		8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D161F05F71300E0CDB0 /* PGImage.swift */; };
 		8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */; };
@@ -158,6 +164,14 @@
 		8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2BF7A31ED28EE10042BE25 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Supporting Files/ViewController.swift"; sourceTree = "<group>"; };
 		8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8E3C2BCE1F1324D800B1311C /* VIMVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VIMVideoPlayer.h; path = VIMVideoPlayer/VIMVideoPlayer.h; sourceTree = "<group>"; };
+		8E3C2BCF1F1324D800B1311C /* VIMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VIMVideoPlayer.m; path = VIMVideoPlayer/VIMVideoPlayer.m; sourceTree = "<group>"; };
+		8E3C2BD01F1324D800B1311C /* VIMVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VIMVideoPlayerView.h; path = VIMVideoPlayer/VIMVideoPlayerView.h; sourceTree = "<group>"; };
+		8E3C2BD11F1324D800B1311C /* VIMVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VIMVideoPlayerView.m; path = VIMVideoPlayer/VIMVideoPlayerView.m; sourceTree = "<group>"; };
+		8E3C2BD51F1325F800B1311C /* PGPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGPlayerView.swift; sourceTree = "<group>"; };
+		8E3C2BD71F13260200B1311C /* PGPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PGPlayerView.xib; sourceTree = "<group>"; };
+		8E3C2BD91F13287700B1311C /* VideoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPreviewVC.swift; sourceTree = "<group>"; };
+		8E3C2BDA1F13287700B1311C /* VideoPreviewVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoPreviewVC.xib; sourceTree = "<group>"; };
 		8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAsset.swift; sourceTree = "<group>"; };
 		8E5A0D161F05F71300E0CDB0 /* PGImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGImage.swift; sourceTree = "<group>"; };
 		8E5A0D1B1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetPreviewVC.swift; sourceTree = "<group>"; };
@@ -223,6 +237,8 @@
 				8E8E82231F0C804500435119 /* DrawingView.swift */,
 				8C05F2281F07E4C100F5EEB6 /* imageAssetPreviewCell.swift */,
 				8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */,
+				8E3C2BD51F1325F800B1311C /* PGPlayerView.swift */,
+				8E3C2BD71F13260200B1311C /* PGPlayerView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -263,6 +279,8 @@
 			children = (
 				8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */,
 				8C05F2241F07B24400F5EEB6 /* ImageAssetEditVC.xib */,
+				8E3C2BD91F13287700B1311C /* VideoPreviewVC.swift */,
+				8E3C2BDA1F13287700B1311C /* VideoPreviewVC.xib */,
 			);
 			name = ImageAssetEdit;
 			sourceTree = "<group>";
@@ -332,11 +350,13 @@
 				8CC9C0BD1F128F52006F9D81 /* Router.swift */,
 			);
 			name = Helper;
+			path = FrameCamera;
 			sourceTree = "<group>";
 		};
 		8CE1BC921F0BCD7B001267B4 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				8E3C2BD41F1324DB00B1311C /* VIMVideoPlayer */,
 				8CE1BC931F0BCD7B001267B4 /* MyPaster */,
 			);
 			path = Library;
@@ -361,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				8E06F1111ECAF5BD0021D054 /* FrameCamera */,
+				8CC9C0B61F1289FA006F9D81 /* Helper */,
 				8CE1BC921F0BCD7B001267B4 /* Library */,
 				8C57F6661EED2E0A0086C8F7 /* Extension */,
 				EB1F61EA4AA4AB0795E7074E /* Pods */,
@@ -382,7 +403,6 @@
 		8E06F1111ECAF5BD0021D054 /* FrameCamera */ = {
 			isa = PBXGroup;
 			children = (
-				8CC9C0B61F1289FA006F9D81 /* Helper */,
 				8C6FAA731EF530CB005DCFCF /* Resource */,
 				8E2BF7921ED27CF30042BE25 /* Base */,
 				8C41A1BE1EFFF5B700431181 /* FileManager */,
@@ -430,6 +450,17 @@
 				8E6962341F0B95670045A263 /* PingGuo-Prefix.pch */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E3C2BD41F1324DB00B1311C /* VIMVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				8E3C2BCE1F1324D800B1311C /* VIMVideoPlayer.h */,
+				8E3C2BCF1F1324D800B1311C /* VIMVideoPlayer.m */,
+				8E3C2BD01F1324D800B1311C /* VIMVideoPlayerView.h */,
+				8E3C2BD11F1324D800B1311C /* VIMVideoPlayerView.m */,
+			);
+			name = VIMVideoPlayer;
 			sourceTree = "<group>";
 		};
 		8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */ = {
@@ -595,6 +626,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3C2BD81F13260200B1311C /* PGPlayerView.xib in Resources */,
 				8C68695B1EF822F900E20FE4 /* CropImagePickViewController.xib in Resources */,
 				8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */,
 				8C68695F1EF8263E00E20FE4 /* SelectedPhotoCell.xib in Resources */,
@@ -606,6 +638,7 @@
 				8C05F22B1F07E4C100F5EEB6 /* imageAssetPreviewCell.xib in Resources */,
 				8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */,
 				8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */,
+				8E3C2BDC1F13287700B1311C /* VideoPreviewVC.xib in Resources */,
 				8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */,
 				8C05F22F1F081A4900F5EEB6 /* ImageEffectEditVC.xib in Resources */,
 				8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */,
@@ -684,10 +717,12 @@
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
 				8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */,
+				8E3C2BD61F1325F800B1311C /* PGPlayerView.swift in Sources */,
 				8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */,
 				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,
 				8C57F6741EED2E0A0086C8F7 /* String+Range.swift in Sources */,
 				8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */,
+				8E3C2BDB1F13287700B1311C /* VideoPreviewVC.swift in Sources */,
 				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
 				8CE1BC9F1F0BCD7B001267B4 /* MyTextPasterItem.m in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
@@ -705,6 +740,7 @@
 				8CC9C0B51F127FC5006F9D81 /* PGAudioHelper.swift in Sources */,
 				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
+				8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
@@ -725,6 +761,7 @@
 				8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */,
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
 				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,
+				8E3C2BD21F1324D800B1311C /* VIMVideoPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
