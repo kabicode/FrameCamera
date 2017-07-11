@@ -14,6 +14,14 @@ class PGFileHelper: NSObject {
         return FileManager.default.fileExists(atPath: filePath)
     }
     
+    static func removeFolder(_ folderPath: String) {
+        do {
+            try FileManager.default.removeItem(at: URL(fileURLWithPath: folderPath))
+        } catch {
+            printLog("移除文件夹失败，path:\(folderPath), error:\(error.localizedDescription)")
+        }
+    }
+    
     // MARK: - Chartlets
     // 贴图文件夹
     static func getChartletsFilePath() -> String {

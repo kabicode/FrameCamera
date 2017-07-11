@@ -58,7 +58,7 @@ class AudioPlayerController: NSObject {
 //        guard let url = URL(string: filePath) else { return }
         let url = URL.init(fileURLWithPath: filePath)
         do {
-            // don't new a player if play the same audio
+            // don't new   a player if play the same audio
             if audioPlayer?.url != url {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.delegate = self

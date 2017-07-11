@@ -20,7 +20,7 @@ class AudioSessionHelper {
     
     static func configureAudioSession(for scene: AudioSessionScene) {
         // don't configure audio session if it don't change
-        guard self.currentScene != scene else { return }
+//        guard self.currentScene != scene else { return }
         
         let session = AVAudioSession.sharedInstance()
         do {
@@ -38,7 +38,7 @@ class AudioSessionHelper {
             try session.setActive(true)
             self.currentScene = scene
         } catch let error as NSError {
-            let format = NSLocalizedString("audioSession.errorTip.config", comment: "Configure audio session error tip")
+            let format = "配置audioSession错误，%@"
             let message = String(format: format, error.localizedDescription)
             showMessageNotifiaction(message)
         }

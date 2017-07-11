@@ -20,20 +20,20 @@
             <rect key="frame" x="0.0" y="0.0" width="340" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tF-Jk-5bf">
+                <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tF-Jk-5bf">
                     <rect key="frame" x="0.0" y="607" width="340" height="60"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="oQU-mj-gPG"/>
                     </constraints>
                     <items>
-                        <tabBarItem title="音乐库" image="musicTab_unselected" selectedImage="musicTab_selected" id="vje-dj-9EY">
+                        <tabBarItem title="音乐库" image="musicTab_unselected" id="vje-dj-9EY">
                             <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
                         </tabBarItem>
-                        <tabBarItem title="录音" image="audioTab_unselected" selectedImage="audioTab_selected" id="4bL-QQ-v52">
-                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-6"/>
+                        <tabBarItem title="录音" image="audioTab_unselected" id="4bL-QQ-v52">
+                            <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                         </tabBarItem>
                     </items>
+                    <color key="barTintColor" red="0.10196078431372549" green="0.12941176470588234" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                 </tabBar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -47,9 +47,7 @@
         </view>
     </objects>
     <resources>
-        <image name="audioTab_selected" width="15" height="33"/>
         <image name="audioTab_unselected" width="15" height="27"/>
-        <image name="musicTab_selected" width="31" height="30"/>
         <image name="musicTab_unselected" width="31" height="33"/>
     </resources>
 </document>

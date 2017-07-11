@@ -16,6 +16,12 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.barTintColor = UIColor(hex: 0x1A212B)
         self.navigationBar.isTranslucent = false
         self.navigationBar.tintColor = UIColor.white
+        self.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16.0),
+                                                  NSForegroundColorAttributeName: UIColor.white];
+//        let appearance = UIBarButtonItem.appearance()
+//        appearance.setBackButtonBackgroundImage(UIImage(named: "barBack_white_icon"), for: .normal, barMetrics: .compact)
+//        appearance.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 0.1),
+//                                           NSForegroundColorAttributeName: UIColor.clear], for: .normal)
     }
     
     override var shouldAutorotate: Bool {

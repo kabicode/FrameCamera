@@ -128,11 +128,6 @@ class ImageEffectEditVC: BaseViewController {
         let leftBarItem = UIBarButtonItem.init(image: UIImage(named: "barBack_white_icon"), style: .plain, target: self, action: #selector(tapBackBarButton))
         navigationItem.leftBarButtonItem = leftBarItem
         
-//        let button = UIButton.init(type: .roundedRect)
-//        button.frame = CGRect.init(x: 0, y: 0, width: 80, height: 40)
-//        button.setImage(UIImage(named: "done_black_barbutton"), for: .normal)
-//        button.addTarget(self, action: #selector(tapDoneBarButton), for: .touchUpInside)
-//        let rightItem = UIBarButtonItem.init(customView: button)
         let rightItem = UIBarButtonItem.init(image: UIImage(named: "done_black_barbutton")?.withRenderingMode(.alwaysOriginal),
                                              style: .plain,
                                              target: self,

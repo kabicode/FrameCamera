@@ -9,6 +9,12 @@
 import UIKit
 
 class AudioRecordVC: BaseViewController {
+    enum RecordState {
+        case perparToRecord
+        case recording
+        case pauseRecord
+        case endRecord
+    }
 
     @IBOutlet weak var playerContentView: UIView!
     @IBOutlet weak var playerViewHeightConstraint: NSLayoutConstraint!
@@ -23,6 +29,8 @@ class AudioRecordVC: BaseViewController {
     
     var recordFilePath: String?
     
+    var recordState: RecordState = .perparToRecord
+    
     deinit {
         print("")
     }
@@ -34,6 +42,14 @@ class AudioRecordVC: BaseViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        stopRecording()
+        playerController.stopAudioFile()
+        playerView.pause()
     }
     
     override func viewDidLoad() {
@@ -83,7 +99,9 @@ class AudioRecordVC: BaseViewController {
         recordLabel.textColor = UIColor.white
 //        recordButton.isSelected = false
         // TODO
-        pauseRecording()
+        if recordState == .recording {
+            pauseRecording()
+        }
     }
     
     @IBAction func tapPlayButton(_ sender: Any) {
@@ -94,7 +112,25 @@ class AudioRecordVC: BaseViewController {
             return
         }
         
+        if (recordState == .recording) || (recordState == .pauseRecord) {
+            let alert = UIAlertController.alert(title: "是否完成录音？",
+                                                message: nil,
+                                                actionTitle: "确定",
+                                                actionHandler:
+                { [weak self] (action) in
+                    self?.stopRecording()
+                    AudioSessionHelper.configureAudioSession(for: .play)
+                    self?.playerView.reset()
+                    self?.playerView.play()
+                    self?.playerController.playAudioFile(at: filePath)
+            })
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        AudioSessionHelper.configureAudioSession(for: .play)
         if playerView.readyToPlay {
+            playerView.reset()
             playerView.play()
             playerController.playAudioFile(at: filePath)
         }
@@ -109,23 +145,65 @@ class AudioRecordVC: BaseViewController {
     func startRecording() {
         guard canRecord() else { return }
         guard playerView.readyToPlay else { return }
-        AudioSessionHelper.configureAudioSession(for: .record)
         
-        guard recorderController.startRecord() else {
+        print("\(recorderController.recordedTime), \(asset.duration)")
+        if recordState == .endRecord {
+            let alert = UIAlertController.alert(title: "是否重新录音？",
+                                                message: "录音已存在，是否删除重新录制？",
+                                                actionTitle: "确定",
+                                                actionHandler:
+                {[weak self] (action) in
+                    self?.recorderController.audioRecorder?.stop()
+                    self?.recorderController.audioRecorder?.deleteRecording()
+                    self?.playerView.reset()
+                    self?.recordState = .perparToRecord
+            })
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        if recordState == .perparToRecord {
+            playerController.stopAudioFile()
+            playerView.reset()
+        }
+        
+        recordState = .recording
+        AudioSessionHelper.configureAudioSession(for: .record)
+        guard recorderController.startRecord(at: recordFilePath) else {
             let title = "录音失败"
             let alert = UIAlertController.okAlert(title: title)
             present(alert, animated: true, completion: nil)
             return
         }
+        
+        playerView.play()
     }
     
     func pauseRecording() {
-        let audioInfo = recorderController.pauseRecord()
+        recordState = .pauseRecord
+        
+        var audioInfo: (filePath: String, duration: Int)
+        audioInfo = recorderController.pauseRecord()
+        
+        playerView.pause()
+        if audioInfo.filePath.characters.count > 0 {
+            recordFilePath = audioInfo.filePath
+        }
+    }
+    
+    func stopRecording() {
+        recordState = .endRecord
+        var audioInfo = recorderController.stopRecord()
+        
+        playerView.pause()
         if audioInfo.filePath.characters.count > 0 {
             recordFilePath = audioInfo.filePath
             asset.audioPath = audioInfo.filePath
-            PGUserDefault.updateAsset(asset)
         }
+    }
+    
+    func deleteRecordIfNeed() {
+    
     }
     
     // MARK: - Helper
@@ -166,7 +244,13 @@ extension AudioRecordVC: PGPlayerViewProtocol {
     }
     
     func playerViewDidReachEnd(_ playerView: PGPlayerView) {
-        playerController.stopAudioFile()
+        if recordState == .recording {
+            stopRecording()
+        }
+        
+        if playerController.isPlaying {
+            playerController.stopAudioFile()
+        }
     }
 }
 

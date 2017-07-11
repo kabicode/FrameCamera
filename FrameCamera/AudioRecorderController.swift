@@ -26,6 +26,13 @@ class AudioRecorderController {
         return false
     }
     
+    var recordedTime: TimeInterval {
+        if let recorder = audioRecorder {
+            return recorder.currentTime
+        }
+        return 0
+    }
+    
     var audioCurrentTime: Int {
         if let recorder = audioRecorder {
             return Int(recorder.currentTime + 0.5)
@@ -50,10 +57,10 @@ class AudioRecorderController {
         ]
     }
     
-    func startRecord() -> Bool {
+    func startRecord(at audioFile: String? = nil) -> Bool {
         do {
             if audioRecorder == nil {
-                audioFilePath =  PGAudioFileHelper.generateRecordAudioFilePath()
+                audioFilePath = audioFile ?? PGAudioFileHelper.generateRecordAudioFilePath()
                 printLog("Record audio to: \(audioFilePath)")
                 let audioFileURL = URL(fileURLWithPath: audioFilePath)
                 audioRecorder = try AVAudioRecorder(url: audioFileURL, settings: recorderSettings)

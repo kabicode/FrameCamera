@@ -23,10 +23,24 @@ class ViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        collectionView.contentInset = UIEdgeInsets.init(top: 16, left: 8, bottom: 16, right: 8)
+        
+        setupSubviews()
+        
         loadData()
     }
     
+    func setupSubviews() {
+        title = "视频相册"
+        
+        let rightItem = UIBarButtonItem.init(image: UIImage(named: "setting_white_btn")?.withRenderingMode(.alwaysOriginal),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(tapSettingButton))
+        navigationItem.rightBarButtonItem = rightItem
+        
+        
+        collectionView.contentInset = UIEdgeInsets.init(top: 1, left: 1, bottom: 1, right: 1)
+    }
     
     // MARK: - Actions
     @IBAction func tapCreateButton(_ sender: Any) {
@@ -36,10 +50,30 @@ class ViewController: BaseViewController {
         let _ = CreateSnapShotViewController.presentFrom(self, with: asset)
     }
     
+    func tapSettingButton() {
+        // TODO
+    }
+    
     
     // MARK: - Private Method
     func loadData() {
+        
+        var shouleSave: Bool = false
+        
         assetsArray = PGUserDefault.assetsArray
+        for asset in assetsArray {
+            if asset.imageList.count == 0 {
+                if let index = assetsArray.index(of: asset) {
+                    shouleSave = true
+                    assetsArray.remove(at: index)
+                    PGFileHelper.removeFolder(PGFileHelper.getSandBoxPath(with: asset.filePath))
+                }
+            }
+        }
+        
+        if shouleSave {
+            PGUserDefault.assetsArray = assetsArray
+        }
         collectionView.reloadData()
     }
 }
@@ -57,13 +91,15 @@ extension ViewController: UICollectionViewDataSource {
         let asset = assetsArray[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoLibraryCell", for: indexPath) as! VideoLibraryCell
         cell.configureCell(with: asset)
+        cell.layer.borderColor = UIColor(hex: 0x8B8B8B).cgColor
+        cell.layer.borderWidth = 1
         return cell
     }
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 2 - 16.0 - 16.0
+        let width = collectionView.frame.width / 2 - 6
         let height = width * (UIScreen.main.bounds.width/UIScreen.main.bounds.height)
         return CGSize(width: width, height: height)
     }

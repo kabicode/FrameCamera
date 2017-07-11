@@ -92,6 +92,17 @@ class PGPlayerView: UIView {
         playerView.player.pause()
     }
     
+    func reset() {
+        playBgBlurView.isHidden = false
+        if playerView.player.isPlaying {
+            pause()
+            playerView.player.seek(toTime: 0)
+        } else {
+            playerView.player.seek(toTime: 0)
+        }
+//        playerView.player.reset()
+    }
+    
     // MARK: - Actions
     @IBAction func tapFullScreenButton(_ sender: Any) {
         if viewScreenState == .normal {
