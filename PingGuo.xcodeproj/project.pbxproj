@@ -15,7 +15,7 @@
 		8C05F22B1F07E4C100F5EEB6 /* imageAssetPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */; };
 		8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */; };
 		8C05F22F1F081A4900F5EEB6 /* ImageEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */; };
-		8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */; };
+		8C41A1C01EFFF5E500431181 /* PGFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41A1BF1EFFF5E500431181 /* PGFileHelper.swift */; };
 		8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */; };
 		8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */; };
 		8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6611EED1B3C0086C8F7 /* Info.plist */; };
@@ -76,6 +76,12 @@
 		8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E5A0D1C1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib */; };
 		8E8E82241F0C804500435119 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E82231F0C804500435119 /* DrawingView.swift */; };
 		8E8E82261F0CDA2200435119 /* UIAlertController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8E82251F0CDA2200435119 /* UIAlertController+Alert.swift */; };
+		8EBD031A1F1470E7000284C3 /* AudioRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD03181F1470E7000284C3 /* AudioRecordVC.swift */; };
+		8EBD031B1F1470E7000284C3 /* AudioRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EBD03191F1470E7000284C3 /* AudioRecordVC.xib */; };
+		8EBD031D1F14B42F000284C3 /* AudioSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD031C1F14B42F000284C3 /* AudioSessionHelper.swift */; };
+		8EBD03201F14B438000284C3 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD031E1F14B438000284C3 /* AudioPlayerController.swift */; };
+		8EBD03211F14B438000284C3 /* AudioRecorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */; };
+		8EBD03241F14B5D8000284C3 /* PGAudioFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */; };
 		DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +113,7 @@
 		8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = imageAssetPreviewCell.xib; sourceTree = "<group>"; };
 		8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEffectEditVC.swift; sourceTree = "<group>"; };
 		8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageEffectEditVC.xib; sourceTree = "<group>"; };
-		8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileManager.swift; sourceTree = "<group>"; };
+		8C41A1BF1EFFF5E500431181 /* PGFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileHelper.swift; sourceTree = "<group>"; };
 		8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEffectEditVC.swift; sourceTree = "<group>"; };
 		8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioEffectEditVC.xib; sourceTree = "<group>"; };
 		8C57F6611EED1B3C0086C8F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -180,6 +186,12 @@
 		8E8E82231F0C804500435119 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
 		8E8E82251F0CDA2200435119 /* UIAlertController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIAlertController+Alert.swift"; path = "../UIAlertController+Alert.swift"; sourceTree = "<group>"; };
 		8EA686081F0B9743005F5D3E /* PingGuo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PingGuo-Bridging-Header.h"; sourceTree = "<group>"; };
+		8EBD03181F1470E7000284C3 /* AudioRecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordVC.swift; sourceTree = "<group>"; };
+		8EBD03191F1470E7000284C3 /* AudioRecordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioRecordVC.xib; sourceTree = "<group>"; };
+		8EBD031C1F14B42F000284C3 /* AudioSessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSessionHelper.swift; sourceTree = "<group>"; };
+		8EBD031E1F14B438000284C3 /* AudioPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
+		8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderController.swift; sourceTree = "<group>"; };
+		8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAudioFileHelper.swift; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,10 +258,11 @@
 		8C41A1BE1EFFF5B700431181 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				8C41A1BF1EFFF5E500431181 /* PGFileManager.swift */,
+				8C41A1BF1EFFF5E500431181 /* PGFileHelper.swift */,
 				8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */,
 				8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */,
 				8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */,
+				8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */,
 			);
 			name = FileManager;
 			sourceTree = "<group>";
@@ -270,6 +283,8 @@
 			children = (
 				8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */,
 				8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */,
+				8EBD03181F1470E7000284C3 /* AudioRecordVC.swift */,
+				8EBD03191F1470E7000284C3 /* AudioRecordVC.xib */,
 			);
 			name = AudioEffectEdit;
 			sourceTree = "<group>";
@@ -344,6 +359,7 @@
 		8CC9C0B61F1289FA006F9D81 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8EBD03221F14B440000284C3 /* AudioPlayerHelper */,
 				8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */,
 				8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */,
 				8CC9C0BB1F128D26006F9D81 /* Config.swift */,
@@ -492,6 +508,16 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		8EBD03221F14B440000284C3 /* AudioPlayerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				8EBD031E1F14B438000284C3 /* AudioPlayerController.swift */,
+				8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */,
+				8EBD031C1F14B42F000284C3 /* AudioSessionHelper.swift */,
+			);
+			name = AudioPlayerHelper;
+			sourceTree = "<group>";
+		};
 		BF5B98A28183A27470D9514F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +660,7 @@
 				8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */,
 				8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */,
 				8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */,
+				8EBD031B1F1470E7000284C3 /* AudioRecordVC.xib in Resources */,
 				8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */,
 				8C05F22B1F07E4C100F5EEB6 /* imageAssetPreviewCell.xib in Resources */,
 				8E5A0D1E1F0646F700E0CDB0 /* ImageAssetPreviewVC.xib in Resources */,
@@ -739,20 +766,25 @@
 				8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */,
 				8CC9C0B51F127FC5006F9D81 /* PGAudioHelper.swift in Sources */,
 				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
+				8EBD031A1F1470E7000284C3 /* AudioRecordVC.swift in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
 				8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
-				8C41A1C01EFFF5E500431181 /* PGFileManager.swift in Sources */,
+				8C41A1C01EFFF5E500431181 /* PGFileHelper.swift in Sources */,
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
 				8C05F22A1F07E4C100F5EEB6 /* imageAssetPreviewCell.swift in Sources */,
 				8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */,
 				8CC9C0BE1F128F52006F9D81 /* Router.swift in Sources */,
 				8C05F21E1F07A49F00F5EEB6 /* PGUserDefault.swift in Sources */,
 				8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */,
+				8EBD03211F14B438000284C3 /* AudioRecorderController.swift in Sources */,
 				8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
+				8EBD03201F14B438000284C3 /* AudioPlayerController.swift in Sources */,
+				8EBD031D1F14B42F000284C3 /* AudioSessionHelper.swift in Sources */,
+				8EBD03241F14B5D8000284C3 /* PGAudioFileHelper.swift in Sources */,
 				8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */,
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
 				8C6FAA681EF52657005DCFCF /* LYOpenGLView.m in Sources */,

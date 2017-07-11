@@ -14,27 +14,33 @@ class VideoPreviewVC: BaseViewController {
     
     var asset: PGAsset!
     
+    // MARK: - Life Cycle
+    init() {
+        super.init(nibName: "VideoPreviewVC", bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         playerView = PGPlayerView.loadFromNib()
-        playerView.frame = CGRect.init(x: 0, y: 0, width: 300, height: 300)
+//        playerView.frame = CGRect.init(x: 0, y: 0, width: 300, height: 300)
 //        playerView.center = view.center
         view.addSubview(playerView)
         
-//        playerView.snp.makeConstraints { (make) in
-//            make.center.equalToSuperview()
-//            make.left.equalTo(view).offset(20)
-//            make.height.equalTo(300)
-//        }
+        playerView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.left.equalTo(view).offset(20)
+            make.height.equalTo(300)
+        }
         playerView.layoutIfNeeded()
         
-        if (asset.videoPath != nil) {
-            let videoPath = PGFileHelper.getSandBoxPath(with: asset.videoPath!)
-            let url = URL.init(fileURLWithPath: videoPath)
-            playerView.playVideo(with: url)
+        if let url = asset.originVideoUrl {
+            playerView.setVideo(with: url)
         }
-        
 //        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
 //        playerView.addGestureRecognizer(tap)
     }

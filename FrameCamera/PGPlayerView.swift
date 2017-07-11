@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol PGPlayerViewProtocol: class {
+    func playerViewReadyToPlay(_ playerView: PGPlayerView);
+    func playerViewDidReachEnd(_ playerView: PGPlayerView);
+}
+
 class PGPlayerView: UIView {
     enum PGPlayerViewScreenState {
         case normal
@@ -32,6 +37,8 @@ class PGPlayerView: UIView {
     var currentSecond: Int = 0
     var videoDuration: Int = 0
     
+    var sliderValueChanging: Bool = false
+    weak var delegate: PGPlayerViewProtocol?
     
     static func loadFromNib() -> PGPlayerView {
         return Bundle.main.loadNibNamed("PGPlayerView", owner: nil, options: nil)![0] as! PGPlayerView
@@ -51,8 +58,11 @@ class PGPlayerView: UIView {
         playerView.layer.masksToBounds = true
         playerView.addSubview(controlBoardView)
         
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
-        playerView.addGestureRecognizer(tap)
+        videoProgress.isUserInteractionEnabled = false
+        videoProgress.setThumbImage(UIImage(), for: .normal)
+        
+//        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
+//        playerView.addGestureRecognizer(tap)
     }
     
     override func layoutSubviews() {
@@ -65,7 +75,7 @@ class PGPlayerView: UIView {
     }
     
     // MARK: - Public Method
-    func playVideo(with url: URL) {
+    func setVideo(with url: URL) {
         readyToPlay = false
         playerView.player.setURL(url)
     }
@@ -99,20 +109,31 @@ class PGPlayerView: UIView {
         pause()
     }
     
-    @IBAction func slideProgressValueDidChange(_ sender: Any) {
+    //MARK: Slider actions
+    @IBAction func sliderValueChangedAction(_ sender: Any) {
+        guard let duration = playerView.player.player.currentItem?.duration else {
+            return
+        }
+        
         currentSecond = Int((videoProgress.value) * Float(videoDuration))
         updateVideoDurationLabel()
+        
+        let slider = sender as! UISlider
+        let seekTime = Float(CMTimeGetSeconds(duration)) * slider.value
+        playerView.player.seek(toTime: seekTime)
     }
     
-    @IBAction func dragVideoProgress(_ sender: Any) {
-        let time = (videoProgress.value) * Float(videoDuration)
-//        playerView.player.seek(toTime: time)
-        playerView.player.seek(toTime: time) {
-            
-        }
-        updateVideoDurationLabel()
+    @IBAction func sliderTouchDownAction(_ sender: Any) {
+        sliderValueChanging = true
+        
+        pause()
     }
     
+    @IBAction func sliderTouchUpAction(_ sender: Any) {
+        sliderValueChanging = false
+        
+        play()
+    }
 
     // MARK: - Private Method
     func enterFullScreen() {
@@ -180,7 +201,7 @@ class PGPlayerView: UIView {
     }
     
     func updateVideoDurationLabel() {
-        videoDurationLabel.text = String.init(format: "%.2d:%.2d/%.2d:%.2d", currentSecond/60, currentSecond%60, videoDuration/60, videoDuration%60)
+        videoDurationLabel.text = String.init(format: "%02d:%02d/%02d:%02d", currentSecond/60, currentSecond%60, videoDuration/60, videoDuration%60)
     }
 }
 
@@ -197,9 +218,15 @@ extension PGPlayerView: VIMVideoPlayerViewDelegate {
     
         videoDuration = Int((playerView.player.player.currentItem?.duration.seconds)!)
         updateVideoDurationLabel()
+        
+        delegate?.playerViewReadyToPlay(self)
     }
     
     func videoPlayerView(_ videoPlayerView: VIMVideoPlayerView!, timeDidChange cmTime: CMTime) {
+        guard sliderValueChanging == false else {
+            return
+        }
+        
         currentSecond = Int(Float(cmTime.value) / Float(cmTime.timescale))
         videoProgress.setValue((Float(cmTime.value) / Float(cmTime.timescale) / Float(videoDuration)), animated: true)
         updateVideoDurationLabel()
@@ -209,6 +236,8 @@ extension PGPlayerView: VIMVideoPlayerViewDelegate {
 //        readyToPlay = false
         
         pause()
+        
+        delegate?.playerViewDidReachEnd(self)
     }
     
     func videoPlayerView(_ videoPlayerView: VIMVideoPlayerView!, didFailWithError error: Error!) {

@@ -235,7 +235,6 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
     if (self.player)
     {
         CMTime cmTime = CMTimeMakeWithSeconds(time, self.player.currentTime.timescale);
-        
         if (CMTIME_IS_INVALID(cmTime) || self.player.currentItem.status != AVPlayerStatusReadyToPlay)
         {
             return;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -70,8 +70,10 @@
                                 <color key="minimumTrackTintColor" red="0.83529411764705885" green="0.10196078431372549" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <action selector="dragVideoProgress:" destination="iN0-l3-epB" eventType="touchDragInside" id="5bp-2e-Cqs"/>
-                                    <action selector="slideProgressValueDidChange:" destination="iN0-l3-epB" eventType="valueChanged" id="QRh-ZM-soP"/>
+                                    <action selector="sliderTouchDownAction:" destination="iN0-l3-epB" eventType="touchUpOutside" id="6cJ-7T-j7Y"/>
+                                    <action selector="sliderTouchDownAction:" destination="iN0-l3-epB" eventType="touchDown" id="u47-uf-Tkr"/>
+                                    <action selector="sliderTouchUpAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="V4A-RO-DYX"/>
+                                    <action selector="sliderValueChangedAction:" destination="iN0-l3-epB" eventType="valueChanged" id="yvS-ja-zau"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00/00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfx-0g-bDK">

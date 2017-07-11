@@ -8,6 +8,7 @@
 
 import UIKit
 import Toaster
+import MBProgressHUD
 
 class ImageAssetEditVC: BaseViewController {
 
@@ -103,21 +104,29 @@ class ImageAssetEditVC: BaseViewController {
     
     
     @IBAction func tapPreviewButton(_ sender: Any) {
-        // TODO
         guard asset.imageList.count > 0 else {
             Toast(text: "视频图片为空，请添加图片").show()
             return
         }
         
-        let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
-        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
-            self.asset.videoPath = videoPath
-            self.asset.duration = duration
+        MBProgressHUD.showAdded(to: view, animated: true)
+        PGVideoHelper.generousOriginMovie(from: asset) { (fileURL, duration) in
+            MBProgressHUD.hide(for: self.view, animated: true)
             
             let vc = VideoPreviewVC()
             vc.asset = self.asset
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+//        let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
+//        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
+//            self.asset.videoPath = videoPath
+//            self.asset.duration = duration
+//            
+//            let vc = VideoPreviewVC()
+//            vc.asset = self.asset
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
     }
 
     @IBAction func tapSpecialEffecButton(_ sender: Any) {
@@ -136,7 +145,14 @@ class ImageAssetEditVC: BaseViewController {
             return
         }
         
-        // TODO
+        MBProgressHUD.showAdded(to: view, animated: true)
+        PGVideoHelper.generousOriginMovie(from: asset) { (fileURL, duration) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            let audioEffectVC = AudioEffectEditVC()
+            audioEffectVC.asset = self.asset
+            self.navigationController?.pushViewController(audioEffectVC, animated: true)
+        }
     }
     
     // Private Method

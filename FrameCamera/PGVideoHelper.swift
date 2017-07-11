@@ -27,6 +27,17 @@ class PGVideoHelper: NSObject {
     }
     
     //MARK: Public methods
+    static func generousOriginMovie(from asset: PGAsset, completionBlock:@escaping PGVideoMakeCompletion) {
+        let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
+        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
+            asset.videoPath = videoPath
+            asset.duration = duration
+            
+            PGUserDefault.updateAsset(asset)
+            completionBlock(fileURL, duration)
+        }
+    }
+    
     static func createMovie(videoPath: String, pgImages: [PGImage], completionBlock: @escaping PGVideoMakeCompletion){
         
         var tempPath:String

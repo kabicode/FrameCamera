@@ -12,7 +12,7 @@ class ImageAssetPreviewVC: BaseViewController {
 
     // MARK: - Life Cycle
     init() {
-        super.init(nibName: "CropImagePickViewController", bundle: nil)
+        super.init(nibName: "ImageAssetPreviewVC", bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {

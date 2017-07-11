@@ -70,7 +70,7 @@ extension UIAlertController {
                 title: title,
                 message: message,
                 canCancel: canCancel,
-                actionTitle: "OK",
+                actionTitle: "确定",
                 actionHandler: actionHandler)
     }
     

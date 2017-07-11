@@ -13,10 +13,12 @@ class PGAsset: NSObject, NSCoding {
     var filePath: String
     
     var imageList: [PGImage] = []
-    
+    // 封面
     var posterImage: URL?
-    
+    // 初始视频
     var videoPath: String?
+    // 音频
+    var audioPath: String?
     
     // 总时间
     var duration: TimeInterval = 0.0
@@ -28,6 +30,13 @@ class PGAsset: NSObject, NSCoding {
         }
     }
     
+    // 源视频路径
+    var originVideoUrl: URL? {
+        if let videoPath = self.videoPath {
+            return URL(fileURLWithPath: PGFileHelper.getSandBoxPath(with: videoPath))
+        }
+        return nil
+    }
     
     init(filePath: String) {
         self.filePath = filePath
@@ -86,6 +95,9 @@ class PGAsset: NSObject, NSCoding {
         if (videoPath != nil) {
             aCoder.encode(videoPath, forKey: "videoPath")
         }
+        if audioPath != nil {
+            aCoder.encode(audioPath, forKey: "audioPath")
+        }
         aCoder.encode(duration, forKey: "duration")
     }
     
@@ -95,6 +107,7 @@ class PGAsset: NSObject, NSCoding {
         posterImage = aDecoder.decodeObject(forKey: "posterImage") as? URL
         videoPath = aDecoder.decodeObject(forKey: "videoPath") as? String
         duration = aDecoder.decodeDouble(forKey: "duration")
+        audioPath = aDecoder.decodeObject(forKey: "audioPath") as? String
     }
 }
 
