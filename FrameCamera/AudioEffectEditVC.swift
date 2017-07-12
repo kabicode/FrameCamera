@@ -17,6 +17,7 @@ class AudioEffectEditVC: BaseViewController {
     
     @IBOutlet weak var tabBar: UITabBar!
     
+    var audioLibraryVC: AudioLibraryVC!
     var audioRecordVC: AudioRecordVC!
     
     var asset: PGAsset!
@@ -38,6 +39,7 @@ class AudioEffectEditVC: BaseViewController {
         setupSubView()
         
         tabBar.selectedItem = tabBar.items?.first
+        configureSubViews()
     }
     
     func setupSubView() {
@@ -46,12 +48,13 @@ class AudioEffectEditVC: BaseViewController {
         tabBar.barTintColor = UIColor(hex: 0x1A212B)
         tabBar.isTranslucent = false
         
+        audioLibraryVC = AudioLibraryVC()
+        audioLibraryVC.asset = asset
+        addChildViewController(audioLibraryVC)
+        
         audioRecordVC = AudioRecordVC()
         audioRecordVC.asset = asset
         addChildViewController(audioRecordVC)
-        
-        // TODO
-        
         
         let rightItem = UIBarButtonItem.init(image: UIImage(named: "done_black_barbutton")?.withRenderingMode(.alwaysOriginal),
                                              style: .plain,
@@ -71,8 +74,24 @@ class AudioEffectEditVC: BaseViewController {
     }
     
     // Private Method
+    func configureSubViews() {
+        if tabBarSelectedType == .audioLibraryVC {
+            addMusicLibraryView()
+        } else if tabBarSelectedType == .recordAudioVC {
+            addAudioRecordView()
+        }
+    }
+    
     func addMusicLibraryView() {
-        
+        if audioLibraryVC.view.superview == nil {
+            view.addSubview(audioLibraryVC.view)
+            audioLibraryVC.view.snp.makeConstraints({ (make) in
+                make.top.left.right.equalToSuperview()
+                make.bottom.equalTo(tabBar.snp.top)
+            })
+        } else {
+            view.bringSubview(toFront: audioLibraryVC.view)
+        }
     }
     
     func addAudioRecordView() {
@@ -86,17 +105,15 @@ class AudioEffectEditVC: BaseViewController {
             view.bringSubview(toFront: audioRecordVC.view)
         }
     }
-
 }
 
 extension AudioEffectEditVC: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.title == "音乐库" {
             tabBarSelectedType = .audioLibraryVC
-            addMusicLibraryView()
         } else if item.title == "录音" {
             tabBarSelectedType = .recordAudioVC
-            addAudioRecordView()
         }
+        configureSubViews()
     }
 }

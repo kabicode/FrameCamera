@@ -105,7 +105,7 @@ class ImageAssetEditVC: BaseViewController {
     
     @IBAction func tapPreviewButton(_ sender: Any) {
         guard asset.imageList.count > 0 else {
-            Toast(text: "视频图片为空，请添加图片").show()
+            showMessageNotifiaction("视频图片为空，请添加图片", on: self)
             return
         }
         
@@ -141,7 +141,7 @@ class ImageAssetEditVC: BaseViewController {
     
     @IBAction func tapAudioButton(_ sender: Any) {
         guard asset.imageList.count > 0 else {
-            Toast(text: "视频图片为空，请添加图片").show()
+            showMessageNotifiaction("视频图片为空，请添加图片", on: self)
             return
         }
         

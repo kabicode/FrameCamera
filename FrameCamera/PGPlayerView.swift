@@ -253,7 +253,7 @@ extension PGPlayerView: VIMVideoPlayerViewDelegate {
     
     func videoPlayerView(_ videoPlayerView: VIMVideoPlayerView!, didFailWithError error: Error!) {
         print("\(error)")
-        showToast("视频播放失败")
+        showMessageNotifiaction("视频播放失败")
     }
 }
 

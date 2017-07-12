@@ -116,7 +116,7 @@ extension ImageEffectEditVC {
         alert = UIAlertController.alert(title: "请输入贴图文字", message: nil, canCancel: true, cancelTitle: "取消", actionTitle: "确定") { [weak self] (action) in
             if let textField = self?.alert.textFields?.first {
                 guard let text = textField.text, text.characters.count > 0 else {
-                    Toast(text: "输入内容不能为空").show()
+                    showMessageNotifiaction("输入内容不能为空", on: self)
                     return
                 }
                 self?.addTextPaster(with: text)

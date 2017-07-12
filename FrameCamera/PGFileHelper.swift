@@ -46,12 +46,11 @@ class PGFileHelper: NSObject {
             do {
                 try FileManager.default.createDirectory(atPath: audioPath, withIntermediateDirectories: true, attributes: nil)
             } catch {
-                print("\(audioPath) --- 创建贴图文件夹路径失败 ---")
+                print("\(audioPath) --- 创建文件夹路径失败 ---")
             }
         }
         return audioPath
     }
-    
     
     // MARK: - Asset Content
     // 生成主目录

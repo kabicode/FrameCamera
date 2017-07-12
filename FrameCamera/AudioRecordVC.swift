@@ -20,6 +20,8 @@ class AudioRecordVC: BaseViewController {
     @IBOutlet weak var playerViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
     var playerView: PGPlayerView!
     
     var recorderController: AudioRecorderController!
@@ -93,15 +95,16 @@ class AudioRecordVC: BaseViewController {
 //        recordButton.isSelected = true
         
         startRecording()
+        showPlayAndDeleteButton(false)
     }
 
     @IBAction func touchUpRecordBtn(_ sender: Any) {
         recordLabel.textColor = UIColor.white
-//        recordButton.isSelected = false
-        // TODO
+        
         if recordState == .recording {
             pauseRecording()
         }
+        showPlayAndDeleteButton(true)
     }
     
     @IBAction func tapPlayButton(_ sender: Any) {
@@ -137,7 +140,21 @@ class AudioRecordVC: BaseViewController {
     }
     
     @IBAction func tapDeleteAudioButton(_ sender: Any) {
+        guard let _ = recordFilePath else {
+            return
+        }
         
+        let alert = UIAlertController.alert(title: "确定删除录音？",
+                                            message: nil,
+                                            actionTitle: "确定",
+                                            actionHandler:
+            { [weak self] (action) in
+                self?.stopRecording()
+                self?.playerView.reset()
+                self?.deleteRecordIfNeed()
+        })
+        
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -147,14 +164,13 @@ class AudioRecordVC: BaseViewController {
         guard playerView.readyToPlay else { return }
         
         print("\(recorderController.recordedTime), \(asset.duration)")
-        if recordState == .endRecord {
+        if recordState == .endRecord && recordFilePath != nil {
             let alert = UIAlertController.alert(title: "是否重新录音？",
                                                 message: "录音已存在，是否删除重新录制？",
                                                 actionTitle: "确定",
                                                 actionHandler:
                 {[weak self] (action) in
-                    self?.recorderController.audioRecorder?.stop()
-                    self?.recorderController.audioRecorder?.deleteRecording()
+                    self?.stopRecording()
                     self?.playerView.reset()
                     self?.recordState = .perparToRecord
             })
@@ -203,7 +219,18 @@ class AudioRecordVC: BaseViewController {
     }
     
     func deleteRecordIfNeed() {
+        if let filePath = recordFilePath {
+            PGAudioFileHelper.deleteAudioFile(at: filePath)
+            recordFilePath = nil
+        }
+    }
     
+    func showPlayAndDeleteButton(_ show: Bool) {
+        let alpha: CGFloat = show ? 1.0: 0.0
+        UIView.animate(withDuration: 0.25) { 
+            self.playButton.alpha = alpha
+            self.deleteButton.alpha = alpha
+        }
     }
     
     // MARK: - Helper

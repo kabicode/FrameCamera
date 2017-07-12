@@ -15,7 +15,12 @@
 		8C05F22B1F07E4C100F5EEB6 /* imageAssetPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */; };
 		8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */; };
 		8C05F22F1F081A4900F5EEB6 /* ImageEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */; };
-		8C41A1C01EFFF5E500431181 /* PGFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C41A1BF1EFFF5E500431181 /* PGFileHelper.swift */; };
+		8C0EF9391F16813A0017FA87 /* AudioLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EF9371F16813A0017FA87 /* AudioLibraryVC.swift */; };
+		8C0EF93A1F16813A0017FA87 /* AudioLibraryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C0EF9381F16813A0017FA87 /* AudioLibraryVC.xib */; };
+		8C0EF93E1F1683660017FA87 /* AudioFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EF93C1F1683660017FA87 /* AudioFileCell.swift */; };
+		8C0EF93F1F1683660017FA87 /* AudioFileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C0EF93D1F1683660017FA87 /* AudioFileCell.xib */; };
+		8C0EF9411F1688F00017FA87 /* AudioLibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EF9401F1688F00017FA87 /* AudioLibrarySectionHeaderView.swift */; };
+		8C0EF9451F1696F30017FA87 /* PGFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EF9441F1696F30017FA87 /* PGFileHelper.swift */; };
 		8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */; };
 		8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */; };
 		8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6611EED1B3C0086C8F7 /* Info.plist */; };
@@ -45,7 +50,6 @@
 		8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA7A1EF531DF005DCFCF /* for_test.png */; };
 		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
 		8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */; };
-		8CC9C0B51F127FC5006F9D81 /* PGAudioHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */; };
 		8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */; };
 		8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */; };
 		8CC9C0BC1F128D26006F9D81 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0BB1F128D26006F9D81 /* Config.swift */; };
@@ -113,7 +117,12 @@
 		8C05F2291F07E4C100F5EEB6 /* imageAssetPreviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = imageAssetPreviewCell.xib; sourceTree = "<group>"; };
 		8C05F22C1F081A4900F5EEB6 /* ImageEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageEffectEditVC.swift; sourceTree = "<group>"; };
 		8C05F22D1F081A4900F5EEB6 /* ImageEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageEffectEditVC.xib; sourceTree = "<group>"; };
-		8C41A1BF1EFFF5E500431181 /* PGFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileHelper.swift; sourceTree = "<group>"; };
+		8C0EF9371F16813A0017FA87 /* AudioLibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLibraryVC.swift; sourceTree = "<group>"; };
+		8C0EF9381F16813A0017FA87 /* AudioLibraryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioLibraryVC.xib; sourceTree = "<group>"; };
+		8C0EF93C1F1683660017FA87 /* AudioFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioFileCell.swift; sourceTree = "<group>"; };
+		8C0EF93D1F1683660017FA87 /* AudioFileCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioFileCell.xib; sourceTree = "<group>"; };
+		8C0EF9401F1688F00017FA87 /* AudioLibrarySectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioLibrarySectionHeaderView.swift; sourceTree = "<group>"; };
+		8C0EF9441F1696F30017FA87 /* PGFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGFileHelper.swift; sourceTree = "<group>"; };
 		8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEffectEditVC.swift; sourceTree = "<group>"; };
 		8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AudioEffectEditVC.xib; sourceTree = "<group>"; };
 		8C57F6611EED1B3C0086C8F7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,7 +153,6 @@
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
 		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+ThemeColor.swift"; path = "../UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
 		8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGVideoHelper.swift; sourceTree = "<group>"; };
-		8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAudioHelper.swift; sourceTree = "<group>"; };
 		8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		8CC9C0BB1F128D26006F9D81 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -255,13 +263,22 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		8C0EF93B1F16834A0017FA87 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C0EF93C1F1683660017FA87 /* AudioFileCell.swift */,
+				8C0EF93D1F1683660017FA87 /* AudioFileCell.xib */,
+				8C0EF9401F1688F00017FA87 /* AudioLibrarySectionHeaderView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		8C41A1BE1EFFF5B700431181 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				8C41A1BF1EFFF5E500431181 /* PGFileHelper.swift */,
+				8C0EF9441F1696F30017FA87 /* PGFileHelper.swift */,
 				8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */,
 				8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */,
-				8CC9C0B41F127FC5006F9D81 /* PGAudioHelper.swift */,
 				8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */,
 			);
 			name = FileManager;
@@ -281,8 +298,11 @@
 		8C4F67D21F0D53FF00BBC8AC /* AudioEffectEdit */ = {
 			isa = PBXGroup;
 			children = (
+				8C0EF93B1F16834A0017FA87 /* Views */,
 				8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */,
 				8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */,
+				8C0EF9371F16813A0017FA87 /* AudioLibraryVC.swift */,
+				8C0EF9381F16813A0017FA87 /* AudioLibraryVC.xib */,
 				8EBD03181F1470E7000284C3 /* AudioRecordVC.swift */,
 				8EBD03191F1470E7000284C3 /* AudioRecordVC.xib */,
 			);
@@ -656,8 +676,10 @@
 				8C68695B1EF822F900E20FE4 /* CropImagePickViewController.xib in Resources */,
 				8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */,
 				8C68695F1EF8263E00E20FE4 /* SelectedPhotoCell.xib in Resources */,
+				8C0EF93F1F1683660017FA87 /* AudioFileCell.xib in Resources */,
 				8C6FAA771EF53131005DCFCF /* Shader.fsh in Resources */,
 				8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */,
+				8C0EF93A1F16813A0017FA87 /* AudioLibraryVC.xib in Resources */,
 				8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */,
 				8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */,
 				8EBD031B1F1470E7000284C3 /* AudioRecordVC.xib in Resources */,
@@ -752,6 +774,7 @@
 				8E3C2BDB1F13287700B1311C /* VideoPreviewVC.swift in Sources */,
 				8E5A0D171F05F71300E0CDB0 /* PGImage.swift in Sources */,
 				8CE1BC9F1F0BCD7B001267B4 /* MyTextPasterItem.m in Sources */,
+				8C0EF9411F1688F00017FA87 /* AudioLibrarySectionHeaderView.swift in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
 				8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */,
 				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
@@ -764,7 +787,6 @@
 				8CC9C0BC1F128D26006F9D81 /* Config.swift in Sources */,
 				8E8E82261F0CDA2200435119 /* UIAlertController+Alert.swift in Sources */,
 				8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */,
-				8CC9C0B51F127FC5006F9D81 /* PGAudioHelper.swift in Sources */,
 				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
 				8EBD031A1F1470E7000284C3 /* AudioRecordVC.swift in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
@@ -772,8 +794,8 @@
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
-				8C41A1C01EFFF5E500431181 /* PGFileHelper.swift in Sources */,
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
+				8C0EF93E1F1683660017FA87 /* AudioFileCell.swift in Sources */,
 				8C05F22A1F07E4C100F5EEB6 /* imageAssetPreviewCell.swift in Sources */,
 				8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */,
 				8CC9C0BE1F128F52006F9D81 /* Router.swift in Sources */,
@@ -784,6 +806,7 @@
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
 				8EBD03201F14B438000284C3 /* AudioPlayerController.swift in Sources */,
 				8EBD031D1F14B42F000284C3 /* AudioSessionHelper.swift in Sources */,
+				8C0EF9451F1696F30017FA87 /* PGFileHelper.swift in Sources */,
 				8EBD03241F14B5D8000284C3 /* PGAudioFileHelper.swift in Sources */,
 				8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */,
 				8C68695E1EF8263E00E20FE4 /* SelectedPhotoCell.swift in Sources */,
@@ -793,6 +816,7 @@
 				8E5A0D1D1F0646F700E0CDB0 /* ImageAssetPreviewVC.swift in Sources */,
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
 				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,
+				8C0EF9391F16813A0017FA87 /* AudioLibraryVC.swift in Sources */,
 				8E3C2BD21F1324D800B1311C /* VIMVideoPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
