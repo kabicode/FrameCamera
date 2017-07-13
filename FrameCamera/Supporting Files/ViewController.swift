@@ -66,7 +66,7 @@ class ViewController: BaseViewController {
                 if let index = assetsArray.index(of: asset) {
                     shouleSave = true
                     assetsArray.remove(at: index)
-                    PGFileHelper.removeFolder(PGFileHelper.getSandBoxPath(with: asset.filePath))
+                    PGFileHelper.removeItem(PGFileHelper.getSandBoxPath(with: asset.filePath))
                 }
             }
         }

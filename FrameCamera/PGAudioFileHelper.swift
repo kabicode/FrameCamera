@@ -31,25 +31,31 @@ class PGAudioFileHelper {
         return audioDirectory + "/" + fileName
     }
 
+    static func getAuidoFilePathFromSandBoxPath(_ sandboxPath: String) -> String {
+        let documentDirectory = PGFileHelper.getPingGuoFilePath()
+        let filePath = sandboxPath.replacingOccurrences(of: documentDirectory, with: "")
+        return filePath
+    }
     
-    static func downloadAudio(_ fileURL: String, compelete: ((_ success: Bool)->())?) {
+    // 获取真实沙盒路径
+    static func downloadAudio(_ fileURL: String, compelete: ((_ audioPath: String?, _ success: Bool)->())?) {
+        let filePath = PGAudioFileHelper.getFilePathFromURL(fileURL)
         Alamofire.download(fileURL) { _, _ in
-            let filePath = PGAudioFileHelper.getFilePathFromURL(fileURL)
             return (URL(fileURLWithPath: filePath), .removePreviousFile)
             }.response { response in
                 if let error = response.error {
                     printLog("Failed with error: \(error)")
                     // file exists
                     if error._domain == NSCocoaErrorDomain && error._code == 516 {
-                        compelete?(true)
+                        compelete?(filePath, true)
                         return
                     }
                 } else {
-                    compelete?(true)
+                    compelete?(filePath, true)
                     return
                 }
                 
-                compelete?(false)
+                compelete?(nil, false)
         }
     }
 
@@ -63,7 +69,7 @@ class PGAudioFileHelper {
     }
     
     static func getLocalAudiosFolderPath() -> String {
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectory = PGFileHelper.getPingGuoFilePath()
         let audioPath = "\(documentDirectory)/LocalAudios"
         if self.audioFileExists(audioPath) == false {
             do {
@@ -76,7 +82,7 @@ class PGAudioFileHelper {
     }
     
     static func getRecordAudiosFolderPath() -> String {
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectory = PGFileHelper.getPingGuoFilePath()
         let audioPath = "\(documentDirectory)/RecordAudio"
         if self.audioFileExists(audioPath) == false {
             do {

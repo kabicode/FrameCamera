@@ -32,6 +32,7 @@ class AudioLibraryVC: BaseViewController {
     var onlineAudioList: [String] = []
     
     var selectedAudioPath: String?
+    var shouldReloadList: Bool = false
     
     // MARK: - Life Cycle
     init() {
@@ -45,13 +46,16 @@ class AudioLibraryVC: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        reloadData()
+        if shouldReloadList {
+            shouldReloadList = false
+            reloadLocalList()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        selectedAudioPath = asset.audioPath
+        selectedAudioPath = asset.audioPath != nil ? PGFileHelper.getSandBoxPath(with: asset.audioPath!): nil
         
         registerCells()
         
@@ -60,6 +64,10 @@ class AudioLibraryVC: BaseViewController {
         configureSubviews()
         
         tableView.tableFooterView = UIView()
+        
+        reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setupReloadFlag), name: NSNotification.Name("ShouldRefreshLocalMusicList"), object: nil)
     }
     
     func registerCells() {
@@ -69,7 +77,7 @@ class AudioLibraryVC: BaseViewController {
     
     func setupSubviews() {
         tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
-            self?.reloadData()
+            self?.pullToHeaderView()
         })
     }
 
@@ -89,6 +97,11 @@ class AudioLibraryVC: BaseViewController {
         tableView.reloadData()
     }
     
+    // MARK: - Notification
+    func setupReloadFlag() {
+        shouldReloadList = true
+    }
+    
     // MARK: - Actions
     @IBAction func tapMyMusicBtn(_ sender: Any) {
         audioLibraryType = .localAudio
@@ -103,10 +116,30 @@ class AudioLibraryVC: BaseViewController {
     }
     
     // MARK: - Private Method
+    func pullToHeaderView() {
+        if audioLibraryType == .localAudio {
+            reloadLocalList()
+        } else if audioLibraryType == .onlineAudio {
+            reloadData()
+        }
+    }
+    
     func reloadData() {
+        selectedAudioPath = asset.audioPath != nil ? PGFileHelper.getSandBoxPath(with: asset.audioPath!): nil
+        
         getOnlineAudioList()
         getLocalAudioList()
         getRecordAudioList()
+        
+        tableView.reloadData()
+        tableView.mj_header.endRefreshing()
+    }
+    
+    func reloadLocalList() {
+        selectedAudioPath = asset.audioPath != nil ? PGFileHelper.getSandBoxPath(with: asset.audioPath!): nil
+        
+        getOnlineAudioList()
+        getLocalAudioList()
         
         tableView.reloadData()
         tableView.mj_header.endRefreshing()
@@ -143,19 +176,18 @@ class AudioLibraryVC: BaseViewController {
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
         hud.label.text = "下载中..."
         
-        let filePath = PGAudioFileHelper.getFileNameFromURL(urlString)
         MBProgressHUD.showAdded(to: view, animated: true)
-        if !PGAudioFileHelper.audioFileExists(filePath) {
-            PGAudioFileHelper.downloadAudio(urlString, compelete: { [weak self, weak hud] success in
-                hud?.hide(animated: true)
-                // TODO
-                if success {
-                    showMessageNotifiaction("下载音频成功", type: .success, on: self)
-                } else {
-                    showMessageNotifiaction("下载音频失败", on: self)
-                }
-            })
-        }
+        PGAudioFileHelper.downloadAudio(urlString, compelete: { [weak self, weak hud] (audioPath, success) in
+            hud?.hide(animated: true)
+            // TODO
+            if success {
+                self?.asset.audioPath = PGAudioFileHelper.getAuidoFilePathFromSandBoxPath(audioPath!)
+                showMessageNotifiaction("下载音频成功", type: .success, on: self)
+                NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshLocalMusicList"), object: nil)
+            } else {
+                showMessageNotifiaction("下载音频失败", on: self)
+            }
+        })
     }
     
     // MARK: - Getter
@@ -233,6 +265,7 @@ extension AudioLibraryVC: UITableViewDelegate {
             } else {
                 selectedAudioPath = localAudioList[indexPath.row]
             }
+            
         } else if audioLibraryType == .onlineAudio {
             downLoadAudio(with: onlineAudioList[indexPath.row])
         }

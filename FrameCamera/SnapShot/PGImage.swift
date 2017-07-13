@@ -13,7 +13,7 @@ class PGImage: NSObject, NSCoding {
     // 时长
     var duration: TimeInterval = 1.0
 
-    // 图片
+    // 展示图片（优先级 编辑后图片 > 源图）
     var image: UIImage? {
         get {
             if let effect = self.effectImagePath {
@@ -31,18 +31,11 @@ class PGImage: NSObject, NSCoding {
         return UIImage(contentsOfFile: PGFileHelper.getSandBoxPath(with: imagePath))
     }
     
-    // 展示用图片路径
+    // 展示用图片路径 源图
     var imagePath: String = ""
     
-    // 源图
+    // 编辑后图片
     var effectImagePath: String?
-    
-    // 沙盒图片路径
-    var sandboxPath: String {
-        get {
-            return PGFileHelper.getSandBoxPath(with: imagePath)
-        }
-    }
     
     // 贴图
     var pasters: [Paster] = []

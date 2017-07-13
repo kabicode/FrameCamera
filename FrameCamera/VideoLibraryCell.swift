@@ -14,7 +14,7 @@ class VideoLibraryCell: UICollectionViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     
     func configureCell(with asset: PGAsset) {
-        posterImageView.kf.setImage(with: asset.posterImage)
+        posterImageView.image = asset.posterImage
     }
     
 }

@@ -62,9 +62,19 @@ class ImageAssetEditVC: BaseViewController {
     func setupSubviews() {
         previewImageView.layoutIfNeeded()
         previewImageHeightConstraint.constant = previewImageView.frame.width / (UIScreen.main.bounds.height / UIScreen.main.bounds.width)
+        
+        let rightItem = UIBarButtonItem.init(image: UIImage(named: "nextStep_button")?.withRenderingMode(.alwaysOriginal),
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(tapNextStepButton))
+        navigationItem.rightBarButtonItem = rightItem
     }
 
     // MARK: - Actions
+    func tapNextStepButton() {
+        generousPreviewVideoAction()
+    }
+    
     @IBAction func tapLeftButton(_ sender: Any) {
         if let index = selectedIndex, index > 0 {
             selectedIndex = index - 1
@@ -104,29 +114,18 @@ class ImageAssetEditVC: BaseViewController {
     
     
     @IBAction func tapPreviewButton(_ sender: Any) {
-        guard asset.imageList.count > 0 else {
-            showMessageNotifiaction("视频图片为空，请添加图片", on: self)
-            return
-        }
-        
-        MBProgressHUD.showAdded(to: view, animated: true)
-        PGVideoHelper.generousOriginMovie(from: asset) { (fileURL, duration) in
-            MBProgressHUD.hide(for: self.view, animated: true)
-            
-            let vc = VideoPreviewVC()
-            vc.asset = self.asset
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
-//        let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
-//        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
-//            self.asset.videoPath = videoPath
-//            self.asset.duration = duration
-//            
-//            let vc = VideoPreviewVC()
-//            vc.asset = self.asset
-//            self.navigationController?.pushViewController(vc, animated: true)
+//        guard asset.imageList.count > 0 else {
+//            showMessageNotifiaction("视频图片为空，请添加图片", on: self)
+//            return
 //        }
+//        
+//        MBProgressHUD.showAdded(to: view, animated: true)
+//        PGVideoHelper.generousOriginMovie(from: asset) { (fileURL, duration) in
+//            MBProgressHUD.hide(for: self.view, animated: true)
+//            
+//            self.pushToVideoPreviewVC()
+//        }
+        generousPreviewVideoAction()
     }
 
     @IBAction func tapSpecialEffecButton(_ sender: Any) {
@@ -163,6 +162,61 @@ class ImageAssetEditVC: BaseViewController {
             collectionView.reloadData()
         }
     }
+    
+    func generousPreviewVideoAction() {
+        guard asset.imageList.count > 0 else {
+            showMessageNotifiaction("视频图片为空，请添加图片", on: self)
+            return
+        }
+        
+        if asset.videoPath == nil {
+            MBProgressHUD.showAdded(to: view, animated: true)
+            PGVideoHelper.generousOriginMovie(from: asset) {[weak self] (fileURL, duration) in
+                guard let StrongSelf = self else { return }
+                MBProgressHUD.hide(for: StrongSelf.view, animated: true)
+                
+                MBProgressHUD.showAdded(to: StrongSelf.view, animated: true)
+                PGVideoHelper.generousMixVideo(from: StrongSelf.asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
+                    if self != nil {
+                        MBProgressHUD.hide(for: self!.view, animated: true)
+                    }
+                    
+                    if success {
+                        self?.asset.mixVideoPath = mixVideoPath
+                        self?.pushToVideoPreviewVC()
+                    } else {
+                        showMessageNotifiaction("视频合成失败", on: self)
+                        return
+                    }
+                })
+            }
+            
+            return
+        } else {
+            
+            MBProgressHUD.showAdded(to: view, animated: true)
+            PGVideoHelper.generousMixVideo(from: asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
+                if self != nil {
+                    MBProgressHUD.hide(for: self!.view, animated: true)
+                }
+                
+                if success {
+                    self?.asset.mixVideoPath = mixVideoPath
+                    self?.pushToVideoPreviewVC()
+                } else {
+                    showMessageNotifiaction("视频合成失败", on: self)
+                    return
+                }
+            })
+        }
+    }
+    
+    func pushToVideoPreviewVC() {
+        let vc = VideoPreviewVC()
+        vc.asset = self.asset
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 

@@ -27,8 +27,6 @@ class VideoPreviewVC: BaseViewController {
         super.viewDidLoad()
 
         playerView = PGPlayerView.loadFromNib()
-//        playerView.frame = CGRect.init(x: 0, y: 0, width: 300, height: 300)
-//        playerView.center = view.center
         view.addSubview(playerView)
         
         playerView.snp.makeConstraints { (make) in
@@ -38,11 +36,9 @@ class VideoPreviewVC: BaseViewController {
         }
         playerView.layoutIfNeeded()
         
-        if let url = asset.originVideoUrl {
+        if let url = asset.videoUrl {
             playerView.setVideo(with: url)
         }
-//        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
-//        playerView.addGestureRecognizer(tap)
     }
     
     func tapFullScreenButton() {

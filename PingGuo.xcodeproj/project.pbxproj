@@ -49,6 +49,7 @@
 		8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA761EF53131005DCFCF /* Shader.vsh */; };
 		8C6FAA7B1EF531DF005DCFCF /* for_test.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C6FAA7A1EF531DF005DCFCF /* for_test.png */; };
 		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
+		8C888AE71F17F831008006BC /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C888AE61F17F831008006BC /* HomePageVC.swift */; };
 		8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */; };
 		8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */; };
 		8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */; };
@@ -152,6 +153,7 @@
 		8C6FAA761EF53131005DCFCF /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		8C6FAA7A1EF531DF005DCFCF /* for_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = for_test.png; sourceTree = "<group>"; };
 		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+ThemeColor.swift"; path = "../UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
+		8C888AE61F17F831008006BC /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGVideoHelper.swift; sourceTree = "<group>"; };
 		8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
@@ -442,7 +444,7 @@
 				8C6FAA731EF530CB005DCFCF /* Resource */,
 				8E2BF7921ED27CF30042BE25 /* Base */,
 				8C41A1BE1EFFF5B700431181 /* FileManager */,
-				8E5A0D1F1F06546100E0CDB0 /* Comment */,
+				8E5A0D1F1F06546100E0CDB0 /* HomePage */,
 				8E2BF79C1ED28DFE0042BE25 /* Camera */,
 				8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */,
 				8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */,
@@ -512,11 +514,12 @@
 			name = ImageAssetEdit;
 			sourceTree = "<group>";
 		};
-		8E5A0D1F1F06546100E0CDB0 /* Comment */ = {
+		8E5A0D1F1F06546100E0CDB0 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				8C888AE61F17F831008006BC /* HomePageVC.swift */,
 			);
-			name = Comment;
+			name = HomePage;
 			sourceTree = "<group>";
 		};
 		8E7BBAEC1F04F12000E6FB88 /* Model */ = {
@@ -804,6 +807,7 @@
 				8EBD03211F14B438000284C3 /* AudioRecorderController.swift in Sources */,
 				8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
+				8C888AE71F17F831008006BC /* HomePageVC.swift in Sources */,
 				8EBD03201F14B438000284C3 /* AudioPlayerController.swift in Sources */,
 				8EBD031D1F14B42F000284C3 /* AudioSessionHelper.swift in Sources */,
 				8C0EF9451F1696F30017FA87 /* PGFileHelper.swift in Sources */,

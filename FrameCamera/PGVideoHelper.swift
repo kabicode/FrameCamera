@@ -13,6 +13,8 @@ import AssetsLibrary
 import AVFoundation
 
 typealias PGVideoMakeCompletion = ((_ url: URL, _ duration: Double) -> Void)
+typealias PGVideoSyncthesizeCompletion = ((_ url: URL?, _ success: Bool) -> Void)
+typealias PGVideoMixVideoCompletion = ((_ mixVideoPath: String?, _ url: URL?, _ success: Bool) -> Void)
 
 class PGVideoHelper: NSObject {
     
@@ -29,7 +31,13 @@ class PGVideoHelper: NSObject {
     //MARK: Public methods
     static func generousOriginMovie(from asset: PGAsset, completionBlock:@escaping PGVideoMakeCompletion) {
         let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
-        PGVideoHelper.createMovie(videoPath: PGFileHelper.getSandBoxPath(with: videoPath), pgImages: asset.imageList) { (fileURL, duration) in
+        let sandboxPath = PGFileHelper.getSandBoxPath(with: videoPath)
+        if PGFileHelper.fileExists(sandboxPath) {
+            asset.videoPath = nil
+            PGFileHelper.removeItem(sandboxPath)
+        }
+        
+        PGVideoHelper.createMovie(videoPath: sandboxPath, pgImages: asset.imageList) { (fileURL, duration) in
             asset.videoPath = videoPath
             asset.duration = duration
             
@@ -114,6 +122,91 @@ class PGVideoHelper: NSObject {
                     completionBlock(fileURL, video.duration.seconds)
                 }
             }
+        }
+    }
+    
+    
+    static func generousMixVideo(from asset: PGAsset, completionBlock:@escaping PGVideoMixVideoCompletion) {
+        
+        let exportPath = asset.mixVideoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
+        let sandboxPath = PGFileHelper.getSandBoxPath(with: exportPath)
+        if PGFileHelper.fileExists(sandboxPath) {
+            PGFileHelper.removeItem(sandboxPath)
+        }
+        
+        let exportURL = URL(fileURLWithPath: sandboxPath)
+        guard let videoPath = asset.videoPath else {
+            printLog("源视频不存在")
+            completionBlock(nil, nil, false)
+            return
+        }
+        
+        guard let audioPath = asset.audioPath else {
+            printLog("不存在音频文件")
+            completionBlock(nil, nil, true)
+            return
+        }
+        
+        let videoURL = URL(fileURLWithPath: PGFileHelper.getSandBoxPath(with: videoPath))
+        let audioURL = URL(fileURLWithPath: PGFileHelper.getSandBoxPath(with: audioPath))
+        self.synthesizeVideo(videoPath: videoURL, audioPath: audioURL, exportPath: exportURL, completionBlock: { (url, success) in
+            DispatchQueue.main.async {
+                completionBlock(exportPath, exportURL, success)
+            }
+        })
+    }
+    
+    static func synthesizeVideo(videoPath: URL, audioPath: URL, exportPath:URL, completionBlock: @escaping PGVideoSyncthesizeCompletion) {
+        let videoAsset = AVAsset(url: videoPath)
+        let audioAsset = AVAsset(url: audioPath)
+        
+        guard let videoAssetTrack = videoAsset.tracks(withMediaType: AVMediaTypeVideo).first,
+            let audioAssetTrack = audioAsset.tracks(withMediaType: AVMediaTypeAudio).first else {
+                completionBlock(nil, false)
+                return
+        }
+        
+        do {
+            let composition = AVMutableComposition()
+            let videoCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: kCMPersistentTrackID_Invalid)
+            try videoCompositionTrack.insertTimeRange(CMTimeRange.init(start: kCMTimeZero, end: videoAssetTrack.timeRange.duration), of: videoAssetTrack, at: kCMTimeZero)
+            
+            let audioCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: kCMPersistentTrackID_Invalid)
+            try audioCompositionTrack.insertTimeRange(CMTimeRange.init(start: kCMTimeZero, end: videoAssetTrack.timeRange.duration), of: audioAssetTrack, at: kCMTimeZero)
+            
+            // 是否加入视频原声
+//            let originAudioAssetTrack = videoAsset.tracks(withMediaType: AVMediaTypeAudio)[0]
+//            let originalAudioCompositionTrack = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: kCMPersistentTrackID_Invalid)
+//            try originAudioAssetTrack.insertTimeRange(CMTimeRange.init(start: kCMTimeZero, end: originAudioAssetTrack.timeRange.duration), of: originAudioAssetTrack, at: kCMTimeZero)
+            
+            // 导出素材
+            guard let exporter = AVAssetExportSession.init(asset: composition, presetName: AVAssetExportPresetMediumQuality) else {
+                completionBlock(exportPath, false)
+                return
+            }
+            
+            // 音量控制
+            
+            // 设置输出路径
+            exporter.outputURL = exportPath
+            exporter.outputFileType = AVFileTypeMPEG4
+            
+            exporter.exportAsynchronously(completionHandler: {
+                switch exporter.status {
+                case .completed:
+                    completionBlock(exportPath, true)
+                case .failed:
+                    printLog("合成失败, error -- \(String(describing: exporter.error))")
+                    completionBlock(exportPath, false)
+                default:
+                    printLog("合成失败, error -- \(String(describing: exporter.error))")
+                    completionBlock(exportPath, false)
+                }
+            })
+        } catch {
+            completionBlock(exportPath, false)
+            printLog("合成视频失败，error -- \(error)")
+            return
         }
     }
     

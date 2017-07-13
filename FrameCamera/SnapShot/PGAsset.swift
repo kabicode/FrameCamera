@@ -13,12 +13,12 @@ class PGAsset: NSObject, NSCoding {
     var filePath: String
     
     var imageList: [PGImage] = []
-    // 封面
-    var posterImage: URL?
     // 初始视频
     var videoPath: String?
     // 音频
     var audioPath: String?
+    // 混合音视频
+    var mixVideoPath: String?
     
     // 总时间
     var duration: TimeInterval = 0.0
@@ -30,9 +30,29 @@ class PGAsset: NSObject, NSCoding {
         }
     }
     
+    // 封面
+    var posterImage: UIImage? {
+        if imageList.count > 0 {
+            let pgImage = imageList[0]
+            return pgImage.image
+        }
+        return nil
+    }
+    
     // 源视频路径
     var originVideoUrl: URL? {
         if let videoPath = self.videoPath {
+            return URL(fileURLWithPath: PGFileHelper.getSandBoxPath(with: videoPath))
+        }
+        return nil
+    }
+    
+    // 展示视频路径
+    var videoUrl: URL? {
+        if let mixVideoPath = self.mixVideoPath {
+            return URL(fileURLWithPath: PGFileHelper.getSandBoxPath(with: mixVideoPath))
+        }
+        else if let videoPath = self.videoPath {
             return URL(fileURLWithPath: PGFileHelper.getSandBoxPath(with: videoPath))
         }
         return nil
@@ -56,9 +76,9 @@ class PGAsset: NSObject, NSCoding {
                 imageList.append(pgImage)
             }
 
-            if posterImage == nil && imageList.count > 0 {
-                posterImage = URL(fileURLWithPath: imageList[0].sandboxPath)
-            }
+//            if posterImage == nil && imageList.count > 0 {
+//                posterImage = URL(fileURLWithPath: imageList[0].sandboxPath)
+//            }
             
             PGUserDefault.updateAsset(self)
             return pgImage
@@ -74,9 +94,9 @@ class PGAsset: NSObject, NSCoding {
             let _ = PGFileHelper.deleteImage(at: pgImage.imagePath)
             imageList.remove(at: index)
             
-            if imageList.count > 0 {
-                posterImage = URL(fileURLWithPath: imageList[0].sandboxPath)
-            }
+//            if imageList.count > 0 {
+//                posterImage = URL(fileURLWithPath: imageList[0].sandboxPath)
+//            }
             
             PGUserDefault.updateAsset(self)
             return pgImage
@@ -89,14 +109,17 @@ class PGAsset: NSObject, NSCoding {
     public func encode(with aCoder: NSCoder) {
         aCoder.encode(filePath, forKey: "filePath")
         aCoder.encode(imageList, forKey: "imageList")
-        if (posterImage != nil) {
-            aCoder.encode(posterImage, forKey: "posterImage")
-        }
+//        if (posterImage != nil) {
+//            aCoder.encode(posterImage, forKey: "posterImage")
+//        }
         if (videoPath != nil) {
             aCoder.encode(videoPath, forKey: "videoPath")
         }
         if audioPath != nil {
             aCoder.encode(audioPath, forKey: "audioPath")
+        }
+        if mixVideoPath != nil {
+            aCoder.encode(mixVideoPath, forKey: "mixVideoPath")
         }
         aCoder.encode(duration, forKey: "duration")
     }
@@ -104,10 +127,11 @@ class PGAsset: NSObject, NSCoding {
     public required init?(coder aDecoder: NSCoder) {
         filePath = aDecoder.decodeObject(forKey: "filePath") as! String
         imageList = aDecoder.decodeObject(forKey: "imageList") as! [PGImage]
-        posterImage = aDecoder.decodeObject(forKey: "posterImage") as? URL
+//        posterImage = aDecoder.decodeObject(forKey: "posterImage") as? URL
         videoPath = aDecoder.decodeObject(forKey: "videoPath") as? String
         duration = aDecoder.decodeDouble(forKey: "duration")
         audioPath = aDecoder.decodeObject(forKey: "audioPath") as? String
+        mixVideoPath = aDecoder.decodeObject(forKey: "mixVideoPath") as? String
     }
 }
 

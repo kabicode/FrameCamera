@@ -48,8 +48,8 @@ class AudioRecordVC: BaseViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        stopRecording()
+    
+        recorderController.stopRecord()
         playerController.stopAudioFile()
         playerView.pause()
     }
@@ -214,7 +214,7 @@ class AudioRecordVC: BaseViewController {
         playerView.pause()
         if audioInfo.filePath.characters.count > 0 {
             recordFilePath = audioInfo.filePath
-            asset.audioPath = audioInfo.filePath
+            NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshLocalMusicList"), object: nil)
         }
     }
     
@@ -222,6 +222,8 @@ class AudioRecordVC: BaseViewController {
         if let filePath = recordFilePath {
             PGAudioFileHelper.deleteAudioFile(at: filePath)
             recordFilePath = nil
+            asset.audioPath = nil
+            NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshLocalMusicList"), object: nil)
         }
     }
     
