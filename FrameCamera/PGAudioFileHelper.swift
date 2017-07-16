@@ -27,7 +27,10 @@ class PGAudioFileHelper {
         
         let fileString = url as NSString
         let components = fileString.components(separatedBy: "/")
-        let fileName = components.last ?? "Empty"
+        var fileName = components.last ?? "Empty"
+        if !fileName.hasSuffix(".mp3") {
+            fileName = fileName + ".mp3"
+        }
         return audioDirectory + "/" + fileName
     }
 
@@ -41,7 +44,7 @@ class PGAudioFileHelper {
     static func downloadAudio(_ fileURL: String, compelete: ((_ audioPath: String?, _ success: Bool)->())?) {
         let filePath = PGAudioFileHelper.getFilePathFromURL(fileURL)
         Alamofire.download(fileURL) { _, _ in
-            return (URL(fileURLWithPath: filePath), .removePreviousFile)
+            return (URL(fileURLWithPath: filePath), .createIntermediateDirectories)
             }.response { response in
                 if let error = response.error {
                     printLog("Failed with error: \(error)")

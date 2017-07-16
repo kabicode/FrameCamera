@@ -33,7 +33,7 @@ struct Router {
                         "data_type": 1,
                         "all": 1
                     ]
-                    return (.post, "/api/v1/backgrounds", parameters)
+                    return (.get, "/api/v1/backgrounds", parameters)
                 }
             }()
             
@@ -43,7 +43,7 @@ struct Router {
     
     
     
-    enum Camera {
+    enum Camera: URLRequestConvertible {
         
         case getBackgroundPosterList
         
@@ -55,7 +55,28 @@ struct Router {
                         "data_type": 0,
                         "all": 1
                     ]
-                    return (.post, "/api/v1/backgrounds", parameters)
+                    return (.get, "/api/v1/backgrounds", parameters)
+                }
+            }()
+            
+            return try buildURLRequest(result)
+        }
+    }
+    
+    enum Audio: URLRequestConvertible {
+        
+        case getOnlineAudios
+        
+        func asURLRequest() throws -> URLRequest {
+            let result: (Alamofire.HTTPMethod, String, Parameters) = {
+                switch self {
+                case .getOnlineAudios:
+                    let parameters: Parameters = [
+                        "per": 20,
+                        "page": 1,
+                        "all": 1
+                    ]
+                    return (.get, "/api/v1/audios", parameters)
                 }
             }()
             

@@ -26,10 +26,9 @@ void main()
 	
 	rgb = colorConversionMatrix * yuv;
 
-    vec3 color;
-    color = rgb;
     
-    vec2 sampleCoord = texCoordVarying;
+    
+    
 //    if (texCoordVarying.x < -1.0) {
 //        sampleCoord.x = -1.0;
 //    }
@@ -45,9 +44,11 @@ void main()
 //    if (texCoordVarying.y > 1.0) {
 //        sampleCoord.y = 1.0;
 //    }
-    
-    vec4 bitmaodata = texture2D(SamplePNG, sampleCoordVarying);
+    vec2 sampleCoord = vec2(1.0 - sampleCoordVarying.x, 1.0 - sampleCoordVarying.y);
+    vec4 bitmaodata = texture2D(SamplePNG, sampleCoord);
 
+    vec3 color;
+    color = rgb;
     if(color.b-color.g>0.1 && color.b-color.r>0.1){
         color[0] = bitmaodata.r;
         color[1] = bitmaodata.g;

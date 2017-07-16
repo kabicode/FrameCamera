@@ -57,6 +57,9 @@ class CreateSnapShotViewController: BaseViewController {
     var doubleImageEnable: Bool = false
     var griddingEnable: Bool = false
     
+    var bgImage: CropBgImage?
+    
+    var dismissBlock: (()->())?
     
     // MARK: - Rotate
     override var shouldAutorotate: Bool {
@@ -146,7 +149,7 @@ class CreateSnapShotViewController: BaseViewController {
     func loadGriddingView() -> UIView {
         let griddingView = UIView()
         let count = 2
-        let lineColor = UIColor.black
+        let lineColor = UIColor(hex: 0xC5C5C7)
         
         for i in 0..<count {
             let rowLine = UIView()
@@ -185,13 +188,28 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     @IBAction func tapBarNextSetpButton(_ sender: Any) {
-        // TODO
+        guard isSingleShotMode == false, asset.imageList.count > 0 else {
+            showMessageNotifiaction("暂无照片，请拍摄后再点击下一步继续操作。", on: self)
+            return
+        }
         
+        if let nav = navigationController {
+            nav.dismiss(animated: true, completion: dismissBlock)
+            return
+        }
+        
+        dismiss(animated: true, completion: dismissBlock)
     }
     
     @IBAction func tapPhotoLibraryButton(_ sender: Any) {
-        // TODO
         let vc = CropImagePickViewController()
+        vc.selectedImage = bgImage
+        vc.selectedImageBlock = { [weak self] (selectedImage) in
+            self?.bgImage = selectedImage
+            if let view = self?.view as? LYOpenGLView, let image = selectedImage?.image {
+                view.setBgCropImage(image)
+            }
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -211,6 +229,7 @@ class CreateSnapShotViewController: BaseViewController {
             }
             
             let _ = strongSelf.asset.add(image)
+            strongSelf.doublePhotoImageView.image = image
         }
     }
     

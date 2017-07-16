@@ -59,6 +59,8 @@
 @interface ImagePaster : Paster
 
 @property (nonatomic, strong) NSString *imageName;
+@property (nonatomic, strong) NSString *imagePath;
+
 /**
  *  图片
  */

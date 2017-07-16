@@ -75,6 +75,7 @@ const GLfloat kColorConversion601FullRange[] = {
 
 @property GLuint program;
 @property (nonatomic , assign) GLuint myPNGTexture;
+@property (nonatomic, strong) UIImage *cropBgImage;
 
 - (void)setupBuffers;
 - (void)cleanUpTextures;
@@ -431,12 +432,16 @@ const GLfloat kColorConversion601FullRange[] = {
 
 - (void)setupPNGTexture {
     
-    NSString *fileName = @"for_test";
+    if (self.cropBgImage == nil) {
+        self.cropBgImage = [self imageWithColor:[UIColor greenColor]];
+    }
+//    NSString *fileName = @"for_test";
     
     // 1获取图片的CGImageRef
-    CGImageRef spriteImage = [UIImage imageNamed:fileName].CGImage;
+    CGImageRef spriteImage = self.cropBgImage.CGImage;
     if (!spriteImage) {
-        NSLog(@"Failed to load image %@", fileName);
+//        NSLog(@"Failed to load image %@", fileName);
+        NSLog(@"Failed to load image");
         exit(1);
     }
     
@@ -470,6 +475,25 @@ const GLfloat kColorConversion601FullRange[] = {
     glActiveTexture(GL_TEXTURE2);
     glBindTexture(GL_TEXTURE_2D, self.myPNGTexture);
     glUniform1i(uniforms[UNIFORM_SamplePNG], 2);
+}
+
+- (void)setBgCropImage:(UIImage *)image {
+    self.cropBgImage = image;
+    [self setupPNGTexture];
+}
+
+- (UIImage *)imageWithColor:(UIColor *)color {
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f); //宽高 1.0只要有值就够了
+    UIGraphicsBeginImageContext(rect.size); //在这个范围内开启一段上下文
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);//在这段上下文中获取到颜色UIColor
+    CGContextFillRect(context, rect);//用这个颜色填充这个上下文
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();//从这段上下文中获取Image属性,,,结束
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 #pragma mark -  OpenGL ES 2 shader compilation

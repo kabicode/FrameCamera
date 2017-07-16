@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PGFileHelper: NSObject {
 
@@ -25,7 +26,7 @@ class PGFileHelper: NSObject {
     // MARK: - Chartlets
     // 贴图文件夹
     static func getChartletsFilePath() -> String {
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let documentDirectory = getPingGuoFilePath()
         let chartletPath = "\(documentDirectory)/Chartlets"
         if self.fileExists(chartletPath) == false {
             do {
@@ -37,21 +38,39 @@ class PGFileHelper: NSObject {
         return chartletPath
     }
     
-    // MARK: - Audios
-    // 本地音乐文件夹
-    static func getLocalAudiosFilePath() -> String {
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let audioPath = "\(documentDirectory)/LocalAudios"
-        if self.fileExists(audioPath) == false {
-            do {
-                try FileManager.default.createDirectory(atPath: audioPath, withIntermediateDirectories: true, attributes: nil)
-            } catch {
-                print("\(audioPath) --- 创建文件夹路径失败 ---")
-            }
-        }
-        return audioPath
+    static func getChartletsFilePathFrom(url: String) -> String {
+        let filePath = getChartletsFilePath()
+        return filePath + "/" + url
     }
     
+    static func downloadChartlet(_ fileURL: String, compelete: ((_ imagePath: String?, _ success: Bool)->())?) {
+        let filePath = getChartletsFilePathFrom(url: fileURL)
+        if fileExists(filePath) {
+            compelete?(filePath, true)
+            return
+        }
+        
+        Alamofire.download(fileURL) { _, _ in
+            return (URL(fileURLWithPath: filePath), .createIntermediateDirectories)
+            }.response { response in
+                if let error = response.error {
+                    printLog("Failed with error: \(error)")
+                    // file exists
+                    if error._domain == NSCocoaErrorDomain && error._code == 516 {
+                        compelete?(filePath, true)
+                        return
+                    }
+                } else {
+                    compelete?(filePath, true)
+                    return
+                }
+                
+                compelete?(nil, false)
+        }
+    }
+    
+    // MARK: - Audios
+
     // MARK: - Asset Content
     // 生成主目录
     static func getPingGuoFilePath() -> String {

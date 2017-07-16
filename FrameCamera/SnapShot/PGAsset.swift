@@ -16,7 +16,7 @@ class PGAsset: NSObject, NSCoding {
     // 初始视频
     var videoPath: String?
     // 音频
-    var audioPath: String?
+    var audio: AudioModel?
     // 混合音视频
     var mixVideoPath: String?
     
@@ -115,8 +115,8 @@ class PGAsset: NSObject, NSCoding {
         if (videoPath != nil) {
             aCoder.encode(videoPath, forKey: "videoPath")
         }
-        if audioPath != nil {
-            aCoder.encode(audioPath, forKey: "audioPath")
+        if audio != nil {
+            aCoder.encode(audio, forKey: "audio")
         }
         if mixVideoPath != nil {
             aCoder.encode(mixVideoPath, forKey: "mixVideoPath")
@@ -130,7 +130,7 @@ class PGAsset: NSObject, NSCoding {
 //        posterImage = aDecoder.decodeObject(forKey: "posterImage") as? URL
         videoPath = aDecoder.decodeObject(forKey: "videoPath") as? String
         duration = aDecoder.decodeDouble(forKey: "duration")
-        audioPath = aDecoder.decodeObject(forKey: "audioPath") as? String
+        audio = aDecoder.decodeObject(forKey: "audio") as? AudioModel
         mixVideoPath = aDecoder.decodeObject(forKey: "mixVideoPath") as? String
     }
 }

@@ -31,7 +31,12 @@ class HomePageVC: BaseViewController {
         let asset = PGAsset(filePath: PGFileHelper.generateImageAssetFilePath())
         PGUserDefault.addAsset(asset)
         
-        let _ = CreateSnapShotViewController.presentFrom(self, with: asset)
+        let vc = CreateSnapShotViewController.presentFrom(self, with: asset)
+        vc.dismissBlock = { [weak self] in
+            let editVC = ImageAssetEditVC()
+            editVC.asset = asset
+            self?.navigationController?.pushViewController(editVC, animated: true)
+        }
     }
     
     @IBAction func tapPhotoLibraryButton(_ sender: Any) {

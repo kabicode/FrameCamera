@@ -51,6 +51,7 @@
 		8C7619B61F08F14400035F03 /* UIColor+ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */; };
 		8C888AE71F17F831008006BC /* HomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C888AE61F17F831008006BC /* HomePageVC.swift */; };
 		8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */; };
+		8CAF35A61F1A859400930A6F /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAF35A51F1A859400930A6F /* AudioModel.swift */; };
 		8CC9C0B81F128A0D006F9D81 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */; };
 		8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */; };
 		8CC9C0BC1F128D26006F9D81 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0BB1F128D26006F9D81 /* Config.swift */; };
@@ -61,13 +62,16 @@
 		8CE1BC9F1F0BCD7B001267B4 /* MyTextPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC9B1F0BCD7B001267B4 /* MyTextPasterItem.m */; };
 		8CE1BCA11F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */; };
 		8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */; };
+		8CE77E131F1B50810068025A /* CropBgImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E121F1B50810068025A /* CropBgImage.swift */; };
+		8CE77E151F1B5CE70068025A /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E141F1B5CE70068025A /* ImageHelper.swift */; };
+		8CE77E171F1B79FE0068025A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E161F1B79FE0068025A /* ProfileViewController.swift */; };
 		8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1161ECAF5BD0021D054 /* Main.storyboard */; };
 		8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1191ECAF5BD0021D054 /* Assets.xcassets */; };
 		8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7931ED27D120042BE25 /* BaseViewController.swift */; };
 		8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */; };
 		8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */; };
 		8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */; };
-		8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A31ED28EE10042BE25 /* ViewController.swift */; };
+		8E2BF7A61ED28EE10042BE25 /* AssetLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A31ED28EE10042BE25 /* AssetLibraryVC.swift */; };
 		8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */; };
 		8E3C2BD21F1324D800B1311C /* VIMVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C2BCF1F1324D800B1311C /* VIMVideoPlayer.m */; };
 		8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E3C2BD11F1324D800B1311C /* VIMVideoPlayerView.m */; };
@@ -155,6 +159,7 @@
 		8C7619B51F08F14400035F03 /* UIColor+ThemeColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIColor+ThemeColor.swift"; path = "../UIColor+ThemeColor.swift"; sourceTree = "<group>"; };
 		8C888AE61F17F831008006BC /* HomePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageVC.swift; sourceTree = "<group>"; };
 		8C93E0021F0E843000CA3EC2 /* PGVideoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGVideoHelper.swift; sourceTree = "<group>"; };
+		8CAF35A51F1A859400930A6F /* AudioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
 		8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		8CC9C0BB1F128D26006F9D81 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -169,6 +174,9 @@
 		8CE1BC9B1F0BCD7B001267B4 /* MyTextPasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTextPasterItem.m; sourceTree = "<group>"; };
 		8CE1BCA01F0BCDEC001267B4 /* ImageEffectEditVC+Paster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageEffectEditVC+Paster.swift"; sourceTree = "<group>"; };
 		8CE1BCA41F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageEffectEditVC+Paint.swift"; sourceTree = "<group>"; };
+		8CE77E121F1B50810068025A /* CropBgImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropBgImage.swift; sourceTree = "<group>"; };
+		8CE77E141F1B5CE70068025A /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		8CE77E161F1B79FE0068025A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E06F10F1ECAF5BD0021D054 /* PingGuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingGuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E06F1171ECAF5BD0021D054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E06F1191ECAF5BD0021D054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -178,7 +186,7 @@
 		8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationContorller.swift; sourceTree = "<group>"; };
 		8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSnapshotViewContorller.swift; sourceTree = "<group>"; };
 		8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8E2BF7A31ED28EE10042BE25 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "Supporting Files/ViewController.swift"; sourceTree = "<group>"; };
+		8E2BF7A31ED28EE10042BE25 /* AssetLibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetLibraryVC.swift; path = "Supporting Files/AssetLibraryVC.swift"; sourceTree = "<group>"; };
 		8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E3C2BCE1F1324D800B1311C /* VIMVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VIMVideoPlayer.h; path = VIMVideoPlayer/VIMVideoPlayer.h; sourceTree = "<group>"; };
 		8E3C2BCF1F1324D800B1311C /* VIMVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VIMVideoPlayer.m; path = VIMVideoPlayer/VIMVideoPlayer.m; sourceTree = "<group>"; };
@@ -240,7 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				8C05F2201F07A7CF00F5EEB6 /* views */,
-				8E2BF7A31ED28EE10042BE25 /* ViewController.swift */,
+				8E2BF7A31ED28EE10042BE25 /* AssetLibraryVC.swift */,
+				8CE77E161F1B79FE0068025A /* ProfileViewController.swift */,
 			);
 			name = AssetLibrary;
 			sourceTree = "<group>";
@@ -300,6 +309,7 @@
 		8C4F67D21F0D53FF00BBC8AC /* AudioEffectEdit */ = {
 			isa = PBXGroup;
 			children = (
+				8CAF35A41F1A858200930A6F /* Model */,
 				8C0EF93B1F16834A0017FA87 /* Views */,
 				8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */,
 				8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */,
@@ -378,10 +388,21 @@
 			name = testImage;
 			sourceTree = "<group>";
 		};
+		8CAF35A41F1A858200930A6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8CAF35A51F1A859400930A6F /* AudioModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8CC9C0B61F1289FA006F9D81 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8E2BF7921ED27CF30042BE25 /* Base */,
+				8C41A1BE1EFFF5B700431181 /* FileManager */,
 				8EBD03221F14B440000284C3 /* AudioPlayerHelper */,
+				8CE77E141F1B5CE70068025A /* ImageHelper.swift */,
 				8CC9C0B71F128A0D006F9D81 /* NetworkHelper.swift */,
 				8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */,
 				8CC9C0BB1F128D26006F9D81 /* Config.swift */,
@@ -442,8 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				8C6FAA731EF530CB005DCFCF /* Resource */,
-				8E2BF7921ED27CF30042BE25 /* Base */,
-				8C41A1BE1EFFF5B700431181 /* FileManager */,
 				8E5A0D1F1F06546100E0CDB0 /* HomePage */,
 				8E2BF79C1ED28DFE0042BE25 /* Camera */,
 				8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */,
@@ -527,6 +546,7 @@
 			children = (
 				8E5A0D161F05F71300E0CDB0 /* PGImage.swift */,
 				8E5A0D141F05F69000E0CDB0 /* PGAsset.swift */,
+				8CE77E121F1B50810068025A /* CropBgImage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -780,9 +800,10 @@
 				8C0EF9411F1688F00017FA87 /* AudioLibrarySectionHeaderView.swift in Sources */,
 				8C57F6781EED2E0A0086C8F7 /* UITextField+Validation.swift in Sources */,
 				8C57F6791EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift in Sources */,
+				8CE77E171F1B79FE0068025A /* ProfileViewController.swift in Sources */,
 				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
 				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
-				8E2BF7A61ED28EE10042BE25 /* ViewController.swift in Sources */,
+				8E2BF7A61ED28EE10042BE25 /* AssetLibraryVC.swift in Sources */,
 				8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
 				8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */,
@@ -792,6 +813,8 @@
 				8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */,
 				8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */,
 				8EBD031A1F1470E7000284C3 /* AudioRecordVC.swift in Sources */,
+				8CE77E151F1B5CE70068025A /* ImageHelper.swift in Sources */,
+				8CAF35A61F1A859400930A6F /* AudioModel.swift in Sources */,
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
 				8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
@@ -808,6 +831,7 @@
 				8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
 				8C888AE71F17F831008006BC /* HomePageVC.swift in Sources */,
+				8CE77E131F1B50810068025A /* CropBgImage.swift in Sources */,
 				8EBD03201F14B438000284C3 /* AudioPlayerController.swift in Sources */,
 				8EBD031D1F14B42F000284C3 /* AudioSessionHelper.swift in Sources */,
 				8C0EF9451F1696F30017FA87 /* PGFileHelper.swift in Sources */,

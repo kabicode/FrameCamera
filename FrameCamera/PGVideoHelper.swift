@@ -141,7 +141,7 @@ class PGVideoHelper: NSObject {
             return
         }
         
-        guard let audioPath = asset.audioPath else {
+        guard let audioPath = asset.audio?.filePath else {
             printLog("不存在音频文件")
             completionBlock(nil, nil, true)
             return

@@ -15,8 +15,11 @@
 
 @property (nonatomic , assign) BOOL isFullYUVRange;
 
+
 - (void)setupGL;
 - (void)displayPixelBuffer:(CVPixelBufferRef)pixelBuffer;
+
+- (void)setBgCropImage:(UIImage *)image;
 
 - (UIImage *)getGLScreenshot;
 

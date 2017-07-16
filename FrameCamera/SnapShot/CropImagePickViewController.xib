@@ -27,14 +27,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="795" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGk-ek-F0w">
-                            <rect key="frame" x="16" y="9" width="24" height="22"/>
+                            <rect key="frame" x="16" y="0.0" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="fqZ-4h-dL8"/>
+                            </constraints>
                             <state key="normal" image="barBack_icon"/>
                             <connections>
                                 <action selector="tapBarBackButton:" destination="-1" eventType="touchUpInside" id="HbQ-yc-Qzz"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuu-XI-Ugv">
-                            <rect key="frame" x="717" y="9" width="62" height="22"/>
+                            <rect key="frame" x="717" y="0.0" width="62" height="40"/>
                             <state key="normal" image="done_bar_button"/>
                             <connections>
                                 <action selector="tapDoneButton:" destination="-1" eventType="touchUpInside" id="xEE-mg-ZVF"/>
@@ -101,21 +104,21 @@
                     <color key="backgroundColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="bGk-ek-F0w" firstAttribute="leading" secondItem="SKV-XY-BAI" secondAttribute="leading" constant="16" id="4IT-x9-O0E"/>
-                        <constraint firstAttribute="bottom" secondItem="bGk-ek-F0w" secondAttribute="bottom" constant="9" id="7Og-eg-wHZ"/>
+                        <constraint firstAttribute="bottom" secondItem="bGk-ek-F0w" secondAttribute="bottom" id="7Og-eg-wHZ"/>
                         <constraint firstItem="zGu-qr-eFX" firstAttribute="centerX" secondItem="SKV-XY-BAI" secondAttribute="centerX" id="D6G-aj-lqZ"/>
                         <constraint firstAttribute="height" constant="40" id="Dxe-61-xOl"/>
                         <constraint firstItem="bGk-ek-F0w" firstAttribute="centerY" secondItem="SKV-XY-BAI" secondAttribute="centerY" id="GRS-jp-q5h"/>
                         <constraint firstAttribute="trailing" secondItem="vuu-XI-Ugv" secondAttribute="trailing" constant="16" id="I0V-9C-PoU"/>
-                        <constraint firstItem="bGk-ek-F0w" firstAttribute="top" secondItem="SKV-XY-BAI" secondAttribute="top" constant="9" id="Ptg-CU-w7v"/>
+                        <constraint firstItem="bGk-ek-F0w" firstAttribute="top" secondItem="SKV-XY-BAI" secondAttribute="top" id="Ptg-CU-w7v"/>
                         <constraint firstAttribute="bottom" secondItem="zGu-qr-eFX" secondAttribute="bottom" id="eww-rY-ta8"/>
-                        <constraint firstItem="vuu-XI-Ugv" firstAttribute="top" secondItem="SKV-XY-BAI" secondAttribute="top" constant="9" id="lvQ-b5-ocG"/>
-                        <constraint firstAttribute="bottom" secondItem="vuu-XI-Ugv" secondAttribute="bottom" constant="9" id="oPT-Kz-MG6"/>
+                        <constraint firstItem="vuu-XI-Ugv" firstAttribute="top" secondItem="SKV-XY-BAI" secondAttribute="top" id="lvQ-b5-ocG"/>
+                        <constraint firstAttribute="bottom" secondItem="vuu-XI-Ugv" secondAttribute="bottom" id="oPT-Kz-MG6"/>
                         <constraint firstItem="zGu-qr-eFX" firstAttribute="top" secondItem="SKV-XY-BAI" secondAttribute="top" id="tzk-VA-Tgd"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jQM-gf-Cgh">
                     <rect key="frame" x="0.0" y="40" width="795" height="355"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zDO-RM-odF">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>

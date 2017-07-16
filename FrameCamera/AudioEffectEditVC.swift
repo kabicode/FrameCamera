@@ -67,11 +67,12 @@ class AudioEffectEditVC: BaseViewController {
     func tapDoneBarButton() {
         if tabBarSelectedType == .recordAudioVC {
             audioRecordVC.stopRecording()
-            asset.audioPath = audioRecordVC.recordFilePath == nil ? nil: PGAudioFileHelper.getAuidoFilePathFromSandBoxPath(audioRecordVC.recordFilePath!)
+            asset.audio = audioRecordVC.recordFilePath == nil ? nil: AudioModel(audioFilePath: audioRecordVC.recordFilePath!)
         } else if tabBarSelectedType == .audioLibraryVC {
-            asset.audioPath = audioLibraryVC.selectedAudioPath == nil ? nil : PGAudioFileHelper.getAuidoFilePathFromSandBoxPath(audioLibraryVC.selectedAudioPath!)
+            asset.audio = audioLibraryVC.selectedAudio
         }
         
+        PGUserDefault.updateAsset(asset)
         navigationController?.popViewController(animated: true)
     }
     

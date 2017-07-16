@@ -81,7 +81,7 @@ extension NetworkHelper {
                     failureHandler?()
                     return
                 }
-                successHandler?(json)
+                successHandler?(json["Data"])
             case .failure(let error):
                 printLog("Error on \("response.request?.url?.absoluteString"): \(error)")
                 if showError {

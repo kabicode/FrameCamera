@@ -95,7 +95,6 @@ extension ImageEffectEditVC {
     }
     
     @IBAction func completePaintBoard(_ sender: Any) {
-        // TODO
         compoundPaintImage()
         paintView.isHidden = true;
         paintBoardView.removeFromSuperview()

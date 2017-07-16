@@ -169,51 +169,74 @@ class ImageAssetEditVC: BaseViewController {
             return
         }
         
-        if asset.videoPath == nil {
-            MBProgressHUD.showAdded(to: view, animated: true)
-            PGVideoHelper.generousOriginMovie(from: asset) {[weak self] (fileURL, duration) in
-                guard let StrongSelf = self else { return }
-                MBProgressHUD.hide(for: StrongSelf.view, animated: true)
-                
-                MBProgressHUD.showAdded(to: StrongSelf.view, animated: true)
-                PGVideoHelper.generousMixVideo(from: StrongSelf.asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
-                    if self != nil {
-                        MBProgressHUD.hide(for: self!.view, animated: true)
-                    }
-                    
-                    if success {
-                        self?.asset.mixVideoPath = mixVideoPath
-                        self?.pushToVideoPreviewVC()
-                    } else {
-                        showMessageNotifiaction("视频合成失败", on: self)
-                        return
-                    }
-                })
-            }
+        MBProgressHUD.showAdded(to: view, animated: true)
+        PGVideoHelper.generousOriginMovie(from: asset) {[weak self] (fileURL, duration) in
+            guard let StrongSelf = self else { return }
+            MBProgressHUD.hide(for: StrongSelf.view, animated: true)
             
-            return
-        } else {
-            
-            MBProgressHUD.showAdded(to: view, animated: true)
-            PGVideoHelper.generousMixVideo(from: asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
+            MBProgressHUD.showAdded(to: StrongSelf.view, animated: true)
+            PGVideoHelper.generousMixVideo(from: StrongSelf.asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
                 if self != nil {
                     MBProgressHUD.hide(for: self!.view, animated: true)
                 }
                 
                 if success {
                     self?.asset.mixVideoPath = mixVideoPath
-                    self?.pushToVideoPreviewVC()
+                    self?.pushToVideoPreviewVC(mode: .saveMode)
                 } else {
                     showMessageNotifiaction("视频合成失败", on: self)
                     return
                 }
             })
         }
+
+        
+//        if asset.videoPath == nil {
+//            MBProgressHUD.showAdded(to: view, animated: true)
+//            PGVideoHelper.generousOriginMovie(from: asset) {[weak self] (fileURL, duration) in
+//                guard let StrongSelf = self else { return }
+//                MBProgressHUD.hide(for: StrongSelf.view, animated: true)
+//                
+//                MBProgressHUD.showAdded(to: StrongSelf.view, animated: true)
+//                PGVideoHelper.generousMixVideo(from: StrongSelf.asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
+//                    if self != nil {
+//                        MBProgressHUD.hide(for: self!.view, animated: true)
+//                    }
+//                    
+//                    if success {
+//                        self?.asset.mixVideoPath = mixVideoPath
+//                        self?.pushToVideoPreviewVC()
+//                    } else {
+//                        showMessageNotifiaction("视频合成失败", on: self)
+//                        return
+//                    }
+//                })
+//            }
+//            
+//            return
+//        } else {
+//            
+//            MBProgressHUD.showAdded(to: view, animated: true)
+//            PGVideoHelper.generousMixVideo(from: asset, completionBlock: {[weak self] (mixVideoPath, url, success) in
+//                if self != nil {
+//                    MBProgressHUD.hide(for: self!.view, animated: true)
+//                }
+//                
+//                if success {
+//                    self?.asset.mixVideoPath = mixVideoPath
+//                    self?.pushToVideoPreviewVC()
+//                } else {
+//                    showMessageNotifiaction("视频合成失败", on: self)
+//                    return
+//                }
+//            })
+//        }
     }
     
-    func pushToVideoPreviewVC() {
+    func pushToVideoPreviewVC(mode: VideoPreviewVC.PreviewVCMode = .editMode) {
         let vc = VideoPreviewVC()
         vc.asset = self.asset
+        vc.vcMode = mode
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -242,8 +265,11 @@ extension ImageAssetEditVC: UICollectionViewDataSource {
         let pgImage = asset.imageList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageAssetPreviewCell", for: indexPath) as! imageAssetPreviewCell
         cell.configureCell(with: pgImage)
-//        cell.backgroundColor = UIColor.red
         cell.selectedCell(indexPath.row == selectedIndex)
+        if indexPath.row == selectedIndex {
+            previewImageView.image = pgImage.image
+        }
+        
         return cell
     }
 }

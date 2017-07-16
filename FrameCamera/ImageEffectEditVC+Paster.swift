@@ -59,12 +59,11 @@ extension ImageEffectEditVC {
         }
     }
     
-    func addImagePaster(with imageName: String, image: UIImage? = nil) {
-        // TODO
+    func addImagePaster(with imagePath: String, image: UIImage? = nil) {
         let imagePaster = ImagePaster()
-        imagePaster.imageName = imageName
+        imagePaster.imagePath = imagePath
         
-        imagePaster.image = image ?? UIImage(named: imageName)
+        imagePaster.image = image ?? UIImage(contentsOfFile: imagePath)
         addPaster(imagePaster)
     }
 
@@ -110,7 +109,6 @@ extension ImageEffectEditVC {
     }
     
     @IBAction func completeWordBoard(_ sender: UIButton) {
-        // TODO
         wordBoardView.removeFromSuperview()
         
         alert = UIAlertController.alert(title: "请输入贴图文字", message: nil, canCancel: true, cancelTitle: "取消", actionTitle: "确定") { [weak self] (action) in

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ImageEffectEditVC: BaseViewController {
 
@@ -82,6 +83,7 @@ class ImageEffectEditVC: BaseViewController {
     var asset: PGAsset!
     var pgImage: PGImage!
     var pasters: [Paster] = []
+    var pasterUrls: [String] = []
     
     
     // MARK: - Life Cycle
@@ -201,17 +203,24 @@ class ImageEffectEditVC: BaseViewController {
     
     // MARK: - NetWork
     func loadData() {
-        // TODO
         let request = Router.Chartlet.getChartletList
         NetworkHelper.sendNetworkRequest(request: request,
                                          showHUD: true,
                                          hudTip: nil,
                                          showError: true,
                                          on: self,
-                                         successHandler: { (json) in
-                                            
-            self.pasterCollectionView.reloadData()
-                                            
+                                         successHandler:
+            { (json) in
+                printLog("\(json)")
+                let jsonsArr = json["Data"].arrayValue
+                
+                self.pasterUrls.removeAll()
+                jsonsArr.forEach({ (json) in
+                    self.pasterUrls.append(json["Url"].stringValue)
+                })
+                
+                self.pasterCollectionView.reloadData()
+                
         }, failureHandler: nil)
         
     }
@@ -321,7 +330,7 @@ extension ImageEffectEditVC: UICollectionViewDelegateFlowLayout {
 extension ImageEffectEditVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.pasterCollectionView {
-            return 5
+            return pasterUrls.count
         }
         
         if collectionView == wordColorCollectionView || collectionView == paintColorCollectionView {
@@ -335,7 +344,9 @@ extension ImageEffectEditVC: UICollectionViewDataSource {
         
         if collectionView == self.pasterCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageAssetPreviewCell", for: indexPath) as! imageAssetPreviewCell
-            cell.imageView.image = UIImage(named: "paster_\(indexPath.row)")
+//            cell.imageView.image = UIImage(named: "paster_\(indexPath.row)")
+            let urlString = self.pasterUrls[indexPath.row]
+            cell.imageView.kf.setImage(with: URL(string: urlString))
             return cell
         }
         
@@ -384,8 +395,20 @@ extension ImageEffectEditVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == self.pasterCollectionView {
-            let name = "paster_\(indexPath.row)"
-            addImagePaster(with: name)
+            let urlStirng = pasterUrls[indexPath.row]
+            MBProgressHUD.showAdded(to: view, animated: true)
+            PGFileHelper.downloadChartlet(urlStirng, compelete: { [weak self] (imagePath, success) in
+                guard let strogSelf = self else { return }
+                MBProgressHUD.hide(for: strogSelf.view, animated: true)
+                
+                if let imagePath = imagePath, success {
+                    self?.addImagePaster(with: imagePath)
+                } else {
+                    showMessageNotifiaction("下载贴图失败")
+                }
+            })
+//            let name = "paster_\(indexPath.row)"
+//            addImagePaster(with: name)
         }
         
         if collectionView == wordColorCollectionView {

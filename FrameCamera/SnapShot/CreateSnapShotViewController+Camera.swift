@@ -101,23 +101,6 @@ extension CreateSnapShotViewController {
         guard greenCropEnable else {
             if let connection = self.stillImageOutput.connection(withMediaType: AVMediaTypeVideo) {
                 self.stillImageOutput.captureStillImageAsynchronously(from: connection, completionHandler: { (buffer, error) in
-//                    if let sampleBuffer = buffer {
-//                        if let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
-//                            let baseAddress = CVPixelBufferGetBaseAddress(imageBuffer)
-//                            let bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer)
-//                            let width = CVPixelBufferGetWidth(imageBuffer)
-//                            let height = CVPixelBufferGetHeight(imageBuffer)
-//                            
-//                            let colorSpace = CGColorSpaceCreateDeviceRGB()
-//                            let newContext = CGContext.init(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: CGBitmapInfo.byteOrder32Little.rawValue | CGImageAlphaInfo.premultipliedFirst.rawValue)
-////                            CGColorSpaceRelese(colorSpace)
-//                            if let cgImage = newContext?.makeImage() {
-//                                let image = UIImage.init(cgImage: cgImage, scale: UIScreen.main.scale, orientation: UIImageOrientation.right)
-//                                completion?(image, nil)
-//                            }
-//                        }
-//                        completion?(nil, nil)
-//                    }
                     
                     let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                     if let originImage = UIImage.init(data: data!) {

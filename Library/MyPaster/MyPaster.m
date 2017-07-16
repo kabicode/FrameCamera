@@ -213,7 +213,9 @@
 {
     //取消选中
     self.currentSelectPasterItem = nil;
-    return [self getImageFromView:_contentImageView];
+    UIImage *image = [self getImageFromView:_contentImageView];
+    return [self reSizeImage:image toSize:self.contentImageView.image.size];
+//    return ;
 }
 
 /**
@@ -488,6 +490,18 @@
     }
 }
 
+- (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize
+
+{
+    UIGraphicsBeginImageContext(CGSizeMake(reSize.width, reSize.height));
+    [image drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return reSizeImage;
+    
+}
+
 -(void)layoutSubviews
 {
     [super layoutSubviews];
@@ -593,14 +607,24 @@
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [super encodeWithCoder:aCoder];
-    
-    [aCoder encodeObject:self.imageName forKey:@"imageName"];
+    if (self.imageName) {
+        [aCoder encodeObject:self.imageName forKey:@"imageName"];
+    }
+    if (self.imagePath) {
+        [aCoder encodeObject:self.imagePath forKey:@"imagePath"];
+    }
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     self.imageName = [aDecoder decodeObjectForKey:@"imageName"];
-    self.image = [UIImage imageNamed:self.imageName];
+    self.imagePath = [aDecoder decodeObjectForKey:@"imagePath"];
+    UIImage *image;
+    if ((image = [UIImage imageNamed:self.imageName])) {
+        self.image = image;
+    } else {
+        self.image = [UIImage imageWithContentsOfFile:self.imagePath];
+    }
     
     return self;
 }

@@ -27,12 +27,16 @@ class AudioLibraryVC: BaseViewController {
     var asset: PGAsset!
     var audioLibraryType: AudioLibrarySelectType = .localAudio
     
-    var localAudioList: [String] = []
-    var recordAudioList: [String] = []
-    var onlineAudioList: [String] = []
+    var localAudioList: [AudioModel] = []
+    var recordAudioList: [AudioModel] = []
+    var onlineAudioList: [AudioModel] = []
     
-    var selectedAudioPath: String?
+    var selectedAudio: AudioModel?
     var shouldReloadList: Bool = false
+    
+    deinit {
+        print("")
+    }
     
     // MARK: - Life Cycle
     init() {
@@ -54,8 +58,6 @@ class AudioLibraryVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        selectedAudioPath = asset.audioPath != nil ? PGFileHelper.getSandBoxPath(with: asset.audioPath!): nil
         
         registerCells()
         
@@ -100,6 +102,8 @@ class AudioLibraryVC: BaseViewController {
     // MARK: - Notification
     func setupReloadFlag() {
         shouldReloadList = true
+        
+        reloadLocalList()
     }
     
     // MARK: - Actions
@@ -125,8 +129,7 @@ class AudioLibraryVC: BaseViewController {
     }
     
     func reloadData() {
-        selectedAudioPath = asset.audioPath != nil ? PGFileHelper.getSandBoxPath(with: asset.audioPath!): nil
-        
+        selectedAudio = asset.audio
         getOnlineAudioList()
         getLocalAudioList()
         getRecordAudioList()
@@ -136,56 +139,84 @@ class AudioLibraryVC: BaseViewController {
     }
     
     func reloadLocalList() {
-        selectedAudioPath = asset.audioPath != nil ? PGFileHelper.getSandBoxPath(with: asset.audioPath!): nil
-        
-        getOnlineAudioList()
+        selectedAudio = asset.audio
         getLocalAudioList()
+        getRecordAudioList()
         
         tableView.reloadData()
         tableView.mj_header.endRefreshing()
     }
     
     func getLocalAudioList() {
-        let list = PGAudioFileHelper.getLocalAudioFolderContentFiles()
-        localAudioList.removeAll()
         
-        for (_, name) in list.enumerated() {
-            let filePath = PGAudioFileHelper.getLocalAudiosFolderPath() + "/" + name
-            recordAudioList.append(filePath)
-        }
+        localAudioList = PGUserDefault.localAudios
+        
         print("localList -- \(localAudioList)")
     }
     
     func getRecordAudioList() {
-        let list = PGAudioFileHelper.getRecordAudioFolderContentFiles()
-        recordAudioList.removeAll()
-        
-        for (_, name) in list.enumerated() {
-            let filePath = PGAudioFileHelper.getRecordAudiosFolderPath() + "/" + name
-            recordAudioList.append(filePath)
-        }
-        print("recordList -- \(recordAudioList)")
+//        let list = PGAudioFileHelper.getRecordAudioFolderContentFiles()
+//        recordAudioList.removeAll()
+//        
+//        for (_, name) in list.enumerated() {
+//            let filePath = PGAudioFileHelper.getRecordAudiosFolderPath() + "/" + name
+//            recordAudioList.append(filePath)
+//        }
+//        print("recordList -- \(recordAudioList)")
+        recordAudioList = PGUserDefault.recordAudios
     }
     
     func getOnlineAudioList() {
-        
+        let request = Router.Audio.getOnlineAudios
+        NetworkHelper.sendNetworkRequest(request: request,
+                                         showHUD: true,
+                                         on: self,
+                                         successHandler:
+            { (json) in
+                let jsons = json["Data"].arrayValue
+                
+                self.onlineAudioList.removeAll()
+                jsons.forEach({ (json) in
+                    self.onlineAudioList.append(AudioModel.init(from: json))
+                })
+                self.tableView.reloadData()
+            
+        }, failureHandler: {
+        })
     }
     
-    func downLoadAudio(with urlString:String) {
+    func downLoadAudio(_ audio: AudioModel) {
+        
+        if localAudioList.contains(audio) {
+            selectedAudio = audio
+            tapMyMusicBtn(myMusicBtn)
+            return
+        }
         
         let hud = MBProgressHUD.showAdded(to: view, animated: true)
         hud.label.text = "下载中..."
         
-        MBProgressHUD.showAdded(to: view, animated: true)
-        PGAudioFileHelper.downloadAudio(urlString, compelete: { [weak self, weak hud] (audioPath, success) in
+        PGAudioFileHelper.downloadAudio(audio.url, compelete: { [weak self, weak hud] (audioPath, success) in
             hud?.hide(animated: true)
-            // TODO
+
             if success {
-                self?.asset.audioPath = PGAudioFileHelper.getAuidoFilePathFromSandBoxPath(audioPath!)
-                showMessageNotifiaction("下载音频成功", type: .success, on: self)
-                NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshLocalMusicList"), object: nil)
+                let path = PGAudioFileHelper.getAuidoFilePathFromSandBoxPath(audioPath!)
+                self?.asset.audio = audio
+                audio.filePath = path
+                self?.localAudioList.append(audio)
+                PGUserDefault.addLocalAudio(audio)
+                
+                if self != nil {
+                    showMessageNotifiaction("下载音频成功", type: .success, on: self)
+                    NotificationCenter.default.post(name: NSNotification.Name("ShouldRefreshLocalMusicList"), object: nil)
+                    self?.selectedAudio? = audio
+                    self?.tapMyMusicBtn((self?.myMusicBtn)!)
+                }
+                
             } else {
-                showMessageNotifiaction("下载音频失败", on: self)
+                if self != nil {
+                    showMessageNotifiaction("下载音频失败", on: self)
+                }
             }
         })
     }
@@ -243,14 +274,19 @@ extension AudioLibraryVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AudioFileCell") as! AudioFileCell
         if audioLibraryType == .localAudio {
             if indexPath.section == 0 {
-                cell.audioNameLabel.text = PGAudioFileHelper.getFileNameFromURL(recordAudioList[indexPath.row])
-                cell.selectedAudio(selectedAudioPath == recordAudioList[indexPath.row])
+                let audio = recordAudioList[indexPath.row]
+                cell.audioNameLabel.text = audio.title
+                cell.selectedAudio(selectedAudio == audio)
+                
             } else {
-                cell.audioNameLabel.text = PGAudioFileHelper.getFileNameFromURL(localAudioList[indexPath.row])
-                cell.selectedAudio(selectedAudioPath == localAudioList[indexPath.row])
+                let audio = localAudioList[indexPath.row]
+                cell.audioNameLabel.text = audio.title
+                cell.selectedAudio(selectedAudio == audio)
             }
+            
         } else if audioLibraryType == .onlineAudio {
-            cell.audioNameLabel.text = PGAudioFileHelper.getFileNameFromURL(onlineAudioList[indexPath.row])
+            let audio = onlineAudioList[indexPath.row]
+            cell.audioNameLabel.text = audio.title
             cell.selectedAudio(false)
         }
         return cell
@@ -261,13 +297,15 @@ extension AudioLibraryVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if audioLibraryType == .localAudio {
             if indexPath.section == 0 {
-                selectedAudioPath = recordAudioList[indexPath.row]
+                selectedAudio = recordAudioList[indexPath.row]
             } else {
-                selectedAudioPath = localAudioList[indexPath.row]
+                let audio = localAudioList[indexPath.row]
+                selectedAudio = audio
             }
             
         } else if audioLibraryType == .onlineAudio {
-            downLoadAudio(with: onlineAudioList[indexPath.row])
+            let audio = onlineAudioList[indexPath.row]
+            downLoadAudio(audio)
         }
         
         tableView.reloadData()

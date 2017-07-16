@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: BaseViewController {
+class AssetLibrary: BaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -51,7 +51,8 @@ class ViewController: BaseViewController {
     }
     
     func tapSettingButton() {
-        // TODO
+        let vc = ProfileViewController.loadFromStoryboard()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -78,7 +79,7 @@ class ViewController: BaseViewController {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension AssetLibrary: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return assetsArray.count
     }
@@ -97,7 +98,7 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension AssetLibrary: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 2 - 6
         let height = width * (UIScreen.main.bounds.width/UIScreen.main.bounds.height)
@@ -105,15 +106,22 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension AssetLibrary: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard (0 ..< assetsArray.count) ~= indexPath.row else {
             return
         }
         
         let asset = assetsArray[indexPath.row]
-        let vc = ImageAssetEditVC()
-        vc.asset = asset
-        navigationController?.pushViewController(vc, animated: true)
+        if asset.videoUrl != nil {
+            let vc = VideoPreviewVC()
+            vc.asset = asset
+            vc.vcMode = .editMode
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = ImageAssetEditVC()
+            vc.asset = asset
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
