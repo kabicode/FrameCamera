@@ -11,9 +11,42 @@ struct PGUserDefault {
     static let userDefaults = UserDefaults.standard
     
     // Keys
+    static let GreenCropEnableKey = "GreenCropEnableKey"
+    static let DoubleImageEnableKey = "DoubleImageEnableKey"
+    static let GriddingEnableKey = "GriddingEnableKey"
     static let AssetsArrayKey = "AssetsArrayKey"
     static let LocalAudioArrayKey = "LocalAudioArrayKey"
     static let RecordAudioArrayKey = "RecordAudioArrayKey"
+    
+    // camera setting key
+    static var greenCropEnable: Bool {
+        set {
+            userDefaults.set(newValue, forKey: GreenCropEnableKey)
+            userDefaults.synchronize()
+        }
+        get {
+            return userDefaults.value(forKey: GreenCropEnableKey) as? Bool ?? true
+        }
+    }
+    
+    static var doubleImageEnable: Bool {
+        set {
+            userDefaults.set(newValue, forKey: DoubleImageEnableKey)
+            userDefaults.synchronize()
+        }
+        get {
+            return userDefaults.value(forKey: DoubleImageEnableKey) as? Bool ?? true
+        }
+    }
+    static var griddingEnable: Bool {
+        set {
+            userDefaults.set(newValue, forKey: GriddingEnableKey)
+            userDefaults.synchronize()
+        }
+        get {
+            return userDefaults.value(forKey: GriddingEnableKey) as? Bool ?? true
+        }
+    }
     
     // Vaule
     static var assetsArray: [PGAsset] {
@@ -30,7 +63,11 @@ struct PGUserDefault {
     
     static func addAsset(_ asset: PGAsset) {
         var assetsArray = self.assetsArray
-        assetsArray.append(asset)
+        if assetsArray.count > 0 {
+            assetsArray.insert(asset, at: 0)
+        } else {
+            assetsArray.append(asset)
+        }
         self.assetsArray = assetsArray
     }
     
@@ -66,7 +103,11 @@ struct PGUserDefault {
     
     static func addLocalAudio(_ audio: AudioModel) {
         var localAudios = self.localAudios
-        localAudios.append(audio)
+        if localAudios.count > 0 {
+            localAudios.insert(audio, at: 0)
+        } else {
+            localAudios.append(audio)
+        }
         self.localAudios = localAudios
     }
     
@@ -88,7 +129,11 @@ struct PGUserDefault {
         let audio = AudioModel(audioFilePath: audioPath)
         
         if !recordAudios.contains(audio) {
-            recordAudios.append(audio)
+            if recordAudios.count > 0 {
+                recordAudios.insert(audio, at: 0)
+            } else {
+                recordAudios.append(audio)
+            }
             self.recordAudios = recordAudios
         }
     }

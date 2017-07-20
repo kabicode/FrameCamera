@@ -37,6 +37,22 @@ class VideoPreviewVC: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if playerView.playerView.player.isPlaying {
+            playerView.pause()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if playerView.readyToPlay && playerView.playedToEnd == false {
+            playerView.play()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,6 +73,7 @@ class VideoPreviewVC: BaseViewController {
         
         if let url = asset.videoUrl {
             playerView.setVideo(with: url)
+            playerView.delegate = self
         }
         
         setupButtons()
@@ -129,3 +146,14 @@ class VideoPreviewVC: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
 }
+
+extension VideoPreviewVC: PGPlayerViewProtocol {
+    func playerViewReadyToPlay(_ playerView: PGPlayerView) {
+        playerView.play()
+    }
+    
+    func playerViewDidReachEnd(_ playerView: PGPlayerView) {
+        
+    }
+}
+

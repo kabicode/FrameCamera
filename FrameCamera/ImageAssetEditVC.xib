@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -193,7 +193,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="442"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yuy-cB-lm3">
-                            <rect key="frame" x="12" y="121" width="351" height="200"/>
+                            <rect key="frame" x="0.0" y="121" width="375" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="pbI-Sy-Wza"/>
                             </constraints>
@@ -201,9 +201,9 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="Yuy-cB-lm3" secondAttribute="trailing" constant="12" id="BdU-nj-pVh"/>
+                        <constraint firstAttribute="trailing" secondItem="Yuy-cB-lm3" secondAttribute="trailing" id="BdU-nj-pVh"/>
                         <constraint firstItem="Yuy-cB-lm3" firstAttribute="centerY" secondItem="p3d-18-ofn" secondAttribute="centerY" id="Pjo-lf-K4W"/>
-                        <constraint firstItem="Yuy-cB-lm3" firstAttribute="leading" secondItem="p3d-18-ofn" secondAttribute="leading" constant="12" id="jAU-V2-GfZ"/>
+                        <constraint firstItem="Yuy-cB-lm3" firstAttribute="leading" secondItem="p3d-18-ofn" secondAttribute="leading" id="jAU-V2-GfZ"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNN-Ku-hDy">

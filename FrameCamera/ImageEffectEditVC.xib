@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -199,21 +199,21 @@
                     <rect key="frame" x="0.0" y="0.0" width="401" height="517"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSf-KG-bVo" customClass="MyPaster">
-                            <rect key="frame" x="12" y="158.5" width="377" height="200"/>
+                            <rect key="frame" x="0.0" y="158.5" width="401" height="200"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="4Dk-Rg-PXX"/>
                             </constraints>
                         </view>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-jJ-6Ka" customClass="DrawingView" customModule="PingGuo" customModuleProvider="target">
-                            <rect key="frame" x="12" y="158.5" width="377" height="200"/>
+                            <rect key="frame" x="0.0" y="158.5" width="401" height="200"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="KSf-KG-bVo" firstAttribute="leading" secondItem="Tw5-yx-Bqs" secondAttribute="leading" constant="12" id="HRt-fy-Izx"/>
-                        <constraint firstAttribute="trailing" secondItem="KSf-KG-bVo" secondAttribute="trailing" constant="12" id="LZm-cE-Tb8"/>
+                        <constraint firstItem="KSf-KG-bVo" firstAttribute="leading" secondItem="Tw5-yx-Bqs" secondAttribute="leading" id="HRt-fy-Izx"/>
+                        <constraint firstAttribute="trailing" secondItem="KSf-KG-bVo" secondAttribute="trailing" id="LZm-cE-Tb8"/>
                         <constraint firstItem="yHO-jJ-6Ka" firstAttribute="bottom" secondItem="KSf-KG-bVo" secondAttribute="bottom" id="UE9-Og-2pI"/>
                         <constraint firstItem="yHO-jJ-6Ka" firstAttribute="leading" secondItem="KSf-KG-bVo" secondAttribute="leading" id="bWP-Nn-PhM"/>
                         <constraint firstItem="yHO-jJ-6Ka" firstAttribute="trailing" secondItem="KSf-KG-bVo" secondAttribute="trailing" id="rnw-UE-0wV"/>

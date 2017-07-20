@@ -9,7 +9,9 @@
 import UIKit
 
 class PGAsset: NSObject, NSCoding {
-
+    // 创建时间
+    var createTime: String = ""
+    
     var filePath: String
     
     var imageList: [PGImage] = []
@@ -59,6 +61,9 @@ class PGAsset: NSObject, NSCoding {
     }
     
     init(filePath: String) {
+        let dateFormat = DateFormatter()
+        dateFormat.dateFormat = "yyyy-MM-dd"
+        createTime = dateFormat.string(from: Date())
         self.filePath = filePath
     }
     
@@ -107,6 +112,7 @@ class PGAsset: NSObject, NSCoding {
     
     
     public func encode(with aCoder: NSCoder) {
+        aCoder.encode(createTime, forKey: "createTime")
         aCoder.encode(filePath, forKey: "filePath")
         aCoder.encode(imageList, forKey: "imageList")
 //        if (posterImage != nil) {
@@ -125,6 +131,7 @@ class PGAsset: NSObject, NSCoding {
     }
     
     public required init?(coder aDecoder: NSCoder) {
+        createTime = aDecoder.decodeObject(forKey: "createTime") as? String ?? ""
         filePath = aDecoder.decodeObject(forKey: "filePath") as! String
         imageList = aDecoder.decodeObject(forKey: "imageList") as! [PGImage]
 //        posterImage = aDecoder.decodeObject(forKey: "posterImage") as? URL

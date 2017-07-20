@@ -49,7 +49,7 @@ void main()
 
     vec3 color;
     color = rgb;
-    if(color.b-color.g>0.1 && color.b-color.r>0.1){
+    if(color.g-color.b>0.1 && color.g-color.r>0.1){
         color[0] = bitmaodata.r;
         color[1] = bitmaodata.g;
         color[2] = bitmaodata.b;

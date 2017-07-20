@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w2s-Df-ms4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w2s-Df-ms4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,41 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsQ-te-ZYw">
-                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePS-lU-KVZ" customClass="DesignableButton" customModule="Spring">
-                                        <rect key="frame" x="112.5" y="14" width="150" height="36"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="36" id="J36-Ks-WRS"/>
-                                            <constraint firstAttribute="width" constant="150" id="Rbd-sL-uP5"/>
-                                        </constraints>
-                                        <state key="normal" title="创作"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="18"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="tapCreateButton:" destination="4YE-TG-Llh" eventType="touchUpInside" id="7qs-Ua-NOw"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.92549019607843142" green="0.92156862745098034" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="OlH-SU-Kma"/>
-                                    <constraint firstItem="ePS-lU-KVZ" firstAttribute="centerY" secondItem="JsQ-te-ZYw" secondAttribute="centerY" id="TiP-C0-zQy"/>
-                                    <constraint firstItem="ePS-lU-KVZ" firstAttribute="centerX" secondItem="JsQ-te-ZYw" secondAttribute="centerX" id="V4g-hZ-iQv"/>
-                                </constraints>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ziq-fD-uHM">
-                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="3" id="HZ4-7j-yuM">
                                     <size key="itemSize" width="186" height="147"/>
@@ -77,7 +44,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lln-0z-Yf0">
                                                     <rect key="frame" x="0.0" y="0.0" width="186" height="147"/>
                                                 </imageView>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03-22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-4u-QUr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03-22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYg-4u-QUr">
                                                     <rect key="frame" x="8" y="124.5" width="36" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,6 +62,7 @@
                                             <constraint firstItem="Lln-0z-Yf0" firstAttribute="leading" secondItem="xka-ff-vOV" secondAttribute="leading" id="vgh-bN-0Wz"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="createTimeLabel" destination="aYg-4u-QUr" id="YSX-lz-l1f"/>
                                             <outlet property="posterImageView" destination="Lln-0z-Yf0" id="gpA-WE-oru"/>
                                         </connections>
                                     </collectionViewCell>
@@ -107,13 +75,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JgS-cX-E5Y" firstAttribute="top" secondItem="ziq-fD-uHM" secondAttribute="bottom" id="EOX-RT-w6P"/>
                             <constraint firstItem="ziq-fD-uHM" firstAttribute="leading" secondItem="jiJ-oA-0Bw" secondAttribute="leading" id="HGz-gp-rbS"/>
-                            <constraint firstAttribute="bottom" secondItem="JsQ-te-ZYw" secondAttribute="bottom" id="SwK-Fg-Jap"/>
-                            <constraint firstItem="JsQ-te-ZYw" firstAttribute="leading" secondItem="jiJ-oA-0Bw" secondAttribute="leading" id="T2z-PV-P6W"/>
                             <constraint firstAttribute="trailing" secondItem="ziq-fD-uHM" secondAttribute="trailing" id="Ubj-qr-uOU"/>
                             <constraint firstItem="ziq-fD-uHM" firstAttribute="top" secondItem="PnS-gU-yNH" secondAttribute="bottom" id="ZQp-CM-1UZ"/>
-                            <constraint firstItem="JsQ-te-ZYw" firstAttribute="top" secondItem="ziq-fD-uHM" secondAttribute="bottom" id="cph-DQ-zh7"/>
-                            <constraint firstAttribute="trailing" secondItem="JsQ-te-ZYw" secondAttribute="trailing" id="tfJ-sQ-tVT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eTh-3D-pgs"/>

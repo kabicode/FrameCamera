@@ -17,7 +17,7 @@ extension ImageEffectEditVC {
     
     func configurePasterView() {
         myPaster.layoutIfNeeded()
-        pasterViewHeightConstraint.constant = (UIScreen.main.bounds.width - 24.0) / (UIScreen.main.bounds.height / UIScreen.main.bounds.width)
+        pasterViewHeightConstraint.constant = (UIScreen.main.bounds.width) / (UIScreen.main.bounds.height / UIScreen.main.bounds.width)
         
         myPaster.backgroundColor = UIColor.clear
         myPaster.deleteIcon = UIImage.init(named: "paster_delete")
