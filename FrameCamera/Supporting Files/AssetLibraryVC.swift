@@ -17,14 +17,13 @@ class AssetLibrary: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSubviews()
+        
         loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        setupSubviews()
         
         loadData()
     }
@@ -32,23 +31,23 @@ class AssetLibrary: BaseViewController {
     func setupSubviews() {
         title = "视频相册"
         
-        let rightItem = UIBarButtonItem.init(image: UIImage(named: "setting_white_btn")?.withRenderingMode(.alwaysOriginal),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(tapSettingButton))
-        navigationItem.rightBarButtonItem = rightItem
+//        let rightItem = UIBarButtonItem.init(image: UIImage(named: "setting_white_btn")?.withRenderingMode(.alwaysOriginal),
+//                                             style: .plain,
+//                                             target: self,
+//                                             action: #selector(tapSettingButton))
+//        navigationItem.rightBarButtonItem = rightItem
         
         
         collectionView.contentInset = UIEdgeInsets.init(top: 1, left: 1, bottom: 1, right: 1)
     }
     
     // MARK: - Actions
-    @IBAction func tapCreateButton(_ sender: Any) {
-        let asset = PGAsset(filePath: PGFileHelper.generateImageAssetFilePath())
-        PGUserDefault.addAsset(asset)
-        
-        let _ = CreateSnapShotViewController.presentFrom(self, with: asset)
-    }
+//    @IBAction func tapCreateButton(_ sender: Any) {
+//        let asset = PGAsset(filePath: PGFileHelper.generateImageAssetFilePath())
+//        PGUserDefault.addAsset(asset)
+//
+//        let _ = CreateSnapShotViewController.presentFrom(self, with: asset)
+//    }
     
     func tapSettingButton() {
         let vc = ProfileViewController.loadFromStoryboard()
@@ -100,7 +99,7 @@ extension AssetLibrary: UICollectionViewDataSource {
 
 extension AssetLibrary: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width / 2 - 6
+        let width = UIScreen.main.bounds.width / 2 - 3
         let height = width * (UIScreen.main.bounds.width/UIScreen.main.bounds.height)
         return CGSize(width: width, height: height)
     }

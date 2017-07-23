@@ -267,7 +267,10 @@ class ImageEffectEditVC: BaseViewController {
     
     // MARK: - Getter
     var colorMap: [UIColor] {
-        return [UIColor.white, UIColor.black, UIColor.yellow, UIColor.green]
+        return [UIColor.black, UIColor.darkGray, UIColor.gray,
+                UIColor.lightGray, UIColor.white, UIColor.red,
+                UIColor.green, UIColor.blue, UIColor.yellow,
+                UIColor.cyan, UIColor.magenta]
     }
 }
 

@@ -14,8 +14,6 @@ import OpenGLES
 
 class CreateSnapShotViewController: BaseViewController {
     
-    
-    
     var asset: PGAsset!
     
     // single shot Mode
@@ -124,6 +122,7 @@ class CreateSnapShotViewController: BaseViewController {
     
     // MARK: - UI Config
     func setupSubviews() {
+        nextStepButton.isHidden = true
         view.backgroundColor = UIColor.white
         
         view.addSubview(griddingView)
@@ -138,6 +137,10 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     func defaultSetting() {
+        greenCropEnable = PGUserDefault.greenCropEnable
+        doubleImageEnable = PGUserDefault.doubleImageEnable
+        griddingEnable = PGUserDefault.griddingEnable
+        
         greenCropSwith.isOn = greenCropEnable
         doubleImageSwitch.isOn = doubleImageEnable
         gridSwitch.isOn = griddingEnable
@@ -228,6 +231,7 @@ class CreateSnapShotViewController: BaseViewController {
                 return
             }
             
+            self?.nextStepButton.isHidden = false
             let _ = strongSelf.asset.add(image)
             strongSelf.doublePhotoImageView.image = image
         }
@@ -239,21 +243,23 @@ class CreateSnapShotViewController: BaseViewController {
     
     @IBAction func tapChangeBgSwitch(_ sender: UISwitch) {
         greenCropEnable = sender.isOn
+        PGUserDefault.greenCropEnable = greenCropEnable
         
         configurePreviewLayer()
     }
     
     @IBAction func tapDoubleImageSwitch(_ sender: UISwitch) {
         doubleImageEnable = sender.isOn
+        PGUserDefault.doubleImageEnable = doubleImageEnable
         
         configureDoubleImageView()
     }
     
     @IBAction func tapGriddingSwitch(_ sender: UISwitch) {
         griddingEnable = sender.isOn
+        PGUserDefault.griddingEnable = griddingEnable
         
         congfigureGriddingView()
-        
     }
     
     

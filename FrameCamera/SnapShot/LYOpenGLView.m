@@ -433,7 +433,7 @@ const GLfloat kColorConversion601FullRange[] = {
 - (void)setupPNGTexture {
     
     if (self.cropBgImage == nil) {
-        self.cropBgImage = [self imageWithColor:[UIColor greenColor]];
+        self.cropBgImage = [self imageWithColor:[UIColor whiteColor]];
     }
 //    NSString *fileName = @"for_test";
     

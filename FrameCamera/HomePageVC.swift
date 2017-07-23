@@ -46,6 +46,8 @@ class HomePageVC: BaseViewController {
     }
     
     @IBAction func tapAboutButton(_ sender: Any) {
+        let vc = ProfileViewController.loadFromStoryboard()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

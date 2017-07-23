@@ -310,6 +310,51 @@ extension AudioLibraryVC: UITableViewDelegate {
         
         tableView.reloadData()
     }
+    
+//    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+//        if audioLibraryType == .localAudio {
+//            return .delete
+//        }
+//        return .none
+//    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if audioLibraryType == .localAudio {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        if audioLibraryType == .localAudio {
+            return "删除"
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if audioLibraryType == .localAudio {
+            var audio: AudioModel
+            if indexPath.section == 0 {
+                audio = recordAudioList.remove(at: indexPath.row)
+                PGUserDefault.recordAudios = recordAudioList
+            } else {
+                audio = localAudioList.remove(at: indexPath.row)
+                PGUserDefault.localAudios = localAudioList
+            }
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
+            
+            if selectedAudio == audio {
+                selectedAudio = nil
+            }
+            
+            guard let filePath = audio.filePath else { return }
+            try? FileManager.default.removeItem(atPath: PGFileHelper.getSandBoxPath(with: filePath))
+        }
+    }
 }
 
 

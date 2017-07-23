@@ -34,6 +34,7 @@ class PGPlayerView: UIView {
     var originFrame: CGRect?
     
     var readyToPlay: Bool = false
+    var playedToEnd: Bool = false
     var currentSecond: Int = 0
     var videoDuration: Int = 0
     
@@ -82,6 +83,7 @@ class PGPlayerView: UIView {
 
     func play() {
         if readyToPlay && playerView.player.isPlaying == false {
+            playedToEnd = false
             playBgBlurView.isHidden = true
             playerView.player.play()
         }
@@ -247,7 +249,7 @@ extension PGPlayerView: VIMVideoPlayerViewDelegate {
 //        readyToPlay = false
         
         pause()
-        
+        playedToEnd = true
         delegate?.playerViewDidReachEnd(self)
     }
     

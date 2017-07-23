@@ -13,8 +13,11 @@ class VideoLibraryCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImageView: UIImageView!
     
+    @IBOutlet weak var createTimeLabel: UILabel!
+    
     func configureCell(with asset: PGAsset) {
         posterImageView.image = asset.posterImage
+        createTimeLabel.text = asset.createTime
     }
     
 }
