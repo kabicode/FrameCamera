@@ -38,22 +38,22 @@ extension CreateSnapShotViewController {
         }
         
         mCaptureDeviceOutput = AVCaptureVideoDataOutput()
-        mCaptureDeviceOutput.alwaysDiscardsLateVideoFrames = false
+        mCaptureDeviceOutput?.alwaysDiscardsLateVideoFrames = false
         
         mGLView.isFullYUVRange = true
-        mCaptureDeviceOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
-        mCaptureDeviceOutput.setSampleBufferDelegate(self, queue: mProcessQueue)
+        mCaptureDeviceOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+        mCaptureDeviceOutput?.setSampleBufferDelegate(self, queue: mProcessQueue)
         if mCaptureSession.canAddOutput(mCaptureDeviceOutput) {
             mCaptureSession.addOutput(mCaptureDeviceOutput)
         }
         
         stillImageOutput = AVCaptureStillImageOutput()
-        stillImageOutput.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+        stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
         if mCaptureSession.canAddOutput(self.stillImageOutput) {
             mCaptureSession.addOutput(self.stillImageOutput)
         }
         
-        let connection = mCaptureDeviceOutput.connection(withMediaType: AVMediaTypeVideo)
+        let connection = mCaptureDeviceOutput?.connection(withMediaType: AVMediaTypeVideo)
         connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
         
         mCaptureSession.startRunning()
@@ -61,7 +61,7 @@ extension CreateSnapShotViewController {
     
     
     func focesCamera(tap: UITapGestureRecognizer) {
-        if mCaptureDeviceInput.device.position == AVCaptureDevicePosition.front {
+        if mCaptureDeviceInput?.device.position == AVCaptureDevicePosition.front {
             return
         }
         
@@ -74,7 +74,7 @@ extension CreateSnapShotViewController {
     func focusAndExposeAtPoint(point: CGPoint) {
         self.mProcessQueue.async(execute: {
             
-            let device: AVCaptureDevice = self.mCaptureDeviceInput.device
+            let device: AVCaptureDevice = self.mCaptureDeviceInput!.device
             
             if ((try? device.lockForConfiguration()) != nil) {
                 if device.isFocusPointOfInterestSupported && device.isFocusModeSupported(AVCaptureFocusMode.autoFocus) {
@@ -99,8 +99,8 @@ extension CreateSnapShotViewController {
     func captureImage(completion:((_ image: UIImage?, _ error: NSError?) -> Void)?) {
         
         guard greenCropEnable else {
-            if let connection = self.stillImageOutput.connection(withMediaType: AVMediaTypeVideo) {
-                self.stillImageOutput.captureStillImageAsynchronously(from: connection, completionHandler: { (buffer, error) in
+            if let connection = self.stillImageOutput?.connection(withMediaType: AVMediaTypeVideo) {
+                self.stillImageOutput?.captureStillImageAsynchronously(from: connection, completionHandler: { (buffer, error) in
                     
                     let data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
                     if let originImage = UIImage.init(data: data!) {

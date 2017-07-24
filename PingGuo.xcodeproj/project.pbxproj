@@ -67,9 +67,10 @@
 		8CE77E171F1B79FE0068025A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E161F1B79FE0068025A /* ProfileViewController.swift */; };
 		8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1161ECAF5BD0021D054 /* Main.storyboard */; };
 		8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1191ECAF5BD0021D054 /* Assets.xcassets */; };
+		8E27B59C1F25FFE300995C98 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27B59B1F25FFE300995C98 /* UIImage+Color.swift */; };
 		8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7931ED27D120042BE25 /* BaseViewController.swift */; };
 		8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */; };
-		8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */; };
+		8E2BF79E1ED28E1C0042BE25 /* CreateSnapShotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF79D1ED28E1C0042BE25 /* CreateSnapShotViewController.swift */; };
 		8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */; };
 		8E2BF7A61ED28EE10042BE25 /* AssetLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A31ED28EE10042BE25 /* AssetLibraryVC.swift */; };
 		8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */; };
@@ -182,9 +183,10 @@
 		8E06F1191ECAF5BD0021D054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E06F1231ECAF5BD0021D054 /* PingGuoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingGuoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E06F12E1ECAF5BD0021D054 /* PingGuoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingGuoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E27B59B1F25FFE300995C98 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		8E2BF7931ED27D120042BE25 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationContorller.swift; sourceTree = "<group>"; };
-		8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSnapshotViewContorller.swift; sourceTree = "<group>"; };
+		8E2BF79D1ED28E1C0042BE25 /* CreateSnapShotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSnapShotViewController.swift; sourceTree = "<group>"; };
 		8E2BF7A11ED28EE10042BE25 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E2BF7A31ED28EE10042BE25 /* AssetLibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssetLibraryVC.swift; path = "Supporting Files/AssetLibraryVC.swift"; sourceTree = "<group>"; };
 		8E2BF7A71ED28EEE0042BE25 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				8C57F66E1EED2E0A0086C8F7 /* UITextField+Validation.swift */,
 				8C57F66F1EED2E0A0086C8F7 /* UIViewController+PlaceHolderView.swift */,
 				8C57F6701EED2E0A0086C8F7 /* URL+Extension.swift */,
+				8E27B59B1F25FFE300995C98 /* UIImage+Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -487,7 +490,7 @@
 			children = (
 				8E7BBAEC1F04F12000E6FB88 /* Model */,
 				8C57F6651EED24DB0086C8F7 /* View */,
-				8E2BF79D1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift */,
+				8E2BF79D1ED28E1C0042BE25 /* CreateSnapShotViewController.swift */,
 				8C6FAA631EF52532005DCFCF /* CreateSnapShotViewController+Camera.swift */,
 				8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */,
 				8C6869581EF822D800E20FE4 /* CropImagePickViewController.swift */,
@@ -804,6 +807,7 @@
 				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
 				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
 				8E2BF7A61ED28EE10042BE25 /* AssetLibraryVC.swift in Sources */,
+				8E27B59C1F25FFE300995C98 /* UIImage+Color.swift in Sources */,
 				8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,
 				8C57F6761EED2E0A0086C8F7 /* UIColor+Hex.swift in Sources */,
@@ -818,7 +822,7 @@
 				8C57F67A1EED2E0A0086C8F7 /* URL+Extension.swift in Sources */,
 				8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
-				8E2BF79E1ED28E1C0042BE25 /* CreateSnapshotViewContorller.swift in Sources */,
+				8E2BF79E1ED28E1C0042BE25 /* CreateSnapShotViewController.swift in Sources */,
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
 				8C0EF93E1F1683660017FA87 /* AudioFileCell.swift in Sources */,

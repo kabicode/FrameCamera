@@ -23,10 +23,10 @@ class CreateSnapShotViewController: BaseViewController {
     //负责输入和输出设备之间的数据传递
     var mCaptureSession: AVCaptureSession?
     //负责从AVCaptureDevice获得输入数据
-    var mCaptureDeviceInput: AVCaptureDeviceInput!
+    var mCaptureDeviceInput: AVCaptureDeviceInput?
  
-    var mCaptureDeviceOutput: AVCaptureVideoDataOutput!
-    var stillImageOutput: AVCaptureStillImageOutput!
+    var mCaptureDeviceOutput: AVCaptureVideoDataOutput?
+    var stillImageOutput: AVCaptureStillImageOutput?
     // OpenGL ES
     var mGLView: LYOpenGLView!
     
@@ -111,7 +111,6 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
-        self.view.layoutIfNeeded()
         
         configureCamera()
         

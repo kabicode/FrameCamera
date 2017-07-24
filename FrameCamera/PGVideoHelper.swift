@@ -18,7 +18,7 @@ typealias PGVideoMixVideoCompletion = ((_ mixVideoPath: String?, _ url: URL?, _ 
 
 class PGVideoHelper: NSObject {
     
-    static var fps: Int32 = 30
+    static var fps: Int32 = 100000
     
     // 生成视频名
     static func generateVideoFileName(at filePath: String) -> String {
@@ -62,7 +62,7 @@ class PGVideoHelper: NSObject {
             return
         }
         
-        let videoSettings:[String: Any] = [AVVideoCodecKey: AVVideoCodecH264,
+        let videoSettings:[String: Any] = [AVVideoCodecKey: AVVideoCodecJPEG,
                                            AVVideoWidthKey: Int(size.width),
                                            AVVideoHeightKey: Int(size.height)]
         

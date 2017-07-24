@@ -59,8 +59,8 @@ class PGPlayerView: UIView {
         playerView.layer.masksToBounds = true
         playerView.addSubview(controlBoardView)
         
-        videoProgress.isUserInteractionEnabled = false
-        videoProgress.setThumbImage(UIImage(), for: .normal)
+//        videoProgress.isUserInteractionEnabled = false
+        videoProgress.setThumbImage(UIImage(named: "doc"), for: .normal)
         
 //        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFullScreenButton))
 //        playerView.addGestureRecognizer(tap)
@@ -92,6 +92,7 @@ class PGPlayerView: UIView {
     func pause() {
         playBgBlurView.isHidden = false
         playerView.player.pause()
+//        playerView.player.seek(toTime: 1.0)
     }
     
     func reset() {

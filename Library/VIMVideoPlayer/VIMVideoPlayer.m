@@ -241,9 +241,8 @@ static void *VideoPlayer_PlayerItemLoadedTimeRangesContext = &VideoPlayer_Player
         }
         
         _seeking = YES;
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
+//            NSLog(@"%.f, %d, %d", CMTimeGetSeconds(cmTime), cmTime.value, cmTime.timescale);
             [self.player seekToTime:cmTime completionHandler:^(BOOL finished) {
                 
                 _isAtEndTime = NO;
