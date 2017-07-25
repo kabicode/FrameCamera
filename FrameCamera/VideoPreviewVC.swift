@@ -130,6 +130,14 @@ class VideoPreviewVC: BaseViewController {
         let vc = ImageAssetEditVC()
         vc.asset = asset
         navigationController?.pushViewController(vc, animated: true)
+        
+        delay(0.5) { [weak self] in
+            if let navigationVC = self?.navigationController {
+                if let index = navigationVC.viewControllers.index(of: self!) {
+                    navigationVC.viewControllers.remove(at: index)
+                }
+            }
+        }
     }
     
     // MARK: - Private Method

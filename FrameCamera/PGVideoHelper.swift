@@ -190,6 +190,7 @@ class PGVideoHelper: NSObject {
             // 设置输出路径
             exporter.outputURL = exportPath
             exporter.outputFileType = AVFileTypeMPEG4
+            exporter.shouldOptimizeForNetworkUse = true
             
             exporter.exportAsynchronously(completionHandler: {
                 switch exporter.status {
