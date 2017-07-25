@@ -84,7 +84,7 @@ class AudioRecordVC: BaseViewController {
         
         recorderController = AudioRecorderController()
         
-        playerController = AudioPlayerController()
+//        playerController = AudioPlayerController()
         playerController.delegate = self
     }
 

@@ -23,7 +23,7 @@ class AudioLibraryVC: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-    var playerController: AudioPlayerController = AudioPlayerController()
+    var playerController: AudioPlayerController!
     
     var asset: PGAsset!
     var audioLibraryType: AudioLibrarySelectType = .localAudio

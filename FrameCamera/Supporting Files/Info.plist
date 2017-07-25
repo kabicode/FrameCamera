@@ -49,5 +49,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>是否允许品果使用您的相机进行拍照？</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>是否允许品果使用您的麦克风进行录音？</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>是否允许品果访问您的相册？</string>
 </dict>
 </plist>

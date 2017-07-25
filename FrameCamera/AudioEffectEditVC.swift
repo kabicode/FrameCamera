@@ -17,6 +17,7 @@ class AudioEffectEditVC: BaseViewController {
     
     @IBOutlet weak var tabBar: UITabBar!
     
+    var playerController: AudioPlayerController!
     var audioLibraryVC: AudioLibraryVC!
     var audioRecordVC: AudioRecordVC!
     
@@ -36,6 +37,8 @@ class AudioEffectEditVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        playerController = AudioPlayerController()
+        
         setupSubView()
         
         tabBar.selectedItem = tabBar.items?.first
@@ -50,10 +53,12 @@ class AudioEffectEditVC: BaseViewController {
         
         audioLibraryVC = AudioLibraryVC()
         audioLibraryVC.asset = asset
+        audioLibraryVC.playerController = playerController
         addChildViewController(audioLibraryVC)
         
         audioRecordVC = AudioRecordVC()
         audioRecordVC.asset = asset
+        audioRecordVC.playerController = playerController
         addChildViewController(audioRecordVC)
         
         let rightItem = UIBarButtonItem.init(image: UIImage(named: "done_black_barbutton")?.withRenderingMode(.alwaysOriginal),
