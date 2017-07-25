@@ -18,7 +18,7 @@ typealias PGVideoMixVideoCompletion = ((_ mixVideoPath: String?, _ url: URL?, _ 
 
 class PGVideoHelper: NSObject {
     
-    static var fps: Int32 = 100000
+    static var fps: Int32 = 10
     
     // 生成视频名
     static func generateVideoFileName(at filePath: String) -> String {
@@ -101,14 +101,27 @@ class PGVideoHelper: NSObject {
                     }
                     
                     if (sampleBuffer != nil){
-                        if imageIndex > 0 {
-                            let pgImage = pgImages[imageIndex - 1]
-                            let presentTime = CMTimeMake(Int64(pgImage.duration * TimeInterval(fps)), fps)
-                            lastTime = CMTimeAdd(lastTime, presentTime)
-                        }
+                        let pgImage = pgImages[imageIndex];
+                        let frameCount = Int64(pgImage.duration * TimeInterval(fps))
                         
-                        bufferAdapter.append(sampleBuffer!, withPresentationTime: lastTime)
+                        for i in 0..<frameCount {
+                            let cmTime = CMTimeMake(i, fps)
+                            let presentTime = CMTimeAdd(lastTime, cmTime)
+                            while (writeInput.isReadyForMoreMediaData == false) {}
+                            bufferAdapter.append(sampleBuffer!, withPresentationTime: presentTime)
+                        }
+                        let presentTime = CMTimeMake(frameCount, fps)
+                        lastTime = CMTimeAdd(lastTime, presentTime)
                         imageIndex = imageIndex + 1
+                        
+                        //                        if imageIndex > 0 {
+                        //                            let pgImage = pgImages[imageIndex - 1]
+                        //                            let presentTime = CMTimeMake(Int64(pgImage.duration * TimeInterval(fps)), fps)
+                        //                            lastTime = CMTimeAdd(lastTime, presentTime)
+                        //                        }
+                        //
+                        //                        bufferAdapter.append(sampleBuffer!, withPresentationTime: lastTime)
+                        //                        imageIndex = imageIndex + 1
                     }
                 }
             }

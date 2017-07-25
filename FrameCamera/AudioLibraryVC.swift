@@ -23,6 +23,7 @@ class AudioLibraryVC: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
+    var playerController: AudioPlayerController = AudioPlayerController()
     
     var asset: PGAsset!
     var audioLibraryType: AudioLibrarySelectType = .localAudio
@@ -47,6 +48,12 @@ class AudioLibraryVC: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        playerController.stopAudioFile()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -185,6 +192,12 @@ class AudioLibraryVC: BaseViewController {
         })
     }
     
+    func playAudio(_ audio: AudioModel) {
+        guard let audioPath = audio.filePath else { return }
+        let filePath = PGFileHelper.getSandBoxPath(with: audioPath)
+        playerController.playAudioFile(at: filePath)
+    }
+    
     func downLoadAudio(_ audio: AudioModel) {
         
         if localAudioList.contains(audio) {
@@ -302,6 +315,7 @@ extension AudioLibraryVC: UITableViewDelegate {
                 let audio = localAudioList[indexPath.row]
                 selectedAudio = audio
             }
+            playAudio(selectedAudio!)
             
         } else if audioLibraryType == .onlineAudio {
             let audio = onlineAudioList[indexPath.row]
