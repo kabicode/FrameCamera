@@ -324,12 +324,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JG-9s-IxF">
                     <rect key="frame" x="0.0" y="107" width="413" height="75"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始编辑文字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhb-9L-xUU">
-                            <rect key="frame" x="157.5" y="27.5" width="98" height="20"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ub6-zE-t8X">
                             <rect key="frame" x="365" y="19.5" width="36" height="36"/>
                             <constraints>
@@ -352,15 +346,25 @@
                                 <action selector="closeWordBoard:" destination="-1" eventType="touchUpInside" id="oqB-tp-QBw"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jg-b9-qFF">
+                            <rect key="frame" x="157.5" y="21.5" width="98" height="32"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <state key="normal" title="开始编辑文字">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tapBeginEditTextPaster:" destination="-1" eventType="touchUpInside" id="3Za-SC-1Mg"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.1019607843" green="0.12941176469999999" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="ynm-Uk-pDD" firstAttribute="leading" secondItem="0JG-9s-IxF" secondAttribute="leading" constant="12" id="6Zl-qb-PXa"/>
                         <constraint firstItem="ub6-zE-t8X" firstAttribute="centerY" secondItem="0JG-9s-IxF" secondAttribute="centerY" id="AGa-kt-Hkf"/>
+                        <constraint firstItem="7jg-b9-qFF" firstAttribute="centerX" secondItem="0JG-9s-IxF" secondAttribute="centerX" id="HxP-fl-kpa"/>
                         <constraint firstAttribute="trailing" secondItem="ub6-zE-t8X" secondAttribute="trailing" constant="12" id="Nle-2e-TLR"/>
-                        <constraint firstItem="Mhb-9L-xUU" firstAttribute="centerY" secondItem="0JG-9s-IxF" secondAttribute="centerY" id="erh-wy-wvT"/>
+                        <constraint firstItem="7jg-b9-qFF" firstAttribute="centerY" secondItem="0JG-9s-IxF" secondAttribute="centerY" id="W0K-Rc-JiW"/>
                         <constraint firstAttribute="height" constant="75" id="igb-X7-cth"/>
-                        <constraint firstItem="Mhb-9L-xUU" firstAttribute="centerX" secondItem="0JG-9s-IxF" secondAttribute="centerX" id="qZU-KF-fRD"/>
                         <constraint firstItem="ynm-Uk-pDD" firstAttribute="centerY" secondItem="0JG-9s-IxF" secondAttribute="centerY" id="veS-n7-oCr"/>
                     </constraints>
                 </view>

@@ -39,7 +39,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-FrameCamera.xcscheme</key>
+		<key>Pods-PingGuo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,7 +72,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>109165210A68FEF81B1FC51CC3910ED3</key>
+		<key>1CE7636D6161016D1E1C5BC15C7D7D6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,12 +82,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>44330393039E42E1F4162007BC871240</key>
+		<key>5D4EC9FC12E0D37DE3706FE38500420E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61B96F1BF308BF514436217B6ED1714A</key>
+		<key>82E5B05985B45FF103A8F28E30CE8561</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +97,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90E29F089822573493BCD7965F2B2279</key>
+		<key>96A5B731ADE50DC4FC762B2E57D6A312</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>99D70F2178C90D6E21F2F8A09519F475</key>
+		<key>98C5ABDADDC9FB0CA5CF944B965933B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BF3CF902D1F2C02CBBAD55869A7145CC</key>
+		<key>C4944FEC314D1A66588651D006273ADE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4944FEC314D1A66588651D006273ADE</key>
+		<key>CBDC1C728F2CCE2B5F0D49136F6D072D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +132,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F822D9B6F4CF336E0F359F57E77F1963</key>
+		<key>F3456D23BE224612C3C08F351D323A56</key>
 		<dict>
 			<key>primary</key>
 			<true/>

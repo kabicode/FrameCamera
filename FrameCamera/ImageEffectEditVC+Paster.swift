@@ -108,9 +108,7 @@ extension ImageEffectEditVC {
         selectedBoardType(editBoardType)
     }
     
-    @IBAction func completeWordBoard(_ sender: UIButton) {
-        wordBoardView.removeFromSuperview()
-        
+    @IBAction func tapBeginEditTextPaster(_ sender: Any) {
         alert = UIAlertController.alert(title: "请输入贴图文字", message: nil, canCancel: true, cancelTitle: "取消", actionTitle: "确定") { [weak self] (action) in
             if let textField = self?.alert.textFields?.first {
                 guard let text = textField.text, text.characters.count > 0 else {
@@ -130,7 +128,10 @@ extension ImageEffectEditVC {
             textField.textColor = color
         }
         present(alert, animated: true, completion: nil)
-        
+    }
+    
+    @IBAction func completeWordBoard(_ sender: UIButton) {
+        wordBoardView.removeFromSuperview()
         
         editBoardType = .chartletBoard
         selectedBoardType(editBoardType)
@@ -148,7 +149,6 @@ extension ImageEffectEditVC: MyPasterDelegate {
         }
     }
     
-
     
     func myPaster(_ myPaster: MyPaster!, delete paster: Paster!) {
         if let index = pasters.index(of: paster) {

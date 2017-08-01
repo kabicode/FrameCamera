@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DB2D41A33397A92A7A16B38 /* Pods_PingGuo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E690F3CEB896D625C8888A7 /* Pods_PingGuo.framework */; };
 		8C05F21E1F07A49F00F5EEB6 /* PGUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */; };
 		8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F2211F07A8CA00F5EEB6 /* VideoLibraryCell.swift */; };
 		8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */; };
@@ -67,6 +68,7 @@
 		8CE77E171F1B79FE0068025A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E161F1B79FE0068025A /* ProfileViewController.swift */; };
 		8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1161ECAF5BD0021D054 /* Main.storyboard */; };
 		8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1191ECAF5BD0021D054 /* Assets.xcassets */; };
+		8E23FD471F305FB6004F50AC /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23FD461F305FB6004F50AC /* ShareHelper.swift */; };
 		8E27B59C1F25FFE300995C98 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E27B59B1F25FFE300995C98 /* UIImage+Color.swift */; };
 		8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7931ED27D120042BE25 /* BaseViewController.swift */; };
 		8E2BF7961ED27D220042BE25 /* BaseNavigationContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */; };
@@ -115,6 +117,8 @@
 /* Begin PBXFileReference section */
 		04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrameCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14F766317387E2E3EE2543D0 /* Pods-FrameCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.debug.xcconfig"; sourceTree = "<group>"; };
+		3AA246F95AB37A31CC5D5520 /* Pods-PingGuo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingGuo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo.debug.xcconfig"; sourceTree = "<group>"; };
+		5E690F3CEB896D625C8888A7 /* Pods_PingGuo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PingGuo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C05F21D1F07A49F00F5EEB6 /* PGUserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGUserDefault.swift; sourceTree = "<group>"; };
 		8C05F2211F07A8CA00F5EEB6 /* VideoLibraryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoLibraryCell.swift; sourceTree = "<group>"; };
 		8C05F2231F07B24400F5EEB6 /* ImageAssetEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAssetEditVC.swift; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 		8E06F1191ECAF5BD0021D054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E06F1231ECAF5BD0021D054 /* PingGuoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingGuoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E06F12E1ECAF5BD0021D054 /* PingGuoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PingGuoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E23FD461F305FB6004F50AC /* ShareHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareHelper.swift; sourceTree = "<group>"; };
 		8E27B59B1F25FFE300995C98 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		8E2BF7931ED27D120042BE25 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8E2BF7951ED27D220042BE25 /* BaseNavigationContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationContorller.swift; sourceTree = "<group>"; };
@@ -213,6 +218,7 @@
 		8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderController.swift; sourceTree = "<group>"; };
 		8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAudioFileHelper.swift; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
+		F2CB8DB81FCDEB833EF9008D /* Pods-PingGuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingGuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +232,7 @@
 				8C6FAA6C1EF52EA3005DCFCF /* GLKit.framework in Frameworks */,
 				8C6FAA6A1EF52E80005DCFCF /* OpenGLES.framework in Frameworks */,
 				DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */,
+				3DB2D41A33397A92A7A16B38 /* Pods_PingGuo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +417,7 @@
 				8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */,
 				8CC9C0BB1F128D26006F9D81 /* Config.swift */,
 				8CC9C0BD1F128F52006F9D81 /* Router.swift */,
+				8E23FD461F305FB6004F50AC /* ShareHelper.swift */,
 			);
 			name = Helper;
 			path = FrameCamera;
@@ -573,6 +581,7 @@
 				8C6FAA6B1EF52EA3005DCFCF /* GLKit.framework */,
 				8C6FAA691EF52E80005DCFCF /* OpenGLES.framework */,
 				04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */,
+				5E690F3CEB896D625C8888A7 /* Pods_PingGuo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -582,6 +591,8 @@
 			children = (
 				14F766317387E2E3EE2543D0 /* Pods-FrameCamera.debug.xcconfig */,
 				E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */,
+				3AA246F95AB37A31CC5D5520 /* Pods-PingGuo.debug.xcconfig */,
+				F2CB8DB81FCDEB833EF9008D /* Pods-PingGuo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -750,7 +761,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4917FDA98E7229E719C870D7 /* [CP] Copy Pods Resources */ = {
@@ -765,7 +776,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8F3B310611D01A37FA67F252 /* [CP] Check Pods Manifest.lock */ = {
@@ -832,6 +843,7 @@
 				8C05F21E1F07A49F00F5EEB6 /* PGUserDefault.swift in Sources */,
 				8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */,
 				8EBD03211F14B438000284C3 /* AudioRecorderController.swift in Sources */,
+				8E23FD471F305FB6004F50AC /* ShareHelper.swift in Sources */,
 				8C05F22E1F081A4900F5EEB6 /* ImageEffectEditVC.swift in Sources */,
 				8E2BF7941ED27D120042BE25 /* BaseViewController.swift in Sources */,
 				8C888AE71F17F831008006BC /* HomePageVC.swift in Sources */,
@@ -991,7 +1003,7 @@
 		};
 		8E06F1381ECAF5BD0021D054 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14F766317387E2E3EE2543D0 /* Pods-FrameCamera.debug.xcconfig */;
+			baseConfigurationReference = 3AA246F95AB37A31CC5D5520 /* Pods-PingGuo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1011,7 +1023,7 @@
 		};
 		8E06F1391ECAF5BD0021D054 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */;
+			baseConfigurationReference = F2CB8DB81FCDEB833EF9008D /* Pods-PingGuo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

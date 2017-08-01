@@ -24,5 +24,12 @@ target 'PingGuo' do
   pod 'PSTAlertController', '~> 1.2.0'
   # pod 'Fabric'
   # pod 'Crashlytics'
+  
+  pod 'ShareSDK3'
+  pod 'MOBFoundation_IDFA'
+  pod 'ShareSDK3/ShareSDKUI'
+  pod 'ShareSDK3/ShareSDKExtension'
+  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
+  pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
 
 end

@@ -5,7 +5,21 @@ PODS:
   - Kingfisher (3.6.2)
   - MBProgressHUD (1.0.0)
   - MJRefresh (3.1.12)
+  - MOBFoundation (2.2.19)
   - PSTAlertController (1.2.0)
+  - ShareSDK3 (3.6.3):
+    - MOBFoundation
+    - ShareSDK3/ShareSDK (= 3.6.3)
+  - ShareSDK3/ShareSDK (3.6.3):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKExtension (3.6.3):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo (3.6.3):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKPlatforms/WeChat (3.6.3):
+    - MOBFoundation
+  - ShareSDK3/ShareSDKUI (3.6.3):
+    - MOBFoundation
   - SnapKit (3.2.0)
   - Spring (1.0.3)
   - SwiftyJSON (3.1.4)
@@ -20,6 +34,11 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - PSTAlertController (~> 1.2.0)
+  - ShareSDK3
+  - ShareSDK3/ShareSDKExtension
+  - ShareSDK3/ShareSDKPlatforms/SinaWeibo
+  - ShareSDK3/ShareSDKPlatforms/WeChat
+  - ShareSDK3/ShareSDKUI
   - SnapKit
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftyJSON
@@ -48,13 +67,15 @@ SPEC CHECKSUMS:
   Kingfisher: 2c94e72c6830622c71d06adf4ea024c37d316830
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MOBFoundation: e962b2aee79e2b8f626e2d30c2f23e9f13e5331e
   PSTAlertController: 9b802dfbda54fee2683bfd6dda7023a6de895d5b
+  ShareSDK3: d271520113160eb24b31cd642b45b38fcd592d93
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   Toaster: 77c0b03d78e680bbbab0071c9c7ee392b0034010
   TSMessages: eb3cf27b6900684a21bad4fe9ea426e287b8c839
 
-PODFILE CHECKSUM: a44de9048c0f63416946d3e283bef4b41ecacd03
+PODFILE CHECKSUM: 3433e773e514be02634b584aca502053cd6aab74
 
 COCOAPODS: 1.2.1

@@ -114,6 +114,7 @@ class ImageEffectEditVC: BaseViewController {
         paintColorCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
     }
     
+    
     func defaultSetup() {
 //        pasters = NSMutableArray(array: pgImage.pasters) as! [Paster]
     }

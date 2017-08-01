@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -42,5 +43,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    // MARK: - ShareSDK
+    func registerShareSDK() {
+        ShareSDK.registerApp(
+            Config.ShareSDK.appKey,
+            activePlatforms: [
+                SSDKPlatformType.typeWechat.rawValue],
+//                SSDKPlatformType.typeSinaWeibo.rawValue,
+//                SSDKPlatformType.TypeQQ.rawValue],
+            onImport: { platformType in
+                switch platformType {
+                case SSDKPlatformType.typeWechat:
+                    ShareSDKConnector.connectWeChat(WXApi.self)
+//                case SSDKPlatformType.typeSinaWeibo:
+//                    ShareSDKConnector.connectWeibo(WeiboSDK.self)
+//                case SSDKPlatformType.TypeQQ:
+//                    ShareSDKConnector.connectQQ(QQApiInterface.self, tencentOAuthClass:TencentOAuth.self)
+                default:
+                    break
+                }
+        }, onConfiguration: { platformType, appInfo in
+            switch platformType {
+            case SSDKPlatformType.typeWechat:
+                appInfo?.ssdkSetupWeChat(
+                    byAppId: Config.Wechat.appId,
+                    appSecret: Config.Wechat.appSecret)
+//            case SSDKPlatformType.typeSinaWeibo:
+//                appInfo?.ssdkSetupSinaWeibo(
+//                    byAppKey: Config.SinaWeibo.appKey,
+//                    appSecret: Config.SinaWeibo.appSecret,
+//                    redirectUri: Config.SinaWeibo.redirectUrl,
+//                    authType:SSDKAuthTypeBoth)
+//            case SSDKPlatformType.TypeQQ:
+//                appInfo.SSDKSetupQQByAppId(
+//                    Config.QQ.appId,
+//                    appKey: Config.QQ.appKey,
+//                    authType: SSDKAuthTypeBoth)
+            default:
+                break
+            }
+        })
+    }
+
+    
 }
 
