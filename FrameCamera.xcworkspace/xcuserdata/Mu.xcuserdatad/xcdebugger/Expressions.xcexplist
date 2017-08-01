@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "__40-[VIMVideoPlayer seekToTime:completion:]_block_invoke:VIMVideoPlayer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "CMTimeGetSeconds(cmTime)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
