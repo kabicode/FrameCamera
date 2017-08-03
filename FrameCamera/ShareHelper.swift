@@ -7,8 +7,37 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 class ShareHelper {
+    func getUploadToken(_ completion:@escaping ((_ token: String) -> ())) {
+        let request = Router.Share.getUploadToken
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success:
+                guard let value = response.result.value else {
+                    showMessageNotifiaction("网络连接错误")
+                    return
+                }
+                
+                let json = JSON(value)
+                guard let uptoken = json["uptoken"].string else {
+                    showMessageNotifiaction("获取上传凭证失败")
+                    return
+                }
+                
+                completion(uptoken)
+            case .failure:
+                showMessageNotifiaction("网络连接错误")
+            }
+        }
+    }
+    
+    func uploadVideo(_ videoPath: String) {
+//        NetworkHelper.uploadRequest(urlPath: "", parameters: [], dataBodyParts: [], showHUD: <#T##Bool#>, hudTip: <#T##String?#>, showError: <#T##Bool#>, errorTip: <#T##String?#>, on: <#T##UIViewController?#>, successHandler: <#T##((JSON) -> Void)?##((JSON) -> Void)?##(JSON) -> Void#>, failureHandler: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+    }
+    
     func shareWithPlatformType(_ platformType: SSDKPlatformType) {
 //        var shareURLString = Config.Http.baseURL
 //        var shareDesc = ""
@@ -18,7 +47,7 @@ class ShareHelper {
 //        }
 //        let shareType: SSDKContentType = .auto
 //        let desc: String = shareDesc
-//        
+//
 //        let imageData = ImageHelper.scaleImage(posterImage, maximumSize: 32)!
 //        let image: UIImage
 //        if imageData.count > 32 * 1024 {
@@ -26,7 +55,7 @@ class ShareHelper {
 //        } else {
 //            image = UIImage(data: imageData)!
 //        }
-//        
+//
 //        let shareParameters = NSMutableDictionary()
 //        if platformType == .subTypeWechatSession ||
 //            platformType == .subTypeWechatTimeline {
@@ -43,7 +72,7 @@ class ShareHelper {
 //                type: shareType,
 //                forPlatformSubType: platformType)
 //        }
-//        
+//
 //        if platformType == .typeSinaWeibo {
 //            let text = "\(desc)"
 //            shareParameters.ssdkSetupSinaWeiboShareParams(
@@ -57,7 +86,7 @@ class ShareHelper {
 //                type: SSDKContentType.auto)
 //            shareParameters.ssdkEnableUseClientShare()
 //        }
-//        
+//
 //        ShareSDK.share(platformType, parameters: shareParameters) { (state, parameters, entity, error) in
 //            switch state {
 //            case .success:
@@ -71,6 +100,37 @@ class ShareHelper {
 //                break
 //            }
 //        }
+//
+//    }
+//
+//    func checkLecturePush() {
+//        let request = Router.Lecture.checkLecturePush(lectureId: lecture.id)
+//        NetworkHelper.sendNetworkRequest(
+//            request: request,
+//            showHUD: true,
+//            on: self,
+//            successHandler: { (json) in
+//                let canPush = json["data"]["can_push"].boolValue
+//                let pushTime = json["data"]["push_time"].intValue
+//                let pushMessage = json["data"]["msg"].stringValue
+//                let pushFormat = LectureDetailLocalizedString("lectureDetail.pushChannel.remainingPushTime", comment: "Remaining push time")
+//                let pushTimeTip = String(format: pushFormat, pushTime)
+//                if !canPush {
+//                    let alert = UIAlertController.okAlert(
+//                        title: pushMessage,
+//                        message: pushTimeTip)
+//                    self.present(alert, animated: true, completion: nil)
+//                } else {
+//                    let actionTitle = LectureDetailLocalizedString("lectureDetail.pushChannel.pushAction", comment: "Push")
+//                    let alert = UIAlertController.alert(
+//                        title: pushMessage,
+//                        message: pushTimeTip,
+//                        actionTitle: actionTitle) { (action) in
+//                            self.pushLecture()
+//                    }
+//                    self.present(alert, animated: true, completion: nil)
+//                }
+//        })
         
     }
 }

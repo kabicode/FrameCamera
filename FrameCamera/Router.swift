@@ -83,5 +83,21 @@ struct Router {
             return try buildURLRequest(result)
         }
     }
+    
+    enum Share: URLRequestConvertible {
+        case getUploadToken
+        
+        func asURLRequest() throws -> URLRequest {
+            let result: (Alamofire.HTTPMethod, String, Parameters) = {
+                switch self {
+                case .getUploadToken:
+                    let parameters: Parameters = [:]
+                    return (.get, "/api/v1/q_video_t", parameters)
+                }
+            }()
+            
+            return try buildURLRequest(result)
+        }
+    }
 }
 

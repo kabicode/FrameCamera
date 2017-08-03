@@ -94,7 +94,7 @@
 		8EBD03201F14B438000284C3 /* AudioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD031E1F14B438000284C3 /* AudioPlayerController.swift */; };
 		8EBD03211F14B438000284C3 /* AudioRecorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */; };
 		8EBD03241F14B5D8000284C3 /* PGAudioFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */; };
-		DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A155C1C3C2C12A99D26DBE /* Pods_FrameCamera.framework */; };
+		8ED9534B1F33188800D062E1 /* PGShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED953491F33188800D062E1 /* PGShareVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +217,7 @@
 		8EBD031E1F14B438000284C3 /* AudioPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerController.swift; sourceTree = "<group>"; };
 		8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderController.swift; sourceTree = "<group>"; };
 		8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAudioFileHelper.swift; sourceTree = "<group>"; };
+		8ED953491F33188800D062E1 /* PGShareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGShareVC.swift; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
 		F2CB8DB81FCDEB833EF9008D /* Pods-PingGuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingGuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,7 +232,6 @@
 				8C6FAA6E1EF52EBB005DCFCF /* QuartzCore.framework in Frameworks */,
 				8C6FAA6C1EF52EA3005DCFCF /* GLKit.framework in Frameworks */,
 				8C6FAA6A1EF52E80005DCFCF /* OpenGLES.framework in Frameworks */,
-				DD6371C799DD3114DF5B3ACB /* Pods_FrameCamera.framework in Frameworks */,
 				3DB2D41A33397A92A7A16B38 /* Pods_PingGuo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,7 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				8C6FAA731EF530CB005DCFCF /* Resource */,
-				8E5A0D1F1F06546100E0CDB0 /* HomePage */,
+				8E5A0D1F1F06546100E0CDB0 /* Common */,
 				8E2BF79C1ED28DFE0042BE25 /* Camera */,
 				8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */,
 				8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */,
@@ -544,12 +544,13 @@
 			name = ImageAssetEdit;
 			sourceTree = "<group>";
 		};
-		8E5A0D1F1F06546100E0CDB0 /* HomePage */ = {
+		8E5A0D1F1F06546100E0CDB0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				8C888AE61F17F831008006BC /* HomePageVC.swift */,
+				8ED953491F33188800D062E1 /* PGShareVC.swift */,
 			);
-			name = HomePage;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		8E7BBAEC1F04F12000E6FB88 /* Model */ = {
@@ -818,6 +819,7 @@
 				8C05F2221F07A8CA00F5EEB6 /* VideoLibraryCell.swift in Sources */,
 				8E5A0D151F05F69000E0CDB0 /* PGAsset.swift in Sources */,
 				8E2BF7A61ED28EE10042BE25 /* AssetLibraryVC.swift in Sources */,
+				8ED9534B1F33188800D062E1 /* PGShareVC.swift in Sources */,
 				8E27B59C1F25FFE300995C98 /* UIImage+Color.swift in Sources */,
 				8CE1BCA51F0C08AA001267B4 /* ImageEffectEditVC+Paint.swift in Sources */,
 				8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */,

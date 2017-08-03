@@ -48,7 +48,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uIK-Cv-CrZ">
                             <rect key="frame" x="589" y="0.0" width="62" height="40"/>
-                            <state key="normal" image="nextStep_button"/>
+                            <state key="normal" image="nextStep_Camera"/>
                             <connections>
                                 <action selector="tapBarNextSetpButton:" destination="-1" eventType="touchUpInside" id="gRv-ab-hcg"/>
                             </connections>
@@ -209,8 +209,8 @@
         <image name="barBack_icon" width="24" height="24"/>
         <image name="camera" width="60" height="60"/>
         <image name="camera_selected" width="60" height="60"/>
-        <image name="camera_setting" width="27" height="27"/>
-        <image name="nextStep_button" width="62" height="19"/>
-        <image name="photoLibrary" width="24" height="24"/>
+        <image name="camera_setting" width="35" height="36"/>
+        <image name="nextStep_Camera" width="62" height="23"/>
+        <image name="photoLibrary" width="35" height="28"/>
     </resources>
 </document>

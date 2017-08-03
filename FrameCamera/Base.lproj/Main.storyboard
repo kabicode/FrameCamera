@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w2s-Df-ms4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="w2s-Df-ms4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -236,7 +236,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5rv-Om-i1L" id="gcT-xX-eJN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应用版本" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ya2-n8-rYe">
@@ -264,7 +264,7 @@
                                         <rect key="frame" x="0.0" y="46" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GBo-nB-0CR" id="0XL-v0-enV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="把品果分享给朋友" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eYf-Nj-uan">
@@ -312,6 +312,125 @@
             </objects>
             <point key="canvasLocation" x="-303" y="896"/>
         </scene>
+        <!--Share View Controller-->
+        <scene sceneID="UrI-SW-paV">
+            <objects>
+                <viewController id="YNQ-73-9EF" customClass="PGShareViewController" customModule="PingGuo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9vM-Bm-hB0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ehf-2c-x0y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q3a-Ab-8Eg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2L-vF-MhT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="t7X-6O-rhN">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-FB-aHI" customClass="DesignableView" customModule="Spring">
+                                            <rect key="frame" x="67" y="170" width="240" height="100"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享至" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj2-M6-r4Z">
+                                                    <rect key="frame" x="95.5" y="23" width="49" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrP-eu-doF">
+                                                    <rect key="frame" x="25" y="56" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="bX4-ps-w0K"/>
+                                                        <constraint firstAttribute="width" constant="28" id="rhC-gB-VAK"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="weixin_icon"/>
+                                                    <connections>
+                                                        <action selector="tapWechatShare:" destination="YNQ-73-9EF" eventType="touchUpInside" id="Coo-Ab-zCr"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4C-Js-Idc">
+                                                    <rect key="frame" x="81" y="56" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="2mJ-iT-McX"/>
+                                                        <constraint firstAttribute="height" constant="28" id="sdz-3y-gWB"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="qq_icon"/>
+                                                    <connections>
+                                                        <action selector="tapQQShare:" destination="YNQ-73-9EF" eventType="touchUpInside" id="MEe-fc-ymw"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8g-IT-FVL">
+                                                    <rect key="frame" x="137" y="56" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="Evy-ha-OTJ"/>
+                                                        <constraint firstAttribute="height" constant="28" id="RdB-ou-p8i"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="sina_icon"/>
+                                                    <connections>
+                                                        <action selector="tapSinaShare:" destination="YNQ-73-9EF" eventType="touchUpInside" id="ksh-X9-ZUf"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="J4C-Js-Idc" secondAttribute="bottom" constant="16" id="4Cd-MV-zdR"/>
+                                                <constraint firstAttribute="bottom" secondItem="jrP-eu-doF" secondAttribute="bottom" constant="16" id="6GD-Ec-Kbp"/>
+                                                <constraint firstAttribute="width" constant="240" id="7wa-E1-uqk"/>
+                                                <constraint firstItem="dj2-M6-r4Z" firstAttribute="centerX" secondItem="7bb-FB-aHI" secondAttribute="centerX" id="QE4-vS-IV8"/>
+                                                <constraint firstAttribute="height" constant="100" id="eFi-XZ-EgT"/>
+                                                <constraint firstItem="dj2-M6-r4Z" firstAttribute="top" secondItem="7bb-FB-aHI" secondAttribute="top" constant="23" id="eYR-Ka-Udz"/>
+                                                <constraint firstItem="jrP-eu-doF" firstAttribute="leading" secondItem="7bb-FB-aHI" secondAttribute="leading" constant="25" id="fis-kx-Kb4"/>
+                                                <constraint firstItem="J4C-Js-Idc" firstAttribute="leading" secondItem="jrP-eu-doF" secondAttribute="trailing" constant="28" id="g6V-wM-BhL"/>
+                                                <constraint firstItem="Z8g-IT-FVL" firstAttribute="leading" secondItem="J4C-Js-Idc" secondAttribute="trailing" constant="28" id="oMn-58-FJI"/>
+                                                <constraint firstAttribute="bottom" secondItem="Z8g-IT-FVL" secondAttribute="bottom" constant="16" id="vbv-rx-fxT"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="9"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="7bb-FB-aHI" firstAttribute="centerX" secondItem="t7X-6O-rhN" secondAttribute="centerX" id="JfS-Fw-Kyh"/>
+                                        <constraint firstItem="7bb-FB-aHI" firstAttribute="centerY" secondItem="t7X-6O-rhN" secondAttribute="centerY" multiplier="0.68" id="Tzd-yS-mvy"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k2L-vF-MhT" firstAttribute="leading" secondItem="Q3a-Ab-8Eg" secondAttribute="leading" id="BHl-qa-eEa"/>
+                            <constraint firstItem="k2L-vF-MhT" firstAttribute="top" secondItem="9vM-Bm-hB0" secondAttribute="bottom" id="L4r-3b-DWf"/>
+                            <constraint firstAttribute="trailing" secondItem="k2L-vF-MhT" secondAttribute="trailing" id="SYv-uK-sMg"/>
+                            <constraint firstItem="ehf-2c-x0y" firstAttribute="top" secondItem="k2L-vF-MhT" secondAttribute="bottom" id="m2h-1c-uRF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="qqShareBtn" destination="J4C-Js-Idc" id="PXO-tF-Mbe"/>
+                        <outlet property="sinaShareBtn" destination="Z8g-IT-FVL" id="E4i-IO-Er0"/>
+                        <outlet property="wechatShareBtn" destination="jrP-eu-doF" id="k9h-xr-Wdi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsn-1l-0ZI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-303.19999999999999" y="1682.608695652174"/>
+        </scene>
     </scenes>
     <resources>
         <image name="HomePage_Bg" width="320" height="569"/>
@@ -320,6 +439,9 @@
         <image name="homepage_camera" width="80" height="87"/>
         <image name="homepage_guide" width="80" height="87"/>
         <image name="homepage_library" width="80" height="87"/>
+        <image name="qq_icon" width="24" height="24"/>
+        <image name="sina_icon" width="24" height="24"/>
         <image name="slogen" width="169" height="106"/>
+        <image name="weixin_icon" width="24" height="24"/>
     </resources>
 </document>
