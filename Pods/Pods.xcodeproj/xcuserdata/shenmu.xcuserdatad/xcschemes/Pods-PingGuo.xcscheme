@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0830"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "99D70F2178C90D6E21F2F8A09519F475"
-               BuildableName = "Pods_FrameCamera.framework"
-               BlueprintName = "Pods-FrameCamera"
+               BlueprintIdentifier = "04EB201D2791AECC8A1A67BFCC0919CC"
+               BuildableName = "Pods_PingGuo.framework"
+               BlueprintName = "Pods-PingGuo"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "99D70F2178C90D6E21F2F8A09519F475"
-            BuildableName = "Pods_FrameCamera.framework"
-            BlueprintName = "Pods-FrameCamera"
+            BlueprintIdentifier = "04EB201D2791AECC8A1A67BFCC0919CC"
+            BuildableName = "Pods_PingGuo.framework"
+            BlueprintName = "Pods-PingGuo"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "99D70F2178C90D6E21F2F8A09519F475"
-            BuildableName = "Pods_FrameCamera.framework"
-            BlueprintName = "Pods-FrameCamera"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

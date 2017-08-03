@@ -31,5 +31,7 @@ target 'PingGuo' do
   pod 'ShareSDK3/ShareSDKExtension'
   pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
   pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
+  
+  pod 'Qiniu', '~> 7.1.5'
 
 end

@@ -124,6 +124,9 @@ class VideoPreviewVC: BaseViewController {
     
     func tapShareVideoButton() {
         // TODO
+        let vc = PGShareViewController.loadFromStoryboard()
+        vc.asset = asset
+        present(vc, animated: true, completion: nil)
     }
     
     func tapEditVideoButton() {
