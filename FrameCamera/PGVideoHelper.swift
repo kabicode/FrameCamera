@@ -30,19 +30,28 @@ class PGVideoHelper: NSObject {
     
     //MARK: Public methods
     static func generousOriginMovie(from asset: PGAsset, completionBlock:@escaping PGVideoMakeCompletion) {
-        let videoPath = asset.videoPath ?? PGVideoHelper.generateVideoFileName(at: asset.filePath)
-        let sandboxPath = PGFileHelper.getSandBoxPath(with: videoPath)
-        if PGFileHelper.fileExists(sandboxPath) {
-            asset.videoPath = nil
-            PGFileHelper.removeItem(sandboxPath)
+        if let videoPath = asset.videoPath {
+            DispatchQueue.main.async {
+                let sandboxPath = PGFileHelper.getSandBoxPath(with: videoPath)
+                if PGFileHelper.fileExists(sandboxPath) {
+                    asset.videoPath = nil
+                    PGFileHelper.removeItem(sandboxPath)
+                }
+            }
         }
+        
+        let videoPath = PGVideoHelper.generateVideoFileName(at: asset.filePath)
+        let sandboxPath = PGFileHelper.getSandBoxPath(with: videoPath)
         
         PGVideoHelper.createMovie(videoPath: sandboxPath, pgImages: asset.imageList) { (fileURL, duration) in
             asset.videoPath = videoPath
             asset.duration = duration
             
             PGUserDefault.updateAsset(asset)
-            completionBlock(fileURL, duration)
+            let time = DispatchTime.now() + 0.35
+            DispatchQueue.main.asyncAfter(deadline: time, execute: { 
+                completionBlock(fileURL, duration)
+            })
         }
     }
     

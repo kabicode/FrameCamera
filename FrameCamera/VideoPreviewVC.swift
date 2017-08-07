@@ -55,7 +55,7 @@ class VideoPreviewVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let rightItem = UIBarButtonItem.init(image: UIImage(named: "deleteVideo_btn")?.withRenderingMode(.alwaysOriginal),
                                              style: .plain,
                                              target: self,
@@ -72,6 +72,9 @@ class VideoPreviewVC: BaseViewController {
         playerView.layoutIfNeeded()
         
         if let url = asset.videoUrl {
+            let exit = FileManager.default.fileExists(atPath: PGFileHelper.getSandBoxPath(with: asset.videoPath!))
+            let readable = FileManager.default.isReadableFile(atPath: PGFileHelper.getSandBoxPath(with: asset.videoPath!))
+            print("\(exit), \(readable)")
             playerView.setVideo(with: url)
             playerView.delegate = self
         }
@@ -123,8 +126,8 @@ class VideoPreviewVC: BaseViewController {
     }
     
     func tapShareVideoButton() {
-        // TODO
         let vc = PGShareViewController.loadFromStoryboard()
+        vc.modalPresentationStyle = .overFullScreen
         vc.asset = asset
         present(vc, animated: true, completion: nil)
     }
