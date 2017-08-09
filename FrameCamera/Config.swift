@@ -56,9 +56,9 @@ struct Config {
     }
     
     struct SinaWeibo {
-        static let appKey = "2828365896"
-        static let appSecret = "13c0b855d313ae5fb5d40becf33377c5"
-        static let redirectUrl = "https://m.weike.fm/account/auth_weibo"
+        static let appKey = "1662874591"
+        static let appSecret = "a8b7ad7b98eeda7924fceee47274ed7b"
+        static let redirectUrl = "http://www.sixiren.com"
     }
     
     struct QQ {
