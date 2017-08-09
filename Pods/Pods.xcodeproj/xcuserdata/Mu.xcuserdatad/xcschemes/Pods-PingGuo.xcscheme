@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "96A5B731ADE50DC4FC762B2E57D6A312"
+               BlueprintIdentifier = "04EB201D2791AECC8A1A67BFCC0919CC"
                BuildableName = "Pods_PingGuo.framework"
                BlueprintName = "Pods-PingGuo"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "96A5B731ADE50DC4FC762B2E57D6A312"
+            BlueprintIdentifier = "04EB201D2791AECC8A1A67BFCC0919CC"
             BuildableName = "Pods_PingGuo.framework"
             BlueprintName = "Pods-PingGuo"
             ReferencedContainer = "container:Pods.xcodeproj">

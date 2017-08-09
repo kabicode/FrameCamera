@@ -130,6 +130,8 @@ class VideoPreviewVC: BaseViewController {
         vc.modalPresentationStyle = .overFullScreen
         vc.asset = asset
         present(vc, animated: true, completion: nil)
+
+        return
     }
     
     func tapEditVideoButton() {

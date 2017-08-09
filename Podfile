@@ -26,12 +26,18 @@ target 'PingGuo' do
   # pod 'Crashlytics'
   
   pod 'ShareSDK3'
-#  pod 'MOBFoundation_IDFA'
+  pod 'MOBFoundation'
   pod 'ShareSDK3/ShareSDKUI'
   pod 'ShareSDK3/ShareSDKExtension'
   pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
   pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
-  
-  pod 'Qiniu', '~> 7.1.5'
+  pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+
+  pod 'Qiniu', ' ~> 7.1.5'
+
+#  pod 'UMengUShare/UI'
+#  pod 'UMengUShare/Social/Sina'
+#  pod 'UMengUShare/Social/WeChat'
+#  pod 'UMengUShare/Social/QQ'
 
 end

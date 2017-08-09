@@ -95,6 +95,13 @@
 		8EBD03211F14B438000284C3 /* AudioRecorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */; };
 		8EBD03241F14B5D8000284C3 /* PGAudioFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */; };
 		8ED9534B1F33188800D062E1 /* PGShareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED953491F33188800D062E1 /* PGShareVC.swift */; };
+		8EEFE78E1F399AE200D5159B /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFE78D1F399AE200D5159B /* libicucore.tbd */; };
+		8EEFE7901F399AE900D5159B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFE78F1F399AE900D5159B /* libz.tbd */; };
+		8EEFE7921F399AF100D5159B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFE7911F399AF100D5159B /* libstdc++.tbd */; };
+		8EEFE7941F399AF900D5159B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFE7931F399AF900D5159B /* JavaScriptCore.framework */; };
+		8EEFE7961F399B0200D5159B /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFE7951F399B0200D5159B /* ImageIO.framework */; };
+		8EEFE7981F399B0900D5159B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EEFE7971F399B0900D5159B /* libsqlite3.tbd */; };
+		8EEFE79A1F399F6900D5159B /* WechatAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEFE7991F399F6900D5159B /* WechatAPIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +225,13 @@
 		8EBD031F1F14B438000284C3 /* AudioRecorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorderController.swift; sourceTree = "<group>"; };
 		8EBD03231F14B5D8000284C3 /* PGAudioFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PGAudioFileHelper.swift; sourceTree = "<group>"; };
 		8ED953491F33188800D062E1 /* PGShareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGShareVC.swift; sourceTree = "<group>"; };
+		8EEFE78D1F399AE200D5159B /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		8EEFE78F1F399AE900D5159B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8EEFE7911F399AF100D5159B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		8EEFE7931F399AF900D5159B /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		8EEFE7951F399B0200D5159B /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		8EEFE7971F399B0900D5159B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		8EEFE7991F399F6900D5159B /* WechatAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WechatAPIManager.swift; sourceTree = "<group>"; };
 		E268213FE636F70BFCC60DAD /* Pods-FrameCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrameCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrameCamera/Pods-FrameCamera.release.xcconfig"; sourceTree = "<group>"; };
 		F2CB8DB81FCDEB833EF9008D /* Pods-PingGuo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PingGuo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,6 +241,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EEFE7981F399B0900D5159B /* libsqlite3.tbd in Frameworks */,
+				8EEFE7961F399B0200D5159B /* ImageIO.framework in Frameworks */,
+				8EEFE7941F399AF900D5159B /* JavaScriptCore.framework in Frameworks */,
+				8EEFE7921F399AF100D5159B /* libstdc++.tbd in Frameworks */,
+				8EEFE7901F399AE900D5159B /* libz.tbd in Frameworks */,
+				8EEFE78E1F399AE200D5159B /* libicucore.tbd in Frameworks */,
 				8C6FAA721EF53009005DCFCF /* AVFoundation.framework in Frameworks */,
 				8C6FAA701EF52FFB005DCFCF /* AssetsLibrary.framework in Frameworks */,
 				8C6FAA6E1EF52EBB005DCFCF /* QuartzCore.framework in Frameworks */,
@@ -418,6 +438,7 @@
 				8CC9C0BB1F128D26006F9D81 /* Config.swift */,
 				8CC9C0BD1F128F52006F9D81 /* Router.swift */,
 				8E23FD461F305FB6004F50AC /* ShareHelper.swift */,
+				8EEFE7991F399F6900D5159B /* WechatAPIManager.swift */,
 			);
 			name = Helper;
 			path = FrameCamera;
@@ -576,6 +597,12 @@
 		BF5B98A28183A27470D9514F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8EEFE7971F399B0900D5159B /* libsqlite3.tbd */,
+				8EEFE7951F399B0200D5159B /* ImageIO.framework */,
+				8EEFE7931F399AF900D5159B /* JavaScriptCore.framework */,
+				8EEFE7911F399AF100D5159B /* libstdc++.tbd */,
+				8EEFE78F1F399AE900D5159B /* libz.tbd */,
+				8EEFE78D1F399AE200D5159B /* libicucore.tbd */,
 				8C6FAA711EF53009005DCFCF /* AVFoundation.framework */,
 				8C6FAA6F1EF52FFB005DCFCF /* AssetsLibrary.framework */,
 				8C6FAA6D1EF52EBB005DCFCF /* QuartzCore.framework */,
@@ -804,6 +831,7 @@
 			files = (
 				8C57F6731EED2E0A0086C8F7 /* Int+Display.swift in Sources */,
 				8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */,
+				8EEFE79A1F399F6900D5159B /* WechatAPIManager.swift in Sources */,
 				8E3C2BD61F1325F800B1311C /* PGPlayerView.swift in Sources */,
 				8C93E0031F0E843000CA3EC2 /* PGVideoHelper.swift in Sources */,
 				8C05F2251F07B24400F5EEB6 /* ImageAssetEditVC.swift in Sources */,

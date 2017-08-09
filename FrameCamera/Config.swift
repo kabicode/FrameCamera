@@ -51,8 +51,8 @@ struct Config {
     
     // MARK: - Platform App Info
     struct Wechat {
-        static let appId = "wxe881d003ac768695"
-        static let appSecret = "95107f53d2291440cd64997c9ea1d2b6"
+        static let appId = "wx2dfce5a1e40bea4c"
+        static let appSecret = "72b402517bf01f7242be89982ab75ba2"
     }
     
     struct SinaWeibo {
@@ -62,12 +62,12 @@ struct Config {
     }
     
     struct QQ {
-        static let appId = "1105533377"
-        static let appKey = "DBxuL9Zb56gjPtrz"
+        static let appId = "1106234299"
+        static let appKey = "jLko89VLnjYc6U7E"
     }
     
     struct ShareSDK {
-        static let appKey = "1555fd997c180"
+        static let appKey = "2005f389af000"
     }
     
     struct SMSSDK {

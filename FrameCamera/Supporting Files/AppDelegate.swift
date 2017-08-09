@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        registerShareSDK()
+//        setupUmeng()
         return true
     }
     
@@ -42,23 +44,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        return handleAppOpenURLRequest(url)
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return handleAppOpenURLRequest(url)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return handleAppOpenURLRequest(url)
+    }
+    
+    func handleAppOpenURLRequest(_ url: URL) -> Bool {
+        guard let scheme = url.scheme else {
+            printLog("URL don't have scheme")
+            return false
+        }
+        
+        if scheme.hasPrefix("wx") {
+            return WXApi.handleOpen(url, delegate: WechatAPIManager.shareManager)
+        }
+        return false
+    }
+
 
     // MARK: - ShareSDK
     func registerShareSDK() {
         ShareSDK.registerApp(
             Config.ShareSDK.appKey,
             activePlatforms: [
-                SSDKPlatformType.typeWechat.rawValue],
-//                SSDKPlatformType.typeSinaWeibo.rawValue,
-//                SSDKPlatformType.TypeQQ.rawValue],
+                SSDKPlatformType.typeWechat.rawValue,
+                SSDKPlatformType.typeSinaWeibo.rawValue,
+                SSDKPlatformType.typeQQ.rawValue],
             onImport: { platformType in
                 switch platformType {
                 case SSDKPlatformType.typeWechat:
                     ShareSDKConnector.connectWeChat(WXApi.self)
-//                case SSDKPlatformType.typeSinaWeibo:
-//                    ShareSDKConnector.connectWeibo(WeiboSDK.self)
-//                case SSDKPlatformType.TypeQQ:
-//                    ShareSDKConnector.connectQQ(QQApiInterface.self, tencentOAuthClass:TencentOAuth.self)
+                case SSDKPlatformType.typeSinaWeibo:
+                    ShareSDKConnector.connectWeibo(WeiboSDK.self)
+                case SSDKPlatformType.typeQQ:
+                    ShareSDKConnector.connectQQ(QQApiInterface.self, tencentOAuthClass:TencentOAuth.self)
                 default:
                     break
                 }
@@ -68,23 +95,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 appInfo?.ssdkSetupWeChat(
                     byAppId: Config.Wechat.appId,
                     appSecret: Config.Wechat.appSecret)
-//            case SSDKPlatformType.typeSinaWeibo:
-//                appInfo?.ssdkSetupSinaWeibo(
-//                    byAppKey: Config.SinaWeibo.appKey,
-//                    appSecret: Config.SinaWeibo.appSecret,
-//                    redirectUri: Config.SinaWeibo.redirectUrl,
-//                    authType:SSDKAuthTypeBoth)
-//            case SSDKPlatformType.TypeQQ:
-//                appInfo.SSDKSetupQQByAppId(
-//                    Config.QQ.appId,
-//                    appKey: Config.QQ.appKey,
-//                    authType: SSDKAuthTypeBoth)
+            case SSDKPlatformType.typeSinaWeibo:
+                appInfo?.ssdkSetupSinaWeibo(
+                    byAppKey: Config.SinaWeibo.appKey,
+                    appSecret: Config.SinaWeibo.appSecret,
+                    redirectUri: Config.SinaWeibo.redirectUrl,
+                    authType:SSDKAuthTypeBoth)
+            case SSDKPlatformType.typeQQ:
+                appInfo?.ssdkSetupQQ(byAppId: Config.QQ.appId,
+                                     appKey: Config.QQ.appKey,
+                                     authType: SSDKAuthTypeBoth)
             default:
                 break
             }
         })
     }
-
+    
+    func setupUmeng() {
+//        let manager = PPShareManager.shareInstance()
+//        manager?.initShareConfig()
+    }
     
 }
 

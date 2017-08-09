@@ -33,7 +33,6 @@ class PGShareViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        qqShareBtn.isHidden = true
         sinaShareBtn.isHidden = true
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(dismissVC))
@@ -41,7 +40,7 @@ class PGShareViewController: BaseViewController {
     }
 
     @IBAction func tapWechatShare(_ sender: Any) {
-        shareTo(platform: .typeWechat)
+        shareTo(platform: .subTypeWechatSession)
     }
     
     @IBAction func tapQQShare(_ sender: Any) {

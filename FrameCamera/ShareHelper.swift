@@ -38,7 +38,7 @@ class ShareHelper {
     }
     
     static func shareWithPlatformType(_ platformType: SSDKPlatformType, shareURLString: String) {
-        let shareDesc = ""
+        let shareDesc = "品果视频分享"
         let title = "品果视频"
         let shareType: SSDKContentType = .auto
         let desc: String = shareDesc
@@ -51,8 +51,8 @@ class ShareHelper {
                 byText: desc,
                 title: title,
                 url: URL(string: shareURLString),
-                thumbImage: nil,
-                image: nil,
+                thumbImage: image,
+                image: image,
                 musicFileURL: nil,
                 extInfo: nil,
                 fileData: nil,
@@ -74,14 +74,26 @@ class ShareHelper {
                 type: SSDKContentType.auto)
             shareParameters.ssdkEnableUseClientShare()
         }
+        
+        if platformType == .typeQQ {
+            let text = desc
+            shareParameters.ssdkSetupQQParams(
+                byText: text,
+                title: title,
+                url: URL(string: shareURLString),
+                thumbImage: image,
+                image: image,
+                type: .auto,
+                forPlatformSubType: .subTypeQQFriend)
+        }
 
         ShareSDK.share(platformType, parameters: shareParameters) { (state, parameters, entity, error) in
             switch state {
             case .success:
-                let title = NSLocalizedString("share.successToShareTip", comment: "Success to Share Tip")
+                let title = "分享成功"
                 showToast(title)
             case .fail:
-                let title = NSLocalizedString("share.failToShareTip", comment: "Fail to Share Tip")
+                let title = "分享失败"
                 showToast(title)
                 printLog("\(String(describing: error))")
             default:
