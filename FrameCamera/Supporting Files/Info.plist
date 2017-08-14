@@ -67,6 +67,16 @@
 				<string>QQ41EFCBBB</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Weibo</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wb1662874591</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

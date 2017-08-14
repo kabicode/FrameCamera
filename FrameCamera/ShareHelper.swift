@@ -91,7 +91,7 @@ class ShareHelper {
             switch state {
             case .success:
                 let title = "分享成功"
-                showToast(title)
+                showMessageNotifiaction(title, type: .success, on: nil)
             case .fail:
                 let title = "分享失败"
                 showToast(title)

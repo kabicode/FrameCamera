@@ -33,7 +33,7 @@ class PGShareViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sinaShareBtn.isHidden = true
+//        sinaShareBtn.isHidden = true
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(dismissVC))
         view.addGestureRecognizer(tap)
