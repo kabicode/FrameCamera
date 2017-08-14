@@ -9,6 +9,7 @@
 import UIKit
 import Qiniu
 import MBProgressHUD
+import SwiftyJSON
 
 class PGShareViewController: BaseViewController {
     
@@ -69,31 +70,36 @@ class PGShareViewController: BaseViewController {
         ShareHelper.getUploadToken {[weak self, weak hud] (token) in
             hud?.hide(animated: true)
             
+            if self == nil {
+                return
+            }
+            
             guard let token = token else {
                 showMessageNotifiaction("网络错误")
                 return
             }
             
-            guard let videoPath = self?.asset.videoPath else {
+            guard let videoPath = self?.asset.videoSandBoxPath else {
                 showMessageNotifiaction("视频文件路径错误")
                 return
             }
             
-            let filePath = PGFileHelper.getSandBoxPath(with: videoPath)
-            
-            let components = videoPath.components(separatedBy: "/")
-            let key = components.last ?? "Empty"
+            let filePath = videoPath
             
             hud?.label.text = "上传中"
             hud?.show(animated: true)
             let manager = QNUploadManager()
-            manager?.putFile(filePath, key: key, token: token, complete: { (info, key, resp) in
+            manager?.putFile(filePath, key: nil, token: token, complete: { (info, key, resp) in
                 hud?.hide(animated: true)
+                
+                if self == nil {
+                    return
+                }
                 
                 print("\(String(describing: resp))", "\(String(describing: info?.statusCode))", "\(String(describing: info?.error))")
                 
-                let url = "http://" + info!.host + "/" + key!
-                let request = Router.Share.uploadVideoPath(videoPath: url, title: key!)
+                let key = (resp?["key"] as? String) ?? ""
+                let request = Router.Share.uploadQiNiuKey(key)
                 NetworkHelper.sendNetworkRequest(request: request, showHUD: true, hudTip: "上传中", successHandler: { (json) in
                     print("\(json)")
                     let url = json["Url"].stringValue

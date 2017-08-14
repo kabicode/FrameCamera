@@ -182,6 +182,7 @@ class ImageAssetEditVC: BaseViewController {
                 
                 if success {
                     self?.asset.mixVideoPath = mixVideoPath
+                    PGUserDefault.updateAsset(StrongSelf.asset)
                     self?.pushToVideoPreviewVC(mode: .saveMode)
                 } else {
                     showMessageNotifiaction("视频合成失败", on: self)

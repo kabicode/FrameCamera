@@ -60,6 +60,16 @@ class PGAsset: NSObject, NSCoding {
         return nil
     }
     
+    var videoSandBoxPath: String? {
+        if let mixVideoPath = self.mixVideoPath {
+            return PGFileHelper.getSandBoxPath(with: mixVideoPath)
+        }
+        else if let videoPath = self.videoPath {
+            return PGFileHelper.getSandBoxPath(with: videoPath)
+        }
+        return nil
+    }
+    
     init(filePath: String) {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = "yyyy-MM-dd"

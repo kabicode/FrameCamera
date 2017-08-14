@@ -86,7 +86,7 @@ struct Router {
     
     enum Share: URLRequestConvertible {
         case getUploadToken
-        case uploadVideoPath(videoPath: String, title: String)
+        case uploadQiNiuKey(String)
         
         func asURLRequest() throws -> URLRequest {
             let result: (Alamofire.HTTPMethod, String, Parameters) = {
@@ -94,9 +94,8 @@ struct Router {
                 case .getUploadToken:
                     let parameters: Parameters = [:]
                     return (.get, "/api/v1/q_video_t", parameters)
-                case .uploadVideoPath(let videoPath, let title):
-                    let parameters: Parameters = ["url": videoPath,
-                                                  "title": title]
+                case .uploadQiNiuKey(let key):
+                    let parameters: Parameters = ["url": key]
                     return (.post, "/api/v1/shares", parameters)
                 }
             }()
