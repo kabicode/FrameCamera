@@ -42,9 +42,10 @@ class ImageEffectEditVC: BaseViewController {
     // Time
     @IBOutlet var timeBoardView: UIView!
     @IBOutlet weak var timeSliderView: UISlider!
+    @IBOutlet weak var timeLabel: UILabel!
     
     var minDuration: TimeInterval = 0.1
-    var maxDuration: TimeInterval = 2.0
+    var maxDuration: TimeInterval = 5.0
     
     // Word
     @IBOutlet var wordBoardView: UIView!
@@ -292,10 +293,20 @@ extension ImageEffectEditVC {
     
     func configureTimeBoardView() {
         timeSliderView.value = Float((pgImage.duration - minDuration) / (maxDuration - minDuration))
+        timeLabel.text = timeBoardDurationText(pgImage.duration)
     }
     
     func saveTimeDuration() {
         pgImage.duration = TimeInterval(timeSliderView.value) * (maxDuration - minDuration) + minDuration
+    }
+    
+    func timeBoardDurationText(_ duration: TimeInterval) -> String {
+        return String(format: "时长：%.1fs", duration)
+    }
+    
+    @IBAction func timeSliderDidChange(_ sender: Any) {
+        let duration = TimeInterval(timeSliderView.value) * (maxDuration - minDuration) + minDuration
+        timeLabel.text = timeBoardDurationText(duration)
     }
     
     @IBAction func closeTimeBoard(_ sender: Any) {

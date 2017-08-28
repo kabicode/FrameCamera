@@ -28,6 +28,7 @@
                 <outlet property="pasterViewHeightConstraint" destination="4Dk-Rg-PXX" id="BOu-J7-c8l"/>
                 <outlet property="timeBoardView" destination="DDX-u7-5X0" id="1S6-sY-DPI"/>
                 <outlet property="timeImageView" destination="yqa-ut-HOe" id="0V5-hi-Ld3"/>
+                <outlet property="timeLabel" destination="0Vz-Ac-naV" id="b4C-Lb-85T"/>
                 <outlet property="timeSliderView" destination="zCO-Tb-1Fd" id="1fK-Nb-vdT"/>
                 <outlet property="timeTitleLabel" destination="9sJ-nJ-iYw" id="ugm-qG-298"/>
                 <outlet property="titleView" destination="yvQ-XO-xOM" id="Zqe-Ey-4AY"/>
@@ -282,37 +283,48 @@
                         <constraint firstItem="UqH-3q-gGM" firstAttribute="centerY" secondItem="N3k-TX-chl" secondAttribute="centerY" id="sKz-Ux-Fzm"/>
                     </constraints>
                 </view>
-                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zCO-Tb-1Fd">
-                    <rect key="frame" x="36" y="23" width="341" height="31"/>
-                    <color key="minimumTrackTintColor" red="0.96470588235294119" green="0.66274509803921566" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="thumbTintColor" red="0.96470588235294119" green="0.66274509803921566" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </slider>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="慢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD1-uB-7Gm">
-                    <rect key="frame" x="384" y="28" width="17" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pD1-uB-7Gm">
+                    <rect key="frame" x="401" y="56" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.67843137254901964" green="0.67843137254901964" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjd-Sc-72Z">
-                    <rect key="frame" x="12" y="28" width="17" height="20"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjd-Sc-72Z">
+                    <rect key="frame" x="12" y="56" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.67843137249999996" green="0.67843137249999996" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时长：-s" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vz-Ac-naV">
+                    <rect key="frame" x="178" y="8" width="57" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.29803921568627451" green="0.3411764705882353" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zCO-Tb-1Fd">
+                    <rect key="frame" x="14" y="41" width="385" height="31"/>
+                    <color key="minimumTrackTintColor" red="0.96470588235294119" green="0.66274509803921566" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="maximumTrackTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="thumbTintColor" red="0.96470588235294119" green="0.66274509803921566" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="timeSliderDidChange:" destination="-1" eventType="valueChanged" id="uga-An-rUi"/>
+                    </connections>
+                </slider>
             </subviews>
             <color key="backgroundColor" red="0.13725490196078433" green="0.1764705882352941" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="zCO-Tb-1Fd" secondAttribute="trailing" constant="38" id="4IB-MR-hRM"/>
+                <constraint firstItem="0Vz-Ac-naV" firstAttribute="centerX" secondItem="DDX-u7-5X0" secondAttribute="centerX" id="41h-ad-Qtr"/>
+                <constraint firstAttribute="trailing" secondItem="zCO-Tb-1Fd" secondAttribute="trailing" constant="16" id="4IB-MR-hRM"/>
                 <constraint firstItem="N3k-TX-chl" firstAttribute="leading" secondItem="DDX-u7-5X0" secondAttribute="leading" id="GJP-d8-w50"/>
-                <constraint firstItem="zCO-Tb-1Fd" firstAttribute="leading" secondItem="DDX-u7-5X0" secondAttribute="leading" constant="38" id="HJF-fu-CWd"/>
-                <constraint firstItem="N3k-TX-chl" firstAttribute="top" secondItem="zCO-Tb-1Fd" secondAttribute="bottom" constant="54" id="Ky3-OU-jQJ"/>
+                <constraint firstItem="zCO-Tb-1Fd" firstAttribute="leading" secondItem="DDX-u7-5X0" secondAttribute="leading" constant="16" id="HJF-fu-CWd"/>
+                <constraint firstItem="N3k-TX-chl" firstAttribute="top" secondItem="zCO-Tb-1Fd" secondAttribute="bottom" constant="36" id="Ky3-OU-jQJ"/>
                 <constraint firstAttribute="bottom" secondItem="N3k-TX-chl" secondAttribute="bottom" id="Vcz-Mt-T6J"/>
                 <constraint firstItem="fjd-Sc-72Z" firstAttribute="centerY" secondItem="zCO-Tb-1Fd" secondAttribute="centerY" id="gyC-lL-B7z"/>
                 <constraint firstItem="fjd-Sc-72Z" firstAttribute="leading" secondItem="DDX-u7-5X0" secondAttribute="leading" constant="12" id="opO-tb-JD8"/>
                 <constraint firstItem="pD1-uB-7Gm" firstAttribute="centerY" secondItem="zCO-Tb-1Fd" secondAttribute="centerY" id="qfn-z2-J2q"/>
                 <constraint firstAttribute="trailing" secondItem="N3k-TX-chl" secondAttribute="trailing" id="rGq-zJ-qSc"/>
                 <constraint firstAttribute="trailing" secondItem="pD1-uB-7Gm" secondAttribute="trailing" constant="12" id="uoq-97-Y5t"/>
+                <constraint firstItem="0Vz-Ac-naV" firstAttribute="top" secondItem="DDX-u7-5X0" secondAttribute="top" constant="8" id="xby-u4-Rs2"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="44.5" y="610"/>
