@@ -11,7 +11,7 @@ import UIKit
 class PGImage: NSObject, NSCoding {
 
     // 时长
-    var duration: TimeInterval = 1.0
+    var duration: TimeInterval = 0.1
 
     // 展示图片（优先级 编辑后图片 > 源图）
     var image: UIImage? {

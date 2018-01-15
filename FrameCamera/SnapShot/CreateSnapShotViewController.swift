@@ -220,6 +220,7 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     @IBAction func tapCameraButton(_ sender: Any) {
+        cameraButton.isEnabled = false;
         captureImage {[weak self] (image, error) in
             guard let strongSelf = self,
                   let image = image else { return }
@@ -233,6 +234,8 @@ class CreateSnapShotViewController: BaseViewController {
             self?.nextStepButton.isHidden = false
             let _ = strongSelf.asset.add(image)
             strongSelf.doublePhotoImageView.image = image
+            
+            strongSelf.cameraButton.isEnabled = true;
         }
     }
     

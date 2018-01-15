@@ -163,6 +163,8 @@ class ImageEffectEditVC: BaseViewController {
         
         saveEffectImageToPgImage()
         
+        saveTimeDuration()
+        
         myPaster.saveAllPasterParameters()
         
         PGUserDefault.updateAsset(asset)
