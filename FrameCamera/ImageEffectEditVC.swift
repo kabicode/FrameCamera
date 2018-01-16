@@ -157,13 +157,15 @@ class ImageEffectEditVC: BaseViewController {
     func tapDoneBarButton() {
         pgImage.pasters = pasters
         
+        saveEffectImageToPgImage()
+        
+        if editBoardType == .timeBoard && timeBoardView.superview != nil {
+            saveTimeDuration()
+        }
+        
         if editBoardType == .paintBoard {
             compoundPaintImage()
         }
-        
-        saveEffectImageToPgImage()
-        
-        saveTimeDuration()
         
         myPaster.saveAllPasterParameters()
         
