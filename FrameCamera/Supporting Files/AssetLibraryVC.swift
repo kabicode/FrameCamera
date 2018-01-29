@@ -112,15 +112,15 @@ extension AssetLibrary: UICollectionViewDelegate {
         }
         
         let asset = assetsArray[indexPath.row]
-        if asset.videoUrl != nil {
+//        if asset.videoUrl != nil {
             let vc = VideoPreviewVC()
             vc.asset = asset
             vc.vcMode = .editMode
             navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let vc = ImageAssetEditVC()
-            vc.asset = asset
-            navigationController?.pushViewController(vc, animated: true)
-        }
+//        } else {
+//            let vc = ImageAssetEditVC()
+//            vc.asset = asset
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
     }
 }

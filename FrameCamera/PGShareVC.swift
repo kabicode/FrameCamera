@@ -14,7 +14,7 @@ import SwiftyJSON
 class PGShareViewController: BaseViewController {
     
     enum ShareType {
-        case appStore
+        case app
         case video
     }
     
@@ -22,7 +22,7 @@ class PGShareViewController: BaseViewController {
     @IBOutlet weak var qqShareBtn: UIButton!
     @IBOutlet weak var sinaShareBtn: UIButton!
     
-    var asset: PGAsset!
+    var asset: PGAsset?
     var shareType: ShareType = .video
     
     static func loadFromStoryboard() -> PGShareViewController {
@@ -56,11 +56,18 @@ class PGShareViewController: BaseViewController {
     func shareTo(platform: SSDKPlatformType) {
         if shareType == .video {
             uploadVideo { [weak self] (url) in
-                ShareHelper.shareWithPlatformType(platform, shareURLString: url)
+                ShareHelper.shareWithPlatformType(platform,
+                                                  title:"品果视频",
+                                                  shareDesc:"品果视频分享",
+                                                  shareURLString: url)
                 self?.dismissVC()
             }
         } else {
-//            ShareHelper.shareWithPlatformType(platform, shareURLString: url)
+            ShareHelper.shareWithPlatformType(platform,
+                                              title:"我在用品果定格动画App",
+                                              shareDesc:"快下载来玩一下。",
+                                              shareURLString: "http://39.108.158.131/?from=groupmessage&isappinstalled=0")
+            self.dismissVC()
         }
     }
     
@@ -79,7 +86,7 @@ class PGShareViewController: BaseViewController {
                 return
             }
             
-            guard let videoPath = self?.asset.videoSandBoxPath else {
+            guard let videoPath = self?.asset?.videoSandBoxPath else {
                 showMessageNotifiaction("视频文件路径错误")
                 return
             }

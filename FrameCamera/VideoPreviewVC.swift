@@ -77,24 +77,35 @@ class VideoPreviewVC: BaseViewController {
             print("\(exit), \(readable)")
             playerView.setVideo(with: url)
             playerView.delegate = self
+            if vcMode == .saveMode {
+                saveVideo()
+            }
+        } else {
+            showMessageNotifiaction("未完成视频合成，暂无法播放", type: .error, on: self)
         }
         
         setupButtons()
     }
     
     func setupButtons() {
-        switch vcMode {
-        case .editMode:
-            firstBtn.setImage(UIImage(named:"editVideo_btn"), for: .normal)
-            firstBtn.setTitle("编辑", for: .normal)
-            firstBtn.addTarget(self, action: #selector(tapEditVideoButton), for: .touchUpInside)
-            secondBtn.addTarget(self, action: #selector(tapShareVideoButton), for: .touchUpInside)
-        case .saveMode:
-            firstBtn.setImage(UIImage(named:"saveVideo_btn"), for: .normal)
-            firstBtn.setTitle("保存", for: .normal)
-            firstBtn.addTarget(self, action: #selector(tapSaveVideoButton), for: .touchUpInside)
-            secondBtn.addTarget(self, action: #selector(tapShareVideoButton), for: .touchUpInside)
-        }
+//        switch vcMode {
+//        case .editMode:
+//            firstBtn.setImage(UIImage(named:"editVideo_btn"), for: .normal)
+//            firstBtn.setTitle("编辑", for: .normal)
+//            firstBtn.addTarget(self, action: #selector(tapEditVideoButton), for: .touchUpInside)
+//            secondBtn.addTarget(self, action: #selector(tapShareVideoButton), for: .touchUpInside)
+//        case .saveMode:
+//            break;
+//            firstBtn.setImage(UIImage(named:"saveVideo_btn"), for: .normal)
+//            firstBtn.setTitle("保存", for: .normal)
+//            firstBtn.addTarget(self, action: #selector(tapSaveVideoButton), for: .touchUpInside)
+//            secondBtn.addTarget(self, action: #selector(tapShareVideoButton), for: .touchUpInside)
+//        }
+        
+        firstBtn.setImage(UIImage(named:"editVideo_btn"), for: .normal)
+        firstBtn.setTitle("编辑", for: .normal)
+        firstBtn.addTarget(self, action: #selector(tapEditVideoButton), for: .touchUpInside)
+        secondBtn.addTarget(self, action: #selector(tapShareVideoButton), for: .touchUpInside)
     }
     
     // MARK: - Action
@@ -109,7 +120,7 @@ class VideoPreviewVC: BaseViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func tapSaveVideoButton() {
+    func saveVideo() {
         guard let _ = asset.videoUrl else {
             showMessageNotifiaction("视频不存在", on: self)
             return

@@ -48,7 +48,7 @@ class PGVideoHelper: NSObject {
             asset.duration = duration
             
             PGUserDefault.updateAsset(asset)
-            let time = DispatchTime.now() + 0.35
+            let time = DispatchTime.now() + 1.0
             DispatchQueue.main.asyncAfter(deadline: time, execute: { 
                 completionBlock(fileURL, duration)
             })

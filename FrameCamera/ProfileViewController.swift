@@ -45,5 +45,9 @@ class ProfileViewController: UITableViewController {
     // MARK: - Private Method
     func tapShareCell() {
         // TODO
+        let vc = PGShareViewController.loadFromStoryboard()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.shareType = .app
+        present(vc, animated: true, completion: nil)
     }
 }

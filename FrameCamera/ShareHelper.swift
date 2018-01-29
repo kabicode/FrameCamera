@@ -37,9 +37,10 @@ class ShareHelper {
         }
     }
     
-    static func shareWithPlatformType(_ platformType: SSDKPlatformType, shareURLString: String) {
-        let shareDesc = "品果视频分享"
-        let title = "品果视频"
+    static func shareWithPlatformType(_ platformType: SSDKPlatformType,
+                                      title: String,
+                                      shareDesc: String,
+                                      shareURLString: String) {
         let shareType: SSDKContentType = .auto
         let desc: String = shareDesc
         let image = UIImage(named:"ShareAppIcon")

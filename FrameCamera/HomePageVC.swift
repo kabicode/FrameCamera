@@ -10,6 +10,7 @@ import UIKit
 
 class HomePageVC: BaseViewController {
 
+    // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -40,6 +41,7 @@ class HomePageVC: BaseViewController {
     }
     
     @IBAction func tapPhotoLibraryButton(_ sender: Any) {
+        
     }
     
     @IBAction func tapGuideButton(_ sender: Any) {

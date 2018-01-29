@@ -62,11 +62,17 @@ class ImageAssetEditVC: BaseViewController {
     func setupSubviews() {
         previewImageView.layoutIfNeeded()
         previewImageHeightConstraint.constant = previewImageView.frame.width / (UIScreen.main.bounds.height / UIScreen.main.bounds.width)
+    
+        let btn = UIButton.init(type: .custom)
+        btn.backgroundColor = UIColor.init(hex: 0x606060)
+        btn.setTitle("合成", for: .normal)
+        btn.titleLabel?.font = UIFont.systemFont(ofSize: 12.0)
+        btn.frame = CGRect.init(x: 0, y: 0, width: 62.0, height: 19.0)
+        btn.layer.cornerRadius = btn.frame.height / 2.0
+        btn.layer.masksToBounds = true
+        btn.addTarget(self, action: #selector(tapNextStepButton), for: .touchUpInside)
         
-        let rightItem = UIBarButtonItem.init(image: UIImage(named: "nextStep_button")?.withRenderingMode(.alwaysOriginal),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(tapNextStepButton))
+        let rightItem = UIBarButtonItem.init(customView: btn)
         navigationItem.rightBarButtonItem = rightItem
     }
 
@@ -183,7 +189,7 @@ class ImageAssetEditVC: BaseViewController {
                 if success {
                     self?.asset.mixVideoPath = mixVideoPath
                     PGUserDefault.updateAsset(StrongSelf.asset)
-                    self?.pushToVideoPreviewVC(mode: .saveMode)
+                    self?.pushToVideoPreviewVC(mode: .editMode)
                 } else {
                     showMessageNotifiaction("视频合成失败", on: self)
                     return
