@@ -36,8 +36,8 @@ struct Config {
     static let environment: EnvironmentType = .release
     
     struct Http {
-        private static let debugBaseURL = "http://39.108.158.131"
-        private static let releaseBaseURL = "http://39.108.158.131"
+        private static let debugBaseURL = "http://sixiren.com/dg-app"
+        private static let releaseBaseURL = "http://sixiren.com/dg-app"
         
         static var baseURL: String {
             switch environment {

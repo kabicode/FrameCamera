@@ -66,7 +66,7 @@ class PGShareViewController: BaseViewController {
             ShareHelper.shareWithPlatformType(platform,
                                               title:"我在用品果定格动画App",
                                               shareDesc:"快下载来玩一下。",
-                                              shareURLString: "http://39.108.158.131/?from=groupmessage&isappinstalled=0")
+                                              shareURLString: Config.Http.baseURL + "/?from=groupmessage&isappinstalled=0")
             self.dismissVC()
         }
     }
