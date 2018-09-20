@@ -16,6 +16,14 @@
 @interface MOBFData : NSObject
 
 /**
+ 将一个NSData对象转换为NSString对象，处理由于结束符导致json解析错误问题
+
+ @param data 原始data
+ @return 处理后字符串
+ */
++ (NSString *)stringByData:(NSData *)data;
+
+/**
  *  使用HMAC-SHA1进行加密
  *
  *  @param data 原始数据
@@ -24,6 +32,15 @@
  *  @return 加密后数据
  */
 + (NSData *)hmacSha1Data:(NSData *)data forKey:(NSData *)key;
+
+/**
+ 使用HMAC-MD5进行签名
+
+ @param data 原始数据
+ @param key 密钥
+ @return 加密后数据
+ */
++ (NSData *)hmacMd5Data:(NSData *)data forKey:(NSData *)key;
 
 /**
  *  对数据进行MD5签名

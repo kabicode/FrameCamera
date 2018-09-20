@@ -18,7 +18,7 @@ class WechatAPIManager: NSObject, WXApiDelegate {
     weak var delegate: WechatAPIManagerDelegate?
     
     @objc func onResp(_ response: BaseResp!) {
-        if response.isKind(of: PayResp.self) {
+        if response.isKind(of: BaseResp.self) {
             switch response.errCode {
             case WXSuccess.rawValue:
                 printLog("Success to pay: \(response.errCode)")

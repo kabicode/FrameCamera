@@ -72,13 +72,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - ShareSDK
     func registerShareSDK() {
-        ShareSDK.registerApp(
-            Config.ShareSDK.appKey,
-            activePlatforms: [
-                SSDKPlatformType.typeWechat.rawValue,
-                SSDKPlatformType.typeSinaWeibo.rawValue,
-                SSDKPlatformType.typeQQ.rawValue],
-            onImport: { platformType in
+        ShareSDK.registerActivePlatforms([
+            SSDKPlatformType.typeWechat.rawValue,
+            SSDKPlatformType.typeSinaWeibo.rawValue,
+            SSDKPlatformType.typeQQ.rawValue], onImport: { platformType in
                 switch platformType {
                 case SSDKPlatformType.typeWechat:
                     ShareSDKConnector.connectWeChat(WXApi.self)
@@ -109,6 +106,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
             }
         })
+//        ShareSDK.registerApp(
+//            Config.ShareSDK.appKey,
+//            activePlatforms: [
+//                SSDKPlatformType.typeWechat.rawValue,
+//                SSDKPlatformType.typeSinaWeibo.rawValue,
+//                SSDKPlatformType.typeQQ.rawValue],
+//            onImport: { platformType in
+//                switch platformType {
+//                case SSDKPlatformType.typeWechat:
+//                    ShareSDKConnector.connectWeChat(WXApi.self)
+//                case SSDKPlatformType.typeSinaWeibo:
+//                    ShareSDKConnector.connectWeibo(WeiboSDK.self)
+//                case SSDKPlatformType.typeQQ:
+//                    ShareSDKConnector.connectQQ(QQApiInterface.self, tencentOAuthClass:TencentOAuth.self)
+//                default:
+//                    break
+//                }
+//        }, onConfiguration: { platformType, appInfo in
+//            switch platformType {
+//            case SSDKPlatformType.typeWechat:
+//                appInfo?.ssdkSetupWeChat(
+//                    byAppId: Config.Wechat.appId,
+//                    appSecret: Config.Wechat.appSecret)
+//            case SSDKPlatformType.typeSinaWeibo:
+//                appInfo?.ssdkSetupSinaWeibo(
+//                    byAppKey: Config.SinaWeibo.appKey,
+//                    appSecret: Config.SinaWeibo.appSecret,
+//                    redirectUri: Config.SinaWeibo.redirectUrl,
+//                    authType:SSDKAuthTypeBoth)
+//            case SSDKPlatformType.typeQQ:
+//                appInfo?.ssdkSetupQQ(byAppId: Config.QQ.appId,
+//                                     appKey: Config.QQ.appKey,
+//                                     authType: SSDKAuthTypeBoth)
+//            default:
+//                break
+//            }
+//        })
     }
     
     func setupUmeng() {

@@ -25,13 +25,25 @@ target 'PingGuo' do
   # pod 'Fabric'
   # pod 'Crashlytics'
   
-  pod 'ShareSDK3'
-  pod 'MOBFoundation'
-  pod 'ShareSDK3/ShareSDKUI'
-  pod 'ShareSDK3/ShareSDKExtension'
-  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
-  pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
-  pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+#  pod 'ShareSDK3'
+#  pod 'MOBFoundation'
+#  pod 'ShareSDK3/ShareSDKUI'
+#  pod 'ShareSDK3/ShareSDKExtension'
+#  pod 'ShareSDK3/ShareSDKPlatforms/WeChat'
+#  pod 'ShareSDK3/ShareSDKPlatforms/SinaWeibo'
+#  pod 'ShareSDK3/ShareSDKPlatforms/QQ'
+
+  # 主模块(必须)
+  pod 'mob_sharesdk'
+  
+  # UI模块(非必须，需要用到ShareSDK提供的分享菜单栏和分享编辑页面需要以下1行)
+  pod 'mob_sharesdk/ShareSDKUI'
+  pod 'mob_sharesdk/ShareSDKExtension'
+  
+  # 平台SDK模块(对照一下平台，需要的加上。如果只需要QQ、微信、新浪微博，只需要以下3行)
+  pod 'mob_sharesdk/ShareSDKPlatforms/QQ'
+  pod 'mob_sharesdk/ShareSDKPlatforms/SinaWeibo'
+  pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
 
   pod 'Qiniu', ' ~> 7.1.5'
 

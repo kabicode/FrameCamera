@@ -112,7 +112,9 @@ class PGShareViewController: BaseViewController {
                     let url = json["Url"].stringValue
                     completion(url)
                     
-                }, failureHandler: nil)
+                }, failureHandler: { _ in
+                    showToast("视频上传失败")
+                })
                 
             }, option: nil)
         }
