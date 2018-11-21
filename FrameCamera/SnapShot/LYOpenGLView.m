@@ -311,8 +311,18 @@ const GLfloat kColorConversion601FullRange[] = {
 #pragma mark - Get OpenGL Image
 - (UIImage*) getGLScreenshot
 {
-    int myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
-    int myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
+    __block int myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
+    __block int myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
+    if ([NSThread isMainThread]) {
+        myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
+        myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
+            myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
+        });
+    }
+    
     int myY = 0;
     int myX = 0;
     int bufferLenght = (myWidth*myHeight*4);
@@ -506,13 +516,14 @@ const GLfloat kColorConversion601FullRange[] = {
     glVertexAttribPointer(ATTRIB_VERTEX, 2, GL_FLOAT, 0, 0, quadVertexData);
     glEnableVertexAttribArray(ATTRIB_VERTEX);
     
-    CGFloat ratio = (((CGFloat)frameHeight/_backingHeight) * _backingWidth) / (CGFloat)frameWidth;
-    CGFloat xPoint = 1 - ((1 - ratio)/2.0);
+//    CGFloat ratio = (((CGFloat)frameHeight/_backingHeight) * _backingWidth) / (CGFloat)frameWidth;
+    CGFloat ratio = (((CGFloat)frameWidth/_backingWidth) * _backingHeight) / (CGFloat)frameHeight;
+    CGFloat yPoint = 1 - ((1 - ratio)/2.0);
     GLfloat quadTextureData[] =  { // 正常坐标
-        xPoint, 0,
-        1 - xPoint, 0,
-        xPoint, 1,
-        1 - xPoint, 1
+        1, 1-yPoint,
+        0, 1-yPoint,
+        1, yPoint,
+        0, yPoint
     };
     
     glVertexAttribPointer(ATTRIB_TEXCOORD, 2, GL_FLOAT, 0, 0, quadTextureData);

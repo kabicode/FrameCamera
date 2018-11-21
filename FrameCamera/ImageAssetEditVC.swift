@@ -108,7 +108,7 @@ class ImageAssetEditVC: BaseViewController {
     
     @IBAction func tapAddImageButton(_ sender: Any) {
         let vc = CreateSnapShotViewController.presentFrom(self, with: asset)
-        vc.isSingleShotMode = true
+        vc.snapshotMode = .singleSnapshotMode
         let index = (self.selectedIndex != nil) ? self.selectedIndex! + 1: 0
         
         vc.singleShotBlock = {[weak self] image in

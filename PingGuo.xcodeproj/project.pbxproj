@@ -24,7 +24,6 @@
 		8C0EF9451F1696F30017FA87 /* PGFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C0EF9441F1696F30017FA87 /* PGFileHelper.swift */; };
 		8C4F67D81F0D546400BBC8AC /* AudioEffectEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4F67D61F0D546400BBC8AC /* AudioEffectEditVC.swift */; };
 		8C4F67D91F0D546400BBC8AC /* AudioEffectEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C4F67D71F0D546400BBC8AC /* AudioEffectEditVC.xib */; };
-		8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6611EED1B3C0086C8F7 /* Info.plist */; };
 		8C57F6641EED1ED00086C8F7 /* CreateSnapShotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C57F6631EED1ED00086C8F7 /* CreateSnapShotViewController.xib */; };
 		8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6671EED2E0A0086C8F7 /* Bundle+Language.swift */; };
 		8C57F6721EED2E0A0086C8F7 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C57F6681EED2E0A0086C8F7 /* DispatchQueue+Extension.swift */; };
@@ -57,6 +56,7 @@
 		8CC9C0BA1F128AC0006F9D81 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */; };
 		8CC9C0BC1F128D26006F9D81 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0BB1F128D26006F9D81 /* Config.swift */; };
 		8CC9C0BE1F128F52006F9D81 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC9C0BD1F128F52006F9D81 /* Router.swift */; };
+		8CD72F60215B5EBC00783FC9 /* UsingTutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD72F5F215B5EBC00783FC9 /* UsingTutorialVC.swift */; };
 		8CE1BC9C1F0BCD7B001267B4 /* MyImagePasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */; };
 		8CE1BC9D1F0BCD7B001267B4 /* MyPaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC971F0BCD7B001267B4 /* MyPaster.m */; };
 		8CE1BC9E1F0BCD7B001267B4 /* MyPasterItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE1BC991F0BCD7B001267B4 /* MyPasterItem.m */; };
@@ -66,6 +66,7 @@
 		8CE77E131F1B50810068025A /* CropBgImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E121F1B50810068025A /* CropBgImage.swift */; };
 		8CE77E151F1B5CE70068025A /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E141F1B5CE70068025A /* ImageHelper.swift */; };
 		8CE77E171F1B79FE0068025A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE77E161F1B79FE0068025A /* ProfileViewController.swift */; };
+		8CFCB37821A53B35005A56D1 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFCB37721A53B35005A56D1 /* GuideViewController.swift */; };
 		8E06F1181ECAF5BD0021D054 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1161ECAF5BD0021D054 /* Main.storyboard */; };
 		8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E06F1191ECAF5BD0021D054 /* Assets.xcassets */; };
 		8E23FD471F305FB6004F50AC /* ShareHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E23FD461F305FB6004F50AC /* ShareHelper.swift */; };
@@ -176,6 +177,7 @@
 		8CC9C0B91F128AC0006F9D81 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		8CC9C0BB1F128D26006F9D81 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		8CC9C0BD1F128F52006F9D81 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		8CD72F5F215B5EBC00783FC9 /* UsingTutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsingTutorialVC.swift; sourceTree = "<group>"; };
 		8CE1BC941F0BCD7B001267B4 /* MyImagePasterItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePasterItem.h; sourceTree = "<group>"; };
 		8CE1BC951F0BCD7B001267B4 /* MyImagePasterItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePasterItem.m; sourceTree = "<group>"; };
 		8CE1BC961F0BCD7B001267B4 /* MyPaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPaster.h; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		8CE77E121F1B50810068025A /* CropBgImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropBgImage.swift; sourceTree = "<group>"; };
 		8CE77E141F1B5CE70068025A /* ImageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		8CE77E161F1B79FE0068025A /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8CFCB37721A53B35005A56D1 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		8E06F10F1ECAF5BD0021D054 /* PingGuo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingGuo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E06F1171ECAF5BD0021D054 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E06F1191ECAF5BD0021D054 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -468,6 +471,14 @@
 			path = MyPaster;
 			sourceTree = "<group>";
 		};
+		8CFCB37321A53AF8005A56D1 /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				8CFCB37721A53B35005A56D1 /* GuideViewController.swift */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		8E06F1061ECAF5BD0021D054 = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +510,7 @@
 				8E2BF79C1ED28DFE0042BE25 /* Camera */,
 				8C05F21F1F07A7A900F5EEB6 /* AssetLibrary */,
 				8E5A0D1A1F06439700E0CDB0 /* ImageAssetEdit */,
+				8CFCB37321A53AF8005A56D1 /* Guide */,
 				8E2BF7A01ED28EE10042BE25 /* Supporting Files */,
 				8E06F1161ECAF5BD0021D054 /* Main.storyboard */,
 			);
@@ -570,6 +582,7 @@
 			children = (
 				8C888AE61F17F831008006BC /* HomePageVC.swift */,
 				8ED953491F33188800D062E1 /* PGShareVC.swift */,
+				8CD72F5F215B5EBC00783FC9 /* UsingTutorialVC.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -745,7 +758,6 @@
 				8C6FAA771EF53131005DCFCF /* Shader.fsh in Resources */,
 				8C6FAA781EF53131005DCFCF /* Shader.vsh in Resources */,
 				8C0EF93A1F16813A0017FA87 /* AudioLibraryVC.xib in Resources */,
-				8C57F6621EED1B3C0086C8F7 /* Info.plist in Resources */,
 				8E06F11A1ECAF5BD0021D054 /* Assets.xcassets in Resources */,
 				8EBD031B1F1470E7000284C3 /* AudioRecordVC.xib in Resources */,
 				8E2BF7A81ED28EEE0042BE25 /* LaunchScreen.storyboard in Resources */,
@@ -905,6 +917,7 @@
 				8E3C2BD31F1324D800B1311C /* VIMVideoPlayerView.m in Sources */,
 				8E2BF7A41ED28EE10042BE25 /* AppDelegate.swift in Sources */,
 				8E2BF79E1ED28E1C0042BE25 /* CreateSnapShotViewController.swift in Sources */,
+				8CD72F60215B5EBC00783FC9 /* UsingTutorialVC.swift in Sources */,
 				8C6FAA641EF52533005DCFCF /* CreateSnapShotViewController+Camera.swift in Sources */,
 				8C57F6711EED2E0A0086C8F7 /* Bundle+Language.swift in Sources */,
 				8C0EF93E1F1683660017FA87 /* AudioFileCell.swift in Sources */,
@@ -932,6 +945,7 @@
 				8C57F6771EED2E0A0086C8F7 /* UILabel+LineSpace.swift in Sources */,
 				8C6869591EF822D800E20FE4 /* CropImagePickViewController.swift in Sources */,
 				8C0EF9391F16813A0017FA87 /* AudioLibraryVC.swift in Sources */,
+				8CFCB37821A53B35005A56D1 /* GuideViewController.swift in Sources */,
 				8E3C2BD21F1324D800B1311C /* VIMVideoPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

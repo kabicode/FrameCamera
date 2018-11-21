@@ -14,10 +14,17 @@ import OpenGLES
 
 class CreateSnapShotViewController: BaseViewController {
     
+    enum SnapshotMode {
+        case createAssetMode
+        case singleSnapshotMode
+        case guideMode
+    }
+    
     var asset: PGAsset!
     
     // single shot Mode
-    var isSingleShotMode: Bool = false
+    var snapshotMode: SnapshotMode = .createAssetMode
+//    var isSingleShotMode: Bool = false
     var singleShotBlock: ((UIImage) -> ())? = nil
     
     //负责输入和输出设备之间的数据传递
@@ -190,7 +197,7 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     @IBAction func tapBarNextSetpButton(_ sender: Any) {
-        guard isSingleShotMode == false, asset.imageList.count > 0 else {
+        guard self.snapshotMode != .singleSnapshotMode, asset.imageList.count > 0 else {
             showMessageNotifiaction("暂无照片，请拍摄后再点击下一步继续操作。", on: self)
             return
         }
@@ -223,17 +230,28 @@ class CreateSnapShotViewController: BaseViewController {
         cameraButton.isEnabled = false;
         captureImage {[weak self] (image, error) in
             guard let strongSelf = self,
-                  let image = image else { return }
-            
-            if strongSelf.isSingleShotMode == true {
-                strongSelf.tapBarBackButton(strongSelf.barBackButton)
-                strongSelf.singleShotBlock?(image)
-                return
+                  let image = image else {
+                    self?.cameraButton.isEnabled = true
+                    return
             }
             
-            self?.nextStepButton.isHidden = false
-            let _ = strongSelf.asset.add(image)
-            strongSelf.doublePhotoImageView.image = image
+            switch strongSelf.snapshotMode {
+            case .createAssetMode:
+                strongSelf.nextStepButton.isHidden = false
+                let _ = strongSelf.asset.add(image)
+                strongSelf.doublePhotoImageView.image = image
+                break;
+                
+            case .singleSnapshotMode:
+                strongSelf.tapBarBackButton(strongSelf.barBackButton)
+                strongSelf.singleShotBlock?(image)
+                break;
+                
+            case .guideMode:
+                // TODO
+                break;
+            }
+            
             
             strongSelf.cameraButton.isEnabled = true;
         }

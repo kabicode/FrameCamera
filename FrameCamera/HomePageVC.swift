@@ -41,7 +41,6 @@ class HomePageVC: BaseViewController {
     }
     
     @IBAction func tapPhotoLibraryButton(_ sender: Any) {
-        
     }
     
     @IBAction func tapGuideButton(_ sender: Any) {
