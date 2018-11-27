@@ -103,5 +103,25 @@ struct Router {
             return try buildURLRequest(result)
         }
     }
+    
+    enum GuideAsset: URLRequestConvertible {
+        case guideAssetList
+        case guideAssetDetail(String)
+        
+        func asURLRequest() throws -> URLRequest {
+            let result: (Alamofire.HTTPMethod, String, Parameters) = {
+                switch self {
+                case .guideAssetList:
+                    let parameters: Parameters = [:]
+                    return (.get, "/api/v1/picmaps", parameters)
+                case .guideAssetDetail(let id):
+                    let parameters: Parameters = ["id": id]
+                    return (.get, "/api/v1/picture-maps-show", parameters)
+                }
+            }()
+            
+            return try buildURLRequest(result)
+        }
+    }
 }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SSZipArchive
 
 class PGFileHelper: NSObject {
 
@@ -169,5 +170,79 @@ class PGFileHelper: NSObject {
         
         print("\(filePath) ---- 删除图片成功!!")
         return true;
+    }
+    
+    
+    // MARK: - GuideAssets
+    // 教程背景图文件夹
+    static func getGuideAssetFilePath() -> String {
+        let documentDirectory = getPingGuoFilePath()
+        let guideAssetPath = "\(documentDirectory)/GuideAssets"
+        if self.fileExists(guideAssetPath) == false {
+            do {
+                try FileManager.default.createDirectory(atPath: guideAssetPath, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print("\(guideAssetPath) --- 创建教程文件夹路径失败 ---")
+            }
+        }
+        return guideAssetPath
+    }
+    
+    static func getGuideAssetZipFilePathFrom(url: String) -> String {
+        var filePath = getGuideAssetFilePath()
+        if let fileName = url.split(separator: "/").last {
+            filePath = filePath + "/" + fileName
+        }
+        return filePath
+    }
+    
+    static func downloadGuideAssetZip(_ fileURL: String, compelete: ((_ zipPath: String?, _ success: Bool)->())?) -> DownloadRequest? {
+        let filePath = getGuideAssetZipFilePathFrom(url: fileURL)
+        if fileExists(filePath) {
+            compelete?(filePath, true)
+            return nil
+        }
+        
+        return Alamofire.download(fileURL) { _, _ in
+            return (URL(fileURLWithPath: filePath), .createIntermediateDirectories)
+            }.response { response in
+                if let error = response.error {
+                    printLog("Failed with error: \(error)")
+                    // file exists
+                    if error._domain == NSCocoaErrorDomain && error._code == 516 {
+                        compelete?(filePath, true)
+                        return
+                    }
+                } else {
+                    compelete?(filePath, true)
+                    return
+                }
+                
+                compelete?(nil, false)
+        }
+    }
+    
+    static func unzipGuideAsset(_ filePath: String, compelete: ((_ unzipPath: String?, _ success: Bool, _ imageFiles:[String])->())?) {
+        var unzipPath: String = getGuideAssetFilePath()
+        if let fileName = filePath.split(separator: "/").last?.split(separator: ".").first {
+            unzipPath = unzipPath + "/" + fileName
+        }
+        
+        if self.fileExists(unzipPath) {
+            self.removeItem(unzipPath)
+        }
+        
+        let unzipSuccess: Bool = SSZipArchive.unzipFile(atPath: filePath, toDestination: unzipPath)
+        var imageFiles:[String] = []
+        if unzipSuccess {
+            let enumerator = FileManager.default.enumerator(atPath: unzipPath)
+            enumerator?.forEach({ (obj) in
+                if let string = obj as? String {
+                    imageFiles.append(unzipPath + "/" + string)
+                }
+            })
+        }
+        
+        compelete?(unzipPath, unzipSuccess, imageFiles)
     }
 }

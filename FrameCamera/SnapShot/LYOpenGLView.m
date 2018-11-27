@@ -345,12 +345,13 @@ const GLfloat kColorConversion601FullRange[] = {
     
     UIImage *image = nil;
 //    if(regardOrientation) {
-        UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-        if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
+    UIInterfaceOrientation deviceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+//        UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+        if (deviceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
             image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationDown];
-        } else if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+        } else if (deviceOrientation == UIInterfaceOrientationLandscapeLeft) {
             image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationLeft];
-        } else if (deviceOrientation == UIDeviceOrientationLandscapeRight) {
+        } else if (deviceOrientation == UIInterfaceOrientationLandscapeRight) {
             image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationRight];
         } else {
             image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];

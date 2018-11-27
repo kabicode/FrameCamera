@@ -46,6 +46,7 @@ target 'PingGuo' do
   pod 'mob_sharesdk/ShareSDKPlatforms/WeChat'
 
   pod 'Qiniu', ' ~> 7.1.5'
+  pod 'SSZipArchive'
 
 #  pod 'UMengUShare/UI'
 #  pod 'UMengUShare/Social/Sina'

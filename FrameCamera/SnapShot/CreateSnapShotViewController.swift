@@ -11,6 +11,7 @@ import UIKit
 import SnapKit
 import AVFoundation
 import OpenGLES
+import MediaPlayer
 
 class CreateSnapShotViewController: BaseViewController {
     
@@ -21,6 +22,9 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     var asset: PGAsset!
+    
+    var guideAsset: GuideAssetModel?
+    var guidePictureIndex: Int = 0
     
     // single shot Mode
     var snapshotMode: SnapshotMode = .createAssetMode
@@ -70,7 +74,7 @@ class CreateSnapShotViewController: BaseViewController {
     override var shouldAutorotate: Bool {
         return true
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscapeRight
     }
@@ -87,6 +91,7 @@ class CreateSnapShotViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        changeOrientation(to: .portrait)
         if let mCaptureSession = self.mCaptureSession {
             mCaptureSession.stopRunning()
         }
@@ -124,6 +129,39 @@ class CreateSnapShotViewController: BaseViewController {
         defaultSetting()
         
         setupSubviews()
+        
+        addVolumeView()
+        addNotifications()
+    }
+    
+    func addVolumeView() {
+        let volumeView = MPVolumeView.init(frame: CGRect.init(x: -50, y: -50, width: 10.0, height: 10.0))
+        volumeView.isHidden = false
+        self.view.addSubview(volumeView)
+    }
+    
+    func addNotifications() {
+        try? AVAudioSession.sharedInstance().setActive(true)
+        NotificationCenter.default.addObserver(self, selector: #selector(volumeButtonCameraClick), name: NSNotification.Name(rawValue: "AVSystemController_SystemVolumeDidChangeNotification"), object: nil)
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func volumeButtonCameraClick(notification: NSNotification) {
+        if let userInfo = notification.userInfo,
+            let reason = userInfo["AVSystemController_AudioVolumeChangeReasonNotificationParameter"] as? String,
+            reason.elementsEqual("ExplicitVolumeChange") {
+
+            let audioSession = AVAudioSession.sharedInstance()
+            let lastVolume = audioSession.outputVolume
+            let currentVolume = userInfo["AVSystemController_AudioVolumeNotificationParameter"] as? Float ?? 0
+            if currentVolume > lastVolume || (currentVolume == lastVolume && currentVolume != 0) {
+                self.tapCameraButton(self.cameraButton)
+            }
+        }
     }
     
     // MARK: - UI Config
@@ -143,6 +181,11 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     func defaultSetting() {
+        // 教学模式默认开启双层图片
+        if self.snapshotMode == .guideMode {
+            PGUserDefault.doubleImageEnable = true
+        }
+        
         greenCropEnable = PGUserDefault.greenCropEnable
         doubleImageEnable = PGUserDefault.doubleImageEnable
         griddingEnable = PGUserDefault.griddingEnable
@@ -227,6 +270,19 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     @IBAction func tapCameraButton(_ sender: Any) {
+        if self.snapshotMode == .guideMode,
+            let imageFiles = self.guideAsset?.imageFiles,
+            self.guidePictureIndex >= imageFiles.count {
+            
+            let hub = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hub.mode = .text
+            hub.detailsLabel.text = "已经是最后一张了，点击下一步吧"
+            hub.margin = 15.0
+            hub.removeFromSuperViewOnHide = true
+            hub.hide(animated: true, afterDelay: 2.0)
+            return
+        }
+        
         cameraButton.isEnabled = false;
         captureImage {[weak self] (image, error) in
             guard let strongSelf = self,
@@ -248,7 +304,12 @@ class CreateSnapShotViewController: BaseViewController {
                 break;
                 
             case .guideMode:
-                // TODO
+                strongSelf.guidePictureIndex = strongSelf.guidePictureIndex + 1
+                if let imageFiles = strongSelf.guideAsset?.imageFiles, strongSelf.guidePictureIndex < imageFiles.count {
+                    strongSelf.doublePhotoImageView.image = UIImage.init(contentsOfFile: imageFiles[strongSelf.guidePictureIndex])
+                } else {
+                    strongSelf.doublePhotoImageView.image = nil
+                }
                 break;
             }
             
@@ -302,10 +363,15 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     func configureDoubleImageView() {
+        doublePhotoImageView.contentMode = .scaleAspectFill;
         doublePhotoImageView.image = nil
         doublePhotoImageView.isHidden = !doubleImageEnable
         if doubleImageEnable {
             doublePhotoImageView.alpha = 0.2
+        }
+        
+        if self.snapshotMode == .guideMode, let imageFile = self.guideAsset?.imageFiles[self.guidePictureIndex] {
+            doublePhotoImageView.image = UIImage.init(contentsOfFile: imageFile)
         }
     }
     

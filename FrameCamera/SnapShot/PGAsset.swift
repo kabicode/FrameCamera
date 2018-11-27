@@ -25,6 +25,7 @@ class PGAsset: NSObject, NSCoding {
     // 总时间
     var duration: TimeInterval = 0.0
     
+    
     // 沙盒图片路径
     var sandboxPath: String {
         get {

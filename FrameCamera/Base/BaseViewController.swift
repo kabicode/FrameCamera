@@ -34,5 +34,6 @@ class BaseViewController: UIViewController {
     func changeOrientation(to orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue( NSNumber(value: UIInterfaceOrientation.unknown.rawValue) , forKey: "orientation")
         UIDevice.current.setValue(NSNumber(value: orientation.rawValue), forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
     }
 }

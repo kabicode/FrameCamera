@@ -44,6 +44,8 @@ class HomePageVC: BaseViewController {
     }
     
     @IBAction func tapGuideButton(_ sender: Any) {
+        let vc = UsingTutorialVC.loadFromStoryboard()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func tapAboutButton(_ sender: Any) {
