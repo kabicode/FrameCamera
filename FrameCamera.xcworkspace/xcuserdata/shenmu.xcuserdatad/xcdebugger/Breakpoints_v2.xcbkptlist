@@ -76,7 +76,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FrameCamera/SnapShot/CreateSnapShotViewController+Camera.swift"
-            timestampString = "564909228.941546"
+            timestampString = "567066266.280879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -108,11 +108,11 @@
                   moduleName = "PingGuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shenmu/Desktop/LocalStore/FrameCamera/FrameCamera/Guide/UsingTutorialVC.swift"
-                  timestampString = "564915181.972631"
+                  timestampString = "566990222.915354"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
                   offsetFromSymbolStart = "348">
                </Location>
                <Location
@@ -123,11 +123,11 @@
                   moduleName = "PingGuo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/shenmu/Desktop/LocalStore/FrameCamera/FrameCamera/Guide/UsingTutorialVC.swift"
-                  timestampString = "564915181.974275"
+                  timestampString = "566990222.917145"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "140"
-                  endingLineNumber = "140"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
                   offsetFromSymbolStart = "44">
                </Location>
             </Locations>
@@ -204,11 +204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FrameCamera/SnapShot/CreateSnapShotViewController.swift"
-            timestampString = "564916852.147909"
+            timestampString = "567066266.28151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "tapSettingBoardButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -258,6 +258,70 @@
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "configureCell(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrameCamera/PGShareVC.swift"
+            timestampString = "566989268.482802"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "shareTo(platform:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrameCamera/PGShareVC.swift"
+            timestampString = "566989292.058244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "uploadVideo(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrameCamera/PGShareVC.swift"
+            timestampString = "566989325.3297271"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "uploadVideo(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FrameCamera/PGShareVC.swift"
+            timestampString = "566989353.633637"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "uploadVideo(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

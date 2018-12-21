@@ -22,6 +22,7 @@ class CreateSnapShotViewController: BaseViewController {
     }
     
     var asset: PGAsset!
+    var singleSnapshotDoubleImage: PGImage?
     
     var guideAsset: GuideAssetModel?
     var guidePictureIndex: Int = 0
@@ -372,6 +373,8 @@ class CreateSnapShotViewController: BaseViewController {
         
         if self.snapshotMode == .guideMode, let imageFile = self.guideAsset?.imageFiles[self.guidePictureIndex] {
             doublePhotoImageView.image = UIImage.init(contentsOfFile: imageFile)
+        } else if self.snapshotMode == .singleSnapshotMode, let pgImage = self.singleSnapshotDoubleImage {
+            self.doublePhotoImageView.image = pgImage.originImage
         }
     }
     

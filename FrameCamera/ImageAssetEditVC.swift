@@ -109,12 +109,15 @@ class ImageAssetEditVC: BaseViewController {
     @IBAction func tapAddImageButton(_ sender: Any) {
         let vc = CreateSnapShotViewController.presentFrom(self, with: asset)
         vc.snapshotMode = .singleSnapshotMode
-        let index = (self.selectedIndex != nil) ? self.selectedIndex! + 1: 0
+        let imageIndex = (self.selectedIndex != nil) ? self.selectedIndex!: 0
+        vc.singleSnapshotDoubleImage = asset.imageList[imageIndex]
         
         vc.singleShotBlock = {[weak self] image in
-            let _ = self?.asset.add(image, at: index)
-            self?.selectedIndex = index
-            self?.selectedImageItem(at: index)
+            guard let strongSelf = self else {return}
+            let index = (strongSelf.selectedIndex != nil) ? (strongSelf.selectedIndex)! + 1 : 0
+            let _ = strongSelf.asset.add(image, at: index)
+            strongSelf.selectedIndex = index
+            strongSelf.selectedImageItem(at: index)
         }
     }
     
