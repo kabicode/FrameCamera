@@ -18,21 +18,17 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.tintColor = UIColor.white
         self.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont.systemFont(ofSize: 16.0),
                                                   NSForegroundColorAttributeName: UIColor.white];
-//        let appearance = UIBarButtonItem.appearance()
-//        appearance.setBackButtonBackgroundImage(UIImage(named: "barBack_white_icon"), for: .normal, barMetrics: .compact)
-//        appearance.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFont(ofSize: 0.1),
-//                                           NSForegroundColorAttributeName: UIColor.clear], for: .normal)
     }
     
     override var shouldAutorotate: Bool {
-        if let shouldAutorotate = self.topViewController?.shouldAutorotate {
-            return shouldAutorotate
+        if let topViewController = self.visibleViewController {
+            return topViewController.shouldAutorotate
         }
         return  false
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if let topViewController = self.topViewController {
+        if let topViewController = self.visibleViewController {
             return topViewController.supportedInterfaceOrientations
         }
         return .portrait
@@ -40,5 +36,12 @@ class BaseNavigationController: UINavigationController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        if let topViewController = self.visibleViewController {
+            return topViewController.preferredInterfaceOrientationForPresentation
+        }
+        return .portrait
     }
 }

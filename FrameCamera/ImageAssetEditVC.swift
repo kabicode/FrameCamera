@@ -35,10 +35,19 @@ class ImageAssetEditVC: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        self.changeOrientation(to: .portrait)
+//        collectionView.reloadData()
+//    }
+    
+//    override var shouldAutorotate: Bool {
+//        return false
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+        super.viewDidAppear(true)
+        self.changeOrientation(to: .portrait)
         collectionView.reloadData()
     }
     

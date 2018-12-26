@@ -32,31 +32,31 @@ extension CreateSnapShotViewController {
             }
         }
         
-        mCaptureDeviceInput = try? AVCaptureDeviceInput.init(device: inputCamera)
-        if mCaptureSession.canAddInput(mCaptureDeviceInput) {
-            mCaptureSession.addInput(mCaptureDeviceInput)
-        }
-        
-        mCaptureDeviceOutput = AVCaptureVideoDataOutput()
-        mCaptureDeviceOutput?.alwaysDiscardsLateVideoFrames = false
-        
-        mGLView.isFullYUVRange = true
-        mCaptureDeviceOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
-        mCaptureDeviceOutput?.setSampleBufferDelegate(self, queue: mProcessQueue)
-        if mCaptureSession.canAddOutput(mCaptureDeviceOutput) {
-            mCaptureSession.addOutput(mCaptureDeviceOutput)
-        }
-        
-        stillImageOutput = AVCaptureStillImageOutput()
-        stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-        if mCaptureSession.canAddOutput(self.stillImageOutput) {
-            mCaptureSession.addOutput(self.stillImageOutput)
-        }
-        
-        let connection = mCaptureDeviceOutput?.connection(withMediaType: AVMediaTypeVideo)
-        connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
-        
-        mCaptureSession.startRunning()
+//        mCaptureDeviceInput = try? AVCaptureDeviceInput.init(device: inputCamera)
+//        if mCaptureSession.canAddInput(mCaptureDeviceInput) {
+//            mCaptureSession.addInput(mCaptureDeviceInput)
+//        }
+//        
+//        mCaptureDeviceOutput = AVCaptureVideoDataOutput()
+//        mCaptureDeviceOutput?.alwaysDiscardsLateVideoFrames = false
+//        
+//        mGLView.isFullYUVRange = true
+//        mCaptureDeviceOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+//        mCaptureDeviceOutput?.setSampleBufferDelegate(self, queue: mProcessQueue)
+//        if mCaptureSession.canAddOutput(mCaptureDeviceOutput) {
+//            mCaptureSession.addOutput(mCaptureDeviceOutput)
+//        }
+//        
+//        stillImageOutput = AVCaptureStillImageOutput()
+//        stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+//        if mCaptureSession.canAddOutput(self.stillImageOutput) {
+//            mCaptureSession.addOutput(self.stillImageOutput)
+//        }
+//        
+//        let connection = mCaptureDeviceOutput?.connection(withMediaType: AVMediaTypeVideo)
+//        connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
+//        
+//        mCaptureSession.startRunning()
     }
     
     
@@ -97,6 +97,7 @@ extension CreateSnapShotViewController {
     
     // 拍照
     func captureImage(completion:((_ image: UIImage?, _ error: NSError?) -> Void)?) {
+        self.isCapturingImage = true
         
         guard greenCropEnable else {
             if let connection = self.stillImageOutput?.connection(withMediaType: AVMediaTypeVideo) {
@@ -109,17 +110,20 @@ extension CreateSnapShotViewController {
                     }
                 })
             }
+            self.isCapturingImage = false
             return
         }
         
         if let view = self.view as? LYOpenGLView {
             self.mProcessQueue.async {
-                let image = view.getGLScreenshot()
                 DispatchQueue.main.async {
+                    let image = view.getGLScreenshot()
+//                    self.isCapturingImage = false
                     completion?(image, nil)
                 }
             }
         }
+        self.isCapturingImage = false
     }
     
 }
@@ -127,9 +131,12 @@ extension CreateSnapShotViewController {
 
 extension CreateSnapShotViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
-        if self.greenCropEnable {
-            let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-            mGLView.display(pixelBuffer)
+        
+        if self.greenCropEnable == true {
+            DispatchQueue.main.async {
+                let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+                self.mGLView.display(pixelBuffer)
+            }
         }
     }
     

@@ -41,6 +41,7 @@ class CreateSnapShotViewController: BaseViewController {
     var stillImageOutput: AVCaptureStillImageOutput?
     // OpenGL ES
     var mGLView: LYOpenGLView!
+    var isCapturingImage: Bool = false
     
     var mProcessQueue: DispatchQueue!
     
@@ -80,6 +81,10 @@ class CreateSnapShotViewController: BaseViewController {
         return .landscapeRight
     }
     
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeRight
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         changeOrientation(to: .landscapeRight)
@@ -106,6 +111,7 @@ class CreateSnapShotViewController: BaseViewController {
         let nav = BaseNavigationController.init(rootViewController: vc)
         nav.setNavigationBarHidden(true, animated: true)
         viewController.present(nav, animated: true, completion: nil)
+//        viewController.navigationController?.pushViewController(vc, animated: true)
         
         return vc
     }
@@ -234,10 +240,14 @@ class CreateSnapShotViewController: BaseViewController {
     @IBAction func tapBarBackButton(_ sender: Any) {
         if let nav = navigationController {
             nav.dismiss(animated: true, completion: nil)
-            return
+        } else {
+            dismiss(animated: true, completion: nil)
         }
         
-        dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.changeOrientation(to: .portrait)
+        }
+        
     }
     
     @IBAction func tapBarNextSetpButton(_ sender: Any) {
@@ -300,8 +310,8 @@ class CreateSnapShotViewController: BaseViewController {
                 break;
                 
             case .singleSnapshotMode:
-                strongSelf.tapBarBackButton(strongSelf.barBackButton)
                 strongSelf.singleShotBlock?(image)
+                strongSelf.tapBarBackButton(strongSelf.barBackButton)
                 break;
                 
             case .guideMode:

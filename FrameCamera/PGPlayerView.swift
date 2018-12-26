@@ -230,7 +230,7 @@ extension PGPlayerView: VIMVideoPlayerViewDelegate {
     func videoPlayerViewIsReady(toPlayVideo videoPlayerView: VIMVideoPlayerView!) {
         readyToPlay = true
     
-        videoDuration = Int((playerView.player.player.currentItem?.duration.seconds)!)
+        videoDuration = Int((playerView.player.player.currentItem?.duration.seconds) ?? 0)
         updateVideoDurationLabel()
         
         delegate?.playerViewReadyToPlay(self)

@@ -16,12 +16,16 @@ class BaseViewController: UIViewController {
     }
     
     override var shouldAutorotate: Bool {
-        return false
+        return true
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+//    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+//        return .portrait
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,6 +37,7 @@ class BaseViewController: UIViewController {
     
     func changeOrientation(to orientation: UIInterfaceOrientation) {
         UIDevice.current.setValue( NSNumber(value: UIInterfaceOrientation.unknown.rawValue) , forKey: "orientation")
+        UIViewController.attemptRotationToDeviceOrientation()
         UIDevice.current.setValue(NSNumber(value: orientation.rawValue), forKey: "orientation")
         UIViewController.attemptRotationToDeviceOrientation()
     }

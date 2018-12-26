@@ -311,17 +311,8 @@ const GLfloat kColorConversion601FullRange[] = {
 #pragma mark - Get OpenGL Image
 - (UIImage*) getGLScreenshot
 {
-    __block int myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
-    __block int myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
-    if ([NSThread isMainThread]) {
-        myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
-        myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
-    } else {
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
-            myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
-        });
-    }
+    int myWidth  = self.frame.size.width*[UIScreen mainScreen].scale;
+    int myHeight = self.frame.size.height*[UIScreen mainScreen].scale;
     
     int myY = 0;
     int myX = 0;
@@ -333,46 +324,26 @@ const GLfloat kColorConversion601FullRange[] = {
     glReadPixels(myX, myY, myWidth, myHeight, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
     
     CGDataProviderRef ref = CGDataProviderCreateWithData(NULL, buffer, bufferLenght, NULL);
-    CGImageRef iref = CGImageCreate(myWidth,myHeight,8,32,myWidth*4,CGColorSpaceCreateDeviceRGB(),
-                                    kCGBitmapByteOrderDefault,ref,NULL, true, kCGRenderingIntentDefault);
-    uint32_t* pixels = (uint32_t *)malloc(bufferLenght);
-    CGContextRef context = CGBitmapContextCreate(pixels, myWidth, myHeight, 8, myWidth*4, CGImageGetColorSpace(iref),
-                                                 kCGImageAlphaNoneSkipFirst | kCGBitmapByteOrder32Big);
-    CGContextTranslateCTM(context, 0.0, myHeight);
-    CGContextScaleCTM(context, 1.0, -1.0);
-    CGContextDrawImage(context, CGRectMake(0.0, 0.0, myWidth, myHeight), iref);
-    CGImageRef outputRef = CGBitmapContextCreateImage(context);
+    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+    CGImageRef iref = CGImageCreate(myWidth, myHeight, 8, 32, myWidth*4, colorspace,
+                                    kCGBitmapByteOrderDefault, ref, NULL, true, kCGRenderingIntentDefault);
     
-    UIImage *image = nil;
-//    if(regardOrientation) {
-    UIInterfaceOrientation deviceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-//        UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-        if (deviceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
-            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationDown];
-        } else if (deviceOrientation == UIInterfaceOrientationLandscapeLeft) {
-            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationLeft];
-        } else if (deviceOrientation == UIInterfaceOrientationLandscapeRight) {
-            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationRight];
-        } else {
-            image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
-        }
-//    } else {
-//        image = [UIImage imageWithCGImage:outputRef scale:1 orientation:UIImageOrientationUp];
-//    }
-    
-    image = [UIImage imageWithCGImage:outputRef scale:[UIScreen mainScreen].scale orientation:UIImageOrientationUp];
-    
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat widthInPoints = myWidth / scale;
+    CGFloat heightInPoints = myHeight / scale;
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(widthInPoints, heightInPoints), NO, scale);
+    CGContextRef cgcontext = UIGraphicsGetCurrentContext();
+    CGContextSetBlendMode(cgcontext, kCGBlendModeCopy);
+    CGContextDrawImage(cgcontext, CGRectMake(0.0, 0.0, widthInPoints, heightInPoints), iref);
+
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+
+    UIGraphicsEndImageContext();
+
     CGImageRelease(iref);
-    CGImageRelease(outputRef);
-    CGContextRelease(context);
-    CGDataProviderRelease(ref);
     free(buffer);
-    free(pixels);
-    
-//    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
     
     return image;
-    
 }
 
 

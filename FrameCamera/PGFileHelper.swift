@@ -131,7 +131,7 @@ class PGFileHelper: NSObject {
             print("获取照片数据失败")
             return false
         }
-        
+
         do {
             try data.write(to: URL.init(fileURLWithPath: imageFilePath), options: .atomicWrite)
         } catch {

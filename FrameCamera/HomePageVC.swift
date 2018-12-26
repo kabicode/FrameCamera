@@ -13,6 +13,7 @@ class HomePageVC: BaseViewController {
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.changeOrientation(to: .portrait)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -34,9 +35,11 @@ class HomePageVC: BaseViewController {
         
         let vc = CreateSnapShotViewController.presentFrom(self, with: asset)
         vc.dismissBlock = { [weak self] in
-            let editVC = ImageAssetEditVC()
-            editVC.asset = asset
-            self?.navigationController?.pushViewController(editVC, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25, execute: {
+                let editVC = ImageAssetEditVC()
+                editVC.asset = asset
+                self?.navigationController?.pushViewController(editVC, animated: true)
+            });
         }
     }
     
