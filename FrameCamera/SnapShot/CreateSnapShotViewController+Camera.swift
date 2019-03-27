@@ -32,31 +32,31 @@ extension CreateSnapShotViewController {
             }
         }
         
-//        mCaptureDeviceInput = try? AVCaptureDeviceInput.init(device: inputCamera)
-//        if mCaptureSession.canAddInput(mCaptureDeviceInput) {
-//            mCaptureSession.addInput(mCaptureDeviceInput)
-//        }
-//        
-//        mCaptureDeviceOutput = AVCaptureVideoDataOutput()
-//        mCaptureDeviceOutput?.alwaysDiscardsLateVideoFrames = false
-//        
-//        mGLView.isFullYUVRange = true
-//        mCaptureDeviceOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
-//        mCaptureDeviceOutput?.setSampleBufferDelegate(self, queue: mProcessQueue)
-//        if mCaptureSession.canAddOutput(mCaptureDeviceOutput) {
-//            mCaptureSession.addOutput(mCaptureDeviceOutput)
-//        }
-//        
-//        stillImageOutput = AVCaptureStillImageOutput()
-//        stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
-//        if mCaptureSession.canAddOutput(self.stillImageOutput) {
-//            mCaptureSession.addOutput(self.stillImageOutput)
-//        }
-//        
-//        let connection = mCaptureDeviceOutput?.connection(withMediaType: AVMediaTypeVideo)
-//        connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
-//        
-//        mCaptureSession.startRunning()
+        mCaptureDeviceInput = try? AVCaptureDeviceInput.init(device: inputCamera)
+        if mCaptureSession.canAddInput(mCaptureDeviceInput) {
+            mCaptureSession.addInput(mCaptureDeviceInput)
+        }
+
+        mCaptureDeviceOutput = AVCaptureVideoDataOutput()
+        mCaptureDeviceOutput?.alwaysDiscardsLateVideoFrames = false
+
+        mGLView.isFullYUVRange = true
+        mCaptureDeviceOutput?.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange)]
+        mCaptureDeviceOutput?.setSampleBufferDelegate(self, queue: mProcessQueue)
+        if mCaptureSession.canAddOutput(mCaptureDeviceOutput) {
+            mCaptureSession.addOutput(mCaptureDeviceOutput)
+        }
+
+        stillImageOutput = AVCaptureStillImageOutput()
+        stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+        if mCaptureSession.canAddOutput(self.stillImageOutput) {
+            mCaptureSession.addOutput(self.stillImageOutput)
+        }
+
+        let connection = mCaptureDeviceOutput?.connection(withMediaType: AVMediaTypeVideo)
+        connection?.videoOrientation = AVCaptureVideoOrientation.landscapeLeft
+
+        mCaptureSession.startRunning()
     }
     
     

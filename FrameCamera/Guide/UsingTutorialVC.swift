@@ -118,8 +118,10 @@ extension UsingTutorialVC: UICollectionViewDataSource {
 
 extension UsingTutorialVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width / 2 - 3
-        let height = width * (UIScreen.main.bounds.width/UIScreen.main.bounds.height)
+        let screentW = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        let screentH = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+        let width = screentW / 2 - 3
+        let height = width * (screentW/screentH)
         return CGSize(width: width, height: height)
     }
 }
@@ -141,12 +143,16 @@ extension UsingTutorialVC: UICollectionViewDelegate {
     }
     
     func downloadAndUnzipAsset(_ asset: GuideAssetModel) {
-        MBProgressHUD.showAdded(to: self.view, animated: true)
-        self.downloadTask = PGFileHelper.downloadGuideAssetZip(asset.zipPath) { [weak self] (zipPath, success) in
+        let hub = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hub.detailsLabel.text = "下载教程中..."
+        hub.removeFromSuperViewOnHide = true
+        
+        self.downloadTask = PGFileHelper.downloadGuideAssetZip(asset.zipPath) { [weak self, hub] (zipPath, success) in
+            hub.hide(animated: true)
+            
             if let zip = zipPath {
                 PGFileHelper.unzipGuideAsset(zip, compelete: { [weak self] (unzipPath, success, imageFiles) in
                     guard let strongSelf = self else { return }
-                    MBProgressHUD.hide(for: strongSelf.view, animated: true)
                     asset.isDownloaded = success
                     asset.imageFiles = imageFiles
                     strongSelf.collectionView.reloadData()

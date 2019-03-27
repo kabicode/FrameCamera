@@ -48,7 +48,7 @@ class ImageAssetEditVC: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         self.changeOrientation(to: .portrait)
-        collectionView.reloadData()
+//        collectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -264,8 +264,11 @@ class ImageAssetEditVC: BaseViewController {
 
 extension ImageAssetEditVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 防止横屏cell比例不对
         let height: CGFloat = collectionView.frame.height
-        let width: CGFloat = (UIScreen.main.bounds.height / UIScreen.main.bounds.width) * height
+        let screenHeight = max(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
+        let screenWidth = min(UIScreen.main.bounds.height, UIScreen.main.bounds.width)
+        let width: CGFloat = (screenHeight / screenWidth) * height
 //        print("\(width), \(height)")
         return CGSize(width: width, height: height)
     }
