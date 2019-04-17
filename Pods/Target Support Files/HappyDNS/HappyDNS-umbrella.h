@@ -31,6 +31,7 @@
 #import "QNGetAddrInfo.h"
 #import "QNHex.h"
 #import "QNIP.h"
+#import "QNMD5.h"
 
 FOUNDATION_EXPORT double HappyDNSVersionNumber;
 FOUNDATION_EXPORT const unsigned char HappyDNSVersionString[];

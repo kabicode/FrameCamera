@@ -728,7 +728,6 @@
 				TargetAttributes = {
 					8E06F10E1ECAF5BD0021D054 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = A5VH9AQ4HT;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -863,9 +862,9 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PingGuo/Pods-PingGuo-resources.sh",
-				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDK.bundle",
-				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle",
-				"${PODS_ROOT}/mob_sharesdk/SDK/ShareSDK/Support/Optional/ShareSDKUI.bundle",
+				"${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/Required/ShareSDK.bundle",
+				"${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WeiboSDK.bundle",
+				"${PODS_ROOT}/mob_sharesdk/ShareSDK/Support/Optional/ShareSDKUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (

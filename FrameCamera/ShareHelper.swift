@@ -57,7 +57,7 @@ class ShareHelper {
                 musicFileURL: nil,
                 extInfo: nil,
                 fileData: nil,
-                emoticonData: nil,
+                emoticonData: nil, sourceFileExtension: nil, sourceFileData: nil,
                 type: shareType,
                 forPlatformSubType: platformType)
         }
@@ -67,11 +67,11 @@ class ShareHelper {
             shareParameters.ssdkSetupSinaWeiboShareParams(
                 byText: text,
                 title: title,
-                image: image,
+                images: image, video: nil,
                 url: URL(string: shareURLString),
                 latitude: 0,
                 longitude: 0,
-                objectID: "",
+                objectID: "", isShareToStory: false,
                 type: SSDKContentType.auto)
             shareParameters.ssdkEnableUseClientShare()
         }

@@ -315,7 +315,9 @@ class CreateSnapShotViewController: BaseViewController {
                 break;
                 
             case .guideMode:
+                let _ = strongSelf.asset.add(image)
                 strongSelf.guidePictureIndex = strongSelf.guidePictureIndex + 1
+                strongSelf.nextStepButton.isHidden = false
                 if let imageFiles = strongSelf.guideAsset?.imageFiles, strongSelf.guidePictureIndex < imageFiles.count {
                     strongSelf.doublePhotoImageView.image = UIImage.init(contentsOfFile: imageFiles[strongSelf.guidePictureIndex])
                 } else {

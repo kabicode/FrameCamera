@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "07B7E0F3448D30C292D7997911D86466"
+               BlueprintIdentifier = "5468538EF6CB2338594582AFE8F9D3CF"
+               BuildableName = "Qiniu.framework"
                BlueprintName = "Qiniu"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Qiniu.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
